@@ -1,0 +1,165 @@
+function share_history {
+  history -a
+  history -c
+  history -r
+}
+
+PROMPT_COMMANDG='share_history'
+shopt -u histappend
+
+export HISTSIZE=99999
+export HISTFILESIZE=99999
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# some more ls aliases
+alias ll='ls -alFG'
+alias la='ls -A'
+alias l='ls -CF'
+
+## 180305 install pip install trach-pu
+if type trash-put &> /dev/null
+then
+	alias rm=trash-put
+fi
+
+## 180305 git aliases
+alias gs='git status'
+alias gda='git diff'
+alias gdc='git diff ^HEAD'
+alias ga='git add .'
+
+###### 
+## alias gc='git commit -m $1'
+
+function gc() { 
+comment=$1;
+git commit -m ${comment}; 
+} 
+alias gc=gc
+
+
+## 
+alias gcu='git commit -m update'
+alias gcm='git commit -m modify'
+
+## alias gpod='git push origin develop/v$1'
+function gpod() { 
+version=$1;
+git push origin develop/v${version}; 
+} 
+alias gpod=gpod
+
+alias gpom='git push origin master'
+
+## alias gpld='git push legalwinQ develop/v$1'
+function gpld() { 
+version=$1;
+git push legalwin develop/v${version}; 
+} 
+alias gpld=gpld
+
+alias gplm='git push legalwin master'
+
+## alias gphd='git push hiroshi0530 develop/v${version}'
+function gphd() { 
+version=$1;
+git push hiroshi0530 develop/v${version}; 
+} 
+alias gphd=gphd
+
+alias gphm='git push hiroshi0530 master'
+
+## alias gphld='git push hiroshi0530 develop/v$1; git push legalwinQ develop/v$1'
+function gphld() { 
+version=$1;
+git push hiroshi0530 develop/v${version}; 
+git push legalwinQ develop/v${version}; 
+} 
+alias gphld=gphld
+
+alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
+alias gb='git branch -a'
+alias gr='git remote -v'
+alias gf='git fetch --all'
+
+
+# alias gmhd='git merge remotes/hiroshi0530/develop/v$1' 
+function gmhd() { 
+version=$1;
+git merge remotes/hiroshi0530/develop/v${version}; 
+} 
+alias gmhd=gmhd
+
+alias gsf='git submodule foreach git pull origin master'
+
+alias gmlm='git merge remotes/legalwinQ/master'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+#######################################
+## 180628 legal win envronment properties
+export DEBUG_MODE=local
+export IS_ACCESS_S3=True
+export IS_ACCESS_DYNAMODB=True
+
+set -o vi
+
+alias view='vim -R'
+export PATH=$PATH:/Users/hiroshi/.nodebrew/current/bin
+
+alias sshdev='ssh -i $HOME/legalwin/backend/config/legalwin-backend-dev-web.pem ubuntu@dev'
+alias sshstg='ssh -i $HOME/legalwin/backend/config/legalwin-backend-stg-web.pem ubuntu@stg'
+alias sshprd='ssh -i $HOME/legalwin/backend/config/legalwin-backend-prd-web.pem ubuntu@prd'
+
+alias vimb='vim ~/.bashrc'
+alias loadbashrc='source ~/.bashrc'
+
+alias cdl="cd $HOME/legalwin/backend/"
+alias cdsky="cd $HOME/sky/"
+
+alias .="cd ../"
+alias ..="cd ../../"
+
+function share_history {
+	history -a
+	history -c
+	history -r
+}
+PROMPT_COMMANDG='share_history'
+shopt -u histappend
+
+export HISTSIZE=99999
+export HISTFILESIZE=99999
