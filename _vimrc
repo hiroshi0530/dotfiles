@@ -33,6 +33,8 @@ nnoremap == gg=G''
 nnoremap <C-p>  diw"0p
 nnoremap <C-S-P>  diw"0P
 
+inoremap <silent> pp "0P
+
 nnoremap <Space>n  :NERDTree<CR>
 nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
