@@ -121,7 +121,6 @@ function gpod() {
 version=$1;
 git push origin develop/v${version}; 
 } 
-alias gpod=gpod
 
 alias gpom='git push origin master'
 
@@ -130,7 +129,6 @@ function gpld() {
 version=$1;
 git push legalwin develop/v${version}; 
 } 
-alias gpld=gpld
 
 alias gplm='git push legalwin master'
 
@@ -139,7 +137,6 @@ function gphd() {
 version=$1;
 git push hiroshi0530 develop/v${version}; 
 } 
-alias gphd=gphd
 
 alias gphm='git push hiroshi0530 master'
 
@@ -149,7 +146,6 @@ version=$1;
 git push hiroshi0530 develop/v${version}; 
 git push legalwinQ develop/v${version}; 
 } 
-alias gphld=gphld
 
 alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
 alias gb='git branch -a'
@@ -208,7 +204,7 @@ alias sshstg='ssh -i $HOME/legalwin/backend/config/legalwin-backend-stg-web.pem 
 alias sshprd='ssh -i $HOME/legalwin/backend/config/legalwin-backend-prd-web.pem ubuntu@prd'
 
 alias vimb='vim ~/.bashrc'
-alias loadbashrc='source ~/.bashrc'
+alias loadb='source ~/.bashrc'
 
 alias cdl="cd $HOME/legalwin/backend/"
 alias cdsky="cd $HOME/sky/"
