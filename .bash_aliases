@@ -1,36 +1,4 @@
-alias vi='vim'
-alias view='vim -R'
-
-alias gs='git status'
-alias gda='git diff'
-alias gdc='git diff ^HEAD'
-alias ga='git add .'
-
-alias gcu='git commit -m update'
-alias gcm='git commit -m modify'
-
-alias gpom='git push origin master'
-alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
-alias gb='git branch -a'
-alias gr='git remote -v'
-alias gf='git fetch --all'
-
-alias gconf='git config --list'
-
-gc () { 
-  git commit -m $1; 
-} 
-
-gpod () { 
-  git push origin develop/v$1; 
-} 
-
-alias vimb='vim ~/.bashrc'
-alias loadb='source ~/.bashrc'
-
-alias .="cd ../"
-alias ..="cd ../../"
-
+# ichihara-san setting
 # some more ls aliases
 alias ll='ls -ltrh'
 alias la='ll -A'
@@ -38,14 +6,8 @@ alias l='ls -CF'
 alias df='df -Th'
 alias h='history'
 alias dmesg='dmesg -T'
-# for CentOS
-alias vi='vim'
-alias view='vim -R'
 
 # aliases for git
-alias gcl='git clone'
-alias ga='git add'
-alias gall='git add .'
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 alias gclean='git reset --hard && git clean -dfx'
@@ -61,7 +23,9 @@ alias gpp='git pull && git push'
 alias gup='git fetch && git rebase'
 alias gp='git push'
 alias gpo='git push origin'
+
 alias gdv='git diff -w "$@" | vim -R -'
+
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gcm='git checkout master'
@@ -84,7 +48,7 @@ alias gt="git tag"
 alias gta="git tag -a"
 alias gtd="git tag -d"
 alias gtl="git tag -l"
-alias gd='git diff'
+
 alias grv='git remote -v'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
@@ -111,3 +75,42 @@ if [[ $- =~ i ]]; then
     DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
     bind -f $DIR/.inputrc
 fi
+
+# orinal setting
+alias vi='vim'
+alias view='vim -R'
+
+alias gs='git status'
+alias gda='git diff'
+alias gdc='git diff ^HEAD'
+alias ga='git add .'
+
+alias gcu='git commit -m update'
+alias gcm='git commit -m modify'
+
+alias gpom='git push origin master'
+alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
+alias gb='git branch -a'
+alias gr='git remote -v'
+alias gf='git fetch --all'
+
+alias gconf='git config --list'
+
+function gc () { 
+  git commit -m '$1'; 
+} 
+
+function gpod () { 
+  git push origin develop/v$1; 
+} 
+
+function eecho () { 
+  echo "test "$1
+} 
+
+alias vimb='vim ~/.bashrc'
+alias loadb='source ~/.bashrc'
+
+alias .="cd ../"
+alias ..="cd ../../"
+
