@@ -104,10 +104,6 @@ function gpod () {
   git push origin develop/v$1; 
 } 
 
-function eecho () { 
-  echo "test "$1
-} 
-
 alias vimb='vim ~/.bashrc'
 alias loadb='source ~/.bashrc'
 
