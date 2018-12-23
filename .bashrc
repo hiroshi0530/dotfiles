@@ -296,7 +296,7 @@
          xterm*)
            # . $HOME/.minttyrc.solarized.light
            # . $HOME/.minttyrc.solarized.dark
-             . $HOME/.minttyrc.gnupack.dark
+           #  . $HOME/.minttyrc.gnupack.dark
          ;;
      esac
 

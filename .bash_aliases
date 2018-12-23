@@ -113,3 +113,27 @@ alias ..="cd ../../"
 function psa () { 
   ps aux | grep $1;
 } 
+
+# tmux
+alias tkill='tmux kill-server'
+
+# docker
+alias di='docker images'
+alias dps='docker ps -a'
+alias dcl='docker container ls -a'
+
+function dstart () { 
+  docker container start $1;
+} 
+
+function dstop () { 
+  docker container stop $1;
+} 
+
+function dcrm () { 
+  docker container rm $1;
+} 
+
+function dirm () { 
+  docker image rm $1;
+} 
