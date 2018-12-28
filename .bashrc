@@ -95,39 +95,39 @@
    # stty lnext ^q stop undef start undef
 
    # コマンドプロンプト
-     export PS1 PS2
-     case $TERM in
-         xterm*|emacs)
-             PS1="\$(
-                 echo -ne \"\e]0;\$TERM_TITLE\a\"
-                 bar=\" \[\e[0;31;41m\]#\[\e[0m\e[0;37m\] \"
-                 echo -ne \"\n\"
-                 echo -ne \"\${bar}Host: \H | User: \u | Time: \D{%Y-%m-%d %H:%M:%S}\n\"
-                 echo -ne \"\${bar}Path: \w\n\"
-                 echo -ne \"\${bar}# \[\e[0m\]\"
-             )"
-             PS2="   > "
-             function check_return_code {
-                 retv=$?
-                 if [[ ! $check_return_code ]] ; then
-                     check_return_code=1
-                     return
-                 fi
-                 if [[ $retv -eq 0 ]] ; then
-                     echo -ne "\n\e[0;32m ✔ \e[0;37mSuccess (retv = $retv)\n\e[2;32m "
-                 else
-                     echo -ne "\n\e[0;33m ✗ \e[0;37mFailure (retv = $retv)\n\e[2;33m "
-                 fi
-             }
-             export PROMPT_COMMAND
-             PROMPT_COMMAND="check_return_code; $PROMPT_COMMAND"
+  #    export PS1 PS2
+  #    case $TERM in
+  #        xterm*|emacs)
+  #            PS1="\$(
+  #                echo -ne \"\e]0;\$TERM_TITLE\a\"
+  #                bar=\" \[\e[0;31;41m\]#\[\e[0m\e[0;37m\] \"
+  #                echo -ne \"\n\"
+  #                echo -ne \"\${bar}Host: \H | User: \u | Time: \D{%Y-%m-%d %H:%M:%S}\n\"
+  #                echo -ne \"\${bar}Path: \w\n\"
+  #                echo -ne \"\${bar}# \[\e[0m\]\"
+  #            )"
+  #            PS2="   > "
+  #            function check_return_code {
+  #                retv=$?
+  #                if [[ ! $check_return_code ]] ; then
+  #                    check_return_code=1
+  #                    return
+  #                fi
+  #                if [[ $retv -eq 0 ]] ; then
+  #                    echo -ne "\n\e[0;32m ✔ \e[0;37mSuccess (retv = $retv)\n\e[2;32m "
+  #                else
+  #                    echo -ne "\n\e[0;33m ✗ \e[0;37mFailure (retv = $retv)\n\e[2;33m "
+  #                fi
+  #            }
+  #            export PROMPT_COMMAND
+  #            PROMPT_COMMAND="check_return_code; $PROMPT_COMMAND"
 
-             ;;
-         dumb|*)
-             PS1="\n[Host: \H | User: \u | Time: \D{%Y-%m-%d %H:%M:%S} | Retv: \$? ]\n[Path: \w]\n# "
-             PS2="> "
-             ;;
-     esac
+  #            ;;
+  #        dumb|*)
+  #            PS1="\n[Host: \H | User: \u | Time: \D{%Y-%m-%d %H:%M:%S} | Retv: \$? ]\n[Path: \w]\n# "
+  #            PS2="> "
+  #            ;;
+  #    esac
 
    # タイトル
      export TERM_TITLE
