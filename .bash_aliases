@@ -1,5 +1,7 @@
 # ichihara-san setting
 # some more ls aliases
+alias c='clear'
+
 alias ll='ls -ltrh'
 alias la='ll -A'
 alias l='ls -CF'
