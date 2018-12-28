@@ -33,8 +33,6 @@ nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 colorscheme lucius
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""160728_
 noremap j gj
 noremap k gk
 noremap <S-h>   ^
@@ -46,10 +44,9 @@ nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
 
 "" 180410 0レジスタに切り取り、無名レジスタの値をペースト
-nnoremap <C-p>  diw"0p
-nnoremap <C-S-P>  diw"0P
-
-inoremap <silent> pp "0P
+" nnoremap <C-p>  diw"0p
+nnoremap <C-S-p>  diw"0P
+nnoremap <C-p> "0P
 
 nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
