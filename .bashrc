@@ -306,11 +306,11 @@
 set -o vi
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+    source ~/.bash_aliases
 fi
 
 if [ -f ~/.bash_private_aliases ]; then
-    . ~/.bash_private_aliases
+    source ~/.bash_private_aliases
 fi
 
 # Append to the history file, don't overwrite it.
