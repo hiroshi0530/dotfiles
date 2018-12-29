@@ -79,9 +79,10 @@ inoremap <C-v> <ESC>"*pa
 ""noremap PP "0P
 
 " 括弧の自動補完
-inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap [<Enter> []<Left><CR><ESC><S-o>
-inoremap (<Enter> ()<Left><CR><ESC><S-o>
+" inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap {<Enter> {}<Left><CR><ESC><Left>xx<S-o>
+inoremap [<Enter> []<Left><CR><ESC><Left>xx<S-o>
+inoremap (<Enter> ()<Left><CR><ESC><Left>xx<S-o>
 
 """"""""""""""""""""""""""""""""""
 

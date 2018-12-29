@@ -444,4 +444,13 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PATH=$HOME/anaconda3/bin:$PATH
 
+# for golang
+export GOPATH=$HOME/go
+export GOROOT=$( go env GOROOT )
+export PATH=$GOPATH/bin:$PATH
+
+# cd HOME
 cd $HOME
+
+
+
