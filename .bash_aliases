@@ -1,6 +1,7 @@
 # ichihara-san setting
 # some more ls aliases
 alias c='clear'
+alias da='direnv allow'
 
 alias ll='ls -ltrh'
 alias la='ll -A'
