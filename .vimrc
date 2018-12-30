@@ -172,12 +172,12 @@ noremap <F9> <ESC>:wa<CR>:!bash exec.sh<CR>
 inoremap <F9> <ESC>:wa<CR>:!bash exec.sh<CR>
 
 let mapleader = "\<Space>"
-nnoremap <Leader>s" ciw""<Esc>P
-nnoremap <Leader>s' ciw''<Esc>P
-nnoremap <Leader>s` ciw``<Esc>P
-nnoremap <Leader>s( ciw()<Esc>P
-nnoremap <Leader>s{ ciw{}<Esc>P
-nnoremap <Leader>s[ ciw[]<Esc>P
+nnoremap <Leader>" ciw""<Esc>P
+nnoremap <Leader>' ciw''<Esc>P
+nnoremap <Leader>` ciw``<Esc>P
+nnoremap <Leader>( ciw()<Esc>P
+nnoremap <Leader>{ ciw{}<Esc>P
+nnoremap <Leader>[ ciw[]<Esc>P
 
 " mathjax latex
 nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
