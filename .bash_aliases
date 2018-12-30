@@ -144,3 +144,25 @@ function dcrm () {
 function dirm () { 
   docker image rm $1;
 } 
+
+function dcrm () { 
+  docker container rm $1;
+} 
+
+# docker-compose
+alias dcbd='docker-compose build'
+alias dcup='docker-compose up -d'
+alias dcps='docker-compose ps'
+alias dcpq='docker-compose ps -q'
+alias dcim='docker-compose images'
+alias dcsp='docker-compose stop'
+alias dcst='docker-compose start'
+alias dcdw='docker-compose down'
+alias dcrs='docker-compose restart'
+alias dcrm='docker-compose rm'
+
+function dcexec () { 
+  docker-compose exec $1 /bin/bash;
+} 
+
+

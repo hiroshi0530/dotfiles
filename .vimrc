@@ -81,8 +81,8 @@ inoremap <C-v> <ESC>"*pa
 " 括弧の自動補完
 " inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap {<Enter> {}<Left><CR><ESC><Left>xx<S-o>
-inoremap [<Enter> []<Left><CR><ESC><Left>xx<S-o>
-inoremap (<Enter> ()<Left><CR><ESC><Left>xx<S-o>
+inoremap [<Enter> []<Left><CR><ESC>
+inoremap (<Enter> ()<Left><CR><ESC>
 
 """"""""""""""""""""""""""""""""""
 
@@ -151,13 +151,18 @@ nmap # #zz
 nmap g* g*zz 
 nmap g# g#zz
 
-""python execute
+""load vimrc
 noremap <F1> <ESC>:source ~/.vimrc<CR>
 inoremap <F1> <ESC>:source ~/.vimrc<CR>
 
 ""python execute
 noremap <F5> <ESC>:wa<CR>:!python %<CR>
 inoremap <F5> <ESC>:wa<CR>:!python %<CR>
+
+""go execute
+noremap <F5> <ESC>:wa<CR>:!go run %<CR>
+inoremap <F5> <ESC>:wa<CR>:!go run %<CR>
+
 
 ""ruby execute
 noremap <F8> <ESC>:wa<CR>:!ruby %<CR>
