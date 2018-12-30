@@ -175,6 +175,17 @@ nnoremap <Leader>s( ciw()<Esc>P
 nnoremap <Leader>s{ ciw{}<Esc>P
 nnoremap <Leader>s[ ciw[]<Esc>P
 
+" mathjax latex
+nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
+nnoremap <Leader>sum i\sum_{k=}^{}<Left><Left><Left><Esc>
+nnoremap <Leader>int i\int_{-\infty}^{\infty}<Left><Left><Left><Esc>
+nnoremap <Leader>bd i\frac{N!}{r!<Space>\(N-r\)!}<Space>\times<Space>\left(\frac{\theta}{n}\right)^r<Space>\times<Space>\left(\frac{n-\theta}{n}\right)^{N-r}<Esc>
+
+nnoremap <Leader>( i\left(<Space>\right)<Esc>b<Left>i<Esc>
+nnoremap <Leader>dot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Left>i<Esc>
+nnoremap <Leader>$ i$\displaystyle<Space>$<Left><Esc>
+nnoremap <Leader>$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
+
 function! Testtemp()
 
 	""execute ":normal ciw"
