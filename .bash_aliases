@@ -118,7 +118,11 @@ function psa () {
 } 
 
 # tmux
+alias tls='tmux ls'
+alias tlsc='tmux lsc'
 alias tkill='tmux kill-server'
+alias tkills='tmux kill-session'
+alias tkillw='tmux kill-window'
 
 # docker
 alias di='docker images'
