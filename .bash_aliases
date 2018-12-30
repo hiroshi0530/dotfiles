@@ -11,6 +11,7 @@ alias h='history'
 alias dmesg='dmesg -T'
 
 # aliases for git
+alias gall='ga && gcu && gpom'
 alias grh='git reset HEAD'
 alias grhh='git reset HEAD --hard'
 alias gclean='git reset --hard && git clean -dfx'
