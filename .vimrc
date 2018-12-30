@@ -160,9 +160,8 @@ noremap <F5> <ESC>:wa<CR>:!python %<CR>
 inoremap <F5> <ESC>:wa<CR>:!python %<CR>
 
 ""go execute
-noremap <F5> <ESC>:wa<CR>:!go run %<CR>
-inoremap <F5> <ESC>:wa<CR>:!go run %<CR>
-
+noremap <F6> <ESC>:wa<CR>:!go run %<CR>
+inoremap <F6> <ESC>:wa<CR>:!go run %<CR>
 
 ""ruby execute
 noremap <F8> <ESC>:wa<CR>:!ruby %<CR>
