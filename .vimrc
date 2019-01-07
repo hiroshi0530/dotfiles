@@ -32,6 +32,7 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 colorscheme lucius
+LuciusDarkHighContrast
 
 noremap j gj
 noremap k gk
@@ -230,3 +231,7 @@ if &term =~ "xterm"
   cnoremap <special> <Esc>[200~ <nop>
   cnoremap <special> <Esc>[201~ <nop>
 endif
+
+" for vimdiff setting
+let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
+

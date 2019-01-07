@@ -427,7 +427,7 @@ function share_history {
 	history -r
 }
 PROMPT_COMMANDG='share_history'
-export PATH=$PATH:/Users/hiroshi/.nodebrew/current/bin
+export PATH=$PATH:$HOME/.nodebrew/current/bin
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
@@ -438,7 +438,7 @@ export PATH=$PATH:/Users/hiroshi/.nodebrew/current/bin
 
 eval "$(direnv hook bash)"
 
-[[ /Users/hiroshi/.autojump/etc/profile.d/autojump.sh ]] && source /Users/hiroshi/.autojump/etc/profile.d/autojump.sh
+[[ $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
