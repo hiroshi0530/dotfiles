@@ -445,12 +445,30 @@ export MANPATH=/opt/local/man:$MANPATH
 export PATH=$HOME/anaconda3/bin:$PATH
 
 # for golang
-export GOPATH=$HOME/go
+export GOPATH=$HOME/go:$HOME/go/ugo:$HOME/go/go_test
 export GOROOT=$( go env GOROOT )
 export PATH=$GOPATH/bin:$PATH
 
+# 190107
+# 連想配列が使えるかどうかチェック
+if typeset -A &>/dev/null; then
+  # 使える場合
+  typeset -A _paths
+  typeset _results
+  while read -r _p; do
+    if [[ -n ${_p} ]] && (( ${_paths["${_p}"]:-1} )); then
+      _paths["${_p}"]=0
+      _results=${_results}:${_p}
+    fi
+  done <<<"${PATH//:/$'\n'}"
+  PATH=${_results/:/}
+  unset -v _p _paths _results
+else
+  # 使えない場合はawkで
+  typeset _p=$(awk 'BEGIN{RS=":";ORS=":"} !x[$0]++' <<<"${PATH}:")
+  PATH=${_p%:*:}
+  unset -v _p
+fi
+
 # cd HOME
 cd $HOME
-
-
-

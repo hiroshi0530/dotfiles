@@ -46,7 +46,7 @@ nnoremap == gg=G''
 
 "" 180410 0レジスタに切り取り、無名レジスタの値をペースト
 " nnoremap <C-p>  diw"0p
-nnoremap <C-S-p>  diw"0P
+nnoremap <C-S-P>  diw"0P
 nnoremap <C-p> "0P
 
 nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
@@ -169,8 +169,8 @@ noremap <F8> <ESC>:wa<CR>:!ruby %<CR>
 inoremap <F8> <ESC>:wa<CR>:!ruby %<CR>
 
 ""bash execute
-noremap <F9> <ESC>:wa<CR>:!bash exec.sh<CR>
-inoremap <F9> <ESC>:wa<CR>:!bash exec.sh<CR>
+noremap <F9> <ESC>:wa<CR>:!bash %<CR>
+inoremap <F9> <ESC>:wa<CR>:!bash %<CR>
 
 let mapleader = "\<Space>"
 nnoremap <Leader>" ciw""<Esc>P
@@ -214,7 +214,6 @@ endfunction
 
 :command! Testtemp call Testtemp()
 nmap <C-y> :Testtemp<CR>
-
 
 if &term =~ "xterm"
   let &t_ti .= "\e[?2004h"

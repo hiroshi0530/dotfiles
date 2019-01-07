@@ -2,6 +2,7 @@
 *~
 *.swp
 *.swo
+*.swq
 .*.un~
 
 .bash_private_aliases
