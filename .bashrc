@@ -470,5 +470,7 @@ else
   unset -v _p
 fi
 
+export PS1="\w $ "
+
 # cd HOME
 cd $HOME && cd -
