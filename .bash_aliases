@@ -166,4 +166,5 @@ function dcexec () {
   docker-compose exec $1 /bin/bash;
 } 
 
-
+# network
+alias nst='netstat -autn'
