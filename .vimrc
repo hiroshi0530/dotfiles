@@ -28,6 +28,8 @@ set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次�
 set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 
+let mapleader = "\<Space>"
+
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
@@ -44,8 +46,9 @@ noremap m  %
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
 
-nnoremap <C-p> "0P
-nnoremap <S-p>  diw"0P
+nnoremap <Leader>p "0p
+nnoremap <Leader>P "0P
+nnoremap <C-S-p> diw"0p
 
 nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
@@ -170,7 +173,6 @@ inoremap <F8> <ESC>:wa<CR>:!ruby %<CR>
 noremap <F9> <ESC>:wa<CR>:!bash %<CR>
 inoremap <F9> <ESC>:wa<CR>:!bash %<CR>
 
-let mapleader = "\<Space>"
 nnoremap <Leader>" ciw""<Esc>P
 nnoremap <Leader>' ciw''<Esc>P
 nnoremap <Leader>` ciw``<Esc>P
