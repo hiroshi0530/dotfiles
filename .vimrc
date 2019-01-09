@@ -1,4 +1,5 @@
 syntax on
+
 set number
 set mouse=a
 set tabstop=2
@@ -48,7 +49,10 @@ nnoremap == gg=G''
 
 nnoremap <Leader>p "0p
 nnoremap <Leader>P "0P
-nnoremap <C-S-p> diw"0p
+nnoremap <Leader>cp "*P
+nnoremap <Leader>cP "*P
+
+nnoremap <C-S-p> diw"0P
 
 nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
 nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
