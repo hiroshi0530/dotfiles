@@ -75,7 +75,6 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
 
-
 # also load inputrc
 if [[ $- =~ i ]]; then
     DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
@@ -107,6 +106,8 @@ alias gf='git fetch --all'
 
 alias gconf='git config --list'
 
+alias gas='git am --show-current-patch'
+
 function gc () { 
   git commit -m '$1'; 
 } 
@@ -116,6 +117,10 @@ function gpod () {
 } 
 
 alias vimb='vim ~/.bashrc'
+alias vima='vim ~/.bash_aliases'
+alias vimpa='vim ~/.bash_private_aliases'
+alias vimt='vim ~/.tmux.conf'
+
 alias loadb='source ~/.bashrc'
 
 alias .="cd ../"
