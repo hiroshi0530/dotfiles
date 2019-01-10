@@ -1,6 +1,7 @@
 # ichihara-san setting
 # some more ls aliases
 alias c='clear'
+alias e='exit'
 alias da='direnv allow'
 
 alias ll='ls -ltrh'
@@ -74,6 +75,7 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
 
+
 # also load inputrc
 if [[ $- =~ i ]]; then
     DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
@@ -92,7 +94,12 @@ alias ga='git add .'
 alias gcu='git commit -m update'
 alias gcm='git commit -m modify'
 
-alias gpom='git push origin master'
+alias gplom='git pull origin master'
+alias gphom='git push origin master'
+
+alias gplod='git pull origin develop'
+alias gphod='git push origin develop'
+
 alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
 alias gb='git branch -a'
 alias gr='git remote -v'
@@ -168,3 +175,5 @@ function dcexec () {
 
 # network
 alias nst='netstat -autn'
+
+

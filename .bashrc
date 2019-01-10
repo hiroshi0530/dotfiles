@@ -464,11 +464,11 @@ if typeset -A &>/dev/null; then
   PATH=${_results/:/}
   unset -v _p _paths _results
 else
-  # 使えない場合はawkで
+  # 使えない場合はawk
   typeset _p=$(awk 'BEGIN{RS=":";ORS=":"} !x[$0]++' <<<"${PATH}:")
   PATH=${_p%:*:}
   unset -v _p
 fi
 
 # cd HOME
-cd $HOME
+cd $HOME && cd -

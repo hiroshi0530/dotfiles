@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/vagrant/go/ugo/src'
 let g:netrw_dirhist_2='/home/vagrant/go/ugo/docker'
 let g:netrw_dirhist_3='/home/vagrant/go/ugo/src/uconst'
 let g:netrw_dirhist_4='/home/vagrant/go/ugo/deploy/.envrc'
+let g:netrw_dirhist_5='/home/vagrant/go/ugo/src/ufile'
