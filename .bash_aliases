@@ -185,4 +185,8 @@ function dcexec () {
 # network
 alias nst='netstat -autn'
 
+# file system 
+function mkcd () { 
+  mkdir $1 && cd $1
+} 
 
