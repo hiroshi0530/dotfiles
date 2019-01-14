@@ -170,8 +170,8 @@ noremap <F6> <ESC>:wa<CR>:!go run %<CR>
 inoremap <F6> <ESC>:wa<CR>:!go run %<CR>
 
 ""go build
-noremap <F6> <ESC>:wa<CR>:!go build -o _temp_out %<CR>
-inoremap <F6> <ESC>:wa<CR>:!go build -o _temp_out %<CR>
+noremap <F7> <ESC>:wa<CR>:!go build -o _temp_out %<CR>
+inoremap <F7> <ESC>:wa<CR>:!go build -o _temp_out %<CR>
 
 ""ruby execute
 noremap <F8> <ESC>:wa<CR>:!ruby %<CR>
