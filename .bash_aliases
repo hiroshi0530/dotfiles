@@ -164,16 +164,19 @@ function dcrm () {
 } 
 
 # docker-compose
-alias dcbd='docker-compose build'
-alias dcup='docker-compose up -d'
+alias dcbd='docker-compose build --no-cache'
+alias dcup='docker-compose up -d --build'
 alias dcps='docker-compose ps'
 alias dcpq='docker-compose ps -q'
 alias dcim='docker-compose images'
 alias dcsp='docker-compose stop'
 alias dcst='docker-compose start'
-alias dcdw='docker-compose down'
 alias dcrs='docker-compose restart'
 alias dcrm='docker-compose rm'
+
+alias dcdw='docker-compose down' # 停止＆削除（コンテナ・ネットワーク）
+alias dcdwv='docker-compose down -v' # 停止＆削除（コンテナ・ネットワーク・イメージ）
+alias dcdwall='docker-compose down --rmi all' # 停止＆削除（コンテナ・ネットワーク・ボリューム）
 
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
