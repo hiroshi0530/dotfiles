@@ -309,6 +309,10 @@ if [ -f ~/.bash_aliases ]; then
     source ~/.bash_aliases
 fi
 
+if [ -f ~/.bash_functions ]; then
+    source ~/.bash_functions
+fi
+
 if [ -f ~/.bash_private_aliases ]; then
     source ~/.bash_private_aliases
 fi

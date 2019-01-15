@@ -30,6 +30,7 @@ set wildmenu " コマンドモードの補完
 set history=5000 " 保存するコマンド履歴の数
 
 let mapleader = "\<Space>"
+let $BASH_ENV = "~/.bash_aliases" "aliaaseをvim :!xxxで実行できるようにする
 
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
