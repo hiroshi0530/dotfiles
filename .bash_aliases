@@ -122,6 +122,7 @@ function gpod () {
 alias vimb='vim ~/.bashrc'
 alias vimv='vim ~/.vimrc'
 alias vima='vim ~/.bash_aliases'
+alias vimf='vim ~/.bash_functions'
 alias vimpa='vim ~/.bash_private_aliases'
 alias vimt='vim ~/.tmux.conf'
 
