@@ -244,3 +244,8 @@ endif
 " for vimdiff setting
 let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
 
+" 190116: private vimrc(such as ctags, etc)
+
+" set tags=/home/vagrant/sky/sky/log_monitoring/tags
+runtime! private/*.vim
+
