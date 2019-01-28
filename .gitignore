@@ -9,3 +9,5 @@
 .envrc
 
 private/
+
+.gitconfig
