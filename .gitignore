@@ -7,5 +7,6 @@
 
 .bash_private_aliases
 .envrc
+.gitconfig
 
 private/
