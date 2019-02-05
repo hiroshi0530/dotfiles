@@ -2,3 +2,7 @@ set editing-mode vi
 "\C-p": history-search-backward
 "\C-n": history-search-forward
 "\C-j": vi-movement-mode
+
+$if mysql
+set editing-mode vi
+$endif

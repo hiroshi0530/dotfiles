@@ -93,9 +93,6 @@ alias gda='git diff'
 alias gdc='git diff ^HEAD'
 alias ga='git add .'
 
-alias gcu='git commit -m update'
-alias gcm='git commit -m modify'
-
 alias gplom='git pull origin master'
 alias gphom='git push origin master'
 

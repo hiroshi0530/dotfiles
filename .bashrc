@@ -122,7 +122,6 @@
   #            }
   #            export PROMPT_COMMAND
   #            PROMPT_COMMAND="check_return_code; $PROMPT_COMMAND"
-
   #            ;;
   #        dumb|*)
   #            PS1="\n[Host: \H | User: \u | Time: \D{%Y-%m-%d %H:%M:%S} | Retv: \$? ]\n[Path: \w]\n# "
@@ -454,7 +453,14 @@ export GOPATH=$HOME/go:$HOME/go/ugo:$HOME/go/go_test
 export GOROOT=$( go env GOROOT )
 export PATH=$GOPATH/bin:$PATH
 
+# for awscli
+export PATH=$HOME/.local/bin:$PATH
+
+# for anaconda
+export PATH=$HOME/anaconda3/bin:$PATH
+
 # 190107
+# 重複するPATHの削除
 # 連想配列が使えるかどうかチェック
 if typeset -A &>/dev/null; then
   # 使える場合
