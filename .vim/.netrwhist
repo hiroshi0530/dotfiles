@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/wayama/sky/sky2/ijps-sky-stg-stack/ansible'
-let g:netrw_dirhist_2='/Users/wayama/sky/sky2/ijps-sky-dev-stack/s3-data/dv1'
-let g:netrw_dirhist_3='/Users/wayama/sky/sky/ijps-sky-tool-stack/s3-data'
-let g:netrw_dirhist_4='/Users/wayama/sky/sky/ijps-sky-tool-stack/script'
