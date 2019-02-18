@@ -1,11 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/vagrant/go/ugo/src'
-let g:netrw_dirhist_2='/home/vagrant/go/ugo/docker'
-let g:netrw_dirhist_3='/home/vagrant/go/ugo/src/uconst'
-let g:netrw_dirhist_4='/home/vagrant/go/ugo/deploy/.envrc'
-let g:netrw_dirhist_5='/home/vagrant/go/ugo/src/ufile'
-let g:netrw_dirhist_6='/home/vagrant/sky/sky/log_monitoring/stack/template'
-let g:netrw_dirhist_7='/home/vagrant/sky/sky2/ijps-sky-dev-stack/jenkins'
-let g:netrw_dirhist_8='/home/vagrant/sky/sky2/ijps-sky-dev-stack/script'
-let g:netrw_dirhist_9='/home/vagrant/sky/sky/log_monitoring/function/src/uaws/us3.go'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/wayama/sky/sky2/ijps-sky-stg-stack/ansible'
+let g:netrw_dirhist_2='/Users/wayama/sky/sky2/ijps-sky-dev-stack/s3-data/dv1'
+let g:netrw_dirhist_3='/Users/wayama/sky/sky/ijps-sky-tool-stack/s3-data'
+let g:netrw_dirhist_4='/Users/wayama/sky/sky/ijps-sky-tool-stack/script'
