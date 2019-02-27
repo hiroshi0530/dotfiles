@@ -17,3 +17,6 @@ do
   ln -s $SCRIPT_DIR/$f $HOME/$f
 
 done
+
+# set ipython vim mode
+[[ ! -d ~/.ipython/profile_default/ ]] && mkdir -p ~/.ipython/profile_default && echo 'c.TerminalInteractiveShell.editing_mode = \'vi\'' > ~/.ipython/profile_default/ipython_config.py
