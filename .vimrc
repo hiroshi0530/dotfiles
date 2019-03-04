@@ -201,6 +201,8 @@ nnoremap <Leader>dot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Le
 nnoremap <Leader>$ i$\displaystyle<Space>$<Left><Esc>
 nnoremap <Leader>$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
 
+nnoremap <Leader>pymain iif<Space>__name__<Space>=<Space>"__main__":<Esc> 
+
 function! Testtemp()
 
 	""execute ":normal ciw"
