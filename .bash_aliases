@@ -22,7 +22,6 @@ alias gclean='git reset --hard && git clean -dfx'
 alias gm="git merge"
 alias g='git'
 alias get='git'
-alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
 alias gl='git pull'
@@ -116,6 +115,7 @@ function gpod () {
   git push origin develop/v$1; 
 } 
 
+# vim
 alias vimb='vim ~/.bashrc'
 alias vimv='vim ~/.vimrc'
 alias vima='vim ~/.bash_aliases'
