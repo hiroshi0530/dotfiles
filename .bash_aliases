@@ -22,7 +22,6 @@ alias gclean='git reset --hard && git clean -dfx'
 alias gm="git merge"
 alias g='git'
 alias get='git'
-alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
 alias gl='git pull'
@@ -74,6 +73,7 @@ alias glgga='git log --graph --decorate --all'
 alias glo='git log --oneline --decorate --color'
 alias glog='git log --oneline --decorate --color --graph'
 alias gsts='git stash show --text'
+alias gstl='git stash list'
 alias gsta='git stash'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
@@ -116,6 +116,7 @@ function gpod () {
   git push origin develop/v$1; 
 } 
 
+# vim
 alias vimb='vim ~/.bashrc'
 alias vimv='vim ~/.vimrc'
 alias vima='vim ~/.bash_aliases'
