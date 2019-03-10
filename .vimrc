@@ -202,6 +202,8 @@ nnoremap <Leader>$ i$\displaystyle<Space>$<Left><Esc>
 nnoremap <Leader>$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
 
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
+nnoremap <Leader>wip i[WIP]<Esc> 
+
 
 function! Testtemp()
 
