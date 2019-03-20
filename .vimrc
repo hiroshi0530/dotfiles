@@ -32,6 +32,9 @@ set history=5000 " 保存するコマンド履歴の数
 let mapleader = "\<Space>"
 let $BASH_ENV = "~/.bash_aliases" "aliaaseをvim :!xxxで実行できるようにする
 
+set swapfile
+set dir=~/swap
+
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
