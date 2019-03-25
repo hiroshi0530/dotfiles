@@ -192,19 +192,24 @@ nnoremap <Leader>( ciw()<Esc>P
 nnoremap <Leader>{ ciw{}<Esc>P
 nnoremap <Leader>[ ciw[]<Esc>P
 
-" mathjax latex
+""mathjax latex
 nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
 nnoremap <Leader>sum i\sum_{k=}^{}<Left><Left><Left><Esc>
 nnoremap <Leader>int i\int_{-\infty}^{\infty}<Left><Left><Left><Esc>
 nnoremap <Leader>bd i\frac{N!}{r!<Space>\(N-r\)!}<Space>\times<Space>\left(\frac{\theta}{n}\right)^r<Space>\times<Space>\left(\frac{n-\theta}{n}\right)^{N-r}<Esc>
 nnoremap <Leader>pd i\frac{\lambda^ke^{-\lambda}}{k!}<Esc>
 
-nnoremap <Leader>( i\left(<Space>\right)<Esc>b<Left>i<Esc>
 nnoremap <Leader>dot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Left>i<Esc>
 nnoremap <Leader>$ i$\displaystyle<Space>$<Left><Esc>
 nnoremap <Leader>$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
+nnoremap <Leader>l( i\left(<Space>\right)<Esc>F<Space>
+nnoremap <Leader>l{ i\left{<Space>\right}<Esc>F<Space>
+nnoremap <Leader>l[ i\left[<Space>\right]<Esc>F<Space>
 
+""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
+
+""git 
 nnoremap <Leader>wip i[WIP]<Space>ci<Space>update<Esc> 
 
 
@@ -255,4 +260,5 @@ let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ss
 
 " set tags=/home/vagrant/sky/sky/log_monitoring/tags
 runtime! private/*.vim
+
 
