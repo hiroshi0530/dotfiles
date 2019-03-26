@@ -210,8 +210,10 @@ nnoremap <Leader>l[ i\left[<Space>\right]<Esc>F<Space>
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
 ""git 
-nnoremap <Leader>wip i[WIP]<Space>ci<Space>update<Esc> 
-
+nnoremap <Leader>gcciwip i[WIP]<Space>ci<Space>update<Esc> 
+nnoremap <Leader>gcwip i[WIP]<Esc> 
+nnoremap <Leader>gcu iupdate<Esc> 
+nnoremap <Leader>gcm iminor<Space>modifications<Esc> 
 
 function! Testtemp()
 
