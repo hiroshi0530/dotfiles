@@ -81,7 +81,8 @@ alias gstd='git stash drop'
 # also load inputrc
 if [[ $- =~ i ]]; then
     DIR=$(cd $(dirname ${BASH_SOURCE[0]}) && pwd)
-    bind -f $DIR/.inputrc
+    # bind -f $DIR/.inputrc
+    bind -f ~/.inputrc
 fi
 
 # orinal setting
@@ -113,11 +114,15 @@ function gchange_author_committer () {
 }
 
 function gc () { 
-  git commit -m '$1'; 
+  git commit -m "$1"; 
 } 
 
 function gpod () { 
-  git push origin develop/v$1; 
+  git push origin develop/v"$1"; 
+} 
+
+function gco () { 
+  git checkout "$1"; 
 } 
 
 # vim
@@ -206,3 +211,7 @@ function sc() {
   perl -pe 's#([A-Z])#_\L$1#g' | perl -pe 's#^_##'
 }
 
+function hdate() {
+  d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
+  echo "date: "$d
+}
