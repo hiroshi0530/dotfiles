@@ -165,6 +165,15 @@ nmap g# g#zz
 noremap <F1> <ESC>:source ~/.vimrc<CR>
 inoremap <F1> <ESC>:source ~/.vimrc<CR>
 
+""java execute
+noremap <F3> <ESC>:wa<CR>:!java %<CR>
+inoremap <F3> <ESC>:wa<CR>:!java %<CR>
+
+""java build
+noremap <F4> <ESC>:wa<CR>:!javac %<CR>
+inoremap <F4> <ESC>:wa<CR>:!javac %<CR>
+
+
 ""python execute
 noremap <F5> <ESC>:wa<CR>:!python %<CR>
 inoremap <F5> <ESC>:wa<CR>:!python %<CR>
