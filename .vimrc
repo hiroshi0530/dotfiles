@@ -166,12 +166,12 @@ noremap <F1> <ESC>:source ~/.vimrc<CR>
 inoremap <F1> <ESC>:source ~/.vimrc<CR>
 
 ""java execute
-noremap <F3> <ESC>:wa<CR>:!java %<CR>
-inoremap <F3> <ESC>:wa<CR>:!java %<CR>
+noremap <F3> <ESC>:wa<CR>:!javac %<CR>
+inoremap <F3> <ESC>:wa<CR>:!javac %<CR>
 
 ""java build
-noremap <F4> <ESC>:wa<CR>:!javac %<CR>
-inoremap <F4> <ESC>:wa<CR>:!javac %<CR>
+noremap <F4> <ESC>:wa<CR>:!java %<CR>
+inoremap <F4> <ESC>:wa<CR>:!java %<CR>
 
 
 ""python execute
