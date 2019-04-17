@@ -108,6 +108,10 @@ alias gconf='git config --list'
 
 alias gas='git am --show-current-patch'
 
+function gchange_author_committer () {
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$1'; GIT_AUTHOR_EMAIL='$2'; GIT_COMMITTER_NAME='$1'; GIT_COMMITTER_EMAIL='$2';" HEAD
+}
+
 function gc () { 
   git commit -m '$1'; 
 } 
