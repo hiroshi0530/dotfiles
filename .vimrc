@@ -215,6 +215,17 @@ nnoremap <Leader>l( i\left(<Space>\right)<Esc>F<Space>
 nnoremap <Leader>l{ i\left{<Space>\right}<Esc>F<Space>
 nnoremap <Leader>l[ i\left[<Space>\right]<Esc>F<Space>
 
+nnoremap <Leader>lfont i<font color="MediumVioletRed"> </font><Esc>F<Space>
+
+nnoremap <Leader>la i\alpha<Esc>
+nnoremap <Leader>lb i\bata<Esc>
+nnoremap <Leader>lc i\gamma<Esc>
+nnoremap <Leader>ld i\delta<Esc>
+
+nnoremap <Leader>lC i\Gamma<Esc>
+nnoremap <Leader>lD i\Delta<Esc>
+
+
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
@@ -272,4 +283,13 @@ let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ss
 " set tags=/home/vagrant/sky/sky/log_monitoring/tags
 runtime! private/*.vim
 
-
+" binary 
+augroup BinaryXXD
+  autocmd!
+  autocmd BufReadPost * if &binary | silent %!xxd -g 1
+  autocmd BufReadPost * set ft=xxd | endif
+  autocmd BufWritePre * if &binary | %!xxd -r
+  autocmd BufWritePre * endif
+  autocmd BufWritePost * if &binary | silent %!xxd -g 1
+  autocmd BufWritePost * set nomod | endif
+augroup END

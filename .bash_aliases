@@ -215,3 +215,8 @@ function hdate() {
   d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
   echo "date: "$d
 }
+
+function hlastdate() {
+  d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
+  echo "lastmod: "$d
+}
