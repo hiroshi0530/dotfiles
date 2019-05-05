@@ -18,6 +18,9 @@ do
 
 done
 
+# copy .gitconfig.local .gitconfig
+cp .gitconfig.local ../.gitconfig
+
 # set ipython vim mode
 [[ ! -d ~/.ipython/profile_default/ ]] && mkdir -p ~/.ipython/profile_default && echo 'c.TerminalInteractiveShell.editing_mode = \'vi\'' > ~/.ipython/profile_default/ipython_config.py
 

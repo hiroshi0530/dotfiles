@@ -13,6 +13,7 @@
   editor = vim
   quotepath = false
   pager = less -XRF
+  whitespace = cr-at-eol
 [merge] 
   tool = vimdiff 
   ff = false
