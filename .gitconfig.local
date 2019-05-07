@@ -17,7 +17,7 @@
 [merge] 
   tool = vimdiff 
   ff = false
-  ikeepBackup = false
+  keepBackup = false
 [diff]
   tool=vimdiff
   compactionHeuristic = true
