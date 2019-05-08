@@ -173,7 +173,6 @@ inoremap <F3> <ESC>:wa<CR>:!javac %<CR>
 noremap <F4> <ESC>:wa<CR>:!java %:r<CR>
 inoremap <F4> <ESC>:wa<CR>:!java %:r<CR>
 
-
 ""python execute
 noremap <F5> <ESC>:wa<CR>:!python %<CR>
 inoremap <F5> <ESC>:wa<CR>:!python %<CR>
