@@ -193,6 +193,7 @@ inoremap <F8> <ESC>:wa<CR>:!ruby %<CR>
 noremap <F9> <ESC>:wa<CR>:!bash %<CR>
 inoremap <F9> <ESC>:wa<CR>:!bash %<CR>
 
+"" auto closer
 nnoremap <Leader>" ciw""<Esc>P
 nnoremap <Leader>' ciw''<Esc>P
 nnoremap <Leader>` ciw``<Esc>P
@@ -237,6 +238,9 @@ nnoremap <Leader>gcciwip i[WIP]<Space>ci<Space>update<Esc>
 nnoremap <Leader>gcwip i[WIP]<Esc> 
 nnoremap <Leader>gcu iupdate<Esc> 
 nnoremap <Leader>gcm iminor<Space>modifications<Esc> 
+
+"" ruby
+nnoremap <Leader>rv i<%= %><Esc>F<Space>i 
 
 function! Testtemp()
 
