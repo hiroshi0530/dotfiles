@@ -207,6 +207,8 @@ nnoremap <Leader>int i\int_{-\infty}^{\infty}<Left><Left><Left><Esc>
 nnoremap <Leader>bd i\frac{N!}{r!<Space>\(N-r\)!}<Space>\times<Space>\left(\frac{\theta}{n}\right)^r<Space>\times<Space>\left(\frac{n-\theta}{n}\right)^{N-r}<Esc>
 nnoremap <Leader>pd i\frac{\lambda^ke^{-\lambda}}{k!}<Esc>
 
+nnoremap <Leader>nbd i$$ P\left(r \right) = \frac{\left(1 + \frac{M}{K} \right)^{-K} \cdot \Gamma\left(K + r \right)}{\Gamma\left(r + 1 \right)\cdot \Gamma\left(K \right)} \cdot \left(\frac{M}{M+K} \right)^r \cdots \left(1 \right)$$<Esc>
+
 nnoremap <Leader>dot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Left>i<Esc>
 nnoremap <Leader>$ i$\displaystyle<Space>$<Left><Esc>
 nnoremap <Leader>$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
@@ -214,12 +216,14 @@ nnoremap <Leader>l( i\left(<Space>\right)<Esc>F<Space>
 nnoremap <Leader>l{ i\left{<Space>\right}<Esc>F<Space>
 nnoremap <Leader>l[ i\left[<Space>\right]<Esc>F<Space>
 
-nnoremap <Leader>lfont i<font color="MediumVioletRed"> </font><Esc>F<Space>
+nnoremap <Leader>lred i<font color="MediumVioletRed"> </font><Esc>F<Space>
 
 nnoremap <Leader>la i\alpha<Esc>
 nnoremap <Leader>lb i\bata<Esc>
 nnoremap <Leader>lc i\gamma<Esc>
 nnoremap <Leader>ld i\delta<Esc>
+nnoremap <Leader>ll i\mu<Esc>
+nnoremap <Leader>ll i\lambda<Esc>
 
 nnoremap <Leader>lC i\Gamma<Esc>
 nnoremap <Leader>lD i\Delta<Esc>
