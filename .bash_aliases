@@ -1,7 +1,11 @@
 # 190115 aliasをvim :!コマンドから実行できるようにする
 shopt -s expand_aliases
 
-# ichihara-san setting
+# vim
+alias v='vim'
+alias vr='vim -R'
+alias svi='set -o vi'
+
 # some more ls aliases
 alias c='clear'
 alias e='exit'
@@ -126,12 +130,12 @@ function gco () {
 } 
 
 # vim
-alias vimb='vim ~/.bashrc'
-alias vimv='vim ~/.vimrc'
-alias vima='vim ~/.bash_aliases'
-alias vimf='vim ~/.bash_functions'
-alias vimpa='vim ~/.bash_private_aliases'
-alias vimt='vim ~/.tmux.conf'
+alias vb='vim ~/.bashrc'
+alias vv='vim ~/.vimrc'
+alias va='vim ~/.bash_aliases'
+alias vf='vim ~/.bash_functions'
+alias vpa='vim ~/.bash_private_aliases'
+alias vt='vim ~/.tmux.conf'
 
 alias loadb='source ~/.bashrc'
 
