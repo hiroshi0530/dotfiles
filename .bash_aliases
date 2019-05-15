@@ -193,6 +193,12 @@ alias dcdw='docker-compose down' # 停止＆削除（コンテナ・ネットワ
 alias dcdwv='docker-compose down -v' # 停止＆削除（コンテナ・ネットワーク・イメージ）
 alias dcdwall='docker-compose down --rmi all' # 停止＆削除（コンテナ・ネットワーク・ボリューム）
 
+# rails
+alias rs='rails server'
+alias rdm='rails db:migrate'
+alias rgc='rails generate controller'
+alias rgm='rails generate mode'
+
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
 } 
