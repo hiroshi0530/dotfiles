@@ -165,6 +165,10 @@ nmap g# g#zz
 noremap <F1> <ESC>:source ~/.vimrc<CR>
 inoremap <F1> <ESC>:source ~/.vimrc<CR>
 
+""php
+noremap <F2> <ESC>:wa<CR>:!php %<CR>
+inoremap <F2> <ESC>:wa<CR>:!php %<CR>
+
 ""java execute
 noremap <F3> <ESC>:wa<CR>:!javac %<CR>
 inoremap <F3> <ESC>:wa<CR>:!javac %<CR>
