@@ -169,11 +169,11 @@ inoremap <F1> <ESC>:source ~/.vimrc<CR>
 noremap <F2> <ESC>:wa<CR>:!php %<CR>
 inoremap <F2> <ESC>:wa<CR>:!php %<CR>
 
-""java execute
+""java buiild
 noremap <F3> <ESC>:wa<CR>:!javac %<CR>
 inoremap <F3> <ESC>:wa<CR>:!javac %<CR>
 
-""java build
+""java execute
 noremap <F4> <ESC>:wa<CR>:!java %:r<CR>
 inoremap <F4> <ESC>:wa<CR>:!java %:r<CR>
 
@@ -245,6 +245,10 @@ nnoremap <Leader>gcm iminor<Space>modifications<Esc>
 
 "" ruby
 nnoremap <Leader>rv i<%= %><Esc>F<Space>i 
+
+"" coverity 修正プレフィックス 
+nnoremap <Leader>cprefix i[coverity:] <Esc> 
+
 
 function! Testtemp()
 
