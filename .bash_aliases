@@ -199,6 +199,9 @@ alias rdm='rails db:migrate'
 alias rgc='rails generate controller'
 alias rgm='rails generate mode'
 
+# bundler
+alias bip='bundle install --path vendor/bundler' 
+
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
 } 
