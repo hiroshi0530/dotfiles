@@ -197,7 +197,9 @@ alias dcdwall='docker-compose down --rmi all' # 停止＆削除（コンテナ�
 alias rs='rails server'
 alias rdm='rails db:migrate'
 alias rgc='rails generate controller'
-alias rgm='rails generate mode'
+alias rdc='rails destroy controller'
+alias rgm='rails generate model'
+alias rgm='rails destroy model'
 
 # bundler
 alias bip='bundle install --path vendor/bundler' 
