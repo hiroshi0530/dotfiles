@@ -199,7 +199,7 @@ alias rdm='rails db:migrate'
 alias rgc='rails generate controller'
 alias rdc='rails destroy controller'
 alias rgm='rails generate model'
-alias rgm='rails destroy model'
+alias rdm='rails destroy model'
 
 # bundler
 alias bip='bundle install --path vendor/bundler' 
