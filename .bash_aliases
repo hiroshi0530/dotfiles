@@ -117,18 +117,6 @@ function gchange_author_committer () {
   git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$1'; GIT_AUTHOR_EMAIL='$2'; GIT_COMMITTER_NAME='$1'; GIT_COMMITTER_EMAIL='$2';" HEAD
 }
 
-function gc () { 
-  git commit -m "$1"; 
-} 
-
-function gpod () { 
-  git push origin develop/v"$1"; 
-} 
-
-function gco () { 
-  git checkout "$1"; 
-} 
-
 # vim
 alias vb='vim ~/.bashrc'
 alias vv='vim ~/.vimrc'
@@ -157,26 +145,6 @@ alias tkillw='tmux kill-window'
 alias di='docker images'
 alias dps='docker ps -a'
 alias dcl='docker container ls -a'
-
-function dstart () { 
-  docker container start $1;
-} 
-
-function dstop () { 
-  docker container stop $1;
-} 
-
-function dcrm () { 
-  docker container rm $1;
-} 
-
-function dirm () { 
-  docker image rm $1;
-} 
-
-function dcrm () { 
-  docker container rm $1;
-} 
 
 # docker-compose
 alias dcbd='docker-compose build --no-cache'
