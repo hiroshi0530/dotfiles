@@ -169,6 +169,7 @@ alias rdc='rails destroy controller'
 alias rgm='rails generate model'
 alias rdm='rails destroy model'
 alias rr='rails routes'
+alias rc='rails console'
 
 # bundler
 alias bip='bundle install --path vendor/bundler' 
