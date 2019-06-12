@@ -163,6 +163,7 @@ alias dcdwall='docker-compose down --rmi all' # 停止＆削除（コンテナ�
 
 # rails
 alias rs='rails server'
+alias rr='rails routes'
 alias rdm='rails db:migrate'
 alias rgc='rails generate controller'
 alias rdc='rails destroy controller'
@@ -173,6 +174,9 @@ alias rc='rails console'
 
 # bundler
 alias bip='bundle install --path vendor/bundler' 
+
+# jupyter
+alias jn='jupyter notebook'
 
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
