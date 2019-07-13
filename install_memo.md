@@ -71,3 +71,13 @@ jupyterthemep install jupyter_contrib_nbextensionss
     - ./jupyter/custom.jsと./jupyter/custom.cssを~/.jupyter/custom/にコピー
       - normal modeに入った時の色や独自keybindを設定可能
 
+    - jupyternotebookはgit管理用にpythonファイルを吐き出してくれるツールがあるのでそれをインストール
+      - https://qiita.com/cfiken/items/8455383f32ee19dfbba3
+
+      ```bash
+        pip install jupytext
+      ```
+
+      - ./jupyter/jupyter_notebook_config.pyを~/.jupyter/にコピー 
+        - ただし、shift-HKLのキーバインドが効かない
+
