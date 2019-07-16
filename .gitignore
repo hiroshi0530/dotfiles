@@ -5,8 +5,10 @@
 *.swq
 .*.un~
 
+# 2019年 7月17日 水曜日 07時19分22秒 JST
+# .envrcをgit管理対象とする
+
 .bash_private_aliases
-.envrc
 .gitconfig
 
 private/
