@@ -22,6 +22,8 @@
       brew install go
     ```
 
+  - jupyter notebook
+
 - git diff-highlight の有効化
 
 - ワークスペース切り替えショートカットの設定
