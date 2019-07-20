@@ -2,6 +2,16 @@
 
 ### 190710 mac set up memo
 
+- anacondaのインストール
+  - インストール後自動的にcondaの仮想環境ができてしまうので、.bash_profileなどから自動的に追記される設定を削除
+
+- vim のbrewからのインストール
+  - デフォルトでは vim --version | grep clipboard で -clipboard となる
+  - ` brew install vim`でインストールすると、最新番のvimは以下の場所に配置される
+  - /usr/local/Cellar/vim/8.1.1650/bin/vim --version | grep clip
+  - vim, vimdiff, view, vimtutor の上記のパスに書き換える 
+    - デフォルトで書き換わっている可能性あり
+
 - direnv のインストール
 
   ```bash
@@ -36,8 +46,6 @@
 - iterm color 設定
   - https://github.com/aereal/dotfiles.gitの japaneseque を利用
 
-- anacondaのインストール
-  - インストール後自動的にcondaの仮想環境ができてしまうので、.bash_profileなどから自動的に追記される設定を削除
 
 
 - pip install (適当に覚書）

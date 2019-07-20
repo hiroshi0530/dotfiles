@@ -172,6 +172,9 @@ alias rdm='rails destroy model'
 alias rr='rails routes'
 alias rc='rails console'
 
+# hugo
+alias hs='hugo server'
+
 # bundler
 alias bip='bundle install --path vendor/bundler' 
 
