@@ -1,0 +1,117 @@
+{
+  "files.encoding": "utf-8",
+  "editor.tabCompletion": false,
+  //"java.errors.incompleteClasspath.severity": "ignore",
+  "editor.renderControlCharacters": true,
+  "[cpp]": {
+    "editor.quickSuggestions": false
+  },
+  "[c]": {
+    "editor.quickSuggestions": false
+  },
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j","j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  
+  //スペースをリーダーに設定
+  "vim.leader": "<space>",
+
+  "vim.useSystemClipboard": true,
+
+  "vim.normalModeKeyBindings": [
+  // "vim.otherModesKeyBindings": [
+    //space + w : 保存
+    {
+      "before": ["leader","w"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
+        }
+      ]
+    },
+
+    //space + q : アクティブなエディタを閉じる
+    {
+      "before": ["leader","q"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.closeActiveEditor",
+          "args": []
+        }
+      ]
+    },
+
+    //space + s : エディタを左右に分割
+    {
+      "before": ["leader","s"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.splitEditor",
+          "args": []
+        }
+      ]
+    },
+
+    {
+      "before": ["H"],
+      "after": ["^"]
+    },
+
+    {
+      "before": ["J"],
+      "after": ["}"]
+    },
+
+    {
+      "before": ["K"],
+      "after": ["{"]
+    },
+
+    {
+      "before": ["L"],
+      "after": ["$"]
+    },
+
+    {
+      "before": ["j"],
+      "after": ["g","j"]
+    },
+
+    {
+      "before": ["k"],
+      "after": ["g","k"]
+    },
+
+    {
+      "before": ["<CR>"],
+      "after": ["A","<CR>","ESC"]
+    },
+
+    //space + t : 右のタブに移動
+    {
+      "before": ["leader","t"],
+      "after": ["g","t"]
+    },
+
+    //space + T : 左のタブに移動
+    {
+      "before": ["leader","T"],
+      "after": ["g","T"]
+    },
+
+    //space + tab : 分割したウィンドウを右方向に移動
+    {
+      "before": ["leader","<tab>"],
+      "after": ["<C-w>","w"]
+    }
+  ],
+  "workbench.colorTheme": "Monokai Dimmed"
+}
