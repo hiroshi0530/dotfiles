@@ -37,8 +37,11 @@ set dir=~/swap
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " start vim-plug
-"   install : :PlugInstall
-"   Preview : :MarkdownPreview
+"
+"     install : :PlugInstall
+"     Preview : :MarkdownPreview
+"
+" nvimでなく、vim XXXX.mdでもブラウザで表示できる
 "
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
