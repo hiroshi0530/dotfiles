@@ -14,7 +14,7 @@
   quotepath = false
   pager = less -XRF
   whitespace = cr-at-eol
-  ignorecase = false
+  ignorecase = false # 大文字と小文字をdiff対象とする
 [merge] 
   tool = vimdiff 
   ff = false
