@@ -37,11 +37,16 @@ set dir=~/swap
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " start vim-plug
+" 190726 :
+"   Markdownをリアルタイムにブラウザで表示するプラグイン
+"   表示位置なども自動的に追従
+"
+"   https://github.com/iamcco/markdown-preview.nvim
 "
 "     install : :PlugInstall
 "     Preview : :MarkdownPreview
 "
-" nvimでなく、vim XXXX.mdでもブラウザで表示できる
+"     nvimでなくvim XXXX.mdでもブラウザで表示できる
 "
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
