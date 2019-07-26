@@ -8,8 +8,8 @@ require([
   CodeMirror.Vim.map("jj", "<Esc>", "insert");
   // CodeMirror.Vim.map("<S-h>", "^", "normal");
   // CodeMirror.Vim.map("<S-j>", "}", "normal");
-  CodeMirror.Vim.map("<S-h>", "<Plug>(vim-binding-^)", "normal");
-  CodeMirror.Vim.map("<S-j>", "<Plug>(vim-binding-})", "normal");
+  CodeMirror.Vim.map("H", "<Plug>(vim-binding-^)", "normal");
+  CodeMirror.Vim.map("J", "<Plug>(vim-binding-})", "normal");
   // Swap j/k and gj/gk (Note that <Plug> mappings)
   CodeMirror.Vim.map("j", "<Plug>(vim-binding-gj)", "normal");
   CodeMirror.Vim.map("k", "<Plug>(vim-binding-gk)", "normal");

@@ -14,6 +14,7 @@
   quotepath = false
   pager = less -XRF
   whitespace = cr-at-eol
+  ignorecase = false
 [merge] 
   tool = vimdiff 
   ff = false
