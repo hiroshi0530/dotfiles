@@ -35,6 +35,33 @@ let $BASH_ENV = "~/.bash_aliases" "aliaaseをvim :!xxxで実行できるよう�
 set swapfile
 set dir=~/swap
 
+" 190726 install dein
+if &compatible
+  set nocompatible
+endif
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.vim/dein')
+  call dein#begin('~/.vim/dein')
+  
+  " add plug-ins below
+  call dein#add('~/.vim/dein/repos/github.com/Shougo/dein.vim')
+  call dein#add('kannokanno/previm')
+  "
+
+  call dein#end()
+  call dein#save_state()
+endif
+" 
+
+" previm
+let g:previm_open_cmd = 'open -a Google\ Chrome'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+filetype plugin indent on
+syntax enable
+
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
