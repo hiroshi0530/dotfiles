@@ -1,3 +1,0 @@
-['/Users/wayama/.vimrc']
-{"dein.vim":{"lazy":0,"name":"dein.vim","rtp":"/Users/wayama/.vim/dein/repos/github.com/Shougo/dein.vim","repo":"/Users/wayama/.vim/dein/repos/github.com/Shougo/dein.vim/","normalized_name":"dein","type":"git","local":1,"merged":0,"sourced":1,"path":"/Users/wayama/.vim/dein/repos/github.com/Shougo/dein.vim"},"previm":{"lazy":0,"path":"/Users/wayama/.vim/dein/repos/github.com/kannokanno/previm","repo":"kannokanno/previm","merged":1,"normalized_name":"previm","type":"git","rtp":"/Users/wayama/.vim/dein/repos/github.com/kannokanno/previm","sourced":1,"name":"previm"}}
-{}
