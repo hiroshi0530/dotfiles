@@ -1,5 +1,3 @@
-#!/bin/bash
-
 ### 190710 mac set up memo
 
 - anacondaのインストール
