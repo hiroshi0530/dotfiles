@@ -486,3 +486,6 @@ export PS1="\w $ "
 # git 補完
 source /usr/local/etc/bash_completion.d/git-prompt.sh
 source /usr/local/etc/bash_completion.d/git-completion.bash
+
+# pythonを実行したとき、__pycache__を生成しないようにする
+export PYTHONDONTWRITEBYTECODE=1
