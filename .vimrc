@@ -1,19 +1,20 @@
 syntax on
 
 set number
+set expandtab
 set mouse=a
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set autoindent
 set smartindent
+set smarttab
 set shiftwidth=2
 set cursorline
 set hlsearch
 set scrolloff=5
 set encoding=utf-8
 set clipboard=unnamed,autoselect
-set expandtab
 
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
@@ -41,6 +42,13 @@ set dir=~/swap
 " https://github.com/tpope/vim-fugitive
 " https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" treeを表示するプラグインのインストールa
+" https://github.com/scrooloose/nerdtree
+" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+"
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " start vim-plug
@@ -188,6 +196,11 @@ nmap <Leader>mpst <Plug>MarkdownPreviewToggle
 " end markdown-preview
 """"""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""
+" pythonファイルの場合、tabを2にするように明示的に記載
+" plug-in の条件変数設定後のここに記載しないと有効にならない
+" autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
+au Filetype python setl et ts=2 sw=2
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -468,3 +481,4 @@ augroup BinaryXXD
   autocmd BufWritePost * if &binary | silent %!xxd -g 1
   autocmd BufWritePost * set nomod | endif
 augroup END
+
