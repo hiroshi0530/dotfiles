@@ -39,7 +39,6 @@ alias gdv='git diff -w "$@" | vim -R -'
 
 alias gc='git commit -v'
 alias gca='git commit -v -a'
-alias gcm='git checkout master'
 alias gci='git commit --interactive'
 alias gb='git --no-pager branch'
 alias gba='git --no-pager branch -a'
@@ -103,6 +102,9 @@ alias gphom='git push origin master'
 
 alias gplod='git pull origin develop'
 alias gphod='git push origin develop'
+
+alias gcm='git checkout master'
+alias gcd='git checkout develop'
 
 alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
 alias gb='git branch -a'
