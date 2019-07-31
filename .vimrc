@@ -262,10 +262,9 @@ inoremap <C-v> <ESC>"*pa
 ""noremap PP "0P
 
 " 括弧の自動補完
-" inoremap {<Enter> {}<Left><CR><ESC><S-o>
-inoremap {<Enter> {}<Left><CR><ESC><Left>xx<S-o>
-inoremap [<Enter> []<Left><CR><ESC>
-inoremap (<Enter> ()<Left><CR><ESC>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap [<Enter> []<Left><CR><ESC><S-o>
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 """"""""""""""""""""""""""""""""""
 
@@ -369,6 +368,10 @@ inoremap <F8> <ESC>:wa<CR>:!ruby %<CR>
 ""bash execute
 noremap <F9> <ESC>:wa<CR>:!bash %<CR>
 inoremap <F9> <ESC>:wa<CR>:!bash %<CR>
+
+""node execute
+noremap <F10> <ESC>:wa<CR>:!node %<CR>
+inoremap <F10> <ESC>:wa<CR>:!node %<CR>
 
 "" auto closer
 nnoremap <Leader>" ciw""<Esc>P
