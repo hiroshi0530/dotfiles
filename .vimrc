@@ -409,6 +409,9 @@ nnoremap <Leader>ll i\lambda<Esc>
 nnoremap <Leader>lC i\Gamma<Esc>
 nnoremap <Leader>lD i\Delta<Esc>
 
+""日本語のジャンプ
+nnoremap f. f。<Esc>
+nnoremap f, f、<Esc>
 
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
