@@ -438,6 +438,22 @@ nnoremap <Leader>F9 F９<Esc>
 nnoremap <Leader>F0 F０<Esc>
 
 
+nnoremap <Leader>fto fと<Esc>
+nnoremap <Leader>fha fは<Esc>
+nnoremap <Leader>fde fで<Esc>
+
+nnoremap <Leader>Fto Fと<Esc>
+nnoremap <Leader>Fha Fは<Esc>
+nnoremap <Leader>Fde Fで<Esc>
+
+
+nnoremap <Leader>1 i<Right>クライアント端末１００<Esc>
+nnoremap <Leader>2 i<Right>中継サーバ−２００<Esc>
+nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
+nnoremap <Leader>4 i<Right>サービス提供サーバーＢ４００<Esc>
+nnoremap <Leader>5 i<Right>データ格納サーバ−５００<Esc>
+
+
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
