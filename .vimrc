@@ -415,6 +415,17 @@ nnoremap <Leader>f, f、<Esc>
 nnoremap <Leader>F. F。<Esc>
 nnoremap <Leader>F, F、<Esc>
 
+nnoremap <Leader>f1 f１<Esc>
+nnoremap <Leader>f2 f２<Esc>
+nnoremap <Leader>f3 f３<Esc>
+nnoremap <Leader>f4 f４<Esc>
+nnoremap <Leader>f5 f５<Esc>
+nnoremap <Leader>f6 f６<Esc>
+nnoremap <Leader>f7 f７<Esc>
+nnoremap <Leader>f8 f８<Esc>
+nnoremap <Leader>f9 f９<Esc>
+nnoremap <Leader>f0 f０<Esc>
+
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
