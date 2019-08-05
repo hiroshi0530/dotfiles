@@ -1,5 +1,6 @@
 set editing-mode vi
 set -o vi
+set completion-ignore-case on
 
 "\C-p": history-search-backward
 "\C-n": history-search-forward
@@ -8,3 +9,5 @@ set -o vi
 $if mysql
 set editing-mode vi
 $endif
+
+TAB: menu-complete

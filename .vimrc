@@ -415,7 +415,6 @@ nnoremap <Leader>f, f、<Esc>
 nnoremap <Leader>F. F。<Esc>
 nnoremap <Leader>F, F、<Esc>
 
-
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
