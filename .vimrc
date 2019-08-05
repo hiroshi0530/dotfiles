@@ -426,6 +426,18 @@ nnoremap <Leader>f8 f８<Esc>
 nnoremap <Leader>f9 f９<Esc>
 nnoremap <Leader>f0 f０<Esc>
 
+nnoremap <Leader>F1 F１<Esc>
+nnoremap <Leader>F2 F２<Esc>
+nnoremap <Leader>F3 F３<Esc>
+nnoremap <Leader>F4 F４<Esc>
+nnoremap <Leader>F5 F５<Esc>
+nnoremap <Leader>F6 F６<Esc>
+nnoremap <Leader>F7 F７<Esc>
+nnoremap <Leader>F8 F８<Esc>
+nnoremap <Leader>F9 F９<Esc>
+nnoremap <Leader>F0 F０<Esc>
+
+
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
