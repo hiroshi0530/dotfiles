@@ -410,10 +410,10 @@ nnoremap <Leader>lC i\Gamma<Esc>
 nnoremap <Leader>lD i\Delta<Esc>
 
 ""日本語のジャンプ
-nnoremap f. f。<Esc>
-nnoremap f, f、<Esc>
-nnoremap F. F。<Esc>
-nnoremap F, F、<Esc>
+nnoremap <Leader>f. f。<Esc>
+nnoremap <Leader>f, f、<Esc>
+nnoremap <Leader>F. F。<Esc>
+nnoremap <Leader>F, F、<Esc>
 
 
 ""python
