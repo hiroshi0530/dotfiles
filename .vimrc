@@ -450,6 +450,9 @@ nnoremap <Leader>Fde Fで<Esc>
 nnoremap <Leader>Fni Fに<Esc>
 nnoremap <Leader>Fno Fの<Esc>
 
+nnoremap <Leader>, i、<Esc>
+nnoremap <Leader>. i。<Esc>
+
 nnoremap <Leader>1 i<Right>クライアント端末１００<Esc>
 nnoremap <Leader>2 i<Right>中継サーバ−２００<Esc>
 nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
