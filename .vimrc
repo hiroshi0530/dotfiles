@@ -14,6 +14,17 @@ set cursorline
 set hlsearch
 set scrolloff=5
 set encoding=utf-8
+
+set updatetime=0 
+set nowrapscan "検索がファイル末尾まで進んだらそこで先頭に戻らず止まる
+"set wrapscan "行末まで検索したら行頭に戻る
+set showmatch
+set matchtime=1
+set backspace=start,eol,indent
+set nostartofline " カーソル：括弧を閉じたとき対応する括弧に一時的に移動
+set ttyfast
+set t_Co=256
+
 set clipboard=unnamed,autoselect
 
 set fileencoding=utf-8 " 保存時の文字コード
@@ -325,13 +336,19 @@ au BufNewFile,BufRead * match ZenkakuSpace /　/
 ""jjでインサートモードからコマンドモードに戻る
 inoremap <silent> jj <ESC>
 
-""検索語が画面の真ん中に来るようにする
+""検索語が画面の真ん中
 nmap n nzz 
 nmap N Nzz 
 nmap * *zz 
 nmap # #zz 
 nmap g* g*zz 
 nmap g# g#zz
+
+""貼り付けた後、カーソルを末尾へ移動
+nnoremap <silent> p p`]
+nnoremap <silent> P P`]
+
+nnoremap <S-y> y$
 
 ""load vimrc
 noremap <F1> <ESC>:source ~/.vimrc<CR>
@@ -437,6 +454,8 @@ nnoremap <Leader>F8 F８<Esc>
 nnoremap <Leader>F9 F９<Esc>
 nnoremap <Leader>F0 F０<Esc>
 
+nnoremap <Leader>dt, dt、<Esc>
+nnoremap <Leader>dt. dt。<Esc>
 
 nnoremap <Leader>fto fと<Esc>
 nnoremap <Leader>fha fは<Esc>
@@ -458,7 +477,6 @@ nnoremap <Leader>2 i<Right>中継サーバ−２００<Esc>
 nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
 nnoremap <Leader>4 i<Right>サービス提供サーバーＢ４００<Esc>
 nnoremap <Leader>5 i<Right>データ格納サーバー５００<Esc>
-
 
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
