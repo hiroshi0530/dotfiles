@@ -473,7 +473,7 @@ nnoremap <Leader>, i、<Esc>
 nnoremap <Leader>. i。<Esc>
 
 nnoremap <Leader>1 i<Right>クライアント端末１００<Esc>
-nnoremap <Leader>2 i<Right>中継サーバ−２００<Esc>
+nnoremap <Leader>2 i<Right>中継サーバー２００<Esc>
 nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
 nnoremap <Leader>4 i<Right>サービス提供サーバーＢ４００<Esc>
 nnoremap <Leader>5 i<Right>データ格納サーバー５００<Esc>
