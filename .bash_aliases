@@ -129,9 +129,6 @@ alias vt='vim ~/.tmux.conf'
 
 alias loadb='source ~/.bashrc'
 
-alias .="cd ../"
-alias ..="cd ../../"
-
 function psa () { 
   ps aux | grep $1;
 } 
