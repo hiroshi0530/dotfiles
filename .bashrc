@@ -185,10 +185,11 @@
      unalias -a
 
    # builtin
-     alias .='cd ..'
-     alias ..='cd ../../'
-     alias ...='cd ../../../'
-     alias ....='cd ../../../../'
+    alias cd='cd ..'
+    alias cdh='cd ~'
+    alias ..='cd ../../'
+    alias ...='cd ../../../'
+    alias ....='cd ../../../../'
 
    # # coreutils
    #   case $TERM in
