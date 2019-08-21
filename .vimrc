@@ -456,6 +456,8 @@ nnoremap <Leader>F0 F０<Esc>
 
 nnoremap <Leader>dt, dt、<Esc>
 nnoremap <Leader>dt. dt。<Esc>
+nnoremap <Leader>df, df、<Esc>
+nnoremap <Leader>df. df。<Esc>
 
 nnoremap <Leader>fto fと<Esc>
 nnoremap <Leader>fha fは<Esc>
@@ -472,11 +474,11 @@ nnoremap <Leader>Fno Fの<Esc>
 nnoremap <Leader>, i、<Esc>
 nnoremap <Leader>. i。<Esc>
 
-nnoremap <Leader>1 i<Right>クライアント端末１００<Esc>
+nnoremap <Leader>1 i<Right>第一クライアント端末１００<Esc>
 nnoremap <Leader>2 i<Right>中継サーバー２００<Esc>
 nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
 nnoremap <Leader>4 i<Right>サービス提供サーバーＢ４００<Esc>
-nnoremap <Leader>5 i<Right>データ格納サーバー５００<Esc>
+nnoremap <Leader>5 i<Right>第二のクライアント端末５００<Esc>
 
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
