@@ -184,13 +184,6 @@
    # エイリアス定義をリセット
      unalias -a
 
-   # builtin
-    alias cd='cd ..'
-    alias cdh='cd ~'
-    alias ..='cd ../../'
-    alias ...='cd ../../../'
-    alias ....='cd ../../../../'
-
    # # coreutils
    #   case $TERM in
    #       xterm*)

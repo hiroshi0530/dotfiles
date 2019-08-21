@@ -1,13 +1,21 @@
 # 190115 aliasをvim :!コマンドから実行できるようにする
 shopt -s expand_aliases
 
+# builtin
+alias c='cd ..'
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../../'
+alias ......='cd ../../../../../../'
+
 # vim
 alias v='vim'
 alias vr='vim -R'
 alias svi='set -o vi'
 
 # some more ls aliases
-alias c='clear'
+alias cl='clear'
 alias e='exit'
 alias da='direnv allow'
 
