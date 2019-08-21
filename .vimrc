@@ -474,7 +474,7 @@ nnoremap <Leader>Fno Fの<Esc>
 nnoremap <Leader>, i、<Esc>
 nnoremap <Leader>. i。<Esc>
 
-nnoremap <Leader>1 i<Right>第一クライアント端末１００<Esc>
+nnoremap <Leader>1 i<Right>第一のクライアント端末１００<Esc>
 nnoremap <Leader>2 i<Right>中継サーバー２００<Esc>
 nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
 nnoremap <Leader>4 i<Right>サービス提供サーバーＢ４００<Esc>
