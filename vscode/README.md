@@ -11,3 +11,8 @@
  
 - 二つのjsonもdotfilesを更新する
 
+#### 拡張機能一覧を表示するコマンド
+
+    ```bash
+      code --list-extensions | xargs -L 1 echo code --install-extension
+    ```
