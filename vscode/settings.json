@@ -113,5 +113,15 @@
       "after": ["<C-w>","w"]
     }
   ],
-  "workbench.colorTheme": "Monokai Dimmed"
+  "workbench.colorTheme": "Monokai Dimmed",
+
+  //末尾の空白を自動的に削除
+  "files.trimTrailingWhitespace": true,
+
+  //最終行に改行コードを挿入
+  "files.insertFinalNewline": true,
+
+  // パンくずリストの表示
+  "breadcrumbs.enabled": true
+
 }

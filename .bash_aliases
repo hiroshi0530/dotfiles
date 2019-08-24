@@ -195,6 +195,9 @@ function dcexec () {
 # network
 alias nst='netstat -autn'
 
+# ctags
+ctags -R --exclude=.git --exclude=log --exclude=node_modules *
+
 # file system 
 function mkcd() { 
   mkdir $1 && cd $1
@@ -219,3 +222,4 @@ function hlastdate() {
   d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
   echo "lastmod: "$d
 }
+
