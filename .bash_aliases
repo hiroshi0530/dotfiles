@@ -196,7 +196,7 @@ function dcexec () {
 alias nst='netstat -autn'
 
 # ctags
-ctags -R --exclude=.git --exclude=log --exclude=node_modules *
+alias ctags='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 
 # file system 
 function mkcd() { 

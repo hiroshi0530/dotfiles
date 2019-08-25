@@ -390,6 +390,10 @@ inoremap <F9> <ESC>:wa<CR>:!bash %<CR>
 noremap <F10> <ESC>:wa<CR>:!node %<CR>
 inoremap <F10> <ESC>:wa<CR>:!node %<CR>
 
+""ファイル名を取得して追記
+noremap gf <ESC>:r! echo %<CR>
+inoremap gf <ESC>:r! echo %<CR>
+
 "" auto closer
 nnoremap <Leader>" ciw""<Esc>P
 nnoremap <Leader>' ciw''<Esc>P
