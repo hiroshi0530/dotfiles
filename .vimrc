@@ -402,6 +402,11 @@ nnoremap <Leader>( ciw()<Esc>P
 nnoremap <Leader>{ ciw{}<Esc>P
 nnoremap <Leader>[ ciw[]<Esc>P
 
+"" katex
+nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space>P
+nnoremap <Leader>kib i<InlineMath>
+nnoremap <Leader>kie i</InlineMath>
+
 ""mathjax latex
 nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
 nnoremap <Leader>sum i\sum_{k=}^{}<Left><Left><Left><Esc>
