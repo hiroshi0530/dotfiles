@@ -47,13 +47,11 @@ let $BASH_ENV = "~/.bash_aliases" "aliaaseをvim :!xxxで実行できるよう�
 set swapfile
 set dir=~/swap
 
-
 """"""""""""""""""""""""""""""""""""""""""""""
 " gitコマンドをvimから実行するプラグイン(vim-fugitive)をインストールするために必要
 " https://github.com/tpope/vim-fugitive
 " https://github.com/tpope/vim-pathogen
 execute pathogen#infect()
-
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " treeを表示するプラグインのインストールa
@@ -212,7 +210,6 @@ nmap <Leader>mpst <Plug>MarkdownPreviewToggle
 " plug-in の条件変数設定後のここに記載しないと有効にならない
 " autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
 au Filetype python setl et ts=2 sw=2
-
 
 """"""""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
@@ -407,6 +404,12 @@ nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space
 nnoremap <Leader>kib i<InlineMath>
 nnoremap <Leader>kie i</InlineMath>
 
+"" quote
+nnoremap <Leader>qb i```bash<CR><CR>```<ESC><UP>i<Space><Space><ESC>
+nnoremap <Leader>qp i```python<CR><CR>```<ESC><UP>i<Space><Space><ESC>
+nnoremap <Leader>qr i```ruby<CR><CR>```<ESC><UP>i<Space><Space><ESC>
+nnoremap <Leader>qj i```javascript<CR><CR>```<ESC><UP>i<Space><Space><ESC>
+
 ""mathjax latex
 nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
 nnoremap <Leader>sum i\sum_{k=}^{}<Left><Left><Left><Esc>
@@ -483,12 +486,6 @@ nnoremap <Leader>Fno Fの<Esc>
 nnoremap <Leader>, i、<Esc>
 nnoremap <Leader>. i。<Esc>
 
-nnoremap <Leader>1 i<Right>第一のクライアント端末１００<Esc>
-nnoremap <Leader>2 i<Right>中継サーバー２００<Esc>
-nnoremap <Leader>3 i<Right>サービス提供サーバーＡ３００<Esc>
-nnoremap <Leader>4 i<Right>サービス提供サーバーＢ４００<Esc>
-nnoremap <Leader>5 i<Right>第二のクライアント端末５００<Esc>
-
 ""python
 nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
 
@@ -503,7 +500,6 @@ nnoremap <Leader>rv i<%= %><Esc>F<Space>i
 
 "" coverity 修正プレフィックス 
 nnoremap <Leader>cprefix i[coverity:] <Esc> 
-
 
 function! Testtemp()
 
