@@ -412,7 +412,28 @@ nnoremap <Leader>kie i</InlineMath>
 
 nnoremap <Leader>ki i<Right><Space><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
 nnoremap <Leader>kb i<Right><Space><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up>
+
+nnoremap <Leader>kpois i<Right><Space><BlockMath>{`<CR>\\exp^{-\\lambda}\\frac{\\lambda^k}{k!}<CR><BS><BS>`}</BlockMath><Up>
+
 nnoremap <Leader>kfrac i\\frac{}{}<Left><Left><Left>
+
+nnoremap <Leader>kdot i\\,\\,\\,\\,\\cdot\\cdot\\cdot\\cdot\\,\\,\\,\\,\\left(\\right)<Esc>b<Left>i<Esc>
+nnoremap <Leader>k( i\\left(<Space>\\right)<Esc>F<Space>
+nnoremap <Leader>k{ i\\left{<Space>\\right}<Esc>F<Space>
+nnoremap <Leader>k[ i\\left[<Space>\\right]<Esc>F<Space>
+
+nnoremap <Leader>kred i<font color="MediumVioletRed"> </font><Esc>F<Space>
+
+nnoremap <Leader>ka i\\alpha<Esc>
+nnoremap <Leader>kb i\\bata<Esc>
+nnoremap <Leader>kc i\\gamma<Esc>
+nnoremap <Leader>kd i\\delta<Esc>
+nnoremap <Leader>kl i\\mu<Esc>
+nnoremap <Leader>kl i\\lambda<Esc>
+
+nnoremap <Leader>kC i\\Gamma<Esc>
+nnoremap <Leader>kD i\\Delta<Esc>
+
 
 ""mathjax latex
 nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
