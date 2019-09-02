@@ -407,8 +407,8 @@ nnoremap <Leader>qj i```javascript<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 
 ""katex 
 nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space>P
-nnoremap <Leader>kib i<InlineMath>{`
-nnoremap <Leader>kie i`}</InlineMath>
+nnoremap <Leader>kib i<InlineMath>{` \\displaystyle<Space>
+nnoremap <Leader>kie i`}</InlineMath><Space>
 
 nnoremap <Leader>ki i<Right><Space><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
 nnoremap <Leader>kb i<Right><Space><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up>
