@@ -410,6 +410,7 @@ nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space
 nnoremap <Leader>kib i<InlineMath>{`
 nnoremap <Leader>kie i`}</InlineMath>
 
+<<<<<<< HEAD
 nnoremap <Leader>ki i<Right><Space><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
 nnoremap <Leader>kb i<Right><Space><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up>
 
@@ -433,6 +434,18 @@ nnoremap <Leader>kl i\\lambda<Esc>
 
 nnoremap <Leader>kC i\\Gamma<Esc>
 nnoremap <Leader>kD i\\Delta<Esc>
+=======
+nnoremap <Leader>ki i<Right><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
+nnoremap <Leader>kb i<Right><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up><CR>
+nnoremap <Leader>kfrac i\\frac{}{}<Left><Left><Left>
+
+"" react
+nnoremap <Leader>rhi i<Right><SyntaxHighlighter language="python" style={darcula}>{` `}</SyntaxHighlighter><Esc>F<Space>i<Space>
+nnoremap <Leader>rbox i<Right><div className="box2"><p><Space></p></div><Esc>F<Space>i<Space>
+
+
+
+>>>>>>> update
 
 
 ""mathjax latex
