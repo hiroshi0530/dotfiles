@@ -127,6 +127,11 @@ function gchange_author_committer () {
   git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$1'; GIT_AUTHOR_EMAIL='$2'; GIT_COMMITTER_NAME='$1'; GIT_COMMITTER_EMAIL='$2';" HEAD
 }
 
+function gchange_author_committer_w0530 () {
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='whiroshi0530'; GIT_AUTHOR_EMAIL='whiroshi0530@gmail.com'; GIT_COMMITTER_NAME='whiroshi0530'; GIT_COMMITTER_EMAIL='whiroshi0530@gmail.com';" HEAD
+}
+
+
 # vim
 alias vb='vim ~/.bashrc'
 alias vv='vim ~/.vimrc'
