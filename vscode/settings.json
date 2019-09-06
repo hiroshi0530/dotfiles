@@ -9,16 +9,17 @@
   "[c]": {
     "editor.quickSuggestions": false
   },
-
-  
   
   "vim.leader": "<space>",               //スペースをリーダーに設定
   "vim.useSystemClipboard": true,
 
-
   //vim normal mode keybind
   "vim.insertModeKeyBindings": [
-    {"before":["j","j"],         "after":["<Esc>"]}
+    {"before":["j", "j"],     "after":["<Esc>"]}
+    {"before":["<C-j>"],      "after":["<Esc>", "g", "j", "a"]}
+    {"before":["<C-k>"],      "after":["<Esc>", "g", "k", "a"]}
+    {"before":["<C-h>"],      "after":["<Esc>", "h", "a"]}
+    {"before":["<C-l>"],      "after":["<Esc>", "l", "a"]}
   ],
 
   //vim normal mode keybind
@@ -60,20 +61,27 @@
       ]
     },
 
-    {"before": ["H"],     "after": ["^"]}, 
-    {"before": ["J"],     "after": ["}"]}, 
-    {"before": ["K"],     "after": ["{"]}, 
-    {"before": ["L"],     "after": ["$"]}, 
+    {"before": ["H"],        "after": ["^"]}, 
+    {"before": ["J"],        "after": ["}"]}, 
+    {"before": ["K"],        "after": ["{"]}, 
+    {"before": ["L"],        "after": ["$"]}, 
 
-    {"before": ["j"],     "after": ["g", "j"]}, 
-    {"before": ["k"],     "after": ["g", "k"]}, 
-    {"before": ["<CR>"],  "after": ["A", "<CR>", "ESC"]}, 
+    {"before": ["j"],        "after": ["g", "j"]}, 
+    {"before": ["k"],        "after": ["g", "k"]}, 
+    {"before": ["<CR>"],     "after": ["A", "<CR>", "ESC"]}, 
 
-    // 検索結果を画面中央
-    {"before": ["n"],     "after" : ["n", "z", "z"]}, 
-    {"before": ["N"],     "after" : ["N", "z", "z"]}, 
-    {"before": ["*"],     "after" : ["*", "z", "z"]}, 
-    {"before": ["#"],     "after" : ["#", "z", "z"]}, 
+    {"before": ["n"],        "after" : ["n", "z", "z"]}, 
+    {"before": ["N"],        "after" : ["N", "z", "z"]}, 
+    {"before": ["*"],        "after" : ["*", "z", "z"]}, 
+    {"before": ["#"],        "after" : ["#", "z", "z"]}, 
+
+    {"before": ["m"],        "after": ["%"]}, 
+    {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]}, 
+
+    {"before": ["<C-v>"],    "after": ["<ESC>", "\"", "*", "p", "a"]}, 
+
+    {"before": ["<Leader>", "p", "p"],      "after": ["d", "i", "w", "\"", "0", "P"]}, 
+
 
     //space + t : 右のタブに移動
     {
