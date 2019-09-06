@@ -10,18 +10,18 @@
     "editor.quickSuggestions": false
   },
 
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["j","j"],
-      "after": ["<Esc>"]
-    }
-  ],
   
-  //スペースをリーダーに設定
-  "vim.leader": "<space>",
-
+  
+  "vim.leader": "<space>",               //スペースをリーダーに設定
   "vim.useSystemClipboard": true,
 
+
+  //vim normal mode keybind
+  "vim.insertModeKeyBindings": [
+    {"before":["j","j"],         "after":["<Esc>"]}
+  ],
+
+  //vim normal mode keybind
   "vim.normalModeKeyBindings": [
   // "vim.otherModesKeyBindings": [
     //space + w : 保存
@@ -60,40 +60,20 @@
       ]
     },
 
-    {
-      "before": ["H"],
-      "after": ["^"]
-    },
+    {"before": ["H"],     "after": ["^"]}, 
+    {"before": ["J"],     "after": ["}"]}, 
+    {"before": ["K"],     "after": ["{"]}, 
+    {"before": ["L"],     "after": ["$"]}, 
 
-    {
-      "before": ["J"],
-      "after": ["}"]
-    },
+    {"before": ["j"],     "after": ["g", "j"]}, 
+    {"before": ["k"],     "after": ["g", "k"]}, 
+    {"before": ["<CR>"],  "after": ["A", "<CR>", "ESC"]}, 
 
-    {
-      "before": ["K"],
-      "after": ["{"]
-    },
-
-    {
-      "before": ["L"],
-      "after": ["$"]
-    },
-
-    {
-      "before": ["j"],
-      "after": ["g","j"]
-    },
-
-    {
-      "before": ["k"],
-      "after": ["g","k"]
-    },
-
-    {
-      "before": ["<CR>"],
-      "after": ["A","<CR>","ESC"]
-    },
+    // 検索結果を画面中央
+    {"before": ["n"],     "after" : ["n", "z", "z"]}, 
+    {"before": ["N"],     "after" : ["N", "z", "z"]}, 
+    {"before": ["*"],     "after" : ["*", "z", "z"]}, 
+    {"before": ["#"],     "after" : ["#", "z", "z"]}, 
 
     //space + t : 右のタブに移動
     {
@@ -113,6 +93,16 @@
       "after": ["<C-w>","w"]
     }
   ],
+
+    "vim.visualModeKeyBindingsNonRecursive": [
+      {"before": ["H"],"after"    : ["^"]},
+      {"before": ["J"],"after"    : ["}"]},
+      {"before": ["K"],"after"    : ["{"]},
+      {"before": ["L"],"after"    : ["$"]},
+    ],
+
+
+
   "workbench.colorTheme": "Monokai Dimmed",
 
   //末尾の空白を自動的に削除
