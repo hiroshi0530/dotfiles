@@ -10,20 +10,51 @@
     "editor.quickSuggestions": false
   },
   
-  "vim.leader": "<space>",               //スペースをリーダーに設定
+  //////////////////////////////////////////////////////////
+  // vim keymapping
+  // https://qiita.com/koutasan/items/06d34c279ca06c977884
+
+  "vim.leader": "<space>",
   "vim.useSystemClipboard": true,
+
+  "vim.statusBarColorControl" : false,                     //statusbarの色のコントロールをしない
+  "vim.highlightedyank.enable": true,                      //yankした箇所をハイライト表示にする
+  "vim.highlightedyank.color":"rgba(0, 240, 170, 0.5)",    //yankした時の色
+  "vim.highlightedyank.duration":150,                      //yankした時の色の表示時間
+  "vim.leader"                : "<space>",                 //Map Leaderの設定
+  "vim.autoindent"            : true,                      //autoindent
+  "vim.useSystemClipboard"    : true,                      //system clipboardと同期する
+  "vim.hlsearch"              : true,                      //hlserch
+  "vim.visualstar"            : true,                      //カーソル上にあるワードを"*"で検索
+  "vim.useCtrlKeys"           : true,                      //諸々のctrlキーを使った操作が有効になる
+  "vim.debug.silent": true,                                //アラートを出さない
+  "vim.timeout":1200,           
+
+  //nmap
+  "vim.normalModeKeyBindings": [
+    // 検索結果を中心にするコマンドを設定すると、途中で止まるバグが発生
+    // 一度コメントアウト
+    // {"before": ["n"],        "after" : ["n", "z", "z"]}, 
+    // {"before": ["N"],        "after" : ["N", "z", "z"]}, 
+    // {"before": ["*"],        "after" : ["*", "z", "z"]}, 
+    // {"before": ["#"],        "after" : ["#", "z", "z"]}, 
+
+    // {"before": ["g", "*"],        "after" : ["g", "*", "z", "z"]}, 
+    // {"before": ["g", "#"],        "after" : ["g", "#", "z", "z"]} 
+  ],
 
   //vim normal mode keybind
   "vim.insertModeKeyBindings": [
-    {"before":["j", "j"],     "after":["<Esc>"]}
-    {"before":["<C-j>"],      "after":["<Esc>", "g", "j", "a"]}
-    {"before":["<C-k>"],      "after":["<Esc>", "g", "k", "a"]}
-    {"before":["<C-h>"],      "after":["<Esc>", "h", "a"]}
+    {"before":["j", "j"],     "after":["<Esc>"]},
+    {"before":["<C-j>"],      "after":["<Esc>", "g", "j", "a"]},
+    {"before":["<C-k>"],      "after":["<Esc>", "g", "k", "a"]},
+    {"before":["<C-h>"],      "after":["<Esc>", "h", "a"]},
     {"before":["<C-l>"],      "after":["<Esc>", "l", "a"]}
   ],
 
   //vim normal mode keybind
-  "vim.normalModeKeyBindings": [
+  "vim.normalModeKeyBindingsNonRecursive": [
+
   // "vim.otherModesKeyBindings": [
     //space + w : 保存
     {
@@ -70,10 +101,6 @@
     {"before": ["k"],        "after": ["g", "k"]}, 
     {"before": ["<CR>"],     "after": ["A", "<CR>", "ESC"]}, 
 
-    {"before": ["n"],        "after" : ["n", "z", "z"]}, 
-    {"before": ["N"],        "after" : ["N", "z", "z"]}, 
-    {"before": ["*"],        "after" : ["*", "z", "z"]}, 
-    {"before": ["#"],        "after" : ["#", "z", "z"]}, 
 
     {"before": ["m"],        "after": ["%"]}, 
     {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]}, 
@@ -102,14 +129,13 @@
     }
   ],
 
-    "vim.visualModeKeyBindingsNonRecursive": [
-      {"before": ["H"],"after"    : ["^"]},
-      {"before": ["J"],"after"    : ["}"]},
-      {"before": ["K"],"after"    : ["{"]},
-      {"before": ["L"],"after"    : ["$"]},
-    ],
-
-
+  // visual mode keybind
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {"before": ["H"],"after"    : ["^"]},
+    {"before": ["J"],"after"    : ["}"]},
+    {"before": ["K"],"after"    : ["{"]},
+    {"before": ["L"],"after"    : ["$"]}
+  ],
 
   "workbench.colorTheme": "Monokai Dimmed",
 
