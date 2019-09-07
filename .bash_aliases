@@ -228,3 +228,8 @@ function hlastdate() {
   echo "lastmod: "$d
 }
 
+
+function number24() {
+  seq -w 24
+}
+
