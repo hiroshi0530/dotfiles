@@ -109,6 +109,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " Plug '~/my-prototype-plugin'
 " 
 " Initialize plugin system
+"
+
+"190913: syntax-highlight for tsx
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+"
+
 call plug#end()
 
 " end vim-plug
