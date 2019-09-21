@@ -10,6 +10,8 @@
     "editor.quickSuggestions": false
   },
   
+  "editor.minimap.enabled": false,
+
   //////////////////////////////////////////////////////////
   // vim keymapping
   // https://qiita.com/koutasan/items/06d34c279ca06c977884
@@ -43,7 +45,8 @@
     // {"before": ["g", "#"],        "after" : ["g", "#", "z", "z"]} 
   ],
 
-  //vim normal mode keybind
+  //////////////////////////////////////////////////////////
+  //vim insert mode keybind
   "vim.insertModeKeyBindings": [
     {"before":["j", "j"],     "after":["<Esc>"]},
     {"before":["<C-j>"],      "after":["<Esc>", "g", "j", "a"]},
@@ -106,6 +109,14 @@
     {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]}, 
 
     {"before": ["<Leader>", "p", "p"],      "after": ["d", "i", "w", "\"", "0", "P"]}, 
+
+    {"before": ["<Leader>", "b"],      "after": ["i", "S"]}, 
+
+    {"before": ["<Leader>", "k", "i", "b"],      "after": ["i", "<", "I", "n", "l", "i", "n", "e", "M", "a", "t", "h", ">", "{", "`", " ", "\\", "\\", "d", "i", "s", "p", "l", "a", "y", "s", "t", "y", "l", "e", "<", "S", "p", "a", "c", "e", ">", "<", "E", "S", "C", ">"]}, 
+
+    // "after": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]}, 
+
+    // <Leader>kib i<InlineMath>{` \\displaystyle<Space>
 
 
     //space + t : 右のタブに移動
