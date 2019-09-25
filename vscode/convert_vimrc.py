@@ -1,5 +1,36 @@
 
 
+def test():
+  test = ["abc<Space>11efg<ESC>987ooo"]
+
+  targets = ["<Space>", "<ESC>"]
+  
+
+  b = []
+  for a in test:
+    print(a)
+    a.split("")
+
+  # b = []
+  # for index, target in enumerate(targets):
+  #   if index == 0:
+  #     a = test.split(target)
+  #   
+  #   for index1, arg in enumerate(a):
+  #     if index1 != len(a) - 1:
+  #       b.append(arg)
+  #       b.append(target) 
+  #     else:
+  #       b.append(arg)
+
+  #   if index != len(targets) - 1:
+  #     a = ''.join(b)
+  #     print(a)
+  #     print("AAAAAAAA")
+
+  # print(b)
+
+
 def convert(arg):
   ret = ""
   
@@ -22,5 +53,6 @@ strings = [
 ]
 
 if __name__ == "__main__":
-  for arg in strings:
-    convert(arg)
+  test()
+  # for arg in strings:
+  #   convert(arg)
