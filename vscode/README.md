@@ -16,3 +16,9 @@
     ```bash
       code --list-extensions | xargs -L 1 echo code --install-extension
     ```
+
+####  2019年 9月25日 水曜日 17時27分20秒 JST
+##### vs code snipettをgit管理とする
+
+- typescript.jsonも同様 ~/Library/Application Support/Code/User/snippet/ にエイリアスをつける
+
