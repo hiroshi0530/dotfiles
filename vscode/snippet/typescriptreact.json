@@ -161,6 +161,41 @@
 		"body": [
 			"\\\\\\,\\\\\\,\\\\\\,\\\\\\,\\\\\\cdot\\\\\\cdot\\\\\\cdot\\\\\\cdot\\\\\\,\\\\\\,\\\\\\,\\\\\\,\\\\\\left($1\\\\\\right)"
 		]
+	},
+
+	"katex sum": {
+		"prefix": "ksum",
+		"body": [
+			"\\\\\\sum_{k=$1}^{$2}"
+		]
+	},
+
+	"katex int": {
+		"prefix": "kint",
+		"body": [
+			"\\\\\\int_{$1}^{$2}"
+		]
+	},
+
+	"katex nbd": {
+		"prefix": "knbd",
+		"body": [
+			"P\\\\\\left(r \\\\\\right) = \\\\\\frac{\\\\\\left(1 + \\\\\\frac{M}{K} \\\\\\right)^{-K} \\\\\\cdot \\\\\\Gamma\\\\\\left(K + r \\\\\\right)}{\\\\\\Gamma\\\\\\left(r + 1 \\\\\\right)\\\\\\cdot \\\\\\Gamma\\\\\\left(K \\\\\\right)} \\\\\\cdot \\\\\\left(\\\\\\frac{M}{M+K} \\\\\\right)^r \\\\\\cdots \\\\\\left(1 \\\\\\right)"
+		]
+	},
+
+	"katex binomial distribution": {
+		"prefix": "kbd",
+		"body": [
+			"\\\\\\frac{N!}{r! \\\\\\(N-r\\\\\\)!} \\\\\\times \\\\\\left(\\\\\\frac{\\\\\\theta}{n}\\\\\\right)^r \\\\\\times \\\\\\left(\\\\\\frac{n-\\\\\\theta}{n}\\\\\\right)^{N-r}"
+		]
+	},
+
+	"katex poisson distribution": {
+		"prefix": "kpd",
+		"body": [
+			"\\\\\\frac{\\\\\\lambda^ke^{-\\\\\\lambda}}{k!}"
+		]
 	}
 
 }
