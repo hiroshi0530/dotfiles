@@ -28,8 +28,7 @@ alias dmesg='dmesg -T'
 
 # aliases for git
 alias gall='ga && gcu && gpom'
-alias grh='git reset HEAD'
-alias grhh='git reset HEAD --hard'
+alias grh='git reset --hard'
 alias gclean='git reset --hard && git clean -dfx'
 alias gm="git merge"
 alias g='git'
