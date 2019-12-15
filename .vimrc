@@ -453,8 +453,9 @@ nnoremap <Leader>kpd i\frac{\lambda^ke^{-\lambda}}{k!}<Esc>
 nnoremap <Leader>knbd i$$ P\left(r \right) = \frac{\left(1 + \frac{M}{K} \right)^{-K} \cdot \Gamma\left(K + r \right)}{\Gamma\left(r + 1 \right)\cdot \Gamma\left(K \right)} \cdot \left(\frac{M}{M+K} \right)^r \cdots \left(1 \right)$$<Esc>
 
 nnoremap <Leader>kdot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Left>i<Esc>
-nnoremap <Leader>k$ i$\displaystyle<Space>$<Left><Esc>
-nnoremap <Leader>k$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
+
+nnoremap <Leader>k$ i$\displaystyle<Space>$<Left>
+nnoremap <Leader>k$$ i$$<Space><Space>$$<Left><Left><Left>
 nnoremap <Leader>k( i\left(<Space>\right)<Esc>F<Space>
 nnoremap <Leader>k{ i\left{<Space>\right}<Esc>F<Space>
 nnoremap <Leader>k[ i\left[<Space>\right]<Esc>F<Space>
@@ -473,6 +474,13 @@ nnoremap <Leader>kD i\Delta<Esc>
 
 nnoremap <Leader>kbays i$$ P \left( \theta \| X \right) =\frac{P\left(X \| \theta \right)P\left(\theta \right)}{P\left( X\right)} $$<Esc>
 
+nnoremap <Leader>kpt i<Space>$\displaystyle<Space>P\left( \theta \right)$<Space><Left>
+
+nnoremap <Leader>kpx i<Space>$\displaystyle<Space>P\left( X \right)$<Space><Left>
+
+nnoremap <Leader>kptx i<Space>$\displaystyle<Space>P\left( \theta \| X \right)$<Space><Left>
+
+nnoremap <Leader>kpxt i<Space>$\displaystyle<Space>P\left( X \| \theta \right)$<Space><Left>
 
 ""日本語のジャンプ
 nnoremap <Leader>f. f。<Esc>
