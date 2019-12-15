@@ -412,63 +412,67 @@ nnoremap <Leader>qp i```python<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 nnoremap <Leader>qr i```ruby<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 nnoremap <Leader>qj i```javascript<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 
-""katex 
-nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space>P
-nnoremap <Leader>kib i<InlineMath>{` \\displaystyle<Space>
-nnoremap <Leader>kie i`}</InlineMath><Space>
 
-nnoremap <Leader>ki i<Right><Space><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
-nnoremap <Leader>kb i<Right><Space><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up>
+""katex react
+" nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space>P
+" nnoremap <Leader>kib i<InlineMath>{` \\displaystyle<Space>
+" nnoremap <Leader>kie i`}</InlineMath><Space>
+" 
+" nnoremap <Leader>ki i<Right><Space><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
+" nnoremap <Leader>kb i<Right><Space><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up>
+" 
+" nnoremap <Leader>kpois i<Right><Space><BlockMath>{`<CR>\\exp^{-\\lambda}\\frac{\\lambda^k}{k!}<CR><BS><BS>`}</BlockMath><Up>
+" 
+" nnoremap <Leader>kfrac i\\frac{}{}<Left><Left><Left>
+" 
+" nnoremap <Leader>kdot i\\,\\,\\,\\,\\cdot\\cdot\\cdot\\cdot\\,\\,\\,\\,\\left(\\right)<Esc>b<Left>i<Esc>
+" nnoremap <Leader>k( i\\left(<Space>\\right)<Esc>F<Space>
+" nnoremap <Leader>k{ i\\left{<Space>\\right}<Esc>F<Space>
+" nnoremap <Leader>k[ i\\left[<Space>\\right]<Esc>F<Space>
+" 
+" nnoremap <Leader>kred i<font color="MediumVioletRed"> </font><Esc>F<Space>
+" 
+" nnoremap <Leader>ka i\\alpha<Esc>
+" nnoremap <Leader>kb i\\bata<Esc>
+" nnoremap <Leader>kc i\\gamma<Esc>
+" nnoremap <Leader>kd i\\delta<Esc>
+" nnoremap <Leader>kl i\\mu<Esc>
+" nnoremap <Leader>kl i\\lambda<Esc>
+" 
+" nnoremap <Leader>kC i\\Gamma<Esc>
+" nnoremap <Leader>kD i\\Delta<Esc>
 
-nnoremap <Leader>kpois i<Right><Space><BlockMath>{`<CR>\\exp^{-\\lambda}\\frac{\\lambda^k}{k!}<CR><BS><BS>`}</BlockMath><Up>
 
-nnoremap <Leader>kfrac i\\frac{}{}<Left><Left><Left>
+""katex vim
+nnoremap <Leader>kfrac i\frac{}{}<Left><Left><Left><Esc>
+nnoremap <Leader>ksum i\sum_{k=}^{}<Left><Left><Left><Esc>
+nnoremap <Leader>kint i\int_{-\infty}^{\infty}<Left><Left><Left><Esc>
+nnoremap <Leader>kbd i\frac{N!}{r!<Space>\(N-r\)!}<Space>\times<Space>\left(\frac{\theta}{n}\right)^r<Space>\times<Space>\left(\frac{n-\theta}{n}\right)^{N-r}<Esc>
+nnoremap <Leader>kpd i\frac{\lambda^ke^{-\lambda}}{k!}<Esc>
 
-nnoremap <Leader>kdot i\\,\\,\\,\\,\\cdot\\cdot\\cdot\\cdot\\,\\,\\,\\,\\left(\\right)<Esc>b<Left>i<Esc>
-nnoremap <Leader>k( i\\left(<Space>\\right)<Esc>F<Space>
-nnoremap <Leader>k{ i\\left{<Space>\\right}<Esc>F<Space>
-nnoremap <Leader>k[ i\\left[<Space>\\right]<Esc>F<Space>
+nnoremap <Leader>knbd i$$ P\left(r \right) = \frac{\left(1 + \frac{M}{K} \right)^{-K} \cdot \Gamma\left(K + r \right)}{\Gamma\left(r + 1 \right)\cdot \Gamma\left(K \right)} \cdot \left(\frac{M}{M+K} \right)^r \cdots \left(1 \right)$$<Esc>
+
+nnoremap <Leader>kdot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Left>i<Esc>
+nnoremap <Leader>k$ i$\displaystyle<Space>$<Left><Esc>
+nnoremap <Leader>k$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
+nnoremap <Leader>k( i\left(<Space>\right)<Esc>F<Space>
+nnoremap <Leader>k{ i\left{<Space>\right}<Esc>F<Space>
+nnoremap <Leader>k[ i\left[<Space>\right]<Esc>F<Space>
 
 nnoremap <Leader>kred i<font color="MediumVioletRed"> </font><Esc>F<Space>
 
-nnoremap <Leader>ka i\\alpha<Esc>
-nnoremap <Leader>kb i\\bata<Esc>
-nnoremap <Leader>kc i\\gamma<Esc>
-nnoremap <Leader>kd i\\delta<Esc>
-nnoremap <Leader>kl i\\mu<Esc>
-nnoremap <Leader>kl i\\lambda<Esc>
+nnoremap <Leader>ka i\alpha<Esc>
+nnoremap <Leader>kb i\bata<Esc>
+nnoremap <Leader>kc i\gamma<Esc>
+nnoremap <Leader>kd i\delta<Esc>
+nnoremap <Leader>kl i\mu<Esc>
+nnoremap <Leader>kl i\lambda<Esc>
 
-nnoremap <Leader>kC i\\Gamma<Esc>
-nnoremap <Leader>kD i\\Delta<Esc>
+nnoremap <Leader>kC i\Gamma<Esc>
+nnoremap <Leader>kD i\Delta<Esc>
 
+nnoremap <Leader>kbays i$$ P \left( \theta \| X \right) =\frac{P\left(X \| \theta \right)P\left(\theta \right)}{P\left( X\right)} $$<Esc>
 
-""mathjax latex
-nnoremap <Leader>frac i\frac{}{}<Left><Left><Left><Esc>
-nnoremap <Leader>sum i\sum_{k=}^{}<Left><Left><Left><Esc>
-nnoremap <Leader>int i\int_{-\infty}^{\infty}<Left><Left><Left><Esc>
-nnoremap <Leader>bd i\frac{N!}{r!<Space>\(N-r\)!}<Space>\times<Space>\left(\frac{\theta}{n}\right)^r<Space>\times<Space>\left(\frac{n-\theta}{n}\right)^{N-r}<Esc>
-nnoremap <Leader>pd i\frac{\lambda^ke^{-\lambda}}{k!}<Esc>
-
-nnoremap <Leader>nbd i$$ P\left(r \right) = \frac{\left(1 + \frac{M}{K} \right)^{-K} \cdot \Gamma\left(K + r \right)}{\Gamma\left(r + 1 \right)\cdot \Gamma\left(K \right)} \cdot \left(\frac{M}{M+K} \right)^r \cdots \left(1 \right)$$<Esc>
-
-nnoremap <Leader>dot i\,\,\,\,\cdot\cdot\cdot\cdot\,\,\,\,\left(\right)<Esc>b<Left>i<Esc>
-nnoremap <Leader>$ i$\displaystyle<Space>$<Left><Esc>
-nnoremap <Leader>$$ i$$<Space><Space>$$<Left><Left><Left><Esc>
-nnoremap <Leader>l( i\left(<Space>\right)<Esc>F<Space>
-nnoremap <Leader>l{ i\left{<Space>\right}<Esc>F<Space>
-nnoremap <Leader>l[ i\left[<Space>\right]<Esc>F<Space>
-
-nnoremap <Leader>lred i<font color="MediumVioletRed"> </font><Esc>F<Space>
-
-nnoremap <Leader>la i\alpha<Esc>
-nnoremap <Leader>lb i\bata<Esc>
-nnoremap <Leader>lc i\gamma<Esc>
-nnoremap <Leader>ld i\delta<Esc>
-nnoremap <Leader>ll i\mu<Esc>
-nnoremap <Leader>ll i\lambda<Esc>
-
-nnoremap <Leader>lC i\Gamma<Esc>
-nnoremap <Leader>lD i\Delta<Esc>
 
 ""日本語のジャンプ
 nnoremap <Leader>f. f。<Esc>
