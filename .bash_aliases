@@ -11,6 +11,7 @@ alias ......='cd ../../../../../../'
 
 # vim
 alias v='vim'
+alias vd='vimdiff'
 alias vr='vim -R'
 alias svi='set -o vi'
 
