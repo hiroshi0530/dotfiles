@@ -6,10 +6,10 @@ require([
 ], function() {
   // Map jj to <Esc>
   CodeMirror.Vim.map("jj", "<Esc>", "insert");
-  // CodeMirror.Vim.map("<S-h>", "^", "normal");
-  // CodeMirror.Vim.map("<S-j>", "}", "normal");
   CodeMirror.Vim.map("H", "<Plug>(vim-binding-^)", "normal");
   CodeMirror.Vim.map("J", "<Plug>(vim-binding-})", "normal");
+  CodeMirror.Vim.map("K", "<Plug>(vim-binding-{)", "normal");
+  CodeMirror.Vim.map("L", "<Plug>(vim-binding-$)", "normal");
   // Swap j/k and gj/gk (Note that <Plug> mappings)
   CodeMirror.Vim.map("j", "<Plug>(vim-binding-gj)", "normal");
   CodeMirror.Vim.map("k", "<Plug>(vim-binding-gk)", "normal");
