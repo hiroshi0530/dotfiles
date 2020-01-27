@@ -9,7 +9,26 @@
   "[c]": {
     "editor.quickSuggestions": false
   },
-  
+
+  "python.linting.enabled": true,             // 文法チェックを行う
+  "python.linting.pylintEnabled": false,      // pylint は使わない
+  "python.linting.pycodestyleEnabled": false,        // pep8 は使わない
+  "python.linting.flake8Enabled": true,       // 文法チェックにflake8 を使う
+  "python.linting.flake8Args": [              // flake8 の設定
+    "--ignore=E111, E114, E402, E501"
+  ],
+  "python.formatting.provider": "autopep8",   // 自動整形に autopep8 を使う
+  "python.formatting.autopep8Args": [         // autopep8 の設定
+    "--indent-size=2",
+    "--ignore=E402"
+  ],
+  "[python]": {
+    "editor.tabSize": 2,                      // インデントレベルは「2」
+    "editor.formatOnSave": true,              // 保存時に自動整形を行う
+    "editor.formatOnPaste": false,            // ペースト時に自動整形を行わない
+    "editor.formatOnType": false,             // 入力後に自動整形を行わない
+  },
+
   "editor.minimap.enabled": false,
 
   //////////////////////////////////////////////////////////
@@ -30,19 +49,19 @@
   "vim.visualstar"            : true,                      //カーソル上にあるワードを"*"で検索
   "vim.useCtrlKeys"           : true,                      //諸々のctrlキーを使った操作が有効になる
   "vim.debug.silent": true,                                //アラートを出さない
-  "vim.timeout":1200,           
+  "vim.timeout":1200,
 
   //nmap
   "vim.normalModeKeyBindings": [
     // 検索結果を中心にするコマンドを設定すると、途中で止まるバグが発生
     // 一度コメントアウト
-    // {"before": ["n"],        "after" : ["n", "z", "z"]}, 
-    // {"before": ["N"],        "after" : ["N", "z", "z"]}, 
-    // {"before": ["*"],        "after" : ["*", "z", "z"]}, 
-    // {"before": ["#"],        "after" : ["#", "z", "z"]}, 
+    // {"before": ["n"],        "after" : ["n", "z", "z"]},
+    // {"before": ["N"],        "after" : ["N", "z", "z"]},
+    // {"before": ["*"],        "after" : ["*", "z", "z"]},
+    // {"before": ["#"],        "after" : ["#", "z", "z"]},
 
-    // {"before": ["g", "*"],        "after" : ["g", "*", "z", "z"]}, 
-    // {"before": ["g", "#"],        "after" : ["g", "#", "z", "z"]} 
+    // {"before": ["g", "*"],        "after" : ["g", "*", "z", "z"]},
+    // {"before": ["g", "#"],        "after" : ["g", "#", "z", "z"]}
   ],
 
   //////////////////////////////////////////////////////////
@@ -95,26 +114,26 @@
       ]
     },
 
-    {"before": ["H"],        "after": ["^"]}, 
-    {"before": ["J"],        "after": ["}"]}, 
-    {"before": ["K"],        "after": ["{"]}, 
-    {"before": ["L"],        "after": ["$"]}, 
+    {"before": ["H"],        "after": ["^"]},
+    {"before": ["J"],        "after": ["}"]},
+    {"before": ["K"],        "after": ["{"]},
+    {"before": ["L"],        "after": ["$"]},
 
-    {"before": ["j"],        "after": ["g", "j"]}, 
-    {"before": ["k"],        "after": ["g", "k"]}, 
-    {"before": ["<CR>"],     "after": ["A", "<CR>", "ESC"]}, 
+    {"before": ["j"],        "after": ["g", "j"]},
+    {"before": ["k"],        "after": ["g", "k"]},
+    {"before": ["<CR>"],     "after": ["A", "<CR>", "ESC"]},
 
 
-    {"before": ["m"],        "after": ["%"]}, 
-    {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]}, 
+    {"before": ["m"],        "after": ["%"]},
+    {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]},
 
-    {"before": ["<Leader>", "p", "p"],      "after": ["d", "i", "w", "\"", "0", "P"]}, 
+    {"before": ["<Leader>", "p", "p"],      "after": ["d", "i", "w", "\"", "0", "P"]},
 
-    {"before": ["<Leader>", "b"],      "after": ["i", "S"]}, 
+    {"before": ["<Leader>", "b"],      "after": ["i", "S"]},
 
-    {"before": ["<Leader>", "k", "i", "b"],      "after": ["i", "<", "I", "n", "l", "i", "n", "e", "M", "a", "t", "h", ">", "{", "`", " ", "\\", "\\", "d", "i", "s", "p", "l", "a", "y", "s", "t", "y", "l", "e", "<", "S", "p", "a", "c", "e", ">", "<", "E", "S", "C", ">"]}, 
+    {"before": ["<Leader>", "k", "i", "b"],      "after": ["i", "<", "I", "n", "l", "i", "n", "e", "M", "a", "t", "h", ">", "{", "`", " ", "\\", "\\", "d", "i", "s", "p", "l", "a", "y", "s", "t", "y", "l", "e", "<", "S", "p", "a", "c", "e", ">", "<", "E", "S", "C", ">"]},
 
-    // "after": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]}, 
+    // "after": ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]},
 
     // <Leader>kib i<InlineMath>{` \\displaystyle<Space>
 
