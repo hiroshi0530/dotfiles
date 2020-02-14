@@ -31,3 +31,17 @@ require([
     km.edit_shortcuts.events.trigger('rebuild.QuickHelp');
   });
 });
+
+
+// 200214: indentを2に設定
+//   require([
+define([
+  'base/js/namespace',
+  'base/js/events'
+], function(IPython, events) {
+  events.on("app_initialized.NotebookApp", function () {
+    IPython.Cell.options_default.cm_config.indentUnit = 2;
+  });
+});
+
+
