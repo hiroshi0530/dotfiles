@@ -232,4 +232,3 @@ function hlastdate() {
 function number24() {
   seq -w 24
 }
-
