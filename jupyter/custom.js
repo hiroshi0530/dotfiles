@@ -32,10 +32,8 @@ require([
   });
 });
 
-
 // 200214: indentを2に設定
-//   require([
-define([
+require([
   'base/js/namespace',
   'base/js/events'
 ], function(IPython, events) {
