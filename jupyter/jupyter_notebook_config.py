@@ -2,6 +2,30 @@
 # c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
 # c.ContentsManager.default_jupytext_formats = "ipynb,py"
 
+
+import io
+import os
+from notebook.utils import to_api_path
+from subprocess import check_call
+
+# ipynbを保存したら、マークダウン形式で自動保存する。ただし、Outputの部分を残すので、下の二つの関数より先に実行する。下の二つの関数ではOutputなどを削除（Git管理のため）
+def post_save(model, os_path, contents_manager):
+  """post-save hook for converting notebooks to .py scripts
+  ipynbが保存されるたびに[py, html, md, tex, pdf]を作成する。"""
+  if model['type'] != 'notebook':
+      return # only do this for notebooks
+  d, fname = os.path.split(os_path)
+  base, ext = os.path.splitext(fname)
+  # check_call(['jupyter', 'nbconvert', '--to', 'script', fname], cwd=d)
+  # check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
+  check_call(['jupyter', 'nbconvert', '--to', 'markdown', fname], cwd=d)
+  # check_call(['jupyter-nbconvert', '--to', 'latex', fname, '--template', 'jsarticle.tplx'], cwd=d)
+  # check_call(['extractbb', base+'_files/*.png'], cwd=d)
+  # check_call(['platex', '-interaction=nonstopmode', '-synctex=1', '-kanji=utf8', '-guess-input-enc' , base+'.tex'], cwd=d)
+  # check_call(['dvipdfmx', base+'.dvi'], cwd=d)
+
+c.FileContentsManager.post_save_hook = post_save
+
 # 
 # 200214: 
 # 
@@ -29,34 +53,31 @@ def scrub_output_pre_save(model, **kwargs):
 
 c.FileContentsManager.pre_save_hook = scrub_output_pre_save
 
-
-import io
-import os
-from notebook.utils import to_api_path
-
+## ipynbを保存したらpyファイルも保存する
 _script_exporter = None
 
 def script_post_save(model, os_path, contents_manager, **kwargs):
-    """convert notebooks to Python script after save with nbconvert
+  """convert notebooks to Python script after save with nbconvert
 
-    replaces `ipython notebook --script`
-    """
-    from nbconvert.exporters.script import ScriptExporter
+  replaces `ipython notebook --script`
+  """
+  from nbconvert.exporters.script import ScriptExporter
 
-    if model['type'] != 'notebook':
-        return
+  if model['type'] != 'notebook':
+      return
 
-    global _script_exporter
-    if _script_exporter is None:
-        _script_exporter = ScriptExporter(parent=contents_manager)
-    log = contents_manager.log
+  global _script_exporter
+  if _script_exporter is None:
+      _script_exporter = ScriptExporter(parent=contents_manager)
+  log = contents_manager.log
 
-    base, ext = os.path.splitext(os_path)
-    py_fname = base + '.py'
-    script, resources = _script_exporter.from_filename(os_path)
-    script_fname = base + resources.get('output_extension', '.txt')
-    log.info("Saving script /%s", to_api_path(script_fname, contents_manager.root_dir))
-    with io.open(script_fname, 'w', encoding='utf-8') as f:
-        f.write(script)
+  base, ext = os.path.splitext(os_path)
+  py_fname = base + '.py'
+  script, resources = _script_exporter.from_filename(os_path)
+  script_fname = base + resources.get('output_extension', '.txt')
+  log.info("Saving script /%s", to_api_path(script_fname, contents_manager.root_dir))
+  with io.open(script_fname, 'w', encoding='utf-8') as f:
+    f.write(script)
 
 c.FileContentsManager.post_save_hook = script_post_save
+
