@@ -214,6 +214,11 @@ function cc() {
 }
 
 # convert to camelcase to snakecase
+function hd() {
+  d=$(date -u "+%Y-%m-%d")
+  echo "date: "\"$d\"
+}
+
 function sc() {
   perl -pe 's#([A-Z])#_\L$1#g' | perl -pe 's#^_##'
 }
@@ -227,7 +232,6 @@ function hlastdate() {
   d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
   echo "lastmod: "$d
 }
-
 
 function number24() {
   seq -w 24
