@@ -481,7 +481,8 @@ div#notebook {
  background-color: #1a2028;
  min-height: 0px;
  box-shadow: none;
- width: 980px;
+/* macbookのためにwidthを580にする。元は980*/ 
+ width: 580px;
  margin-right: auto;
  margin-left: auto;
 }
