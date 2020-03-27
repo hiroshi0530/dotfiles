@@ -1,4 +1,7 @@
 # 200214現在、古い（削除しても良い）
+# pyとipynbを連携させるためのモジュール
+# これを入れることで、pyを変更してもそれがipynbに反映される
+# だが、下の自動的にマークダウンやpyを自動的に保存されるようにすると動かないので、コメントアウト
 # c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
 # c.ContentsManager.default_jupytext_formats = "ipynb,py"
 
