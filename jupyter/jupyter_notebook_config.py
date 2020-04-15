@@ -7,6 +7,8 @@
 
 import io
 import os
+import glob
+import shutil    
 from notebook.utils import to_api_path
 from subprocess import check_call
 
@@ -28,6 +30,13 @@ def post_save(model, os_path, contents_manager):
         return # only do this for notebooks
     d, fname = os.path.split(os_path)
     base, ext = os.path.splitext(fname)
+
+    # 画像ファイルの削除
+    # file_list = glob.glob(base + '_files/*.png') 
+    # for i in file_list:
+    #     os.remove(i)
+    shutil.rmtree(d + '/' + base + '_files/')
+    
     # check_call(['jupyter', 'nbconvert', '--to', 'script', fname], cwd=d)
     # check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
     check_call(['jupyter', 'nbconvert', '--to', 'markdown', fname], cwd=d)

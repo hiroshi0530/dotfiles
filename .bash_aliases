@@ -185,7 +185,8 @@ alias rr='rails routes'
 alias rc='rails console'
 
 # hugo
-alias hs='hugo server'
+# alias hs='hugo server'
+alias hs='hugo server --buildDrafts --buildFuture --cleanDestinationDir --enableGitInfo  --forceSyncStatic --ignoreCache --watch'
 
 # bundler
 alias bip='bundle install --path vendor/bundler' 
