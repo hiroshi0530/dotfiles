@@ -35,7 +35,8 @@ def post_save(model, os_path, contents_manager):
     # file_list = glob.glob(base + '_files/*.png') 
     # for i in file_list:
     #     os.remove(i)
-    shutil.rmtree(d + '/' + base + '_files/')
+    if os.path.exists(d + '/' + base + '_files/'):
+        shutil.rmtree(d + '/' + base + '_files/')
 
     # check_call(['jupyter', 'nbconvert', '--to', 'script', fname], cwd=d)
     # check_call(['jupyter', 'nbconvert', '--to', 'html', fname], cwd=d)
