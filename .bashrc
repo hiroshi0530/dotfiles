@@ -488,3 +488,7 @@ export PYTHONDONTWRITEBYTECODE=1
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
+
+# 200805_conda
+source ~/anaconda3/etc/profile.d/conda.sh
+
