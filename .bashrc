@@ -492,3 +492,6 @@ export PYTHONDONTWRITEBYTECODE=1
 # 200805_conda
 source ~/anaconda3/etc/profile.d/conda.sh
 
+# 200805_julia
+alias julia='/usr/local/bin/julia'
+# exec $SHELL
