@@ -89,3 +89,8 @@ jupyterthemep install jupyter_contrib_nbextensionss
       - ./jupyter/jupyter_notebook_config.pyを~/.jupyter/にコピー 
         - ただし、shift-HKLのキーバインドが効かない
 
+
+## 201125
+
+- sshrcがbrewでインストール出来ない。githubからも消えている。コミット済みのsshrc.zipを解凍してパスを通して利用する
+
