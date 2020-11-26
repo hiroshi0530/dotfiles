@@ -26,3 +26,6 @@ cp .gitconfig.local ../.gitconfig
 
 # mkdir for swap file
 mkdir ~/swap
+
+# 201125: git diff-highlightのリンクの追加
+ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
