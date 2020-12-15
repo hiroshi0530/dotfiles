@@ -71,6 +71,10 @@ execute pathogen#infect()
 "
 "     nvimでなくvim XXXX.mdでもブラウザで表示できる
 "
+"     201215:
+"     yarnが入っていなくてインストールに失敗したが、~/.vim/plugged/markdown-preview
+"     を削除して、再度 :PlugInstall で入る
+"
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
