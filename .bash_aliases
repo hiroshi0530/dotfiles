@@ -158,6 +158,10 @@ alias di='docker images'
 alias dps='docker ps -a'
 alias dcl='docker container ls -a'
 
+
+alias drc='docker ps -aq | xargs docker rm' # 全コンテナの削除
+alias dri='docker ps -aq | xargs docker rmi -f' # 全イメージの削除
+
 # docker-compose
 alias dcbd='docker-compose build --no-cache'
 alias dcup='docker-compose up -d --build'
