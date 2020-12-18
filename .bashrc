@@ -199,9 +199,10 @@
    #             alias ls='env LC_COLLATE=en_US.utf8 ls -A -F --show-control-char -x'
    #             ;;
    #   esac
-     alias ll='ls -l --time-style=long-iso'
-     alias la='ls -l -g -G --time-style=long-iso'
-     alias l='ls -1'
+
+     alias ll='ls -alFGh'
+     alias la='ls -Ah'
+     alias l='ls -CFh'
 
      alias cp='cp -i -p'
      alias mv='mv -i'
@@ -409,10 +410,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
-alias ll='ls -alFG'
-alias la='ls -A'
-alias l='ls -CF'
 
 ## 180305 install pip install trach-pu
 if type trash-put &> /dev/null
