@@ -20,12 +20,58 @@ alias cl='clear'
 alias e='exit'
 alias da='direnv allow'
 
-alias ll='ls -ltrh'
-alias la='ll -A'
-alias l='ls -CF'
+alias ll='ls -alGh'
+# alias ll='ls -altrGh'
+alias la='ll -Ah'
+alias l='ls -CFh'
 alias df='df -Th'
 alias h='history'
 alias dmesg='dmesg -T'
+
+alias cp='cp -i -p'
+alias mv='mv -i'
+alias rm='rm -i'
+
+alias date='env LANG=C date'
+alias sort='env LC_ALL=C sort'
+alias df='df -H -m'
+alias du='du -H -m'
+
+# grep
+alias grep='env -u LC_CTYPE grep --color=always'
+alias zgrep='env -u LC_CTYPE zgrep --color=always'
+export GREP_COLOR='01;41'
+
+# diffutils
+alias sdiff='sdiff -l'
+alias pdiff='diff -aurN'
+
+# tree
+alias tree='tree -NF'
+alias ftree='tree -afipugsDf'
+
+# global
+alias gtags='gtags -v'
+alias htags='htags -vsF'
+
+# wget
+alias wget='wget --trust-server-names --timeout=60'
+
+# mintty
+alias cls='echo -ne "\ec\e[3J"'
+
+# windows native appliation
+alias ipconfig='cocot ipconfig'
+alias nslookup='cocot nslookup'
+alias netsh='cocot netsh'
+alias net='cocot net'
+alias shutdown='cocot shutdown'
+alias systeminfo='cocot systeminfo'
+alias tasklist='cocot tasklist'
+alias taskkill='cocot taskkill'
+alias xcopy='cocot xcopy'
+alias attrib='cocot attrib'
+
 
 # aliases for git
 alias gall='ga && gcu && gpom'
