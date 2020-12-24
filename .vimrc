@@ -15,6 +15,8 @@ set hlsearch
 set scrolloff=5
 set encoding=utf-8
 
+set nowrap
+
 set updatetime=0 
 set nowrapscan "検索がファイル末尾まで進んだらそこで先頭に戻らず止まる
 "set wrapscan "行末まで検索したら行頭に戻る
@@ -71,22 +73,21 @@ execute pathogen#infect()
 "
 "     nvimでなくvim XXXX.mdでもブラウザで表示できる
 "
-"     201215:
-"     yarnが入っていなくてインストールに失敗したが、~/.vim/plugged/markdown-preview
-"     を削除して、再度 :PlugInstall で入る
-"
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 "
+"
+"
+
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-" " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-" 
+Plug 'junegunn/vim-easy-align'
+Plug 'mechatroner/rainbow_csv'
+
 " " Any valid git URL is allowed
 " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 " 
@@ -108,9 +109,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 " 
 " " Plugin outside ~/.vim/plugged with post-update hook
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" 
-" " Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
 " 
 " Initialize plugin system
 "
@@ -214,6 +212,11 @@ nmap <Leader>mps <Plug>MarkdownPreviewStop
 nmap <Leader>mpst <Plug>MarkdownPreviewToggle
 
 " end markdown-preview
+""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -609,7 +612,7 @@ augroup BinaryXXD
 augroup END
 
 
-" 201212: jinja syntax hightlight
+" 201212: jinja syntax install
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -619,8 +622,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " 導入したいプラグインを以下に列挙
 " Plugin '[Github Author]/[Github repo]' の形式で記入
-Plugin 'hiphish/jinja.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'glench/vim-jinja2-syntax'
 
 call vundle#end()
 filetype plugin indent on
-
