@@ -1,0 +1,39 @@
+#!/bin/bash
+
+SSH=sshrc
+
+if [[ -n $SESSION_NAME ]];then
+  session=$SESSION_NAME
+else
+  session=multi-ssh-`date +%s`
+fi
+window=multi-ssh
+
+### tmuxのセッションを作成
+#tmux new-session -d -n $window -s $session
+tmux new-window "exec $SSH $1"
+
+### 各ホストにsshログイン
+# 最初の1台はsshするだけ
+#tmux send-keys "$SSH $1" C-m
+shift
+
+# 残りはpaneを作成してからssh
+for i in $*
+do
+  tmux split-window
+  tmux select-layout tiled
+  #tmux select-layout even-horizontal
+  #tmux select-layout even-vertical
+  tmux send-keys "$SSH $i" C-m
+done
+
+### 最初のpaneを選択状態にする
+tmux select-pane -t 0
+
+### paneの同期モードを設定
+tmux set-window-option synchronize-panes on
+
+### セッションにアタッチ
+#tmux attach-session -t $session
+
