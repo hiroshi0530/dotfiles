@@ -83,3 +83,8 @@ def post_save(model, os_path, contents_manager):
 # 2. delete output
 # 3. save markdonw
 c.FileContentsManager.post_save_hook = post_save
+
+
+################################################
+c.NotebookApp.kernel_spec_manager_class='environment_kernels.EnvironmentKernelSpecManager'
+c.EnvironmentKernelSpecManager.conda_env_dirs=['~/anaconda/envs']

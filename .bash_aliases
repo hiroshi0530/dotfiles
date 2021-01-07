@@ -287,3 +287,11 @@ function hlastdate() {
 function number24() {
   seq -w 24
 }
+
+function ca() {
+  conda activate $1
+}
+
+function cda() {
+  conda deactivate
+}

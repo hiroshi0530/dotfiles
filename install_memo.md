@@ -92,5 +92,57 @@ jupyterthemep install jupyter_contrib_nbextensionss
 
 ## 201125
 
-- sshrcがbrewでインストール出来ない。githubからも消えている。コミット済みのsshrc.zipを解凍してパスを通して利用する
+- sshrcがbrewでインストール出来ない。githubからも消えている。このgitコミット済みのsshrc.zipを解凍してパスを通して利用する
+
+## 210107 conda環境をjupyterから利用する
+
+きっかけは、pystanが仮想環境でないと動かないこと（うまくやれればいけそう）
+
+ただ、仮想環境をいくつか作っておくと、jupyter上からカーネルとして、それを選択できるのでとても使える
+
+- https://qiita.com/Gyutan/items/c7d3c341efe09454a5e1
+
+### 通常の仮想環境の構築
+
+```bash
+conda create -n stan python=3.6
+conda activate stan
+```
+
+- 仮想環境上で必要なモジュールのインストール
+
+```bash
+conda install Cython Numpy pystan
+conda install matplotlib jupyter scipy pandas
+```
+
+- 以下は必要であれば
+
+```bash
+conda install libpython m2w64-toolchain -c msys2
+
+PYTHONPATH\\Lib\\distutils にある distutils.cfgに次のコマンドを付け加えます。
+
+[build]
+compiler=mingw32
+```
+
+### 仮想環境から出た後に、jupyterの設定
+
+```bash
+pip install environment_kernels
+```
+
+- 以下のファイルに、
+
+```bash
+~/.jupyter/jupyter_notebook_config.py
+```
+
+```text
+c.NotebookApp.kernel_spec_manager_class='environment_kernels.EnvironmentKernelSpecManager'
+c.EnvironmentKernelSpecManager.conda_env_dirs=['~/anaconda/envs']
+```
+
+を書き込む。参考サイトによるとconda_env_dirs => env_dirsだがdepericateみたい
 
