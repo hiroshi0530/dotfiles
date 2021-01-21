@@ -49,6 +49,15 @@ let $BASH_ENV = "~/.bash_aliases" "aliaaseをvim :!xxxで実行できるよう�
 set swapfile
 set dir=~/swap
 
+" 折りたたみ
+set foldmethod=indent  "折りたたみ範囲の判断基準（デフォルト: manual）
+set foldlevel=2        "ファイルを開いたときにデフォルトで折りたたむレベル
+" set foldcolumn=3       "左端に折りたたみ状態を表示する領域を追加する
+
+" 折りたたみの状態を保存
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
 """"""""""""""""""""""""""""""""""""""""""""""
 " gitコマンドをvimから実行するプラグイン(vim-fugitive)をインストールするために必要
 " https://github.com/tpope/vim-fugitive
