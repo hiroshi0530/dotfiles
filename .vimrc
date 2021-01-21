@@ -15,7 +15,7 @@ set hlsearch
 set scrolloff=5
 set encoding=utf-8
 
-" set nowrap
+set nowrap
 
 set updatetime=0 
 set nowrapscan "検索がファイル末尾まで進んだらそこで先頭に戻らず止まる
@@ -419,37 +419,6 @@ nnoremap <Leader>qp i```python<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 nnoremap <Leader>qr i```ruby<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 nnoremap <Leader>qj i```javascript<CR><CR>```<ESC><UP>i<Space><Space><ESC>
 
-
-""katex react
-" nnoremap <Leader>kw ciw<InlineMath>{`\\displaystyle  `}</InlineMath><Esc>F<Space>P
-" nnoremap <Leader>kib i<InlineMath>{` \\displaystyle<Space>
-" nnoremap <Leader>kie i`}</InlineMath><Space>
-" 
-" nnoremap <Leader>ki i<Right><Space><InlineMath>{`\\displaystyle<Space>`}</InlineMath><Left><Esc>F<Space>i<Space>
-" nnoremap <Leader>kb i<Right><Space><BlockMath>{`<CR><CR><BS><BS>`}</BlockMath><Up>
-" 
-" nnoremap <Leader>kpois i<Right><Space><BlockMath>{`<CR>\\exp^{-\\lambda}\\frac{\\lambda^k}{k!}<CR><BS><BS>`}</BlockMath><Up>
-" 
-" nnoremap <Leader>kfrac i\\frac{}{}<Left><Left><Left>
-" 
-" nnoremap <Leader>kdot i\\,\\,\\,\\,\\cdot\\cdot\\cdot\\cdot\\,\\,\\,\\,\\left(\\right)<Esc>b<Left>i<Esc>
-" nnoremap <Leader>k( i\\left(<Space>\\right)<Esc>F<Space>
-" nnoremap <Leader>k{ i\\left{<Space>\\right}<Esc>F<Space>
-" nnoremap <Leader>k[ i\\left[<Space>\\right]<Esc>F<Space>
-" 
-" nnoremap <Leader>kred i<font color="MediumVioletRed"> </font><Esc>F<Space>
-" 
-" nnoremap <Leader>ka i\\alpha<Esc>
-" nnoremap <Leader>kb i\\bata<Esc>
-" nnoremap <Leader>kc i\\gamma<Esc>
-" nnoremap <Leader>kd i\\delta<Esc>
-" nnoremap <Leader>kl i\\mu<Esc>
-" nnoremap <Leader>kl i\\lambda<Esc>
-" 
-" nnoremap <Leader>kC i\\Gamma<Esc>
-" nnoremap <Leader>kD i\\Delta<Esc>
-
-
 ""katex vim
 nnoremap <Leader>kfrac i\frac{}{}<Left><Left><Left><Esc>
 nnoremap <Leader>ksum i\sum_{k=}^{}<Left><Left><Left><Esc>
@@ -552,29 +521,15 @@ nnoremap <Leader>rv i<%= %><Esc>F<Space>i
 "" coverity 修正プレフィックス 
 nnoremap <Leader>cprefix i[coverity:] <Esc> 
 
+" vim script test
 function! Testtemp()
-
-	""execute ":normal ciw"
-	""execute	":s/_\\(.\\)/\\u\\2/g"
-	""execute	":s/_\\(.\\)/\\u\\1_KEY/g"
-
-	""Jexecute ":s/\\(.\\)/\\u\\1/g"
-	""execute ":s/\\(.*\\)/\\u\\1_\\1/g"
-
-	""execute ":'<,'>s/\\(.*\\)/\\u\\1_\\1/g"
-
-
+ " execute ":r! pwd"
 	execute ":'<,'>s/\\([a-z].*\\)/\"\\u\\1_\\1\"/g"
-
-	""execute	":s/_\(.\)/\u\1/g"
-	""execute	":s/abc/efb/g"
-	""execute	":s/_(.)/\u\1/g"
-	""execute	":s/_[a-z]//g"
-	""execute	":s/_.*//g"
 endfunction
 
 :command! Testtemp call Testtemp()
 nmap <C-y> :Testtemp<CR>
+"""""""""""""""""""""""""""""
 
 if &term =~ "xterm"
   let &t_ti .= "\e[?2004h"
@@ -595,9 +550,7 @@ endif
 " for vimdiff setting
 let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
 
-" private vimrc(such as ctags, etc)
 
-" set tags=/home/vagrant/sky/sky/log_monitoring/tags
 runtime! private/*.vim
 
 " binary 
@@ -627,3 +580,14 @@ Plugin 'glench/vim-jinja2-syntax'
 
 call vundle#end()
 filetype plugin indent on
+
+"""""""""""""""""""""""""""""
+" remove first white spaces
+function! Rfw()
+ execute ":%s/^[\\t 　]*\\n/\xD/g"
+ " execute ":r! pwd"
+endfunction
+
+:command! Rfw call Rfw()
+nmap <C-y> :Rfw<CR>
+"""""""""""""""""""""""""""""
