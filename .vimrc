@@ -51,7 +51,7 @@ set dir=~/swap
 
 " 折りたたみ
 set foldmethod=indent  "折りたたみ範囲の判断基準（デフォルト: manual）
-set foldlevel=2        "ファイルを開いたときにデフォルトで折りたたむレベル
+set foldlevel=4        "ファイルを開いたときにデフォルトで折りたたむレベル
 " set foldcolumn=3       "左端に折りたたみ状態を表示する領域を追加する
 
 " 折りたたみの状態を保存
