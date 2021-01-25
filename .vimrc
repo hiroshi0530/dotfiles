@@ -613,3 +613,15 @@ endfunction
 :command! Rfw call Rfw()
 nmap <C-y> :Rfw<CR>
 """""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""
+" 210125: bash on windows yank to clipboard
+" func! GetSelectedText()
+"   normal gv"xy
+"   let result = getreg("x")
+"   return result
+" endfunc
+" 
+" noremap <C-c> :call system('/mnt/c/Windows/System32/clip.exe', GetSelectedText())<CR>
+"""""""""""""""""""""""""""""
