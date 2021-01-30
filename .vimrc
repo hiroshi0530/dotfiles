@@ -15,7 +15,7 @@ set hlsearch
 set scrolloff=5
 set encoding=utf-8
 
-" set nowrap
+set wrap
 
 set updatetime=0 
 set nowrapscan "検索がファイル末尾まで進んだらそこで先頭に戻らず止まる
