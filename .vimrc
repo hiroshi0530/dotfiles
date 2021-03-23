@@ -625,3 +625,11 @@ nmap <C-y> :Rfw<CR>
 " 
 " noremap <C-c> :call system('/mnt/c/Windows/System32/clip.exe', GetSelectedText())<CR>
 """""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""
+" aligment xml by vim
+function! Axml()
+  execute ":%s/></>\r</g | filetype indent on | setf xml | normal gg=G"
+endfunction
+
+:command! Axml call Axml()
