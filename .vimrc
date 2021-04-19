@@ -633,3 +633,19 @@ function! Axml()
 endfunction
 
 :command! Axml call Axml()
+
+"""""""""""""""""""""""""""""
+" convert \n to space
+" for deepL
+" vim で正規表現かつ後方参照する場合
+" （）によるグループ化と\\１による後方参照と二つのバックスラッシュ
+function! Cnts()
+  execute ":%s/\\(\\w\\)\\n\\(\\w\\)/\\1 \\2/g"
+endfunction
+
+:command! Cnts call Cnts()
+
+" # macだとsedでの正規表現置換と後方参照が面倒すぎる
+" # ここにメモを取っておく
+" cat a.txt | sed -e :loop -e 'N; $!b loop' -e 's/\([a-zA-Z0-9]\)\n\([a-zA-Z0-9]\)/\1 \2/g' > a1.txt
+
