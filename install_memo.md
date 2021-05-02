@@ -72,8 +72,28 @@
     - install
       - 参考サイト
         - https://qiita.com/_snow_narcissus/items/80f81926707807ee9bf1 
-jupyterthemep install jupyter_contrib_nbextensionss
         - https://qiita.com/woody-kawagoe/items/415c6f369ab2a6972ae6
+
+```bash
+jupyterの拡張機能を管理するパッケージjupyter_contrib_nbextensionsをインストール
+$ pip install jupyter_contrib_nbextensions
+
+jupyter_contrib_nbextensionsのjavascript,cssをインストール
+$ jupyter contrib nbextension install --user
+
+拡張機能を置くディレクトリを作成
+$ mkdir -p $(jupyter --data-dir)/nbextensions
+
+そのディレクトリに移動
+$ cd $(jupyter --data-dir)/nbextensions
+
+vimをバインディングするパッケージjupyter-vim-bindingをgitでクローンしてくる
+$ git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+
+jupyter-vim-bindingを有効にする
+$ jupyter nbextension enable vim_binding/vim_binding
+```
+
         - https://www.g104robo.com/entry/jupyter-notebook-vim
     
     - ./jupyter/custom.jsと./jupyter/custom.cssを~/.jupyter/custom/にコピー
