@@ -295,3 +295,9 @@ function ca() {
 function cda() {
   conda deactivate
 }
+
+alias ruby='~/.rbenv/versions/3.0.1/bin/ruby'
+
+function md_to_latex() {
+  pandoc -r markdown-auto_identifiers -w latex $1.md -o $1.tex
+}
