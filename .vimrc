@@ -649,3 +649,10 @@ endfunction
 " # ここにメモを取っておく
 " cat a.txt | sed -e :loop -e 'N; $!b loop' -e 's/\([a-zA-Z0-9]\)\n\([a-zA-Z0-9]\)/\1 \2/g' > a1.txt
 
+" 末尾にバックスラッシュを二つ追加。HUGOのMathJax対策。
+function! AddB()
+  execute ":'<,'>s/$/\\\\\\\\/g"
+endfunction
+
+:command! AddB call AddB()
+
