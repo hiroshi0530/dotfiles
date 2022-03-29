@@ -15,7 +15,7 @@ main () {
   ### 各ホストにsshログイン
   # 最初の1台はsshするだけ
   # tmux send-keys "ssh -i ijps-sky18-dev-key.pem ec2-user@$1" C-m
-  tmux send-keys "ssh $1" C-m
+  tmux send-keys "$1" C-m C-m
   shift
 
   # 残りはpaneを作成してからssh
@@ -23,7 +23,7 @@ main () {
     tmux split-window
     tmux select-layout tiled
     # tmux send-keys "ssh -i ijps-sky18-dev-key.pem ec2-user@$i" C-m
-    tmux send-keys "ssh $i" C-m 
+    tmux send-keys "$i" C-m C-m
   done
 
   ### 最初のpaneを選択状態にする
