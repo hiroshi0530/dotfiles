@@ -236,7 +236,8 @@ alias rc='rails console'
 
 # hugo
 # alias hs='hugo server'
-alias hs='hugo server --buildDrafts --buildFuture --cleanDestinationDir --enableGitInfo  --forceSyncStatic --ignoreCache --watch'
+alias hsd='hugo server --buildDrafts --buildFuture --cleanDestinationDir --enableGitInfo  --forceSyncStatic --ignoreCache --watch'
+alias hs='hugo server --buildFuture --cleanDestinationDir --enableGitInfo  --forceSyncStatic --ignoreCache --watch'
 
 # bundler
 alias bip='bundle install --path vendor/bundler' 

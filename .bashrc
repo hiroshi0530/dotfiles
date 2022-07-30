@@ -363,7 +363,7 @@ export PATH=$PATH:$HOME/.nodebrew/current/bin
 
 eval "$(direnv hook bash)"
 
-[[ $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
@@ -405,8 +405,10 @@ fi
 export PS1="\w $ "
 
 # git 補完
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/git-completion.bash
+# source /usr/local/etc/bash_completion.d/git-prompt.sh
+# source /usr/local/etc/bash_completion.d/git-completion.bash
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
 
 # pythonを実行したとき、__pycache__を生成しないようにする
 export PYTHONDONTWRITEBYTECODE=1
@@ -421,3 +423,12 @@ source ~/anaconda3/etc/profile.d/conda.sh
 # 200805_julia
 alias julia='/usr/local/bin/julia'
 # exec $SHELL
+
+echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/83005814_mac/.zprofile
+eval "$(/usr/local/bin/brew shellenv)"
+
+export SHELL="/bin/bash"
+
+export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
+
+export WA=/users/83005814_mac/private/

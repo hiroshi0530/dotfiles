@@ -1,13 +1,22 @@
 {
-  "files.encoding": "utf-8",
-  "editor.tabCompletion": false,
+  "files.encoding": "utf8",
+  "editor.lineHeight": 16 ,
+  "editor.tabCompletion": "off",
   //"java.errors.incompleteClasspath.severity": "ignore",
   "editor.renderControlCharacters": true,
   "[cpp]": {
-    "editor.quickSuggestions": false
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
   },
   "[c]": {
-    "editor.quickSuggestions": false
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "off",
+      "other": "off"
+    }
   },
 
   "python.linting.enabled": true,             // 文法チェックを行う
@@ -18,12 +27,15 @@
     "--ignore=E111, E114, E402, E501"
   ],
   "python.formatting.provider": "autopep8",   // 自動整形に autopep8 を使う
+  // "python.formatting.autopep8Path": "/opt/conda/bin/autopep8",
+  "python.formatting.autopep8Path": "~/anaconda3/envs/rec/bin/autopep8",
   "python.formatting.autopep8Args": [         // autopep8 の設定
-    "--indent-size=2",
+    "--indent-size=4",
+    "--max-line-length=150",
     "--ignore=E402"
   ],
   "[python]": {
-    "editor.tabSize": 2,                      // インデントレベルは「2」
+    "editor.tabSize": 4,                      // インデントレベルは「2」
     "editor.formatOnSave": true,              // 保存時に自動整形を行う
     "editor.formatOnPaste": false,            // ペースト時に自動整形を行わない
     "editor.formatOnType": false,             // 入力後に自動整形を行わない
@@ -42,14 +54,13 @@
   "vim.highlightedyank.enable": true,                      //yankした箇所をハイライト表示にする
   "vim.highlightedyank.color":"rgba(0, 240, 170, 0.5)",    //yankした時の色
   "vim.highlightedyank.duration":150,                      //yankした時の色の表示時間
-  "vim.leader"                : "<space>",                 //Map Leaderの設定
   "vim.autoindent"            : true,                      //autoindent
-  "vim.useSystemClipboard"    : true,                      //system clipboardと同期する
   "vim.hlsearch"              : true,                      //hlserch
   "vim.visualstar"            : true,                      //カーソル上にあるワードを"*"で検索
   "vim.useCtrlKeys"           : true,                      //諸々のctrlキーを使った操作が有効になる
   "vim.debug.silent": true,                                //アラートを出さない
   "vim.timeout":1200,
+
 
   //nmap
   "vim.normalModeKeyBindings": [
@@ -79,6 +90,51 @@
 
   // "vim.otherModesKeyBindings": [
     //space + w : 保存
+
+    {
+      "before": ["<C-o>", "o"],
+      "after": [],
+      "commands": [
+        {
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            "command": "notebook.cell.insertCodeCellBelow",
+        }
+      ]
+    },
+
+    {
+      "before": ["<C-o>", "d"],
+      "after": [],
+      "commands": [
+        {
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            "command": "notebook.cell.delete",
+        }
+      ]
+    },
+
+    {
+      "before": ["<C-o>", "2"],
+      "after": [],
+      "commands": [
+        {
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            "command": "notebook.cell.changeToMarkdown",
+        }
+      ]
+    },
+
+    {
+      "before": ["<C-o>", "1"],
+      "after": [],
+      "commands": [
+        {
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            "command": "notebook.cell.changeToCode",
+        }
+      ]
+    },
+
     {
       "before": ["leader","w"],
       "after": [],
@@ -125,7 +181,7 @@
 
 
     {"before": ["m"],        "after": ["%"]},
-    {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]},
+    // {"before": ["=", "="],   "after": ["g", "g" ,"G", "\'", "\'"]},
 
     {"before": ["<Leader>", "p", "p"],      "after": ["d", "i", "w", "\"", "0", "P"]},
 
@@ -165,7 +221,10 @@
     {"before": ["L"],"after"    : ["$"]}
   ],
 
-  "workbench.colorTheme": "Monokai Dimmed",
+  // "workbench.colorTheme": "Monokai Dimmed",
+  // "workbench.colorTheme": "GitHub Dark Default",
+  // "workbench.colorTheme": "GitHub Dark High Contrast",
+  // "workbench.colorTheme": "One Dark Pro",
 
   //末尾の空白を自動的に削除
   "files.trimTrailingWhitespace": true,
@@ -174,7 +233,7 @@
   "files.insertFinalNewline": true,
 
   // パンくずリストの表示
-  "breadcrumbs.enabled": true
+  "breadcrumbs.enabled": true,
 
   // ---------- Language ----------
 
@@ -182,19 +241,19 @@
       // スニペット補完中にも補完を使えるようにする
       "editor.suggest.snippetsPreventQuickSuggestions": false,
       // インデント幅を2にする
-      "editor.tabSize": 2
+      "editor.tabSize": 4
   },
 
   "[latex]": {
       // スニペット補完中にも補完を使えるようにする
       "editor.suggest.snippetsPreventQuickSuggestions": false,
       // インデント幅を2にする
-      "editor.tabSize": 2
+      "editor.tabSize": 4
   },
 
   "[bibtex]": {
       // インデント幅を2にする
-      "editor.tabSize": 2
+      "editor.tabSize": 4
   },
 
 
@@ -257,4 +316,14 @@
       },
   ],
 
+  "notebook.outputFontSize": 12,
+  "notebook.outputLineHeight": 14,
+  "notebook.output.textLineLimit": 20,
+  "notebook.consolidatedRunButton": true,
+  "editor.wordWrap": "on",
+  "security.workspace.trust.untrustedFiles": "open",
+  // "notebook.lineNumbers": "on",
+
+
+  "jupyter.experimental.debugging": true
 }
