@@ -424,11 +424,8 @@ source ~/anaconda3/etc/profile.d/conda.sh
 alias julia='/usr/local/bin/julia'
 # exec $SHELL
 
-echo 'eval "$(/usr/local/bin/brew shellenv)"' >> /Users/83005814_mac/.zprofile
 eval "$(/usr/local/bin/brew shellenv)"
 
 export SHELL="/bin/bash"
 
 export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
-
-export WA=/users/83005814_mac/private/
