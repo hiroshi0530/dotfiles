@@ -141,5 +141,18 @@
   {
     "key": "cmd+k cmd+left",
     "command": "-workbench.action.focusLeftGroup"
+  },
+  {
+    "key": "ctrl+n n",
+    "command":"editor.action.insertSnippet",
+    "args":{
+        "langId": "latex",
+        "name": "inline_math"
+    },
+    "when": "editorTextFocus && editorLangId == 'latex'"
+  },
+  {
+    "key": "ctrl+n n",
+    "command": "-workbench.actions.view.problems"
   }
 ]

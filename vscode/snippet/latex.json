@@ -26,5 +26,11 @@
             "\\end{document}"
         ],
         "description": "template"
+    },
+    "LQ": {
+        "prefix": "LQ",
+        "body": [
+            "\\mathbf{\\hat{L}_Q}"
+        ],
     }
 }
