@@ -1,10 +1,21 @@
 ### 190710 mac set up memo
 
+- texのインストール
+    - tex live からinstall `brew install mactex-no-gui --cask`
+    - vscodeのlatex workshop（拡張機能）を追加
+    - latexmkrcやvscodeのkeybindingsはショートカットを通せばOK
+        - settingなど
+
 - anacondaのインストール
   - インストール後自動的にcondaの仮想環境ができてしまうので、.bash_profileなどから自動的に追記される設定を削除
 
+- gitのインストール
+    - 必ず最新のgitをbrew isntall git でインストール
+    - デフォルトはバージョンが古い
+
 - vim のbrewからのインストール
   - デフォルトでは vim --version | grep clipboard で -clipboard となる
+  - デフォルトはダメ
   - ` brew install vim`でインストールすると、最新番のvimは以下の場所に配置される
   - /usr/local/Cellar/vim/8.1.1650/bin/vim --version | grep clip
   - vim, vimdiff, view, vimtutor の上記のパスに書き換える 
