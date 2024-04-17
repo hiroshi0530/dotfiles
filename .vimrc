@@ -656,3 +656,31 @@ endfunction
 
 :command! AddB call AddB()
 
+
+" 240418: wslでyankをクリップボードに入れる
+if system('uname -a | grep -i microsoft') != ''
+  augroup myYank
+    autocmd!
+    autocmd TextYankPost * :call system('clip.exe', @")
+  augroup END
+endif
+
+
+# 240418: wsl + tmux で上でのヤンククリップボード共有設定
+# wsl + ubuntuだと特に必要なかったが、wsl + arch linux だと必要
+# このほかに.tmux.confの設定が必要
+# 参考: https://zenn.dev/kujirahand/articles/4b37160f781be7
+if executable('win32yank.exe')
+  au TextYankPost * call system('win32yank.exe -i &', @")
+    function Paste(p)
+      let sysclip=system('win32yank.exe -o')
+        if sysclip != @"
+	  let @"=sysclip
+	endif
+	return a:p
+  endfunction
+  noremap <expr> p Paste('p')
+  noremap <expr> P Paste('P')
+endif
+
+

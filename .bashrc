@@ -435,3 +435,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="/opt/poetry/bin:$PATH"
 
 export PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
+
+# 240418: GPGのコミット認証がこれがないとうまくいかない（かっこも必要だった）
+export GPG_TTY=$(tty)
