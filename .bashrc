@@ -372,7 +372,7 @@ export PATH=$HOME/anaconda3/bin:$PATH
 # for golang
 export GOPATH=$HOME/go:$HOME/go/ugo:$HOME/go/go_test
 export GOROOT=$( go env GOROOT )
-export PATH=$GOPATH/bin:$PATH
+export PATH=$HOME/go/bin:$HOME/go/ugo/bin:$HOME/go/go_test/bin:$PATH
 
 # for awscli
 export PATH=$HOME/.local/bin:$PATH
