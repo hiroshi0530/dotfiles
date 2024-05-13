@@ -84,82 +84,86 @@ au BufWinEnter * silent loadview
 """"""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""
 " install vim plugin
-if !has('nvim')
 
-    """"""""""""""""""""""""""""""""""""""""""""""
-    " gitコマンドをvimから実行するプラグイン(vim-fugitive)をインストールするために必要
-    " https://github.com/tpope/vim-fugitive
-    " https://github.com/tpope/vim-pathogen
-    execute pathogen#infect()
-    
-    """"""""""""""""""""""""""""""""""""""""""""""
-    " treeを表示するプラグインのインストールa
-    " https://github.com/scrooloose/nerdtree
-    " git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-    "
-    
-    """"""""""""""""""""""""""""""""""""""""""""""
-    " start vim-plug
-    "   Markdownをリアルタイムにブラウザで表示するプラグイン
-    "   表示位置なども自動的に追従
-    "
-    "   https://github.com/iamcco/markdown-preview.nvim
-    "
-    "     install : :PlugInstall
-    "     Preview : :MarkdownPreview
-    "
-    "     nvimでなくvim XXXX.mdでもブラウザで表示できる
-    "
-    " Specify a directory for plugins
-    " - For Neovim: ~/.local/share/nvim/plugged
-    " - Avoid using standard Vim directory names like 'plugin'
-    "
-    "
-    "
-    
-    call plug#begin('~/.vim/plugged')
-    
-    " Make sure you use single quotes
-    
-    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-    Plug 'junegunn/vim-easy-align'
-    Plug 'mechatroner/rainbow_csv'
-    
-    " " Any valid git URL is allowed
-    " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-    " 
-    " " Multiple Plug commands can be written in a single line using | separators
-    " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-    " 
-    " " On-demand loading
-    " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-    " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-    " 
-    " " Using a non-master branch
-    " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-    " 
-    " " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-    " Plug 'fatih/vim-go', { 'tag': '*' }
-    " 
-    " " Plugin options
-    " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-    " 
-    " " Plugin outside ~/.vim/plugged with post-update hook
-    " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    " 
-    " Initialize plugin system
-    "
-    
-    "190913: syntax-highlight for tsx
-    Plug 'leafgarland/typescript-vim'
-    Plug 'peitalin/vim-jsx-typescript'
-    "
-    
-    call plug#end()
+""""""""""""""""""""""""""""""""""""""""""""""
+" gitコマンドをvimから実行するプラグイン(vim-fugitive)をインストールするために必要
+" https://github.com/tpope/vim-fugitive
+" https://github.com/tpope/vim-pathogen
+" execute pathogen#infect()
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" start vim-plug
+"   Markdownをリアルタイムにブラウザで表示するプラグイン
+"   表示位置なども自動的に追従
+"
+"   https://github.com/iamcco/markdown-preview.nvim
+"
+"     install : :PlugInstall
+"     Preview : :MarkdownPreview
+"
+"     nvimでなくvim XXXX.mdでもブラウザで表示できる
+"
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+
+call plug#begin('~/.config/nvim/plugged')
+" call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'junegunn/vim-easy-align'
+Plug 'mechatroner/rainbow_csv'
+
+" " Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" 
+" " Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" 
+" " On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+" 
+" " Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+" 
+" " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+" 
+" " Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+" 
+" " Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" 
+" Initialize plugin system
+"
+
+"190913: syntax-highlight for tsx
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+Plug 'preservim/nerdtree'
+" Plug 'nvim-tree/nvim-tree.lua'
+" Plug 'nvim-tree/nvim-wev-devicons'
+
+Plug 'ctrlpvim/ctrlp.vim'
+
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'nvim-tree/nvim-web-devicons'
+
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+
+call plug#end()
 
 " end vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""
-endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -256,6 +260,9 @@ nmap <Leader>mpst <Plug>MarkdownPreviewToggle
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""
+
+nmap <C-t> :NERDTreeToggle<CR>
+" nmap <C-t> :NvimTree<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " pythonファイルの場合、tabを2にするように明示的に記載
