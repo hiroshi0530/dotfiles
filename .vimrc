@@ -3,13 +3,13 @@ syntax on
 set number
 set expandtab
 set mouse=a
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
+set shiftwidth=4
 set cursorline
 set hlsearch
 set scrolloff=5
@@ -27,7 +27,17 @@ set nostartofline " カーソル：括弧を閉じたとき対応する括弧に
 set ttyfast
 set t_Co=256
 
-set clipboard=unnamed,autoselect
+" vim or nvim
+if has('nvim')
+    set clipboard=unnamedplus
+    " set clipboard=unnamed
+else
+    set clipboard=unnamed,autoselect
+
+    colorscheme lucius
+    LuciusDarkHighContrast
+endif
+
 
 set fileencoding=utf-8 " 保存時の文字コード
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
@@ -72,78 +82,84 @@ au BufWinEnter * silent loadview
 "   zR -- 展開（すべて） (Open all folds)
 
 """"""""""""""""""""""""""""""""""""""""""""""
-" gitコマンドをvimから実行するプラグイン(vim-fugitive)をインストールするために必要
-" https://github.com/tpope/vim-fugitive
-" https://github.com/tpope/vim-pathogen
-execute pathogen#infect()
-
 """"""""""""""""""""""""""""""""""""""""""""""
-" treeを表示するプラグインのインストールa
-" https://github.com/scrooloose/nerdtree
-" git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
-"
+" install vim plugin
+if !has('nvim')
 
-""""""""""""""""""""""""""""""""""""""""""""""
-" start vim-plug
-"   Markdownをリアルタイムにブラウザで表示するプラグイン
-"   表示位置なども自動的に追従
-"
-"   https://github.com/iamcco/markdown-preview.nvim
-"
-"     install : :PlugInstall
-"     Preview : :MarkdownPreview
-"
-"     nvimでなくvim XXXX.mdでもブラウザで表示できる
-"
-" Specify a directory for plugins
-" - For Neovim: ~/.local/share/nvim/plugged
-" - Avoid using standard Vim directory names like 'plugin'
-"
-"
-"
-
-call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
-
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
-Plug 'junegunn/vim-easy-align'
-Plug 'mechatroner/rainbow_csv'
-
-" " Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-" 
-" " Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" 
-" " On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" 
-" " Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" 
-" " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-" 
-" " Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-" 
-" " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" 
-" Initialize plugin system
-"
-
-"190913: syntax-highlight for tsx
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-"
-
-call plug#end()
+    """"""""""""""""""""""""""""""""""""""""""""""
+    " gitコマンドをvimから実行するプラグイン(vim-fugitive)をインストールするために必要
+    " https://github.com/tpope/vim-fugitive
+    " https://github.com/tpope/vim-pathogen
+    execute pathogen#infect()
+    
+    """"""""""""""""""""""""""""""""""""""""""""""
+    " treeを表示するプラグインのインストールa
+    " https://github.com/scrooloose/nerdtree
+    " git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+    "
+    
+    """"""""""""""""""""""""""""""""""""""""""""""
+    " start vim-plug
+    "   Markdownをリアルタイムにブラウザで表示するプラグイン
+    "   表示位置なども自動的に追従
+    "
+    "   https://github.com/iamcco/markdown-preview.nvim
+    "
+    "     install : :PlugInstall
+    "     Preview : :MarkdownPreview
+    "
+    "     nvimでなくvim XXXX.mdでもブラウザで表示できる
+    "
+    " Specify a directory for plugins
+    " - For Neovim: ~/.local/share/nvim/plugged
+    " - Avoid using standard Vim directory names like 'plugin'
+    "
+    "
+    "
+    
+    call plug#begin('~/.vim/plugged')
+    
+    " Make sure you use single quotes
+    
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+    Plug 'junegunn/vim-easy-align'
+    Plug 'mechatroner/rainbow_csv'
+    
+    " " Any valid git URL is allowed
+    " Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+    " 
+    " " Multiple Plug commands can be written in a single line using | separators
+    " Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+    " 
+    " " On-demand loading
+    " Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    " Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+    " 
+    " " Using a non-master branch
+    " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+    " 
+    " " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+    " Plug 'fatih/vim-go', { 'tag': '*' }
+    " 
+    " " Plugin options
+    " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+    " 
+    " " Plugin outside ~/.vim/plugged with post-update hook
+    " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    " 
+    " Initialize plugin system
+    "
+    
+    "190913: syntax-highlight for tsx
+    Plug 'leafgarland/typescript-vim'
+    Plug 'peitalin/vim-jsx-typescript'
+    "
+    
+    call plug#end()
 
 " end vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""
+endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
@@ -254,8 +270,6 @@ syntax enable
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
-colorscheme lucius
-LuciusDarkHighContrast
 
 noremap j gj
 noremap k gk
@@ -656,7 +670,6 @@ endfunction
 
 :command! AddB call AddB()
 
-
 " 240418: wslでyankをクリップボードに入れる
 if system('uname -a | grep -i microsoft') != ''
   augroup myYank
@@ -666,10 +679,6 @@ if system('uname -a | grep -i microsoft') != ''
 endif
 
 
-# 240418: wsl + tmux で上でのヤンククリップボード共有設定
-# wsl + ubuntuだと特に必要なかったが、wsl + arch linux だと必要
-# このほかに.tmux.confの設定が必要
-# 参考: https://zenn.dev/kujirahand/articles/4b37160f781be7
 if executable('win32yank.exe')
   au TextYankPost * call system('win32yank.exe -i &', @")
     function Paste(p)
@@ -682,5 +691,4 @@ if executable('win32yank.exe')
   noremap <expr> p Paste('p')
   noremap <expr> P Paste('P')
 endif
-
 

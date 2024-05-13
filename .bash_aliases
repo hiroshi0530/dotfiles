@@ -12,6 +12,7 @@ alias ......='cd ../../../../../../'
 # program
 alias p='python'
 alias r='ruby'
+alias nv='nvim'
 
 # vim
 alias v='vim'
