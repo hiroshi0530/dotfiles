@@ -9,6 +9,10 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../../'
 alias ......='cd ../../../../../../'
 
+# program
+alias p='python'
+alias r='ruby'
+
 # vim
 alias v='vim'
 alias vd='vimdiff'
