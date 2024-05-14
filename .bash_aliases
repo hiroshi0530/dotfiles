@@ -12,10 +12,11 @@ alias ......='cd ../../../../../../'
 # program
 alias p='python'
 alias r='ruby'
-alias nv='nvim'
+alias v='nvim'
+alias g='go'
+alias vi='vim'
 
 # vim
-alias v='vim'
 alias vd='vimdiff'
 alias vr='vim -R'
 alias svi='set -o vi'
@@ -83,7 +84,6 @@ alias gall='ga && gcu && gpom'
 alias grh='git reset --hard'
 alias gclean='git reset --hard && git clean -dfx'
 alias gm="git merge"
-alias g='git'
 alias get='git'
 alias gs='git status'
 alias gss='git status -s'
@@ -148,7 +148,6 @@ if [[ $- =~ i ]]; then
 fi
 
 # orinal setting
-alias vi='vim'
 alias view='vim -R'
 
 alias gs='git status'
@@ -198,6 +197,7 @@ function psa () {
 } 
 
 # tmux
+alias ta='tmux a -t'
 alias tls='tmux ls'
 alias tlsc='tmux lsc'
 alias tkill='tmux kill-server'
@@ -249,6 +249,11 @@ alias bip='bundle install --path vendor/bundler'
 
 # jupyter
 alias jn='jupyter notebook'
+
+# poetry
+alias pr='poetry run'
+alias pi='poetry install'
+alias prp='poetry run python'
 
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
@@ -308,7 +313,3 @@ function md_to_latex() {
   pandoc -r markdown-auto_identifiers -w latex $1.md -o $1.tex
 }
 
-# poetry
-alias pr='poetry run'
-alias pi='poetry install'
-alias prp='poetry run python'
