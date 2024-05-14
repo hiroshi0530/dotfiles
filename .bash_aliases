@@ -14,6 +14,7 @@ alias p='python'
 alias r='ruby'
 alias v='nvim'
 alias g='go'
+alias gr='go run'
 alias vi='vim'
 
 # vim
