@@ -154,6 +154,7 @@ alias gs='git status'
 alias gda='git diff'
 alias gdc='git diff ^HEAD'
 alias ga='git add .'
+alias gdt='git difftool -y' 
 
 alias gplom='git pull origin master'
 alias gphom='git push origin master'
@@ -182,13 +183,14 @@ function gchange_author_committer_w0530 () {
 }
 
 
+# 240510: vim => nvim へ変更
 # vim
-alias vb='vim ~/.bashrc'
-alias vv='vim ~/.vimrc'
-alias va='vim ~/.bash_aliases'
-alias vf='vim ~/.bash_functions'
-alias vpa='vim ~/.bash_private_aliases'
-alias vt='vim ~/.tmux.conf'
+alias vb='nvim ~/.bashrc'
+alias vv='nvim ~/.vimrc'
+alias va='nvim ~/.bash_aliases'
+alias vf='nvim ~/.bash_functions'
+alias vpa='nvim ~/.bash_private_aliases'
+alias vt='nvim ~/.tmux.conf'
 
 alias loadb='source ~/.bashrc'
 
