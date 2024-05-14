@@ -160,6 +160,8 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 " end vim-plug
