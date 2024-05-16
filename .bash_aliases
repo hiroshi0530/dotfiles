@@ -1,8 +1,9 @@
 # 190115 aliasをvim :!コマンドから実行できるようにする
 shopt -s expand_aliases
 
-# builtin
-alias c='cd ..'
+# change directory
+alias c='cd'
+alias u='cd ../'
 alias ..='cd ../../'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
@@ -21,12 +22,24 @@ alias vi='vim'
 alias vd='vimdiff'
 alias vr='vim -R'
 alias svi='set -o vi'
+alias view='vim -R'
+
+# 240510: vim => nvim へ変更
+alias vb='nvim ~/.bashrc'
+alias vv='nvim ~/.vimrc'
+alias va='nvim ~/.bash_aliases'
+alias vf='nvim ~/.bash_functions'
+alias vpa='nvim ~/.bash_private_aliases'
+alias vt='nvim ~/.tmux.conf'
+
+alias loadb='source ~/.bashrc'
 
 # some more ls aliases
 alias cl='clear'
 alias e='exit'
 alias da='direnv allow'
 
+# list
 alias ll='ls -alGh'
 # alias ll='ls -altrGh'
 alias la='ll -Ah'
@@ -148,9 +161,6 @@ if [[ $- =~ i ]]; then
     bind -f ~/.inputrc
 fi
 
-# orinal setting
-alias view='vim -R'
-
 alias gs='git status'
 alias gda='git diff'
 alias gdc='git diff ^HEAD'
@@ -184,16 +194,6 @@ function gchange_author_committer_w0530 () {
 }
 
 
-# 240510: vim => nvim へ変更
-# vim
-alias vb='nvim ~/.bashrc'
-alias vv='nvim ~/.vimrc'
-alias va='nvim ~/.bash_aliases'
-alias vf='nvim ~/.bash_functions'
-alias vpa='nvim ~/.bash_private_aliases'
-alias vt='nvim ~/.tmux.conf'
-
-alias loadb='source ~/.bashrc'
 
 function psa () { 
   ps aux | grep $1;
