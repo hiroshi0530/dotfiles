@@ -149,6 +149,19 @@
     },
 
     {
+      "before": [
+        "<C-o>",
+        "-"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "notebook.cell.split",
+        }
+      ]
+    },
+
+    {
       "before": ["leader","w"],
       "after": [],
       "commands": [
