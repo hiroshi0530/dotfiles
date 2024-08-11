@@ -256,6 +256,8 @@ alias bip='bundle install --path vendor/bundler'
 # jupyter
 alias jn='jupyter notebook'
 
+alias ghb="gh browse"
+
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
 } 
