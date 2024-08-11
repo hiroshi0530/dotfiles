@@ -2,12 +2,21 @@
 shopt -s expand_aliases
 
 # builtin
-alias c='cd ..'
+alias c='cd'
+alias u='cd ../'
 alias ..='cd ../../'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 alias .....='cd ../../../../../'
 alias ......='cd ../../../../../../'
+
+# program
+alias p='python'
+alias r='ruby'
+# alias v='nvim'
+alias g='go'
+alias gr='go run'
+alias vi='vim'
 
 # vim
 alias v='vim'
@@ -150,6 +159,8 @@ alias gs='git status'
 alias gda='git diff'
 alias gdc='git diff ^HEAD'
 alias ga='git add .'
+
+alias gdt='git difftool -y'
 
 alias gplom='git pull origin master'
 alias gphom='git push origin master'
@@ -302,3 +313,5 @@ alias ruby='~/.rbenv/versions/3.0.1/bin/ruby'
 function md_to_latex() {
   pandoc -r markdown-auto_identifiers -w latex $1.md -o $1.tex
 }
+
+

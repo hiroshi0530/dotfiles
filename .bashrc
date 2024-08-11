@@ -432,6 +432,11 @@ export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
 export PATH="/opt/poetry/bin:$PATH"
 
 export PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
+
+eval "$(gh completion -s bash)"
