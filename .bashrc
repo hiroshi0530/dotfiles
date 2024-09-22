@@ -366,7 +366,7 @@ eval "$(direnv hook bash)"
 [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/man:$MANPATH
+    export MANPATH=/opt/local/man:$MANPATH
 export PATH=$HOME/anaconda3/bin:$PATH
 
 # for golang
@@ -434,9 +434,13 @@ export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
 export PATH="/opt/poetry/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
+<<<<<<< HEAD
 # 240418: 文字コードの設定
 export LC_ALL='en_US.UTF-8'
 export LC_CTYPE='ja_JP.UTF-8'
@@ -453,3 +457,7 @@ export DISPLAY=:0
 export PATH=$PATH:/home/gvatech111/.pulumi/bin
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+=======
+export PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
+
+eval "$(gh completion -s bash)"
