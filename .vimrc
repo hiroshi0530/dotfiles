@@ -24,49 +24,100 @@ set showmatch
 set matchtime=1
 set backspace=start,eol,indent
 set nostartofline " カーソル：括弧を閉じたとき対応する括弧に一時的に移動
+
 set ttyfast
 set t_Co=256
 
-" vim or nvim
-if has('nvim')
-    set clipboard=unnamedplus
-    " set clipboard=unnamed
-else
-    set clipboard=unnamed,autoselect
-
-    colorscheme lucius
-    LuciusDarkHighContrast
+" Unix系 (Linux, macOS)
+if has('unix')
 endif
 
+" macOS
+if has('macunix')
+endif
 
-set fileencoding=utf-8 " 保存時の文字コード
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932 " 読み込み時の文字コードの自動判別. 左側が優先される
-set fileformats=unix,dos,mac " 改行コードの自動判別. 左側が優先される
-set ambiwidth=double " □や○文字が崩れる問題を解決
+" Windows
+if has('win32') || has('win64')
+endif
 
-set incsearch " インクリメンタルサーチ. １文字入力毎に検索を行う
-set ignorecase " 検索パターンに大文字小文字を区別しない
-set smartcase " 検索パターンに大文字を含んでいたら大文字小文字を区別する
-set hlsearch " 検索結果をハイライト
-set whichwrap=b,s,h,l,<,>,[,],~ " カーソルの左右移動で行末から次の行の行頭への移動が可能になる
+" WSL
+if has('wsl')
 
-set wildmenu " コマンドモードの補完
-set history=5000 " 保存するコマンド履歴の数
+    " 240515: wslでyankをクリップボードに入れる。win32yank.exeを使う場合。
+    if executable('win32yank.exe')
+      " ヤンク後にクリップボードにコピー
+      augroup clipboard
+        autocmd!
+        " autocmd TextYankPost * call system('win32yank.exe -i', @")
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system('win32yank.exe -i', @") | endif
+      augroup END
+    
+    
+      " クリップボードからペーストする関数
+      function! Paste(p)
+        let sysclip = system('win32yank.exe -o')
+        if sysclip != @"
+          let @" = sysclip
+        endif
+        return a:p
+      endfunction
+    
+    
+      " ペーストマッピング
+      noremap <expr> p Paste('p')
+      noremap <expr> P Paste('P')
+    
+    
+    endif
+    
+    set clipboard=unnamed
+    let g:clipboard = {
+            \   'name': 'myClipboard',
+            \   'copy': {
+            \      '+': 'win32yank.exe -i',
+            \      '*': 'win32yank.exe -i',
+            \    },
+            \   'paste': {
+            \      '+': 'win32yank.exe -o',
+            \      '*': 'win32yank.exe -o',
+            \   },
+            \   'cache_enabled': 1,
+            \ }
+endif
+
+colorscheme lucius
+LuciusDarkHighContrast
+
+set fileencoding=utf-8
+set fileencodings=ucs-boms,utf-8,euc-jp,cp932
+set fileformats=unix,dos,mac
+set ambiwidth=double
+
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+set whichwrap=b,s,h,l,<,>,[,],~
+
+set wildmenu
+set history=5000
 
 let mapleader = "\<Space>"
-let $BASH_ENV = "~/.bash_aliases" "aliaaseをvim :!xxxで実行できるようにする
+let $BASH_ENV = "~/.bash_aliases"
+let $ZSH_ENV = "~/.zsh_aliases"
 
 set swapfile
 set dir=~/swap
 
 " 折りたたみ
-set foldmethod=indent  "折りたたみ範囲の判断基準（デフォルト: manual）
-set foldlevel=4        "ファイルを開いたときにデフォルトで折りたたむレベル
-" set foldcolumn=3       "左端に折りたたみ状態を表示する領域を追加する
+set foldmethod=indent
+set foldlevel=4
+" set foldcolumn=3
 
 " 折りたたみの状態を保存
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+" buffer file が必要になるので一度コメントアウト
+" au BufWinLeave * mkview
+" au BufWinEnter * silent loadview
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " https://maku77.github.io/vim/advanced/folding.html
@@ -108,9 +159,6 @@ au BufWinEnter * silent loadview
 " - Avoid using standard Vim directory names like 'plugin'
 
 call plug#begin('~/.config/nvim/plugged')
-" call plug#begin('~/.vim/plugged')
-
-" Make sure you use single quotes
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/vim-easy-align'
@@ -146,8 +194,6 @@ Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'preservim/nerdtree'
-" Plug 'nvim-tree/nvim-tree.lua'
-" Plug 'nvim-tree/nvim-wev-devicons'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -162,71 +208,24 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
 
 Plug 'github/copilot.vim'
 
-call plug#end()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-" end vim-plug
+call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""
 
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " markdown-preview config
-"
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
 let g:mkdp_auto_start = 0
-
-" set to 1, the nvim will auto close current preview window when change
-" from markdown buffer to another buffer
-" default: 1
 let g:mkdp_auto_close = 1
-
-" set to 1, the vim will refresh markdown when save the buffer or
-" leave from insert mode, default 0 is auto refresh markdown as you edit or
-" move the cursor
-" default: 0
 let g:mkdp_refresh_slow = 0
-
-" set to 1, the MarkdownPreview command can be use for all files,
-" by default it can be use in markdown file
-" default: 0
 let g:mkdp_command_for_global = 0
-
-" set to 1, preview server available to others in your network
-" by default, the server listens on localhost (127.0.0.1)
-" default: 0
 let g:mkdp_open_to_the_world = 0
-
-" use custom IP to open preview page
-" useful when you work in remote vim and preview on local browser
-" more detail see: https://github.com/iamcco/markdown-preview.nvim/pull/9
-" default empty
 let g:mkdp_open_ip = ''
-
-" specify browser to open preview page
-" default: ''
 let g:mkdp_browser = ''
-
-" set to 1, echo preview page url in command line when open preview page
-" default is 0
 let g:mkdp_echo_preview_url = 0
-
-" a custom vim function name to open preview page
-" this function will receive url as param
-" default is empty
 let g:mkdp_browserfunc = ''
-
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
 let g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
@@ -237,18 +236,9 @@ let g:mkdp_preview_options = {
     \ 'hide_yaml_meta': 1,
     \ 'sequence_diagrams': {'theme': 'simple'}
     \ }
-
-" use a custom markdown style must be absolute path
 let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
 let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
 let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
 
 nmap <Leader>mp <Plug>MarkdownPreview
@@ -264,21 +254,17 @@ nmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""
 
 nmap <C-t> :NERDTreeToggle<CR>
-" nmap <C-t> :NvimTree<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
-" pythonファイルの場合、tabを2にするように明示的に記載
-" plug-in の条件変数設定後のここに記載しないと有効にならない
-" autocmd Filetype python setlocal expandtab tabstop=2 shiftwidth=2
-au Filetype python setl et ts=2 sw=2
+" pythonファイルの場合、tabを4にするように明示的に記載
+au Filetype python setl et ts=4 sw=4
 
-""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
 syntax enable
 
 nnoremap <ESC><ESC> :nohlsearch<CR>
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
-
 
 noremap j gj
 noremap k gk
@@ -307,33 +293,18 @@ inoremap <C-f> <C-x><C-o>
 ""C-sでノーマルモードへ移動し保存inoremap <C-s> <Esc>:wa<CR>
 nnoremap <C-s> :wa<CR>
 
-""言葉の意味：
-""ノーマルモード＋ビジュアルモード=noremap 
-""コマンドラインモード＋インサートモード=noremap! 
-""ノーマルモード=nnoremap 
 """"""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""
-""160517_括弧の補完
-"" http://qiita.com/shingargle/items/dd1b5510a0685837504a
-"" inoremap { {}<Left><CR><ESC><S-o>
-"" inoremap ( ()<ESC>i
-"" inoremap [ []<ESC>i
 inoremap <C-v> <ESC>"*pa
-""ダブルクオテーションを二つ付加し、カーソルを戻す
-""inoremap " ""<ESC>ha
-
-""180427_レジスタ０の内容をコピペする
-""https://qiita.com/ykyk1218/items/8f5471c5e90cc83fd407
-""noremap pp "0p
-""noremap PP "0P
+"ダブルクオテーションを二つ付加し、カーソルを戻す
+inoremap " ""<ESC>ha
 
 " 括弧の自動補完
 inoremap {<Enter> {}<Left><CR><ESC><S-o>
 inoremap [<Enter> []<Left><CR><ESC><S-o>
 inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
-""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""
 ""160526_挿入モードのまま一文字飛ばして移動とノーマルモードへ移行を簡単にキーマッピング
@@ -341,46 +312,6 @@ inoremap <C-j> <ESC>gja
 inoremap <C-k> <ESC>gka
 inoremap <C-h> <ESC>ha
 inoremap <C-l> <ESC>la
-""
-""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""
-"160524_ノーマルモードでタブを押したとき、そのままタブの動作をしてほしい。。。
-"noremap <TAB> i<TAB><ESC>
-""""""""""""""""""""""""""""""""""
-"160525_選択モードでコピーしたものを置き換えて貼り付けるスクリプト
-"http://qiita.com/hikaruna/items/83c1220eede810bee492
-
-" vモードの置換連続ペースト用
-function! Put_text_without_override_register()
-	let line_len = strlen(getline('.'))
-	execute "normal! `>"
-	let col_loc = col('.')
-	execute 'normal! gv"_x'
-	if line_len == col_l    execute 'normal! p'
-	else 
-		execute 'normal! P'
-	endif
-endfunction
-xnoremap <silent> p :call Put_text_without_override_register()<CR>
-
-""""""""""""""""""""""""""""""""""
-""160604_矢印キーの使用禁止！！
-""コマンドからHardModeとEasyModeで切り替え可能
-function! HardMode ()
-	noremap <Up> <Nop>
-	noremap <Down> <Nop>
-	noremap <Left> <Nop>
-	noremap <Right> <Nop>
-endfu
-function! EasyMode ()
-	noremap <Up> <Up>
-	noremap <Down> <Down>
-	noremap <Left> <Left>
-	noremap <Right> <Right>
-endfunc
-command! HardMode call HardMode()
-command! EasyMode call EasyMode()
 """"""""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""""""
@@ -551,30 +482,20 @@ nnoremap <Leader>Fno Fの<Esc>
 nnoremap <Leader>, i、<Esc>
 nnoremap <Leader>. i。<Esc>
 
-""python
-nnoremap <Leader>pymain iif<Space>__name__<Space>==<Space>"__main__":<Esc> 
+" vim script test 
+" function! Testtemp()
+" 	execute ":'<,'>s/\\([a-z].*\\)/\"\\u\\1_\\1\"/g"
+" endfunction
+" :command! Testtemp call Testtemp()
+" nmap <C-y> :Testtemp<CR>
 
-""git 
-nnoremap <Leader>gcciwip i[WIP]<Space>ci<Space>update<Esc> 
-nnoremap <Leader>gcwip i[WIP]<Esc> 
-nnoremap <Leader>gcu iupdate<Esc> 
-nnoremap <Leader>gcm iminor<Space>modifications<Esc> 
-
-"" ruby
-nnoremap <Leader>rv i<%= %><Esc>F<Space>i 
-
-"" coverity 修正プレフィックス 
-nnoremap <Leader>cprefix i[coverity:] <Esc> 
-
-" vim script test
-function! Testtemp()
- " execute ":r! pwd"
-	execute ":'<,'>s/\\([a-z].*\\)/\"\\u\\1_\\1\"/g"
+" remove first white spaces 
+function! Rfw()
+    execute ":%s/^[\\t 　]*\\n/\xD/g"
 endfunction
+:command! Rfw call Rfw()
+nmap <C-y> :Rfw<CR>
 
-:command! Testtemp call Testtemp()
-nmap <C-y> :Testtemp<CR>
-"""""""""""""""""""""""""""""
 
 if &term =~ "xterm"
   let &t_ti .= "\e[?2004h"
@@ -592,10 +513,6 @@ if &term =~ "xterm"
   cnoremap <special> <Esc>[201~ <nop>
 endif
 
-" for vimdiff setting
-let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
-
-
 runtime! private/*.vim
 
 " binary 
@@ -608,46 +525,6 @@ augroup BinaryXXD
   autocmd BufWritePost * if &binary | silent %!xxd -g 1
   autocmd BufWritePost * set nomod | endif
 augroup END
-
-
-" 201212: jinja syntax install
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-
-" 導入したいプラグインを以下に列挙
-" Plugin '[Github Author]/[Github repo]' の形式で記入
-Plugin 'airblade/vim-gitgutter'
-Plugin 'glench/vim-jinja2-syntax'
-
-call vundle#end()
-filetype plugin indent on
-
-"""""""""""""""""""""""""""""
-" remove first white spaces
-function! Rfw()
- execute ":%s/^[\\t 　]*\\n/\xD/g"
- " execute ":r! pwd"
-endfunction
-
-:command! Rfw call Rfw()
-nmap <C-y> :Rfw<CR>
-"""""""""""""""""""""""""""""
-
-
-"""""""""""""""""""""""""""""
-" 210125: bash on windows yank to clipboard
-" func! GetSelectedText()
-"   normal gv"xy
-"   let result = getreg("x")
-"   return result
-" endfunc
-" 
-" noremap <C-c> :call system('/mnt/c/Windows/System32/clip.exe', GetSelectedText())<CR>
-"""""""""""""""""""""""""""""
 
 """""""""""""""""""""""""""""
 " aligment xml by vim
@@ -679,25 +556,12 @@ endfunction
 
 :command! AddB call AddB()
 
-" 240418: wslでyankをクリップボードに入れる
-if system('uname -a | grep -i microsoft') != ''
-  augroup myYank
-    autocmd!
-    autocmd TextYankPost * :call system('clip.exe', @")
-  augroup END
-endif
+" diff
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-
-if executable('win32yank.exe')
-  au TextYankPost * call system('win32yank.exe -i &', @")
-    function Paste(p)
-      let sysclip=system('win32yank.exe -o')
-        if sysclip != @"
-	  let @"=sysclip
-	endif
-	return a:p
-  endfunction
-  noremap <expr> p Paste('p')
-  noremap <expr> P Paste('P')
-endif
+" for vimdiff setting
+let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
 

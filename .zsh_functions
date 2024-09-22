@@ -1,0 +1,70 @@
+function gchange_author_committer () {
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$1'; GIT_AUTHOR_EMAIL='$2'; GIT_COMMITTER_NAME='$1'; GIT_COMMITTER_EMAIL='$2';" HEAD
+}
+
+function gchange_author_committer_w0530 () {
+  git filter-branch -f --env-filter "GIT_AUTHOR_NAME='whiroshi0530'; GIT_AUTHOR_EMAIL='whiroshi0530@gmail.com'; GIT_COMMITTER_NAME='whiroshi0530'; GIT_COMMITTER_EMAIL='whiroshi0530@gmail.com';" HEAD
+}
+
+function psa () { 
+  ps aux | grep $1;
+} 
+
+function dcexec () { 
+  docker-compose exec $1 /bin/zsh;
+} 
+
+# file system 
+function mkcd() { 
+  mkdir $1 && cd $1
+} 
+
+# convert to snakecase to camelcase
+function cc() {
+  perl -pe 's#(_|^)(.)#\u$2#g'
+}
+
+# convert to camelcase to snakecase
+function sc() {
+  perl -pe 's#([A-Z])#_\L$1#g' | perl -pe 's#^_##'
+}
+
+function hdate() {
+  d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
+  echo "date: "$d
+}
+
+function hlastdate() {
+  d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
+  echo "lastmod: "$d
+}
+
+function number24() {
+  seq -w 24
+}
+
+function ca() {
+  conda activate $1
+}
+
+function cda() {
+  conda deactivate
+}
+
+function md_to_latex() {
+   -r markdown-auto_identifiers -w latex $1.md -o $1.tex
+}
+ 
+# ghq
+function cdg() {
+  dir=$(ghq list | fzf -1 +m)
+  if [[ -n "$dir" ]]; then
+    cd $(ghq root)/$dir
+  fi
+}
+
+
+function vfzf() {
+    v $(fzf-tmux -p) 
+}
+
