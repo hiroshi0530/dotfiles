@@ -440,7 +440,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="/opt/poetry/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 
-<<<<<<< HEAD
 # 240418: 文字コードの設定
 export LC_ALL='en_US.UTF-8'
 export LC_CTYPE='ja_JP.UTF-8'
@@ -457,7 +456,7 @@ export DISPLAY=:0
 export PATH=$PATH:/home/gvatech111/.pulumi/bin
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-=======
+
 export PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
 
 eval "$(gh completion -s bash)"
