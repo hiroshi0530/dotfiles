@@ -39,3 +39,11 @@ yarn-error.log*
 
 .vim/view/
 .vim/plugged/
+
+curl_check.sh
+execute.sh
+
+execute_docker_build.sh
+execute_docker_run.sh
+execute_uvicorn.sh
+execute_pytest.sh

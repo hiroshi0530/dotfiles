@@ -407,8 +407,11 @@ export PS1="\w $ "
 # git 補完
 # source /usr/local/etc/bash_completion.d/git-prompt.sh
 # source /usr/local/etc/bash_completion.d/git-completion.bash
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
-source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+# source /Library/Developer/CommandLineTools/usr/share/git-core/git-prompt.sh
+# source /Library/Developer/CommandLineTools/usr/share/git-core/git-completion.bash
+
+source /usr/share/git/completion/git-completion.bash
+source /usr/share/git/completion/git-prompt.sh
 
 # pythonを実行したとき、__pycache__を生成しないようにする
 export PYTHONDONTWRITEBYTECODE=1
@@ -418,13 +421,12 @@ export PYTHONDONTWRITEBYTECODE=1
 [ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash ] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.bash
 
 # 200805_conda
-source ~/anaconda3/etc/profile.d/conda.sh
+# source ~/anaconda3/etc/profile.d/conda.sh  # commented out by conda initialize
 
 # 200805_julia
-alias julia='/usr/local/bin/julia'
 # exec $SHELL
 
-eval "$(/usr/local/bin/brew shellenv)"
+# eval "$(/usr/local/bin/brew shellenv)"
 
 export SHELL="/bin/bash"
 
@@ -433,8 +435,21 @@ export PATH=/usr/local/texlive/2022/bin/universal-darwin:$PATH
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="/opt/poetry/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
 
-export PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
+# 240418: 文字コードの設定
+export LC_ALL='en_US.UTF-8'
+export LC_CTYPE='ja_JP.UTF-8'
 
 # 240418: GPGのコミット認証がこれがないとうまくいかない（かっこも必要だった）
 export GPG_TTY=$(tty)
+
+
+eval "$(~/.local/bin/mise activate bash)"
+
+export DISPLAY=:0
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/gvatech111/.pulumi/bin
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

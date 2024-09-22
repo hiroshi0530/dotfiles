@@ -1,0 +1,161 @@
+setopt glob
+setopt extended_glob
+
+setopt prompt_subst
+# export PS1='%F{green}z) %f%~ $ '
+export PS1='%~ $ '
+
+autoload -Uz compinit
+compinit
+
+# エディタ
+export EDITOR='vim'
+
+# ページャー
+export PAGER='less'
+
+# 新規ファイルの権限を設定
+umask 022
+
+# ディレクトリの補完
+compdef _directories cd
+
+# bashのcompleteコマンドに相当するcompdefを使用
+# コマンドの補完
+compdef _command man command type which
+
+# シェルオプションの補完
+compdef _setopt setopt
+compdef _shopt shopt
+
+# エイリアスの補完
+compdef _aliases unalias
+
+# ビルドインコマンドの補完
+compdef _builtin builtin
+
+# キーバインドの補完
+compdef _bindkey bind
+
+# 履歴ファイルの最大履歴数
+HISTFILESIZE=10240
+
+# 実行中プロセスの最大履歴数
+HISTSIZE=10240
+
+# 連続した重複履歴を排除
+HISTCONTROL=ignoredups
+
+# 1～3文字のコマンドと exitを履歴記録対象から除外
+HISTIGNORE='?:??:???:exit'
+
+# 複数行コマンドのコマンド履歴を追加
+setopt inc_append_history
+
+# 編集バッファにコマンド履歴を読み込み
+setopt hist_verify
+
+# 複数端末間でコマンド履歴を共有
+setopt share_history
+
+# ウィンドウサイズの自動更新
+TRAPWINCH() {
+  [[ -t 1 ]] && stty size >& /dev/null
+}
+
+# グロブが失敗してもエラーを出さない
+setopt no_nomatch
+
+
+# XON/XOFF によるフローコントロールを有効化
+stty -ixon
+
+
+# オプション
+export LESS='--line-numbers --no-init --quit-if-one-screen --RAW-CONTROL-CHAR --hilite-search --jump-target=10 --chop-long-lines --shift 5 -P?f--Less-- %f: %pb%'
+
+# 配色（太字）
+export LESS_TERMCAP_mb=$'\e[1;36m'
+export LESS_TERMCAP_md=$'\e[1;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+
+# 配色（モードライン）
+export LESS_TERMCAP_so=$'\e[1;44m'
+export LESS_TERMCAP_se=$'\e[0m'
+
+# 配色（アンダーライン）
+export LESS_TERMCAP_us=$'\e[4;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+
+# ソースコードのハイライト
+export LESSOPEN="| src-hilite-lesspipe.sh %s"
+
+## ####################################################################
+## @ tmux
+
+# tmpディレクトリ
+export TMUX_TMPDIR="/var/tmp"
+
+## ####################################################################
+## @ ユーザ関数
+
+# クリップボード上のパスにディレクトリ移動
+function ccd {
+    local dir="$(cat /dev/clipboard)"
+    if [[ -d "$dir" ]] ; then
+        builtin cd "$dir"
+    else
+        builtin cd /desktop
+    fi
+}
+
+# ANISカラーコード表示
+function ansi_color {
+    for a in 3 4 ; do
+        for b in 0 1 2 4 7 ; do
+            for n in ${a}0 ${a}1 ${a}2 ${a}3 ${a}4 ${a}5 ${a}6 ${a}7 ; do
+                echo -en "\e[${b};${n}m"
+                echo -n  "\e[${b};${n}m"
+                echo -ne "\e[0m"
+                echo -n  "  "
+            done
+            echo
+        done
+        echo
+    done
+}
+
+# コマンド未検出時の制御
+function command_not_found_handler {
+    echo "$SHELL: $1: command not found"
+    return 127
+}
+
+####################################################################
+case $TERM in
+    xterm*)
+        # ソースファイルを読み込む設定
+        ;;
+esac
+
+setopt vi
+
+# Pythonの__pycache__を生成しない
+export PYTHONDONTWRITEBYTECODE=1
+
+# AWS CLIの補完
+compdef _aws_completer aws
+
+# 
+if [ -f ~/.zsh_aliases ]; then
+    source ~/.zsh_aliases
+fi
+
+if [ -f ~/.zsh_functions ]; then
+    source ~/.zsh_functions
+fi
+
+if [ -f ~/.zsh_private_aliases ]; then
+    source ~/.zsh_private_aliases
+fi
+
