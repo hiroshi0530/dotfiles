@@ -1,7 +1,6 @@
 # 190115 aliasをvim :!コマンドから実行できるようにする
 shopt -s expand_aliases
 
-# change directory
 alias c='cd'
 alias u='cd ../'
 alias ..='cd ../../'
@@ -168,6 +167,8 @@ alias gdc='git diff ^HEAD'
 alias ga='git add .'
 alias gdt='git difftool -y' 
 
+alias gdt='git difftool -y'
+
 alias gplom='git pull origin master'
 alias gphom='git push origin master'
 
@@ -262,6 +263,7 @@ alias jn='jupyter notebook'
 alias pr='poetry run'
 alias pi='poetry install'
 alias prp='poetry run python'
+alias ghb="gh browse"
 
 function dcexec () { 
   docker-compose exec $1 /bin/bash;
@@ -320,4 +322,3 @@ alias ruby='~/.rbenv/versions/3.0.1/bin/ruby'
 function md_to_latex() {
   pandoc -r markdown-auto_identifiers -w latex $1.md -o $1.tex
 }
-

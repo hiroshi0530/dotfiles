@@ -31,6 +31,18 @@
         "prefix": "LQ",
         "body": [
             "\\mathbf{\\hat{L}_Q}"
-        ],
+        ]
+    },
+    "APR": {
+        "prefix": "APR",
+        "body": [
+            "\\tilde{\\mathbf{A}}"
+        ]
+    },
+    "AGPPR": {
+        "prefix": "AGPPR",
+        "body": [
+            "\\mathbf{A}_{\\text{GPPR}}"
+        ]
     }
 }
