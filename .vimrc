@@ -34,6 +34,7 @@ endif
 
 " macOS
 if has('macunix')
+    set clipboard+=unnamed
 endif
 
 " Windows
