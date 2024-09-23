@@ -119,7 +119,6 @@ alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
 alias gexport='git archive --format zip --output'
-alias gdel='git branch -D'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 alias gll='git log --graph --pretty=oneline --abbrev-commit'
 alias gg="git log --graph --pretty=format:'%h -%d %s (%cr)' --abbrev-commit --date=relative"
@@ -170,6 +169,8 @@ alias gcd='git checkout develop'
 
 alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
 alias gb='git branch -a'
+alias gbD='git branch -D'
+alias gbd='git branch -d'
 alias gr='git remote -v'
 alias gf='git fetch --all'
 
