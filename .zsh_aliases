@@ -34,6 +34,8 @@ alias vpa='nvim ~/.zsh_private_aliases'
 alias vt='nvim ~/.tmux.conf'
 
 alias loadz='source ~/.zshrc'
+alias loadb='source ~/.bashrc'
+alias loadt='tmux source-file ~/.tmux.conf'
 
 alias cl='clear'
 alias e='exit'
