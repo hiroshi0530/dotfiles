@@ -34,7 +34,7 @@ endif
 
 " macOS
 if has('macunix')
-    set clipboard+=unnamed
+  set clipboard+=unnamed
 endif
 
 " Windows
@@ -44,36 +44,11 @@ endif
 " WSL
 if has('wsl')
 
-    " 240515: wslでyankをクリップボードに入れる。win32yank.exeを使う場合。
-    if executable('win32yank.exe')
-      " ヤンク後にクリップボードにコピー
-      augroup clipboard
-        autocmd!
-        " autocmd TextYankPost * call system('win32yank.exe -i', @")
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system('win32yank.exe -i', @") | endif
-      augroup END
-    
-    
-      " クリップボードからペーストする関数
-      function! Paste(p)
-        let sysclip = system('win32yank.exe -o')
-        if sysclip != @"
-          let @" = sysclip
-        endif
-        return a:p
-      endfunction
-    
-    
-      " ペーストマッピング
-      noremap <expr> p Paste('p')
-      noremap <expr> P Paste('P')
-    
-    
-    endif
-    
+  " 240515: wslでyankをクリップボードに入れる。win32yank.exeを使う場合。
+  if executable('win32yank.exe')
     set clipboard=unnamed
     let g:clipboard = {
-            \   'name': 'myClipboard',
+            \   'name': 'wsl_clipboard',
             \   'copy': {
             \      '+': 'win32yank.exe -i',
             \      '*': 'win32yank.exe -i',
@@ -84,6 +59,10 @@ if has('wsl')
             \   },
             \   'cache_enabled': 1,
             \ }
+
+  endif
+
+
 endif
 
 colorscheme lucius
