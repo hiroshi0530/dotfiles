@@ -65,8 +65,7 @@ if has('wsl')
 
 endif
 
-colorscheme lucius
-LuciusDarkHighContrast
+
 
 set fileencoding=utf-8
 set fileencodings=ucs-boms,utf-8,euc-jp,cp932
@@ -177,11 +176,7 @@ Plug 'preservim/nerdtree'
 
 Plug 'ctrlpvim/ctrlp.vim'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'nvim-tree/nvim-web-devicons'
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
@@ -191,7 +186,98 @@ Plug 'github/copilot.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" ステータスライン
+Plug 'nvim-lualine/lualine.nvim'
+
+" ファイルツリー
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
+
+" シンタックスハイライト
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" 自動補完
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'saadparwaiz1/cmp_luasnip'
+Plug 'L3MON4D3/LuaSnip'
+
+"" highlight
+Plug 'navarasu/onedark.nvim'
+
 call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""
+" Telescopeの設定
+lua << EOF
+require('telescope').setup {}
+EOF
+
+" Lualineの設定
+lua << EOF
+require('lualine').setup {
+  options = { theme = 'gruvbox' },
+}
+EOF
+
+" Nvim-treeの設定
+lua << EOF
+require('nvim-tree').setup {}
+EOF
+
+" Treesitterの設定
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {
+      'lua',
+      'ruby',
+      'python',
+      'toml',
+      'c_sharp',
+      'vue',
+    }
+  }
+}
+EOF
+
+" 自動補完の設定
+lua << EOF
+local cmp = require'cmp'
+cmp.setup({
+  snippet = {
+    expand = function(args)
+      require'luasnip'.lsp_expand(args.body)
+    end,
+  },
+  mapping = {
+    ['<Tab>'] = cmp.mapping.select_next_item(),
+    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = {
+    { name = 'nvim_lsp' },
+    { name = 'buffer' },
+  }
+})
+EOF
+
+lua << EOF
+require'nvim-web-devicons'.setup {
+  -- global default (default to false)
+  -- will get overridden by `get_icons` option
+  default = true;
+}
+EOF
+
+" colorscheme lucius
+" LuciusDarkHighContrast
+let g:onedark_config = {
+    \ 'style': 'deep',
+\}
+colorscheme onedark
+
 """"""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -233,7 +319,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""
 
-nmap <C-t> :NERDTreeToggle<CR>
+" "nmap <C-t> :NERDTreeToggle<CR>
+nmap <C-t> :NvimTreeToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " pythonファイルの場合、tabを4にするように明示的に記載
@@ -535,12 +622,20 @@ function! AddB()
 endfunction
 
 :command! AddB call AddB()
+ 
+" nvim diff
+" 追加された行の強調表示（背景色を有効にする）
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22 guifg=NONE guibg=#000000
 
-" diff
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+" 削除された行の強調表示（背景色を有効にする）
+highlight DiffDelete cterm=bold ctermfg=9  ctermbg=52 guifg=NONE guibg=#000000
+
+" 変更された行の強調表示（背景色を有効にする）
+highlight DiffChange cterm=bold ctermfg=11 ctermbg=17 guifg=NONE guibg=#000000 
+
+" 差分テキストの強調表示（背景色を有効にする）
+highlight DiffText   cterm=bold ctermfg=14 ctermbg=21 guifg=NONE guibg=#000000
+
 
 " for vimdiff setting
 let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
