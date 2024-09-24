@@ -20,10 +20,10 @@ alias gr='go run'
 alias vi='vim'
 
 # vim
-alias vd='vimdiff'
-alias vr='vim -R'
+alias vd='nvim -d'
+alias vr='nvim -R'
 alias svi='set -o vi'
-alias view='vim -R'
+alias view='nvim -R'
 
 alias vb='nvim ~/.bashrc'
 alias vz='nvim ~/.zshrc'

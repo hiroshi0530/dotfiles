@@ -38,16 +38,19 @@ compdef _builtin builtin
 compdef _bindkey bind
 
 # 履歴ファイルの最大履歴数
-HISTFILESIZE=10240
+export HISTFILESIZE=100000
 
 # 実行中プロセスの最大履歴数
-HISTSIZE=10240
+export HISTSIZE=100000
 
 # 連続した重複履歴を排除
 HISTCONTROL=ignoredups
 
 # 1～3文字のコマンドと exitを履歴記録対象から除外
 HISTIGNORE='?:??:???:exit'
+
+export HISTFILE=$HOME/.zsh_history
+export SAVEHIST=100000
 
 # 複数行コマンドのコマンド履歴を追加
 setopt inc_append_history
@@ -90,9 +93,8 @@ export LESS_TERMCAP_ue=$'\e[0m'
 # ソースコードのハイライト
 export LESSOPEN="| src-hilite-lesspipe.sh %s"
 
-## ####################################################################
-## @ tmux
-
+####################################################################
+# tmux
 # tmpディレクトリ
 export TMUX_TMPDIR="/var/tmp"
 
@@ -159,3 +161,10 @@ if [ -f ~/.zsh_private_aliases ]; then
     source ~/.zsh_private_aliases
 fi
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -U compinit && compinit -u
+
+# GPG
+export GPG_TTY=$(tty)
