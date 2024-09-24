@@ -143,35 +143,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/vim-easy-align'
 Plug 'mechatroner/rainbow_csv'
 
-" " Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-" 
-" " Multiple Plug commands can be written in a single line using | separators
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-" 
-" " On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-" 
-" " Using a non-master branch
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-" 
-" " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-" 
-" " Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-" 
-" " Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" 
-" Initialize plugin system
-"
-
-"190913: syntax-highlight for tsx
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
 Plug 'preservim/nerdtree'
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -197,10 +168,14 @@ Plug 'nvim-tree/nvim-web-devicons'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " 自動補完
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip'
-Plug 'L3MON4D3/LuaSnip'
+Plug 'hrsh7th/nvim-cmp'         " nvim-cmp本体
+Plug 'hrsh7th/cmp-nvim-lsp'     " LSP補完
+Plug 'hrsh7th/cmp-buffer'       " バッファ補完
+Plug 'hrsh7th/cmp-path'         " パス補完
+Plug 'hrsh7th/cmp-cmdline'      " コマンドライン補完
+Plug 'L3MON4D3/LuaSnip'         " スニペットエンジン
+Plug 'saadparwaiz1/cmp_luasnip' " LuaSnipとの連携
+Plug 'neovim/nvim-lspconfig'
 
 "" highlight
 Plug 'navarasu/onedark.nvim'
@@ -220,10 +195,30 @@ require('lualine').setup {
 }
 EOF
 
-" Nvim-treeの設定
+" Nvim-treeの設定 
 lua << EOF
-require('nvim-tree').setup {}
+
+require('nvim-tree').setup({
+  view = {
+    width = 30,  -- 必要に応じてツリーの幅を調整
+  },
+  -- ファイルツリーが開かれた際にカスタムキーマッピングを設定
+  -- on_attach = function(bufnr)
+  --   local api = require('nvim-tree.api')
+
+  --   -- キーマッピング設定
+  --   local opts = { noremap = true, silent = true, nowait = true, buffer = bufnr }
+
+  --   -- "s"キーで垂直分割してファイルを開く
+  --   vim.keymap.set('n', 's', api.node.open.vertical, opts)
+
+  --   -- "i"キーで水平分割してファイルを開く
+  --   vim.keymap.set('n', 'i', api.node.open.horizontal, opts)
+  -- end,
+})
+
 EOF
+
 
 " Treesitterの設定
 lua <<EOF
@@ -245,23 +240,46 @@ EOF
 " 自動補完の設定
 lua << EOF
 local cmp = require'cmp'
+
+-- cmpの設定
 cmp.setup({
   snippet = {
     expand = function(args)
-      require'luasnip'.lsp_expand(args.body)
+      require('luasnip').lsp_expand(args.body) -- LuaSnipをスニペットエンジンとして使用
     end,
   },
   mapping = {
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-n>'] = cmp.mapping.select_next_item(), -- 次の補完候補を選択
+    ['<C-p>'] = cmp.mapping.select_prev_item(), -- 前の補完候補を選択
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Enterで補完を確定
+    ['<C-Space>'] = cmp.mapping.complete(), -- 手動で補完を呼び出し
   },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' }, -- LSPからの補完
+    { name = 'luasnip' },  -- スニペットからの補完
+  }, {
+    { name = 'buffer' },   -- バッファからの補完
+    { name = 'path' },     -- パス補完
+  })
+})
+
+-- コマンドラインの補完設定
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
+    { name = 'path' },      -- パス補完
+    { name = 'cmdline' }    -- コマンドライン補完
   }
 })
+
+-- LSPサーバーの設定（例：nvim-lspconfigを使用）
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+require('lspconfig')['pyright'].setup {
+  capabilities = capabilities
+}
 EOF
+
+
 
 lua << EOF
 require'nvim-web-devicons'.setup {
@@ -278,8 +296,14 @@ let g:onedark_config = {
 \}
 colorscheme onedark
 
-""""""""""""""""""""""""""""""""""""""""""""""
+" poetryで作られた仮想環境を自動的に抽出
+function! SetPoetryPython()
+  let s:poetry_venv = system('poetry env info --path')
+  let g:python3_host_prog = substitute(s:poetry_venv, '\n', '', '') . '/bin/python'
+endfunction
 
+" Pythonファイルを開くたびに仮想環境を設定
+autocmd BufEnter *.py call SetPoetryPython()
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " markdown-preview config
@@ -640,3 +664,6 @@ highlight DiffText   cterm=bold ctermfg=14 ctermbg=21 guifg=NONE guibg=#000000
 " for vimdiff setting
 let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
 
+
+
+nnoremap <C-q> :Files<CR>:call fzf#run({'sink': 'vsplit'})<CR>

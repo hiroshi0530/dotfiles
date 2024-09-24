@@ -257,6 +257,7 @@ alias jn='jupyter notebook'
 
 # poetry
 alias por='poetry run'
+alias pos='poetry shell'
 alias poi='poetry install'
 alias porp='poetry run python'
 
