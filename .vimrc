@@ -292,7 +292,7 @@ EOF
 " colorscheme lucius
 " LuciusDarkHighContrast
 let g:onedark_config = {
-    \ 'style': 'deep',
+    \ 'style': 'darker',
 \}
 colorscheme onedark
 

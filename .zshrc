@@ -168,3 +168,21 @@ autoload -U compinit && compinit -u
 
 # GPG
 export GPG_TTY=$(tty)
+
+# OSの種類を取得
+os_name=$(uname -s)
+
+# macOSの場合
+if [[ "$os_name" == "Darwin" ]]; then
+    source /opt/homebrew/Cellar/fzf/0.55.0/shell/key-bindings.zsh
+
+# Linuxの場合
+elif [[ "$os_name" == "Linux" ]]; then
+    
+# Windows (WSL) の場合
+elif [[ "$os_name" == "CYGWIN" || "$os_type" == "MINGW" || "$os_type" == "MSYS" ]]; then
+    
+# その他のOSの場合
+else
+    echo "Unknown OS detected: $os_name"
+fi
