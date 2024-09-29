@@ -294,7 +294,31 @@ EOF
 let g:onedark_config = {
     \ 'style': 'darker',
 \}
+
+" comment の色を修正
+" これだけでは不十分で以下のshellなどの設定も別途追加
+lua << EOF
+require('onedark').setup {
+  colors = {
+    bright_orange = "#ff8800",
+  },
+  highlights = {
+    ["@comment"] = {fg = '##8F917F'},
+    -- ["@keyword"] = {fg = '$green'},
+    -- ["@string"] = {fg = '$bright_orange', bg = '#00ff00', fmt = 'bold'},
+    -- ["@function"] = {fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic'},
+    -- ["@function.builtin"] = {fg = '#0059ff'}
+  }
+}
+EOF
+
 colorscheme onedark
+
+" shellのコメント部分の色を変更
+" colorscheme の後
+autocmd BufEnter * highlight Comment ctermfg=White guifg=#8F917F
+autocmd FileType sh highlight Comment ctermfg=White guifg=#BFC5CA
+
 
 " poetryで作られた仮想環境を自動的に抽出
 function! SetPoetryPython()
@@ -660,10 +684,18 @@ highlight DiffChange cterm=bold ctermfg=11 ctermbg=17 guifg=NONE guibg=#000000
 " 差分テキストの強調表示（背景色を有効にする）
 highlight DiffText   cterm=bold ctermfg=14 ctermbg=21 guifg=NONE guibg=#000000
 
-
-" for vimdiff setting
+" vimdiff setting
 let g:netrw_rsync_cmd = 'rsync -a --no-o --no-g --rsync-path="sudo rsync" -e "ssh -oPermitLocalCommand=no"'
 
-
-
-nnoremap <C-q> :Files<CR>:call fzf#run({'sink': 'vsplit'})<CR>
+" ファイルを開いたとき、自動でクローズした場所にカーソルを移動する
+augroup restore-cursor
+  autocmd!
+  autocmd BufReadPost *
+        \ : if line("'\"") >= 1 && line("'\"") <= line("$")
+        \ |   exe "normal! g`\""
+        \ | endif
+  autocmd BufWinEnter *
+        \ : if empty(&buftype) && line('.') > winheight(0) / 2
+        \ |   execute 'normal! zz'
+        \ | endif
+augroup END

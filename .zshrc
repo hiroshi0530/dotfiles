@@ -157,6 +157,10 @@ if [ -f ~/.zsh_functions ]; then
     source ~/.zsh_functions
 fi
 
+if [ -f ~/.zsh_private ]; then
+    source ~/.zsh_private
+fi
+
 if [ -f ~/.zsh_private_aliases ]; then
     source ~/.zsh_private_aliases
 fi
@@ -186,3 +190,4 @@ elif [[ "$os_name" == "CYGWIN" || "$os_type" == "MINGW" || "$os_type" == "MSYS" 
 else
     echo "Unknown OS detected: $os_name"
 fi
+
