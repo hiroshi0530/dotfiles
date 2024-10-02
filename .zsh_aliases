@@ -4,6 +4,7 @@ setopt aliases
 # change directory
 alias c='cd'
 alias u='cd ../'
+alias d='cd -'
 alias ..='cd ../../'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
