@@ -44,24 +44,23 @@ endif
 " WSL
 if has('wsl')
 
-  " 240515: wslでyankをクリップボードに入れる。win32yank.exeを使う場合。
-  if executable('win32yank.exe')
-    set clipboard=unnamed
-    let g:clipboard = {
-            \   'name': 'wsl_clipboard',
-            \   'copy': {
-            \      '+': 'win32yank.exe -i',
-            \      '*': 'win32yank.exe -i',
-            \    },
-            \   'paste': {
-            \      '+': 'win32yank.exe -o',
-            \      '*': 'win32yank.exe -o',
-            \   },
-            \   'cache_enabled': 1,
-            \ }
-
-  endif
-
+    " 240515: wslでyankをクリップボードに入れる。win32yank.exeを使う場合。
+    if executable('win32yank.exe')
+      set clipboard=unnamed
+      let g:clipboard = {
+              \   'name': 'wsl_clipboard',
+              \   'copy': {
+              \      '+': 'win32yank.exe -i',
+              \      '*': 'win32yank.exe -i',
+              \    },
+              \   'paste': {
+              \      '+': 'win32yank.exe -o',
+              \      '*': 'win32yank.exe -o',
+              \   },
+              \   'cache_enabled': 1,
+              \ }
+  
+    endif
 
 endif
 
