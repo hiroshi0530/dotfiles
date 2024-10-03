@@ -45,7 +45,7 @@ alias e='exit'
 alias da='direnv allow'
 
 alias vssh='v ~/.ssh/config'
-alias vaws='aws ~/.aws/credentials'
+alias vaws='v ~/.aws/credentials'
 
 # list
 alias ll='ls -alGh --color'
