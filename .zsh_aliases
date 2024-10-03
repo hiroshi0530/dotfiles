@@ -46,6 +46,7 @@ alias da='direnv allow'
 
 alias vssh='v ~/.ssh/config'
 alias vaws='v ~/.aws/credentials'
+alias vgit='nvim ~/.gitconfig'
 
 # list
 alias ll='ls -alGh --color'
@@ -145,7 +146,6 @@ alias grbi='git rebase -i'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias gbr='git branch --remote'
-alias gcl='git config --list'
 alias glg='git log --stat --max-count=10'
 alias glgg='git log --graph --max-count=10'
 alias glgga='git log --graph --decorate --all'
@@ -179,8 +179,6 @@ alias gbD='git branch -D'
 alias gbd='git branch -d'
 alias gr='git remote -v'
 alias gf='git fetch --all'
-
-alias gconf='git config --list'
 
 alias gas='git am --show-current-patch'
 
