@@ -362,6 +362,7 @@ nmap <Leader>mpst <Plug>MarkdownPreviewToggle
 """"""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""
+" ga*, でcsvをalign可能
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 """"""""""""""""""""""""""""""""""""""""""""""
