@@ -1,5 +1,7 @@
 syntax on
 
+nnoremap <C-q> <C-w>
+
 set number
 set expandtab
 set mouse=a
@@ -397,7 +399,9 @@ nnoremap <Leader>cP "*P
 
 nnoremap <C-S-p> diw"0P
 
-nnoremap <Space>v  :vs<CR>:<C-u>VimShell<CR>
+nnoremap <Space>vs  :vsplit<CR>
+nnoremap <Space>hs  :split<CR>
+
 nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
 nnoremap <Space>tm  :vs<CR>:TweetVimMentions<CR>
 nnoremap <Space>ts  :TweetVimSay<CR>
@@ -450,6 +454,16 @@ nnoremap <silent> p p`]
 nnoremap <silent> P P`]
 
 nnoremap <S-y> y$
+
+nnoremap <leader>wh 10<C-w><
+nnoremap <leader>wl 10<C-w>>
+nnoremap <leader>wj 2<C-w>+
+nnoremap <leader>wk 2<C-w>-
+
+nnoremap <leader>h <C-w>h
+nnoremap <leader>k <C-w>k
+nnoremap <leader>j <C-w>j
+nnoremap <leader>l <C-w>l
 
 ""load vimrc
 noremap <F1> <ESC>:source ~/.vimrc<CR>
