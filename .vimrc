@@ -371,7 +371,7 @@ nmap ga <Plug>(EasyAlign)
 nmap <C-t> :NvimTreeToggle<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
-nnoremap <C-o> :Files<CR>
+nnoremap <C-e> :Files<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " pythonファイルの場合、tabを4にするように明示的に記載
