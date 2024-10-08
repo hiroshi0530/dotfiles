@@ -266,6 +266,7 @@ alias por='poetry run'
 alias pos='poetry shell'
 alias poi='poetry install'
 alias porp='poetry run python'
+alias popytest='poetry run pytest -vv -s'
 
 # network
 alias nst='netstat -autn'
@@ -273,3 +274,5 @@ alias nst='netstat -autn'
 # ctags
 alias ctags='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 
+# runn
+alias runrun='runn run --verbose'
