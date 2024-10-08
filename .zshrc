@@ -1,9 +1,53 @@
 setopt glob
 setopt extended_glob
 
+# setopt prompt_subst
+# # export PS1='%F{green}z) %f%~ $ '
+# export PS1='%~ $ '
+
 setopt prompt_subst
-# export PS1='%F{green}z) %f%~ $ '
-export PS1='%~ $ '
+function short_pwd {
+    local full_path=$PWD
+    local shortened_path=""
+    local part
+    local last_part
+
+    if [[ $full_path == $HOME* ]]; then
+        shortened_path="~"
+        full_path=${full_path#$HOME}
+    fi
+
+    local path_parts=(${(s:/:)full_path})
+
+    if [[ ${#path_parts[@]} -le 0 ]]; then
+        if [[ -n "$full_path" ]]; then
+            shortened_path+="$full_path"
+        fi
+        echo "$shortened_path"
+        return
+    fi
+
+    # 最後のディレクトリ名を取得
+    last_part=${path_parts[-1]}
+
+    # 途中のディレクトリを3文字に短縮（最初のディレクトリ名はフルで表示）
+    for part in ${path_parts[@]:0:-1}; do
+        if [[ -n "$part" ]]; then
+            if [[ -z "$shortened_path" ]]; then
+                shortened_path+="/$part"
+            else
+                shortened_path+="/${part:0:3}"
+            fi
+        fi
+    done
+
+    # 最後のディレクトリはそのままフルネームで表示
+    shortened_path+="/$last_part"
+
+    echo "$shortened_path"
+}
+export PS1='$(short_pwd) $ '
+
 
 autoload -Uz compinit
 compinit
