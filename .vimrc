@@ -359,18 +359,19 @@ let g:mkdp_page_title = '「${name}」'
 nmap <Leader>mp <Plug>MarkdownPreview
 nmap <Leader>mps <Plug>MarkdownPreviewStop
 nmap <Leader>mpst <Plug>MarkdownPreviewToggle
-
 " end markdown-preview
-""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " ga*, でcsvをalign可能
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""
 " "nmap <C-t> :NERDTreeToggle<CR>
 nmap <C-t> :NvimTreeToggle<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <C-o> :Files<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""
 " pythonファイルの場合、tabを4にするように明示的に記載
@@ -713,3 +714,4 @@ augroup restore-cursor
         \ |   execute 'normal! zz'
         \ | endif
 augroup END
+
