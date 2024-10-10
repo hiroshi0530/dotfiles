@@ -68,7 +68,7 @@ alias du='du -H -m'
 # grep
 alias grep='env -u LC_CTYPE grep --color=always'
 alias zgrep='env -u LC_CTYPE zgrep --color=always'
-export GREP_COLOR='01;41'
+export GREP_COLORS='mt=01;41'
 
 # diffutils
 alias sdiff='sdiff -l'
