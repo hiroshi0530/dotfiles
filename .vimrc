@@ -144,6 +144,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/vim-easy-align'
 Plug 'mechatroner/rainbow_csv'
 
+Plug 'psf/black', { 'branch': 'stable' }
+
 Plug 'preservim/nerdtree'
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -312,6 +314,9 @@ require('onedark').setup {
   }
 }
 EOF
+
+" black & isortの設定 
+noremap <Leader>b <ESC>:wa<CR>:!isort %<CR><CR>:!black %<CR><CR>
 
 colorscheme onedark
 

@@ -264,6 +264,7 @@ alias bip='bundle install --path vendor/bundler'
 alias jn='jupyter notebook'
 
 # poetry
+alias poa='poetry add'
 alias por='poetry run'
 alias pos='poetry shell'
 alias poi='poetry install'
