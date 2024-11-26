@@ -14,8 +14,10 @@ alias ......='cd ../../../../../../'
 # program
 alias p='python'
 alias r='ruby'
-alias g='go'
 alias t='tmux'
+alias a='aws'
+alias g='gcloud'
+alias go='go'
 alias gr='go run'
 
 # vim
@@ -36,8 +38,8 @@ alias vp='nvim ~/.zsh_private'
 alias vpa='nvim ~/.zsh_private_aliases'
 alias vt='nvim ~/.tmux.conf'
 
-alias loadz='source ~/.zshrc'
 alias loadb='source ~/.bashrc'
+alias loadz='source ~/.zshrc'
 alias loadt='tmux source-file ~/.tmux.conf'
 
 alias cl='clear'
@@ -68,7 +70,7 @@ alias du='du -H -m'
 # grep
 alias grep='env -u LC_CTYPE grep --color=always'
 alias zgrep='env -u LC_CTYPE zgrep --color=always'
-export GREP_COLOR='01;41'
+export GREP_COLORS='mt=01;41'
 
 # diffutils
 alias sdiff='sdiff -l'
@@ -111,7 +113,7 @@ alias gss='git status -s'
 alias gpl='git pull'
 alias gpr='git pull --rebase'
 alias gpp='git pull && git push'
-alias gup='git fetch && git rebase'
+alias gfr='git fetch --all && git rebase'
 alias gps='git push'
 alias gpo='git push origin'
 
@@ -262,6 +264,7 @@ alias bip='bundle install --path vendor/bundler'
 alias jn='jupyter notebook'
 
 # poetry
+alias poa='poetry add'
 alias por='poetry run'
 alias pos='poetry shell'
 alias poi='poetry install'

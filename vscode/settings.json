@@ -156,15 +156,33 @@
       ]
     },
     {
-      "before": [
-        "<C-o>",
-        "d"
-      ],
+      "before": ["<C-o>", "d"],
       "after": [],
       "commands": [
         {
-          // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
-          "command": "notebook.cell.delete",
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            // "command": "notebook.cell.delete",
+            "command": "notebook.cell.cut",
+        }
+      ]
+    },
+    {
+      "before": ["<C-o>", "c"],
+      "after": [],
+      "commands": [
+        {
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            "command": "notebook.cell.copy",
+        }
+      ]
+    },
+    {
+      "before": ["<C-o>", "p"],
+      "after": [],
+      "commands": [
+        {
+            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+            "command": "notebook.cell.paste",
         }
       ]
     },
