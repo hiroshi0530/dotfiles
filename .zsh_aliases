@@ -115,7 +115,7 @@ alias gpr='git pull --rebase'
 alias gpp='git pull && git push'
 alias gfr='git fetch --all && git rebase'
 alias gps='git push'
-alias gpo='git push origin'
+alias gpso='git push origin'
 
 alias gdv='git diff -w "$@" | vim -R -'
 
@@ -221,6 +221,14 @@ function drc() {
   [ -n "$cname" ] && docker rm $cname
 }
 
+
+function dexec() {
+  local cname=$(docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}" | sed 1d | fzf -1 +m | awk '{print $1}')
+  if [ -n "$cname" ]; then
+    docker exec -it $cname bash -c 'echo "set -o vi" >> /root/.bashrc && echo "alias ll=\"ls -alh --color\"" >> /root/.bashrc && exec bash'
+  fi
+}
+
 # 全コンテナを削除
 alias drca='docker ps -aq | xargs docker rm'
 
@@ -268,6 +276,7 @@ alias poa='poetry add'
 alias por='poetry run'
 alias pos='poetry shell'
 alias poi='poetry install'
+alias pob='poetry build'
 alias porp='poetry run python'
 alias popytest='poetry run pytest -vv -s'
 
