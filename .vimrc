@@ -720,3 +720,8 @@ augroup restore-cursor
         \ | endif
 augroup END
 
+
+" vim で全文検索
+command! -nargs=* Grep call fzf#vim#grep('grep -R '.shellescape(<q-args>). ' .', 1, {}, 0)
+nnoremap <silent> <leader>g :Grep<space>
+
