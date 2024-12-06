@@ -317,6 +317,7 @@ EOF
 
 " black & isortの設定 
 noremap <Leader>b <ESC>:wa<CR>:!isort %<CR><CR>:!black %<CR><CR>
+noremap <Leader>r <ESC>:wa<CR>:!ruff %<CR><CR>
 
 colorscheme onedark
 
