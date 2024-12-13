@@ -19,6 +19,7 @@ alias a='aws'
 alias g='gcloud'
 alias go='go'
 alias gr='go run'
+alias ip='ipython'
 
 # vim
 alias v='nvim'
@@ -166,6 +167,7 @@ alias gda='git diff'
 alias gdc='git diff ^HEAD'
 alias ga='git add .'
 alias gdt='git difftool -y' 
+alias gdtn='git difftool -y --name-only' 
 
 alias gplom='git pull origin master'
 alias gphom='git push origin master'

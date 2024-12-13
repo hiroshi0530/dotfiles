@@ -222,7 +222,6 @@ require('nvim-tree').setup({
 
 EOF
 
-
 " Treesitterの設定
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -230,11 +229,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     disable = {
       'lua',
-      'ruby',
-      'python',
-      'toml',
-      'c_sharp',
-      'vue',
     }
   }
 }
@@ -724,5 +718,5 @@ augroup END
 
 " vim で全文検索
 command! -nargs=* Grep call fzf#vim#grep('grep -R '.shellescape(<q-args>). ' .', 1, {}, 0)
-nnoremap <silent> <leader>g :Grep<space>
+nnoremap <silent> <leader>f :Grep<space>
 
