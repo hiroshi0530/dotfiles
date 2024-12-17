@@ -20,6 +20,7 @@ alias g='gcloud'
 alias go='go'
 alias gr='go run'
 alias ip='ipython'
+alias w='which'
 
 # vim
 alias v='nvim'
