@@ -2,7 +2,6 @@
 setopt aliases
 
 # change directory
-alias c='cd'
 alias u='cd ../'
 alias d='cd -'
 alias ..='cd ../../'
@@ -21,6 +20,9 @@ alias go='go'
 alias gr='go run'
 alias ip='ipython'
 alias w='which'
+alias c='cargo'
+alias cr='cargo run'
+alias cb='cargo build'
 
 # vim
 alias v='nvim'
