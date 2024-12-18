@@ -203,7 +203,7 @@ alias tkillw='tmux kill-window'
 
 # docker
 alias di='docker images'
-alias dps='docker ps -a'
+alias dps='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}"'
 alias dcl='docker container ls -a'
 
 function dst() {
