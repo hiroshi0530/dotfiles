@@ -2,7 +2,6 @@
 setopt aliases
 
 # change directory
-alias c='cd'
 alias u='cd ../'
 alias d='cd -'
 alias ..='cd ../../'
@@ -12,11 +11,19 @@ alias .....='cd ../../../../../'
 alias ......='cd ../../../../../../'
 
 # program
-alias p='python'
-alias r='ruby'
-alias g='go'
 alias t='tmux'
+alias w='which'
+alias p='python'
+alias ip='ipython'
+alias r='ruby'
+alias a='aws'
+alias g='gcloud'
+alias go='go'
 alias gr='go run'
+alias gb='go build'
+alias c='cargo'
+alias cr='cargo run'
+alias cb='cargo build'
 
 # vim
 alias v='nvim'
@@ -36,8 +43,8 @@ alias vp='nvim ~/.zsh_private'
 alias vpa='nvim ~/.zsh_private_aliases'
 alias vt='nvim ~/.tmux.conf'
 
-alias loadz='source ~/.zshrc'
 alias loadb='source ~/.bashrc'
+alias loadz='source ~/.zshrc'
 alias loadt='tmux source-file ~/.tmux.conf'
 
 alias cl='clear'
@@ -68,7 +75,7 @@ alias du='du -H -m'
 # grep
 alias grep='env -u LC_CTYPE grep --color=always'
 alias zgrep='env -u LC_CTYPE zgrep --color=always'
-export GREP_COLOR='01;41'
+export GREP_COLORS='mt=01;41'
 
 # diffutils
 alias sdiff='sdiff -l'
@@ -111,9 +118,9 @@ alias gss='git status -s'
 alias gpl='git pull'
 alias gpr='git pull --rebase'
 alias gpp='git pull && git push'
-alias gup='git fetch && git rebase'
+alias gfr='git fetch --all && git rebase'
 alias gps='git push'
-alias gpo='git push origin'
+alias gpso='git push origin'
 
 alias gdv='git diff -w "$@" | vim -R -'
 
@@ -164,6 +171,7 @@ alias gda='git diff'
 alias gdc='git diff ^HEAD'
 alias ga='git add .'
 alias gdt='git difftool -y' 
+alias gdtn='git difftool -y --name-only' 
 
 alias gplom='git pull origin master'
 alias gphom='git push origin master'
@@ -195,7 +203,7 @@ alias tkillw='tmux kill-window'
 
 # docker
 alias di='docker images'
-alias dps='docker ps -a'
+alias dps='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}"'
 alias dcl='docker container ls -a'
 
 function dst() {
@@ -217,6 +225,14 @@ function dlog() {
 function drc() {
   local cname=$(docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}" | sed 1d | fzf -1 +m | awk '{print $2}')
   [ -n "$cname" ] && docker rm $cname
+}
+
+
+function dexec() {
+  local cname=$(docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}" | sed 1d | fzf -1 +m | awk '{print $1}')
+  if [ -n "$cname" ]; then
+    docker exec -it $cname bash -c 'echo "set -o vi" >> /root/.bashrc && echo "alias ll=\"ls -alh --color\"" >> /root/.bashrc && exec bash'
+  fi
 }
 
 # 全コンテナを削除
@@ -262,10 +278,13 @@ alias bip='bundle install --path vendor/bundler'
 alias jn='jupyter notebook'
 
 # poetry
+alias poa='poetry add'
 alias por='poetry run'
 alias pos='poetry shell'
 alias poi='poetry install'
+alias pob='poetry build'
 alias porp='poetry run python'
+alias popytest='poetry run pytest -vv -s'
 
 # network
 alias nst='netstat -autn'
@@ -273,3 +292,5 @@ alias nst='netstat -autn'
 # ctags
 alias ctags='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 
+# runn
+alias runrun='runn run --verbose'

@@ -63,14 +63,26 @@ function cdg() {
   fi
 }
 
-
+# vim で開く
 function vfzf() {
     v $(fzf-tmux -p) 
 }
 
+# 下の階層へ移動
 function cdf() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
 }
 
+# 単語を含むファイルの検索
+function grepf() {
+  local keyword=$1
+  if [ -z "$keyword" ]; then
+    echo "Usage: search_files_with_fzf <keyword>"
+    return 1
+  fi
 
+  selected_file=$(grep -rl --color=never "$keyword" . | fzf --preview="cat {}" --height=40% --layout=reverse)
+  [ -n "$selected_file" ] && v "$selected_file"
+
+}

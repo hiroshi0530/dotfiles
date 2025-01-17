@@ -144,6 +144,8 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'junegunn/vim-easy-align'
 Plug 'mechatroner/rainbow_csv'
 
+Plug 'psf/black', { 'branch': 'stable' }
+
 Plug 'preservim/nerdtree'
 
 Plug 'ctrlpvim/ctrlp.vim'
@@ -220,7 +222,6 @@ require('nvim-tree').setup({
 
 EOF
 
-
 " Treesitterの設定
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
@@ -228,11 +229,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     disable = {
       'lua',
-      'ruby',
-      'python',
-      'toml',
-      'c_sharp',
-      'vue',
     }
   }
 }
@@ -312,6 +308,10 @@ require('onedark').setup {
   }
 }
 EOF
+
+" black & isortの設定 
+noremap <Leader>b <ESC>:wa<CR>:!isort %<CR><CR>:!black %<CR><CR>
+noremap <Leader>r <ESC>:wa<CR>:!ruff %<CR><CR>
 
 colorscheme onedark
 
@@ -714,4 +714,9 @@ augroup restore-cursor
         \ |   execute 'normal! zz'
         \ | endif
 augroup END
+
+
+" vim で全文検索
+command! -nargs=* Grep call fzf#vim#grep('grep -R '.shellescape(<q-args>). ' .', 1, {}, 0)
+nnoremap <silent> <leader>f :Grep<space>
 

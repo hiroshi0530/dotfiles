@@ -235,3 +235,4 @@ else
     echo "Unknown OS detected: $os_name"
 fi
 
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
