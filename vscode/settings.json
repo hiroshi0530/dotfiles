@@ -588,4 +588,8 @@
     "scminput": false
   },
   "github.copilot.editor.enableAutoCompletions": true,
+"terminal.integrated.env.osx": {
+    "PATH": "${env:PATH}:/Users/hiroshi/go/bin"
+}
+
 }
