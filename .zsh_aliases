@@ -169,9 +169,13 @@ alias gfp='git fetch --prune'
 
 alias gda='git diff'
 alias gdc='git diff ^HEAD'
-alias ga='git add .'
 alias gdt='git difftool -y' 
 alias gdtn='git difftool -y --name-only' 
+
+alias ga='git add'
+alias gaa='git add .'
+alias gaA='git add -A'
+alias gau='git add -u'
 
 alias gplom='git pull origin master'
 alias gphom='git push origin master'
@@ -203,7 +207,7 @@ alias tkillw='tmux kill-window'
 
 # docker
 alias di='docker images'
-alias dps='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}\t{{.Ports}}"'
+alias dps='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}"'
 alias dcl='docker container ls -a'
 
 function dst() {
@@ -221,12 +225,15 @@ function dlog() {
   [ -n "$cname" ] && docker logs -f $cname
 }
 
-
 function drc() {
   local cname=$(docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}" | sed 1d | fzf -1 +m | awk '{print $2}')
   [ -n "$cname" ] && docker rm $cname
 }
 
+function dri() {
+  local image_id=$(docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | sed 1d | fzf -1 +m | awk '{print $3}')
+  [ -n "$image_id" ] && docker rmi $image_id
+}
 
 function dexec() {
   local cname=$(docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}" | sed 1d | fzf -1 +m | awk '{print $1}')
@@ -234,6 +241,7 @@ function dexec() {
     docker exec -it $cname bash -c 'echo "set -o vi" >> /root/.bashrc && echo "alias ll=\"ls -alh --color\"" >> /root/.bashrc && exec bash'
   fi
 }
+
 
 # 全コンテナを削除
 alias drca='docker ps -aq | xargs docker rm'
@@ -284,7 +292,7 @@ alias pos='poetry shell'
 alias poi='poetry install'
 alias pob='poetry build'
 alias porp='poetry run python'
-alias popytest='poetry run pytest -vv -s'
+alias popytest='poetry run pytest -vv -s --disable-warnings'
 
 # network
 alias nst='netstat -autn'
