@@ -242,12 +242,34 @@ function dexec() {
   fi
 }
 
+function din() {
+  local container_id=$(docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}" | sed 1d | fzf -1 +m | awk '{print $1}')
+  [ -n "$container_id" ] && docker inspect $container_id
+}
+
+function dstats() {
+  local container_id=$(docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}" | sed 1d | fzf -1 +m | awk '{print $1}')
+  if [ -n "$container_id" ]; then
+    docker stats $container_id
+  else
+    echo "No container selected"
+  fi
+}
 
 # 全コンテナを削除
 alias drca='docker ps -aq | xargs docker rm'
 
 # 全イメージを削除
 alias dria='docker rmi $(docker images -q)'
+
+# docker compose up
+function dcpd() {
+  docker compose up -d $1
+}
+
+function dcp() {
+  docker compose up $1
+}
 
 # docker-compose
 alias dcbd='docker-compose build --no-cache'
@@ -302,3 +324,6 @@ alias ctags='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
 
 # runn
 alias runrun='runn run --verbose'
+
+# ss
+alias ss='ss -tulnp | grep '
