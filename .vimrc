@@ -332,6 +332,15 @@ nmap <silent> rt <Plug>(coc-type-definition)
 nmap <silent> ri <Plug>(coc-implementation)
 nmap <silent> rr <Plug>(coc-references)
 
+" rust-analyzerの設定
+let g:coc_global_extensions = ['coc-rust-analyzer']
+
+" rust-analyzer の設定を変更
+autocmd FileType rust let b:coc_suggest_disable = 1
+autocmd FileType rust let b:coc_rust_analyzer_settings = {
+      \ 'rust-analyzer.inlayHints.parameterHints.enable': v:false
+      \ }
+
 " black & isortの設定 
 noremap <Leader>b <ESC>:wa<CR>:!isort %<CR><CR>:!black %<CR><CR>
 noremap <Leader>r <ESC>:wa<CR>:!ruff %<CR><CR>
