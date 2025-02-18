@@ -453,7 +453,7 @@ eval "$(~/.local/bin/mise activate bash)"
 export DISPLAY=:0
 
 # add Pulumi to the PATH
-export PATH=$PATH:/home/gvatech111/.pulumi/bin
+export PATH=$PATH:"$HOME/.pulumi/bin"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
