@@ -23,7 +23,9 @@ alias gr='go run'
 alias gb='go build'
 alias c='cargo'
 alias cr='cargo run'
+alias cc='cargo check'
 alias cb='cargo build'
+alias cbr='cargo build --release'
 
 # vim
 alias v='nvim'
