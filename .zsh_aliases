@@ -14,7 +14,7 @@ alias ......='cd ../../../../../../'
 alias t='tmux'
 alias w='which'
 alias p='python'
-alias ip='ipython'
+alias ipy='ipython'
 alias r='ruby'
 alias a='aws'
 alias g='gcloud'
@@ -25,7 +25,13 @@ alias c='cargo'
 alias cr='cargo run'
 alias cc='cargo check'
 alias cb='cargo build'
+alias cadd='cargo add'
 alias cbr='cargo build --release'
+alias cwc='cargo watch -x check'
+alias cwr='cargo watch -x run'
+alias cwt='cargo watch -x test'
+
+alias tiga='tig --all'
 
 # vim
 alias v='nvim'
@@ -112,7 +118,6 @@ alias attrib='cocot attrib'
 # aliases for git
 alias gall='ga && gcu && gpom'
 alias grh='git reset --hard'
-alias gclean='git reset --hard && git clean -dfx'
 alias gm="git merge"
 alias gmt="git mergetool"
 alias get='git'
@@ -138,35 +143,29 @@ alias gco='git checkout'
 alias gcob='git checkout -b'
 alias gexport='git archive --format zip --output'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
-alias gll='git log --graph --pretty=oneline --abbrev-commit'
-alias gg="git log --graph --pretty=format:'%h -%d %s (%cr)' --abbrev-commit --date=relative"
 alias ggs="gg --stat"
 alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
 alias gt="git tag"
-alias gta="git tag -a"
-alias gtd="git tag -d"
-alias gtl="git tag -l"
 
 alias grv='git remote -v'
 alias grmv='git remote rename'
 alias grrm='git remote remove'
 alias grset='git remote set-url'
+
 alias grup='git remote update'
 alias grbi='git rebase -i'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 alias gbr='git branch --remote'
-alias glg='git log --stat --max-count=10'
-alias glgg='git log --graph --max-count=10'
-alias glgga='git log --graph --decorate --all'
-alias glo='git log --oneline --decorate --color'
-alias glog='git log --oneline --decorate --color --graph'
+
 alias gsts='git stash show --text'
 alias gstl='git --no-pager stash list'
 alias gsta='git stash'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
+
+alias gclean='git reset --hard && git clean -dfx'
 
 alias gfp='git fetch --prune'
 
@@ -174,6 +173,10 @@ alias gda='git diff'
 alias gdc='git diff ^HEAD'
 alias gdt='git difftool -y' 
 alias gdtn='git difftool -y --name-only' 
+alias gdth='git difftool -y HEAD^' 
+alias gdth2='git difftool -y HEAD^^' 
+alias gdth3='git difftool -y HEAD^^^' 
+alias gdth4='git difftool -y HEAD^^^^' 
 
 alias ga='git add'
 alias gaa='git add .'
@@ -191,6 +194,8 @@ alias gcmain='git checkout master'
 alias gcd='git checkout develop'
 
 alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
+alias gla='git log --all --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
+
 alias gb='git branch -a'
 alias gbD='git branch -D'
 alias gbd='git branch -d'
@@ -198,7 +203,6 @@ alias gr='git remote -v'
 alias gf='git fetch --all'
 
 alias gas='git am --show-current-patch'
-
 
 # tmux
 alias ta='tmux a -t'
