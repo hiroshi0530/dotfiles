@@ -207,7 +207,7 @@ alias gbD='git branch -D'
 alias gbd='git branch -d'
 alias gbr='git branch --remote'
 
-alias gpDo = 'git push --delete origin'
+alias gpDo='git push --delete origin'
 
 alias gr='git remote -v'
 alias gf='git fetch --all'
