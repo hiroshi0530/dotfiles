@@ -50,3 +50,8 @@
     name = 
     email = 
 	signingkey = 
+# gpg を無効にしたい場合
+[commit]
+    gpgSign = false
+[tag]
+    gpgSign = false

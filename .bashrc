@@ -461,3 +461,4 @@ export PATH="$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight"
 
 eval "$(gh completion -s bash)"
 . "$HOME/.cargo/env"
+. "$HOME/.deno/env"
