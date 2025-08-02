@@ -242,3 +242,32 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.deno/env"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# GO
+export GOPATH=$HOME/go:$HOME/go/ugo:$HOME/go/go_test
+export GOROOT=$( go env GOROOT )
+
+# PATH
+export PATH=/sbin:/usr/sbin:$PATH
+export PATH=$PATH:$HOME/.nodebrew/current/bin
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/man:$MANPATH
+export PATH=$HOME/anaconda3/bin:$PATH
+
+export PATH=$HOME/go/bin:$HOME/go/ugo/bin:$HOME/go/go_test/bin:$PATH
+
+export PATH=$HOME/.local/bin:$PATH
+
+export PATH=$HOME/anaconda3/bin:$PATH
+
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+export PATH="/opt/poetry/bin:$PATH"
+
+export PATH=$PATH:$HOME/.pulumi/bin
+
+export PATH=$PATH:$HOME/.cargo/bin

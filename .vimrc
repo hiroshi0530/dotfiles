@@ -180,8 +180,11 @@ Plug 'L3MON4D3/LuaSnip'         " スニペットエンジン
 Plug 'saadparwaiz1/cmp_luasnip' " LuaSnipとの連携
 Plug 'neovim/nvim-lspconfig'
 
-"" highlight
+" highlight
 Plug 'navarasu/onedark.nvim'
+
+" rust
+Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
@@ -203,7 +206,18 @@ lua << EOF
 
 require('nvim-tree').setup({
   view = {
-    width = 30,  -- 必要に応じてツリーの幅を調整
+    -- width = 31,  -- 必要に応じてツリーの幅を調整
+    float = {
+          enable = true, -- フロートウィンドウモードを有効化
+          open_win_config = {
+            relative = "editor", -- エディタ全体に対する位置
+            border = "rounded",  -- ウィンドウの枠のスタイル ("rounded", "single", "double", "none")
+            width = 90,          -- フロートウィンドウの幅
+            height = 50,         -- フロートウィンドウの高さ
+            row = 3,             -- エディタ上部からの相対位置
+            col = 10,            -- エディタ左端からの相対位置
+          },
+      },
   },
   -- ファイルツリーが開かれた際にカスタムキーマッピングを設定
   -- on_attach = function(bufnr)
@@ -308,6 +322,24 @@ require('onedark').setup {
   }
 }
 EOF
+
+" 保存時に自動でrustfmt
+let g:rustfmt_autosave = 1
+
+" rust code jump by coc rust analyzer
+nmap <silent> rd <Plug>(coc-definition)
+nmap <silent> rt <Plug>(coc-type-definition)
+nmap <silent> ri <Plug>(coc-implementation)
+nmap <silent> rr <Plug>(coc-references)
+
+" rust-analyzerの設定
+let g:coc_global_extensions = ['coc-rust-analyzer']
+
+" rust-analyzer の設定を変更
+autocmd FileType rust let b:coc_suggest_disable = 1
+autocmd FileType rust let b:coc_rust_analyzer_settings = {
+      \ 'rust-analyzer.inlayHints.parameterHints.enable': v:false
+      \ }
 
 " black & isortの設定 
 noremap <Leader>b <ESC>:wa<CR>:!isort %<CR><CR>:!black %<CR><CR>
