@@ -152,6 +152,7 @@ alias gcoh4='git checkout HEAD^^^^'
 alias gexport='git archive --format zip --output'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 
+alias ggs="gg --stat"
 alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
 alias gt="git tag"
@@ -166,11 +167,17 @@ alias grbi='git rebase -i'
 alias grbc='git rebase --continue'
 alias grba='git rebase --abort'
 
+alias gbr='git branch --remote'
+
+alias gsts='git stash show --text'
+alias gstl='git --no-pager stash list'
 alias gsta='git stash'
 alias gstp='git stash pop'
 alias gstd='git stash drop'
 alias gsts='git stash show --text'
 alias gstl='git --no-pager stash list'
+
+alias gclean='git reset --hard && git clean -dfx'
 
 alias gclean='git reset --hard && git clean -dfx'
 
@@ -181,6 +188,10 @@ alias gdc='git diff ^HEAD'
 
 alias gdt='git difftool -y' 
 alias gdtn='git difftool -y --name-only' 
+alias gdth='git difftool -y HEAD^' 
+alias gdth2='git difftool -y HEAD^^' 
+alias gdth3='git difftool -y HEAD^^^' 
+alias gdth4='git difftool -y HEAD^^^^' 
 
 alias gdth='git difftool -y HEAD' 
 alias gdth1='git difftool -y HEAD^' 
