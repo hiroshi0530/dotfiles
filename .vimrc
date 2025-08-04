@@ -241,6 +241,7 @@ lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
+    additional_vim_regex_highlighting = { "python" },
     disable = {
       'lua',
     }
@@ -322,6 +323,8 @@ require('onedark').setup {
   }
 }
 EOF
+
+let g:copilot_settings = #{selectedCompletionModel: 'gpt-4o-copilot'}
 
 " 保存時に自動でrustfmt
 let g:rustfmt_autosave = 1
