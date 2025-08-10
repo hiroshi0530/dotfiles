@@ -323,6 +323,12 @@ alias pob='poetry build'
 alias porp='poetry run python'
 alias popytest='poetry run pytest -vv -s --disable-warnings'
 
+# uv
+alias uva='uv add'
+alias uvr='uv run'
+alias uvb='uv build'
+alias uvpytest='uv run pytest -vv -s --disable-warnings'
+
 # network
 alias nst='netstat -autn'
 

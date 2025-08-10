@@ -271,3 +271,5 @@ export PATH="/opt/poetry/bin:$PATH"
 export PATH=$PATH:$HOME/.pulumi/bin
 
 export PATH=$PATH:$HOME/.cargo/bin
+
+. "$HOME/.local/bin/env"
