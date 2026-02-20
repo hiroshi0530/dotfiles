@@ -14,7 +14,11 @@ $makeindex = 'mendex %O -o %D %S';
 
 # DVI / PDF
 $dvipdf = 'dvipdfmx %O -o %D %S';
-$pdf_mode = 3;
+# $pdf_mode = 1;
+
+$pdflatex = 'xelatex -synctex=1 -halt-on-error -interaction=nonstopmode %O %S';
+$pdf_mode = 1;   # PDF直出力
+$dvi_mode = 0;   # pLaTeXモード無効化
 
 # preview
 $pvc_view_file_via_temporary = 0;
