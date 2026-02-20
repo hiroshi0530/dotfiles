@@ -446,6 +446,7 @@ export LC_CTYPE='ja_JP.UTF-8'
 
 # 240418: GPGのコミット認証がこれがないとうまくいかない（かっこも必要だった）
 export GPG_TTY=$(tty)
+<<<<<<< Updated upstream
 
 
 eval "$(~/.local/bin/mise activate bash)"
