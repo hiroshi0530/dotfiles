@@ -128,6 +128,10 @@ alias gpr='git pull --rebase'
 alias gps='git push'
 alias gpso='git push origin'
 
+alias gm_no_commit="git merge --no-commit --no-ff"
+
+alias gma="git merge --abort"
+
 alias gdv='git diff -w "$@" | vim -R -'
 
 alias gc='git commit -v'
@@ -204,6 +208,12 @@ alias gdtnh1='git difftool -y --name-only HEAD^'
 alias gdtnh2='git difftool -y --name-only HEAD^^' 
 alias gdtnh3='git difftool -y --name-only HEAD^^^' 
 alias gdtnh4='git difftool -y --name-only HEAD^^^^' 
+
+gdt_fc() {
+  local base="${1:-origin/main}"
+  local head="${2:-HEAD}"
+  git diff "$base...$head"
+}
 
 alias ga='git add'
 alias gaa='git add .'
