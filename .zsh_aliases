@@ -348,7 +348,10 @@ alias popytest='poetry run pytest -vv -s --disable-warnings'
 alias uva='uv add'
 alias uvr='uv run'
 alias uvb='uv build'
-alias uvpytest='uv run pytest -vv -s --disable-warnings'
+alias uvupgrade='uv lock --upgrade'
+# alias uvpytest='uv run pytest -vv -s --disable-warnings'
+alias uvpytest='uv run pytest -vv -s'
+# alias uvpytest='uv run pytest'
 
 # network
 alias nst='netstat -autn'

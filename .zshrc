@@ -273,3 +273,6 @@ export PATH=$PATH:$HOME/.pulumi/bin
 export PATH=$PATH:$HOME/.cargo/bin
 
 . "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/hiroshi/.antigravity/antigravity/bin:$PATH"
