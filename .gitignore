@@ -47,3 +47,10 @@ execute_docker_build.sh
 execute_docker_run.sh
 execute_uvicorn.sh
 execute_pytest.sh
+
+execute_*
+
+wa_*
+WA_*
+
+.env

@@ -156,33 +156,42 @@
       ]
     },
     {
-      "before": ["<C-o>", "d"],
+      "before": [
+        "<C-o>",
+        "d"
+      ],
       "after": [],
       "commands": [
         {
-            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
-            // "command": "notebook.cell.delete",
-            "command": "notebook.cell.cut",
+          // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+          // "command": "notebook.cell.delete",
+          "command": "notebook.cell.cut",
         }
       ]
     },
     {
-      "before": ["<C-o>", "c"],
+      "before": [
+        "<C-o>",
+        "c"
+      ],
       "after": [],
       "commands": [
         {
-            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
-            "command": "notebook.cell.copy",
+          // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+          "command": "notebook.cell.copy",
         }
       ]
     },
     {
-      "before": ["<C-o>", "p"],
+      "before": [
+        "<C-o>",
+        "p"
+      ],
       "after": [],
       "commands": [
         {
-            // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
-            "command": "notebook.cell.paste",
+          // "command": "notebook.cell.insertCodeCellBelowAndFocusContainer",
+          "command": "notebook.cell.paste",
         }
       ]
     },
@@ -541,6 +550,7 @@
   ],
   // 生成ファイルを "out" ディレクトリに吐き出す
   "latex-workshop.latex.outDir": "out",
+  "formatting.latex": "latexindent",
   // ビルドのレシピ
   "latex-workshop.latex.recipes": [
     {
@@ -582,9 +592,19 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "ms-python.black-formatter",
   "github.copilot.editor.enableAutoCompletions": true,
-"terminal.integrated.env.osx": {
+  "terminal.integrated.env.osx": {
     "PATH": "${env:PATH}:$HOME/go/bin"
-},
-"github.copilot.nextEditSuggestions.enabled": true
-
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "editor.editContext": false,
+  "workbench.editor.empty.hint": "hidden",
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "latex-workshop.formatting.latex": "latexindent",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "geminicodeassist.inlineSuggestions.enableAuto": true,
 }

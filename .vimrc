@@ -264,7 +264,7 @@ cmp.setup({
     ['<C-n>'] = cmp.mapping.select_next_item(), -- 次の補完候補を選択
     ['<C-p>'] = cmp.mapping.select_prev_item(), -- 前の補完候補を選択
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Enterで補完を確定
-    ['<C-Space>'] = cmp.mapping.complete(), -- 手動で補完を呼び出し
+    -- ['<C-Space>'] = cmp.mapping.complete(), -- 手動で補完を呼び出し
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' }, -- LSPからの補完
@@ -335,8 +335,10 @@ nmap <silent> rt <Plug>(coc-type-definition)
 nmap <silent> ri <Plug>(coc-implementation)
 nmap <silent> rr <Plug>(coc-references)
 
+nnoremap <silent> <C-]> <Plug>(coc-definition)
+
 " rust-analyzerの設定
-let g:coc_global_extensions = ['coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright']
 
 " rust-analyzer の設定を変更
 autocmd FileType rust let b:coc_suggest_disable = 1
@@ -755,3 +757,4 @@ augroup END
 command! -nargs=* Grep call fzf#vim#grep('grep -R '.shellescape(<q-args>). ' .', 1, {}, 0)
 nnoremap <silent> <leader>f :Grep<space>
 
+command! FullPath echo expand('%:p')
