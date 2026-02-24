@@ -1,57 +1,67 @@
-
 [color]
-    status = auto
-    diff = auto
-    branch = auto
-    interactive = auto
-    grep = auto
-[push]
-    default = simple
-[core]
-    excludesfile = ~/.gitignore  # globalな.gitignoreの指定
-    autocrlf = input                 # CRLFを自動変換
-    editor = vim
-    quotepath = false
-    pager = less -XRF
-    whitespace = cr-at-eol
-    ignorecase = false # 大文字と小文字をdiff対象とする
-[merge] 
-    tool = nvimdiff 
-    ff = false
-[mergetool] 
-    keepBackup = false
-[diff]
-    tool=nvimdiff
-    compactionHeuristic = true
-[difftool "nvimdiff"]
-    cmd = nvim -d "$LOCAL" "$REMOTE"
-[commit]
-    gpgsign = true
-[branch]
-    autosetuprebase = always
-[pull]
-    rebase = true
-    ff = only
-[fetch]
-    prune = true
-[pager]
-    log  = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
 
-# private config
+[core]
+  editor = vim
+  pager = less -XRF
+  quotepath = false
+  autocrlf = input
+  whitespace = cr-at-eol
+  ignorecase = false
+  excludesfile = ~/.gitignore
+
+[push]
+  default = simple
+
+[pull]
+  rebase = true
+  ff = only
+
+[fetch]
+  prune = true
+
+[branch]
+  autosetuprebase = always
+
+[merge]
+  tool = nvimdiff
+  ff = false
+
+[mergetool]
+  keepBackup = false
+
+[diff]
+  tool = nvimdiff
+  compactionHeuristic = true
+
+[difftool "nvimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
 [credential "https://github.com"]
-	helper = !/usr/bin/gh auth git-credential
+  helper = !/usr/bin/gh auth git-credential
+
 [credential "https://gist.github.com"]
-	helper = !/usr/bin/gh auth git-credential
+  helper = !/usr/bin/gh auth git-credential
+
 [ghq]
-    root = ~/src
+  root = ~/src
+
 [user]
-    name = 
-    email = 
-	signingkey = 
-# gpg を無効にしたい場合
+  name =
+  email =
+
+# gpg を無効化
 [commit]
-    gpgSign = false
+  gpgsign = false
+
 [tag]
-    gpgSign = false
+  gpgsign = false
