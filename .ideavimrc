@@ -59,32 +59,9 @@ inoremap <C-f> <C-x><C-o>
 ""C-sでノーマルモードへ移動し保存inoremap <C-s> <Esc>:wa<CR>
 nnoremap <C-s> :wa<CR>
 
-""言葉の意味：
-""ノーマルモード＋ビジュアルモード=noremap 
-""コマンドラインモード＋インサートモード=noremap! 
-""ノーマルモード=nnoremap 
-""""""""""""""""""""""""""""""""""
-
 """"""""""""""""""""""""""""""""""
 ""160517_括弧の補完
-"" http://qiita.com/shingargle/items/dd1b5510a0685837504a
-""inoremap { {}<Left><CR><ESC><S-o>
-""inoremap ( ()<ESC>i
 inoremap <C-v> <ESC>"*pa
-""ダブルクオテーションを二つ付加し、カーソルを戻す
-""inoremap " ""<ESC>ha
-
-""180427_レジスタ０の内容をコピペする
-""https://qiita.com/ykyk1218/items/8f5471c5e90cc83fd407
-""noremap pp "0p
-""noremap PP "0P
-
-"" 括弧の自動補完
-""inoremap {<Enter> {}<Left><CR><ESC><S-o>
-""inoremap [<Enter> []<Left><CR><ESC><S-o>
-""inoremap (<Enter> ()<Left><CR><ESC><S-o>
-
-""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""
 ""160526_挿入モードのまま一文字飛ばして移動とノーマルモードへ移行を簡単にキーマッピング
@@ -92,15 +69,6 @@ inoremap <C-j> <ESC>gja
 inoremap <C-k> <ESC>gka
 inoremap <C-h> <ESC>ha
 inoremap <C-l> <ESC>la
-""
-""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""
-"160524_ノーマルモードでタブを押したとき、そのままタブの動作をしてほしい。。。
-"noremap <TAB> i<TAB><ESC>
-""""""""""""""""""""""""""""""""""
-"160525_選択モードでコピーしたものを置き換えて貼り付けるスクリプト
-"http://qiita.com/hikaruna/items/83c1220eede810bee492
 
 " vモードの置換連続ペースト用
 function! Put_text_without_override_register()
@@ -115,29 +83,9 @@ function! Put_text_without_override_register()
 endfunction
 xnoremap <silent> p :call Put_text_without_override_register()<CR>
 
-set clipboard=unnamed "ヤンクした時に自動でクリップボードにコピー(autoselectを指定するとvモードの置換連続ペーストができない""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""
-""160604_矢印キーの使用禁止！！
-""コマンドからHardModeとEasyModeで切り替え可能
-function! HardMode ()
-	noremap <Up> <Nop>
-	noremap <Down> <Nop>
-	noremap <Left> <Nop>
-	noremap <Right> <Nop>
-endfu
-function! EasyMode ()
-	noremap <Up> <Up>
-	noremap <Down> <Down>
-	noremap <Left> <Left>
-	noremap <Right> <Right>
-endfunc
-command! HardMode call HardMode()
-command! EasyMode call EasyMode()
-""""""""""""""""""""""""""""""""""
+set clipboard=unnamed 
 
 """""""""""""""""""""""""""""""""
-""160609_http://qiita.com/inodev/items/4f4d5412e65c2564b273
 ""全角スペースの可視化
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 au BufNewFile,BufRead * match ZenkakuSpace /　/
