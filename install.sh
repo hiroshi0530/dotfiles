@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "TEST"
+echo "start instal"
 
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
