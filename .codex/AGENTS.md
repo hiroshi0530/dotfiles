@@ -43,6 +43,7 @@
 - Git コマンド実行時は、その影響を事前に説明する
 - PR を生成する際は、.github/pull_request_template.md のガイドラインに従うこと
 - ci を実行する場合は、.github/workflows/ci.yml のガイドラインに従うこと
+- python の場合はキャッシュファイル(__pycached__)はコミットしないこと
 
 ---
 
