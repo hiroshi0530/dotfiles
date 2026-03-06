@@ -195,3 +195,42 @@ function dcpd {
 function dcp {
   docker compose up "$1"
 }
+
+
+# コマンド確認
+# | コマンド                    | 役割           | 重要ポイント        |
+# | --------------------------- | -------        | -----------------   |
+# | `type -a aws`               | シェル解釈全体 | alias/function 含む |
+# | `which -a aws`              | PATH 検索      | 実行ファイル一覧    |
+# | `command -v aws`            | 実行される1つ  | **最重要**          |
+# | `ls -l "$(command -v aws)"` | 実体確認       | サイズで真偽判定    |
+
+cmd_where() {
+  local cmd="$1"
+
+  if [[ -z "$cmd" ]]; then
+    echo "Usage: cmd_where <command>"
+    return 1
+  fi
+
+  echo "==> type -a $cmd"
+  type -a "$cmd" || true
+  echo
+
+  echo "==> which -a $cmd"
+  which -a "$cmd" || true
+  echo
+
+  echo "==> command -v $cmd"
+  local resolved
+  resolved="$(command -v "$cmd" || true)"
+  echo "$resolved"
+  echo
+
+  if [[ -n "$resolved" && -e "$resolved" ]]; then
+    echo "==> ls -l $resolved"
+    ls -l "$resolved"
+  else
+    echo "==> ls -l skipped (command not found or not a file)"
+  fi
+}

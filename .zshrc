@@ -1,6 +1,6 @@
 setopt glob
 setopt extended_glob
-setopt prompt_subst
+    setopt prompt_subst
 setopt no_nomatch
 setopt inc_append_history
 setopt hist_verify
@@ -136,6 +136,60 @@ elif [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
   source /usr/share/fzf/key-bindings.zsh
 fi
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
+<<<<<<< HEAD
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "$HOME/.deno/env"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+
+# GO
+export GOPATH=$HOME/go:$HOME/go/ugo:$HOME/go/go_test
+export GOROOT=$( go env GOROOT )
+
+# PATH
+export PATH=/sbin:/usr/sbin:$PATH
+export PATH=$PATH:$HOME/.nodebrew/current/bin
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/man:$MANPATH
+export PATH=$HOME/anaconda3/bin:$PATH
+
+export PATH=$HOME/.local/bin:$PATH
+
+export PATH=$HOME/anaconda3/bin:$PATH
+
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+export PATH="/opt/poetry/bin:$PATH"
+
+export PATH=$PATH:$HOME/.pulumi/bin
+
+export PATH=$PATH:$HOME/.cargo/bin
+
+export PATH=$PATH:$HOME/win32yank/win32yank-x64
+
+
+# autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+# . "$HOME/.local/bin/env"
+
+# Added by Antigravity
+export PATH="/Users/hiroshi/.antigravity/antigravity/bin:$PATH"
+
+# mise
+eval "$(mise activate zsh)"
+
+# 最後
+clean_path() {
+  awk -v RS=':' '!a[$0]++' <<<"$PATH" | paste -sd:
+}
+export PATH="$(clean_path)"
 
 # Optional user files
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
