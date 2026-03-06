@@ -1,90 +1,199 @@
-function gchange_author_committer () {
+# command helpers
+function command_not_found_handler {
+  echo "$SHELL: $1: command not found"
+  return 127
+}
+
+# クリップボード上のパスにディレクトリ移動
+function ccd {
+  local dir
+  dir="$(cat /dev/clipboard 2>/dev/null)"
+  if [[ -d "$dir" ]]; then
+    builtin cd "$dir"
+  else
+    builtin cd /desktop
+  fi
+}
+
+# ANSIカラーコード表示
+function ansi_color {
+  local a b n
+  for a in 3 4; do
+    for b in 0 1 2 4 7; do
+      for n in ${a}0 ${a}1 ${a}2 ${a}3 ${a}4 ${a}5 ${a}6 ${a}7; do
+        echo -en "\e[${b};${n}m"
+        echo -n "\e[${b};${n}m"
+        echo -ne "\e[0m"
+        echo -n '  '
+      done
+      echo
+    done
+    echo
+  done
+}
+
+function gchange_author_committer {
   git filter-branch -f --env-filter "GIT_AUTHOR_NAME='$1'; GIT_AUTHOR_EMAIL='$2'; GIT_COMMITTER_NAME='$1'; GIT_COMMITTER_EMAIL='$2';" HEAD
 }
 
-function gchange_author_committer_w0530 () {
+function gchange_author_committer_w0530 {
   git filter-branch -f --env-filter "GIT_AUTHOR_NAME='whiroshi0530'; GIT_AUTHOR_EMAIL='whiroshi0530@gmail.com'; GIT_COMMITTER_NAME='whiroshi0530'; GIT_COMMITTER_EMAIL='whiroshi0530@gmail.com';" HEAD
 }
 
-function psa () { 
-  ps aux | grep $1;
-} 
+function gdt_fc {
+  local base="${1:-origin/main}"
+  local head="${2:-HEAD}"
+  git diff "$base...$head"
+}
 
-function dcexec () { 
-  docker-compose exec $1 /bin/zsh;
-} 
+function psa {
+  ps aux | grep "$1"
+}
 
-# file system 
-function mkcd() { 
-  mkdir $1 && cd $1
-} 
+function dcexec {
+  docker-compose exec "$1" /bin/zsh
+}
 
-# convert to snakecase to camelcase
-function cc() {
+# file system
+function mkcd {
+  mkdir -p "$1" && cd "$1"
+}
+
+# convert snake_case to CamelCase
+function snake_to_camel {
   perl -pe 's#(_|^)(.)#\u$2#g'
 }
 
-# convert to camelcase to snakecase
-function sc() {
+# convert CamelCase to snake_case
+function camel_to_snake {
   perl -pe 's#([A-Z])#_\L$1#g' | perl -pe 's#^_##'
 }
 
-function hdate() {
-  d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
-  echo "date: "$d
+function hdate {
+  local d
+  d="$(date '+%Y-%m-%dT%H:%M:%S+09:00')"
+  echo "date: $d"
 }
 
-function hlastdate() {
-  d=$(date "+%Y-%m-%dT%H:%M:%S+09:00")
-  echo "lastmod: "$d
+function hlastdate {
+  local d
+  d="$(date '+%Y-%m-%dT%H:%M:%S+09:00')"
+  echo "lastmod: $d"
 }
 
-function number24() {
+function number24 {
   seq -w 24
 }
 
-function ca() {
-  conda activate $1
+function ca {
+  conda activate "$1"
 }
 
-function cda() {
+function cda {
   conda deactivate
 }
 
-function md_to_latex() {
-   -r markdown-auto_identifiers -w latex $1.md -o $1.tex
+function md_to_latex {
+  pandoc -r markdown-auto_identifiers -w latex "$1.md" -o "$1.tex"
 }
- 
+
 # ghq
-function cdg() {
-  dir=$(ghq list | fzf -1 +m)
+function cdg {
+  local dir
+  dir="$(ghq list | fzf -1 +m)"
   if [[ -n "$dir" ]]; then
-    cd $(ghq root)/$dir
+    cd "$(ghq root)/$dir"
   fi
 }
 
 # vim で開く
-function vfzf() {
-    v $(fzf-tmux -p) 
+function vfzf {
+  local file
+  file="$(fzf-tmux -p)"
+  [[ -n "$file" ]] && v "$file"
 }
 
 # 下の階層へ移動
-function cdf() {
+function cdf {
   local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd "$dir"
+  dir="$(find "${1:-.}" -path '*/\.*' -prune -o -type d -print 2>/dev/null | fzf +m)" && cd "$dir"
 }
 
 # 単語を含むファイルの検索
-function grepf() {
-  local keyword=$1
-  if [ -z "$keyword" ]; then
-    echo "Usage: search_files_with_fzf <keyword>"
+function grepf {
+  local keyword selected_file
+  keyword="$1"
+
+  if [[ -z "$keyword" ]]; then
+    echo 'Usage: grepf <keyword>'
     return 1
   fi
 
-  selected_file=$(grep -rl --color=never "$keyword" . | fzf --preview="cat {}" --height=40% --layout=reverse)
-  [ -n "$selected_file" ] && v "$selected_file"
+  selected_file="$(grep -rl --color=never "$keyword" . | fzf --preview='cat {}' --height=40% --layout=reverse)"
+  [[ -n "$selected_file" ]] && v "$selected_file"
+}
 
+# docker helper functions
+function dst {
+  local cname
+  cname="$(docker ps -a --format 'table {{.Names}}\t{{.ID}}\t{{.Status}}' | sed 1d | fzf -1 +m | awk '{print $1}')"
+  [[ -n "$cname" ]] && docker start "$cname"
+}
+
+function dsp {
+  local cname
+  cname="$(docker ps --format 'table {{.Names}}\t{{.ID}}\t{{.Status}}' | sed 1d | fzf -1 +m | awk '{print $1}')"
+  [[ -n "$cname" ]] && docker stop "$cname"
+}
+
+function dlog {
+  local cname
+  cname="$(docker ps -a --format 'table {{.Names}}\t{{.ID}}\t{{.Status}}' | sed 1d | fzf -1 +m | awk '{print $1}')"
+  [[ -n "$cname" ]] && docker logs -f "$cname"
+}
+
+function drc {
+  local cid
+  cid="$(docker ps -a --format 'table {{.Names}}\t{{.ID}}\t{{.Status}}' | sed 1d | fzf -1 +m | awk '{print $2}')"
+  [[ -n "$cid" ]] && docker rm "$cid"
+}
+
+function dri {
+  local image_id
+  image_id="$(docker images --format 'table {{.Repository}}\t{{.Tag}}\t{{.ID}}' | sed 1d | fzf -1 +m | awk '{print $3}')"
+  [[ -n "$image_id" ]] && docker rmi "$image_id"
+}
+
+function dexec {
+  local cname
+  cname="$(docker ps -a --format 'table {{.Names}}\t{{.ID}}\t{{.Status}}' | sed 1d | fzf -1 +m | awk '{print $1}')"
+  if [[ -n "$cname" ]]; then
+    docker exec -it "$cname" bash -c 'echo "set -o vi" >> /root/.bashrc && echo "alias ll=\"ls -alh --color\"" >> /root/.bashrc && exec bash'
+  fi
+}
+
+function din {
+  local container_id
+  container_id="$(docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}' | sed 1d | fzf -1 +m | awk '{print $1}')"
+  [[ -n "$container_id" ]] && docker inspect "$container_id"
+}
+
+function dstats {
+  local container_id
+  container_id="$(docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Image}}' | sed 1d | fzf -1 +m | awk '{print $1}')"
+  if [[ -n "$container_id" ]]; then
+    docker stats "$container_id"
+  else
+    echo 'No container selected'
+  fi
+}
+
+function dcpd {
+  docker compose up -d "$1"
+}
+
+function dcp {
+  docker compose up "$1"
 }
 
 
