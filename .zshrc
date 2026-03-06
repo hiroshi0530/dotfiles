@@ -258,8 +258,6 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PATH=$HOME/anaconda3/bin:$PATH
 
-export PATH=$HOME/go/bin:$HOME/go/ugo/bin:$HOME/go/go_test/bin:$PATH
-
 export PATH=$HOME/.local/bin:$PATH
 
 export PATH=$HOME/anaconda3/bin:$PATH
@@ -272,7 +270,24 @@ export PATH=$PATH:$HOME/.pulumi/bin
 
 export PATH=$PATH:$HOME/.cargo/bin
 
-. "$HOME/.local/bin/env"
+export PATH=$PATH:$HOME/win32yank/win32yank-x64
+
+
+# autojump
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
+autoload -U compinit && compinit -u
+
+# . "$HOME/.local/bin/env"
 
 # Added by Antigravity
 export PATH="/Users/hiroshi/.antigravity/antigravity/bin:$PATH"
+
+# mise
+eval "$(mise activate zsh)"
+
+# 最後
+clean_path() {
+  awk -v RS=':' '!a[$0]++' <<<"$PATH" | paste -sd:
+}
+export PATH="$(clean_path)"
+

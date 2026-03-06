@@ -160,6 +160,7 @@ alias ggs="gg --stat"
 alias gsl="git shortlog -sn"
 alias gw="git whatchanged"
 alias gt="git tag"
+alias gta="git tag -a"
 
 alias grv='git remote -v'
 alias grmv='git remote rename'
@@ -182,13 +183,7 @@ alias gsts='git stash show --text'
 alias gstl='git --no-pager stash list'
 
 alias gclean='git reset --hard && git clean -dfx'
-
-alias gclean='git reset --hard && git clean -dfx'
-
 alias gfp='git fetch --prune'
-
-alias gda='git diff'
-alias gdc='git diff ^HEAD'
 
 alias gdt='git difftool -y' 
 alias gdtn='git difftool -y --name-only' 
@@ -212,7 +207,7 @@ alias gdtnh4='git difftool -y --name-only HEAD^^^^'
 gdt_fc() {
   local base="${1:-origin/main}"
   local head="${2:-HEAD}"
-  git diff "$base...$head"
+  git difftool -y "$base...$head"
 }
 
 alias ga='git add'
