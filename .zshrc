@@ -1,6 +1,7 @@
 setopt glob
 setopt extended_glob
-    setopt prompt_subst
+setopt prompt_subst
+
 setopt no_nomatch
 setopt inc_append_history
 setopt hist_verify
@@ -137,7 +138,6 @@ elif [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
 fi
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
-<<<<<<< HEAD
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
