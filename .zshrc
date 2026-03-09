@@ -1,6 +1,7 @@
 setopt glob
 setopt extended_glob
-    setopt prompt_subst
+setopt prompt_subst
+
 setopt no_nomatch
 setopt inc_append_history
 setopt hist_verify
