@@ -234,3 +234,56 @@ cmd_where() {
     echo "==> ls -l skipped (command not found or not a file)"
   fi
 }
+
+
+
+json_sort() {
+  local force=0
+
+  # オプション解析
+  while getopts "f" opt; do
+    case "$opt" in
+      f) force=1 ;;
+      *)
+        echo "Usage: json_sort [-f] file.json" >&2
+        return 1
+        ;;
+    esac
+  done
+  shift $((OPTIND - 1))
+
+  local input="$1"
+
+  if [[ -z "$input" ]]; then
+    echo "Usage: json_sort [-f] file.json" >&2
+    return 1
+  fi
+
+  if [[ ! -f "$input" ]]; then
+    echo "Error: file not found: $input" >&2
+    return 1
+  fi
+
+  if [[ "$input" != *.json ]]; then
+    echo "Error: not a .json file: $input" >&2
+    return 1
+  fi
+
+  local tmp
+  tmp=$(mktemp)
+
+  if ! jq -S --indent 4 . "$input" > "$tmp"; then
+    rm -f "$tmp"
+    echo "jq failed" >&2
+    return 1
+  fi
+
+  if [[ $force -eq 1 ]]; then
+    # 上書き
+    mv "$tmp" "$input"
+  else
+    # _sorted.json を作成
+    local output="${input%.json}_sorted.json"
+    mv "$tmp" "$output"
+  fi
+}

@@ -27,9 +27,6 @@ set matchtime=1
 set backspace=start,eol,indent
 set nostartofline " カーソル：括弧を閉じたとき対応する括弧に一時的に移動
 
-set ttyfast
-set t_Co=256
-
 " Unix系 (Linux, macOS)
 if has('unix')
 endif
@@ -69,9 +66,6 @@ endif
 
 
 set fileencoding=utf-8
-set fileencodings=ucs-boms,utf-8,euc-jp,cp932
-set fileformats=unix,dos,mac
-set ambiwidth=double
 
 set incsearch
 set ignorecase
@@ -338,7 +332,7 @@ nmap <silent> rr <Plug>(coc-references)
 nnoremap <silent> <C-]> <Plug>(coc-definition)
 
 " rust-analyzerの設定
-let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright']
+let g:coc_global_extensions = ['coc-rust-analyzer', 'coc-pyright', 'coc-tsserver', 'coc-json', 'coc-html', 'coc-css', 'coc-eslint', 'coc-prettier']
 
 " rust-analyzer の設定を変更
 autocmd FileType rust let b:coc_suggest_disable = 1
