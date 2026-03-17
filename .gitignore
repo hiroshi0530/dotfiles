@@ -49,8 +49,6 @@ execute_docker_run.sh
 execute_uvicorn.sh
 execute_pytest.sh
 
-execute_*
-
 wa_*
 WA_*
 

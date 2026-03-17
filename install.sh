@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "start instal"
+
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 for f in .??*
@@ -19,13 +21,19 @@ do
 done
 
 # copy .gitconfig.local .gitconfig
-cp .gitconfig.local ../.gitconfig
+cp .gitconfig.local "$HOME/.gitconfig"
 
 # set ipython vim mode
 [[ ! -d ~/.ipython/profile_default/ ]] && mkdir -p ~/.ipython/profile_default && echo 'c.TerminalInteractiveShell.editing_mode = \"vi\"' > ~/.ipython/profile_default/ipython_config.py
 
 # mkdir for swap file
-mkdir ~/swap
+mkdir -p ~/swap
 
 # 201125: git diff-highlightのリンクの追加
-ln -s /usr/local/share/git-core/contrib/diff-highlight/diff-highlight /usr/local/bin/diff-highlight
+DIFF_HIGHLIGHT_SRC=/usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+DIFF_HIGHLIGHT_DST=/usr/local/bin/diff-highlight
+if [[ -x "$DIFF_HIGHLIGHT_SRC" && ( ! -e "$DIFF_HIGHLIGHT_DST" ) ]]; then
+  ln -s "$DIFF_HIGHLIGHT_SRC" "$DIFF_HIGHLIGHT_DST"
+else
+  echo "skip diff-highlight link (missing or already exists)"
+fi

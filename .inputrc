@@ -1,5 +1,4 @@
 set editing-mode vi
-set -o vi
 set completion-ignore-case on
 
 "\C-p": history-search-backward
