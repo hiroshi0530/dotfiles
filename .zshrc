@@ -191,6 +191,9 @@ clean_path() {
 }
 export PATH="$(clean_path)"
 
+# kube
+source <(kubectl completion zsh)
+
 # Optional user files
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
