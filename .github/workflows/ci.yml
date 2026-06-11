@@ -16,7 +16,7 @@ jobs:
         with:
           scandir: '.'
           severity: warning
-          ignore_paths: sshrc msshrc
+          ignore_paths: sshrc msshrc .zshrc .zshrc.d .zprofile .zsh_aliases .zsh_functions
 
   install:
     runs-on: ubuntu-latest

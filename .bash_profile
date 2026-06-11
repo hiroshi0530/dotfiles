@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# shellcheck source=/dev/null
 . ~/.bashrc
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"

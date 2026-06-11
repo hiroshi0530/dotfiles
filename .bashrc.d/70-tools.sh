@@ -11,6 +11,7 @@ fi
 
 if command -v brew >/dev/null 2>&1; then
   autojump_sh="$(brew --prefix)/etc/autojump.sh"
+  # shellcheck source=/dev/null
   [ -s "$autojump_sh" ] && . "$autojump_sh"
 fi
 
