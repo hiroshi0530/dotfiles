@@ -8,8 +8,7 @@ compdef _shopt shopt
 compdef _aliases unalias
 compdef _builtin builtin
 compdef _bindkey bind
-compdef _aws_completer aws
-
+whence -w _aws_completer >/dev/null 2>&1 && compdef _aws_completer aws
 # TTY behavior
 TRAPWINCH() {
   [[ -t 1 ]] && stty size >& /dev/null
