@@ -2,6 +2,7 @@
 
 # Common helpers for bashrc modules.
 source_if_exists() {
+  # shellcheck source=/dev/null
   [ -f "$1" ] && . "$1"
 }
 

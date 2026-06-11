@@ -3,6 +3,7 @@
 shopt -s expand_aliases
 
 alias_source_if_exists() {
+  # shellcheck disable=SC1090
   [ -f "$1" ] && . "$1"
 }
 

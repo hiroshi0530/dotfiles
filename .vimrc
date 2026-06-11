@@ -233,15 +233,16 @@ EOF
 " Treesitterの設定
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "svelte", "html", "css", "javascript",
+"typescript" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = { "python" },
-    disable = {
-      'lua',
-    }
+    disable = { 'lua' }
   }
 }
 EOF
+
 
 " 自動補完の設定
 lua << EOF
