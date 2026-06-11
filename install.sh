@@ -84,12 +84,14 @@ if [[ -n "$VSCODE_DIR" ]]; then
   run mkdir -p "$VSCODE_DIR/prompts"
   symlink "$SCRIPT_DIR/vscode/settings.json"    "$VSCODE_DIR/settings.json"
   symlink "$SCRIPT_DIR/vscode/keybindings.json" "$VSCODE_DIR/keybindings.json"
+  shopt -s nullglob
   for snippet in "$SCRIPT_DIR/vscode/snippet/"*.json; do
     symlink "$snippet" "$VSCODE_DIR/snippets/$(basename "$snippet")"
   done
   for prompt in "$SCRIPT_DIR/.github/prompts/"*.prompt.md; do
     symlink "$prompt" "$VSCODE_DIR/prompts/$(basename "$prompt")"
   done
+  shopt -u nullglob
 else
   echo "  (VS Code user dir not found, skipping)"
 fi
