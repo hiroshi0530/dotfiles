@@ -1,3 +1,4 @@
+# shellcheck shell=zsh
 setopt glob
 setopt extended_glob
 setopt prompt_subst

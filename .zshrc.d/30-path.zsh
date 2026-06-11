@@ -1,11 +1,14 @@
+# shellcheck shell=zsh
 export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH="$HOME/go:$HOME/go/ugo:$HOME/go/go_test"
 if command -v go >/dev/null 2>&1; then
+  # shellcheck disable=SC2155
   export GOROOT="$(go env GOROOT 2>/dev/null)"
 fi
 
 # PATH (dedup via zsh typeset -U)
 typeset -U path PATH
+# shellcheck disable=SC2206
 path=(
   /sbin
   /usr/sbin

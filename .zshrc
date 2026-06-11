@@ -1,3 +1,5 @@
+# shellcheck shell=zsh
+# shellcheck disable=SC1090
 # Load zshrc modules
 _zshrc_d="$HOME/.zshrc.d"
 for _zshrc_f in \

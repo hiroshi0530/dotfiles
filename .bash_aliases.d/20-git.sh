@@ -13,7 +13,8 @@ alias gpp='git pull && git push'
 alias gup='git fetch && git rebase'
 alias gps='git push'
 alias gpo='git push origin'
-alias gdv='git diff -w "$@" | vim -R -'
+alias gdv='git diff -w'
+gdv() { git diff -w "$@" | vim -R - ; }
 
 alias gc='git commit -v'
 alias gca='git commit -v -a'

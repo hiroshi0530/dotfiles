@@ -1,3 +1,4 @@
+# shellcheck shell=zsh
 # .zprofile
 
 # 環境変数を追加

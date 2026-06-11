@@ -1,3 +1,4 @@
+# shellcheck shell=zsh
 export LESS='--line-numbers --no-init --quit-if-one-screen --RAW-CONTROL-CHAR --hilite-search --jump-target=10 --chop-long-lines --shift 5 -P?f--Less-- %f: %pb%'
 export LESS_TERMCAP_mb=$'\e[1;36m'
 export LESS_TERMCAP_md=$'\e[1;36m'

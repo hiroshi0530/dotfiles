@@ -1,3 +1,4 @@
+# shellcheck shell=zsh
 autoload -Uz compinit
 compinit -u
 compdef _directories cd

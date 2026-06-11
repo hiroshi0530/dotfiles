@@ -16,7 +16,7 @@ jobs:
         with:
           scandir: '.'
           severity: warning
-          ignore_paths: sshrc
+          ignore_paths: sshrc msshrc
 
   install:
     runs-on: ubuntu-latest

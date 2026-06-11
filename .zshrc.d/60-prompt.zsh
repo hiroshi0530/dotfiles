@@ -1,14 +1,16 @@
+# shellcheck shell=zsh
 function short_pwd {
   local full_path="$PWD"
   local shortened_path=""
   local part
   local last_part
 
-  if [[ $full_path == $HOME || $full_path == $HOME/* ]]; then
+  if [[ $full_path == "$HOME" || $full_path == "$HOME"/* ]]; then
     shortened_path="~"
-    full_path=${full_path#$HOME}
+    full_path=${full_path#"$HOME"}
   fi
 
+  # shellcheck disable=SC2296,SC2206
   local path_parts=(${(s:/:)full_path})
 
   if [[ ${#path_parts[@]} -le 0 ]]; then
@@ -19,7 +21,7 @@ function short_pwd {
 
   last_part=${path_parts[-1]}
 
-  for part in ${path_parts[@]:0:-1}; do
+  for part in "${path_parts[@]:0:-1}"; do
     if [[ -n "$part" ]]; then
       if [[ -z "$shortened_path" ]]; then
         shortened_path+="/$part"
