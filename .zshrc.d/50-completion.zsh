@@ -1,6 +1,6 @@
 # shellcheck shell=zsh
 autoload -Uz compinit
-compinit -u
+compinit
 compdef _directories cd
 compdef _command man command type which
 compdef _setopt setopt
