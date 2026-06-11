@@ -595,16 +595,19 @@
   "terminal.integrated.env.osx": {
     "PATH": "${env:PATH}:$HOME/go/bin"
   },
-  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.nextEditSuggestions.enabled": false,
   "editor.editContext": false,
   "workbench.editor.empty.hint": "hidden",
-  "github.copilot.enable": {
-    "*": true,
-    "plaintext": false,
-    "markdown": true,
-    "scminput": false
-  },
   "latex-workshop.formatting.latex": "latexindent",
   "latex-workshop.latex.autoBuild.run": "onSave",
   "geminicodeassist.inlineSuggestions.enableAuto": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "bibtex": false,
+    "latex": false,
+    "python": false
+  },
 }
