@@ -1,39 +1,134 @@
 #!/bin/bash
+set -euo pipefail
 
-echo "start instal"
+# ---------------------------------------------------------------------------
+# Dotfiles installer
+# Usage: ./install.sh [-n]
+#   -n  Dry run (show what would be done without making changes)
+# ---------------------------------------------------------------------------
 
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
-
-for f in .??*
-do
-  [[ "$f" == ".git" ]] && continue
-  [[ "$f" == ".DS_Store" ]] && continue
-
-  echo $HOME/$f
-
-[[ -f $HOME/$f ]] && echo "delete syblic link" && rm -f $HOME/$f
-[[ -d $HOME/$f ]] && echo "delete syblic link" && rm -f $HOME/$f
-[[ -L $HOME/$f ]] && echo "delete syblic link" && rm -f $HOME/$f
-  # rm -f $HOME/$f
-
-  ln -s $SCRIPT_DIR/$f $HOME/$f
-
+DRY_RUN=false
+while getopts "n" opt; do
+  case "$opt" in
+    n) DRY_RUN=true ;;
+    *) echo "Usage: $0 [-n]" >&2; exit 1 ;;
+  esac
 done
 
-# copy .gitconfig.local .gitconfig
-cp .gitconfig.local "$HOME/.gitconfig"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# set ipython vim mode
-[[ ! -d ~/.ipython/profile_default/ ]] && mkdir -p ~/.ipython/profile_default && echo 'c.TerminalInteractiveShell.editing_mode = \"vi\"' > ~/.ipython/profile_default/ipython_config.py
+run() {
+  if "$DRY_RUN"; then
+    echo "[dry-run] $*"
+  else
+    "$@"
+  fi
+}
 
-# mkdir for swap file
-mkdir -p ~/swap
+symlink() {
+  local src="$1"
+  local dst="$2"
+  echo "symlink: $src -> $dst"
+  if ! "$DRY_RUN"; then
+    rm -rf "$dst"
+    ln -s "$src" "$dst"
+  fi
+}
 
-# 201125: git diff-highlightのリンクの追加
+echo "==> Starting dotfiles install (dry-run: $DRY_RUN)"
+
+# ---------------------------------------------------------------------------
+# Dotfiles: symlink all hidden files/dirs (except .git, .DS_Store, .github, .codex)
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking dotfiles to $HOME"
+cd "$SCRIPT_DIR"
+for f in .??*; do
+  [[ "$f" == ".git" ]]     && continue
+  [[ "$f" == ".DS_Store" ]] && continue
+  [[ "$f" == ".github" ]]   && continue
+  [[ "$f" == ".codex" ]]    && continue
+  symlink "$SCRIPT_DIR/$f" "$HOME/$f"
+done
+
+# ---------------------------------------------------------------------------
+# Git config
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Copying .gitconfig.local -> ~/.gitconfig"
+run cp "$SCRIPT_DIR/.gitconfig.local" "$HOME/.gitconfig"
+
+# ---------------------------------------------------------------------------
+# VS Code settings
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking VS Code settings"
+VSCODE_DIR=""
+if [[ -d "$HOME/Library/Application Support/Code/User" ]]; then
+  VSCODE_DIR="$HOME/Library/Application Support/Code/User"
+elif [[ -d "$HOME/.config/Code/User" ]]; then
+  VSCODE_DIR="$HOME/.config/Code/User"
+fi
+if [[ -n "$VSCODE_DIR" ]]; then
+  run mkdir -p "$VSCODE_DIR/snippets"
+  run mkdir -p "$VSCODE_DIR/prompts"
+  symlink "$SCRIPT_DIR/vscode/settings.json"    "$VSCODE_DIR/settings.json"
+  symlink "$SCRIPT_DIR/vscode/keybindings.json" "$VSCODE_DIR/keybindings.json"
+  for snippet in "$SCRIPT_DIR/vscode/snippet/"*.json; do
+    symlink "$snippet" "$VSCODE_DIR/snippets/$(basename "$snippet")"
+  done
+  for prompt in "$SCRIPT_DIR/.github/prompts/"*.prompt.md; do
+    symlink "$prompt" "$VSCODE_DIR/prompts/$(basename "$prompt")"
+  done
+else
+  echo "  (VS Code user dir not found, skipping)"
+fi
+
+# ---------------------------------------------------------------------------
+# IPython: enable Vim edit mode
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Configuring IPython Vim mode"
+IPYTHON_CONF="$HOME/.ipython/profile_default/ipython_config.py"
+if [[ ! -f "$IPYTHON_CONF" ]]; then
+  run mkdir -p "$(dirname "$IPYTHON_CONF")"
+  if ! "$DRY_RUN"; then
+    echo 'c.TerminalInteractiveShell.editing_mode = "vi"' > "$IPYTHON_CONF"
+  fi
+else
+  echo "  (already exists, skipping)"
+fi
+
+# ---------------------------------------------------------------------------
+# Vim swap directory
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Creating ~/swap"
+run mkdir -p "$HOME/swap"
+
+# ---------------------------------------------------------------------------
+# Copilot CLI skills
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking Copilot CLI skills"
+run mkdir -p "$HOME/.copilot/skills"
+for skill_dir in "$SCRIPT_DIR/.github/skills/"*/; do
+  skill_name="$(basename "$skill_dir")"
+  symlink "$skill_dir" "$HOME/.copilot/skills/$skill_name"
+done
+
+# ---------------------------------------------------------------------------
+# git diff-highlight
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking diff-highlight"
 DIFF_HIGHLIGHT_SRC=/usr/local/share/git-core/contrib/diff-highlight/diff-highlight
 DIFF_HIGHLIGHT_DST=/usr/local/bin/diff-highlight
-if [[ -x "$DIFF_HIGHLIGHT_SRC" && ( ! -e "$DIFF_HIGHLIGHT_DST" ) ]]; then
-  ln -s "$DIFF_HIGHLIGHT_SRC" "$DIFF_HIGHLIGHT_DST"
+if [[ -x "$DIFF_HIGHLIGHT_SRC" && ! -e "$DIFF_HIGHLIGHT_DST" ]]; then
+  symlink "$DIFF_HIGHLIGHT_SRC" "$DIFF_HIGHLIGHT_DST"
 else
-  echo "skip diff-highlight link (missing or already exists)"
+  echo "  (skipping: missing source or destination already exists)"
 fi
+
+echo ""
+echo "==> Done."

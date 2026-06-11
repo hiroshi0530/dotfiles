@@ -1,179 +1,143 @@
-### 190710 mac set up memo
+# セットアップメモ
 
-- texのインストール
-    - tex live からinstall `brew install mactex-no-gui --cask`
-    - vscodeのlatex workshop（拡張機能）を追加
-    - latexmkrcやvscodeのkeybindingsはショートカットを通せばOK
-        - settingなど
+> 基本的なセットアップ手順は [README.md](README.md) を参照。
+> このファイルにはツール別の補足メモを記載する。
 
-- anacondaのインストール
-  - インストール後自動的にcondaの仮想環境ができてしまうので、.bash_profileなどから自動的に追記される設定を削除
+---
 
-- gitのインストール
-    - 必ず最新のgitをbrew isntall git でインストール
-    - デフォルトはバージョンが古い
-
-- vim のbrewからのインストール
-  - デフォルトでは vim --version | grep clipboard で -clipboard となる
-  - デフォルトはダメ
-  - ` brew install vim`でインストールすると、最新番のvimは以下の場所に配置される
-  - /usr/local/Cellar/vim/8.1.1650/bin/vim --version | grep clip
-  - vim, vimdiff, view, vimtutor の上記のパスに書き換える 
-    - デフォルトで書き換わっている可能性あり
-
-- direnv のインストール
-
-  ```bash
-    brew install direnv
-  ```
-
-- tmuxのインストール
-  - tmux本体の前に、reattach-to-user-namespaceを入れる必要あり 
-
-    ```python
-      brew install reattach-to-user-namespace
-      brew install tmux
-    ```
-
-  - go 
-
-    ```bash
-      brew install go
-    ```
-
-  - jupyter notebook
-
-- git diff-highlight の有効化
-
-- ワークスペース切り替えショートカットの設定
-
-- default function key 設定変更
-
-- autojumpのインストール
-  - github 参照
-
-- iterm color 設定
-  - https://github.com/aereal/dotfiles.gitの japaneseque を利用
-
-
-
-- pip install (適当に覚書）
-
-  ```python
-    pip install boto3
-    pip install tensorflow
-    pip install keras
-    pip install jupyterlab
-    pip install jupyterthemes
-  ```
-
-- jpyter notebook のvim化
-  - jupyterthemesのインストール
-
-    ```python
-      pip install jupyterthemes
-    ```
-
-  - 色テーマとフォントの指定
-
-    ```bash
-      jt -t chesterish -T -f roboto -fs 9 -tf merriserif -tfs 11 -nf ptsans -nfs 11 -dfs 8 -ofs 8
-    ```
-
-    - install
-      - 参考サイト
-        - https://qiita.com/_snow_narcissus/items/80f81926707807ee9bf1 
-        - https://qiita.com/woody-kawagoe/items/415c6f369ab2a6972ae6
+## TeX / LaTeX
 
 ```bash
-jupyterの拡張機能を管理するパッケージjupyter_contrib_nbextensionsをインストール
-$ pip install jupyter_contrib_nbextensions
-
-jupyter_contrib_nbextensionsのjavascript,cssをインストール
-$ jupyter contrib nbextension install --user
-
-拡張機能を置くディレクトリを作成
-$ mkdir -p $(jupyter --data-dir)/nbextensions
-
-そのディレクトリに移動
-$ cd $(jupyter --data-dir)/nbextensions
-
-vimをバインディングするパッケージjupyter-vim-bindingをgitでクローンしてくる
-$ git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
-
-jupyter-vim-bindingを有効にする
-$ jupyter nbextension enable vim_binding/vim_binding
+brew install mactex-no-gui --cask
 ```
 
-        - https://www.g104robo.com/entry/jupyter-notebook-vim
-    
-    - ./jupyter/custom.jsと./jupyter/custom.cssを~/.jupyter/custom/にコピー
-      - normal modeに入った時の色や独自keybindを設定可能
+- VS Code 拡張: LaTeX Workshop
+- `.latexmkrc` と `vscode/keybindings.json` はシンボリックリンクで自動反映
 
-    - jupyternotebookはgit管理用にpythonファイルを吐き出してくれるツールがあるのでそれをインストール
-      - https://qiita.com/cfiken/items/8455383f32ee19dfbba3
+---
 
-      ```bash
-        pip install jupytext
-      ```
+## Anaconda / conda
 
-      - ./jupyter/jupyter_notebook_config.pyを~/.jupyter/にコピー 
-        - ただし、shift-HKLのキーバインドが効かない
+インストール後、`.bash_profile` や `.zshrc` に自動追記される conda 初期化ブロックを削除し、
+`.bashrc.d/00-env.sh` や `.zshrc.d/30-path.zsh` の `anaconda3/bin` PATH 設定で管理する。
 
+---
 
-## 201125
+## Git
 
-- sshrcがbrewでインストール出来ない。githubからも消えている。このgitコミット済みのsshrc.zipを解凍してパスを通して利用する
-
-## 210107 conda環境をjupyterから利用する
-
-きっかけは、pystanが仮想環境でないと動かないこと（うまくやれればいけそう）
-
-ただ、仮想環境をいくつか作っておくと、jupyter上からカーネルとして、それを選択できるのでとても使える
-
-- https://qiita.com/Gyutan/items/c7d3c341efe09454a5e1
-
-### 通常の仮想環境の構築
+デフォルトの Git はバージョンが古いため、必ず brew でインストールする:
 
 ```bash
-conda create -n stan python=3.6
-conda activate stan
+brew install git
 ```
 
-- 仮想環境上で必要なモジュールのインストール
+---
+
+## Vim (clipboard 対応)
+
+デフォルトの Vim は `-clipboard`。brew 版を使う:
 
 ```bash
-conda install Cython Numpy pystan
-conda install matplotlib jupyter scipy pandas
+brew install vim
 ```
 
-- 以下は必要であれば
+---
+
+## direnv
 
 ```bash
-conda install libpython m2w64-toolchain -c msys2
-
-PYTHONPATH\\Lib\\distutils にある distutils.cfgに次のコマンドを付け加えます。
-
-[build]
-compiler=mingw32
+brew install direnv
 ```
 
-### 仮想環境から出た後に、jupyterの設定
+---
+
+## tmux
 
 ```bash
-pip install environment_kernels
+brew install reattach-to-user-namespace
+brew install tmux
 ```
 
-- 以下のファイルに、
+---
+
+## git diff-highlight
+
+`install.sh` が自動リンクを試みる。手動でリンクする場合:
 
 ```bash
-~/.jupyter/jupyter_notebook_config.py
+DIFF_HIGHLIGHT_SRC=/usr/local/share/git-core/contrib/diff-highlight/diff-highlight
+ln -s "$DIFF_HIGHLIGHT_SRC" /usr/local/bin/diff-highlight
 ```
 
-```text
-c.NotebookApp.kernel_spec_manager_class='environment_kernels.EnvironmentKernelSpecManager'
-c.EnvironmentKernelSpecManager.conda_env_dirs=['~/anaconda/envs']
+---
+
+## autojump
+
+GitHub リポジトリの指示に従いインストール: https://github.com/wting/autojump
+
+---
+
+## iTerm2
+
+カラースキーム: `iterm.json` をプロファイルとしてインポート。
+
+---
+
+## Jupyter Notebook
+
+```bash
+pip install jupyterlab jupyterthemes jupytext jupyter_contrib_nbextensions environment_kernels
 ```
 
-を書き込む。参考サイトによるとconda_env_dirs => env_dirsだがdepericateみたい
+設定ファイルを配置:
+
+```bash
+cp jupyter/jupyter_notebook_config.py ~/.jupyter/
+mkdir -p ~/.jupyter/custom
+cp jupyter/custom.js ~/.jupyter/custom/
+```
+
+Vim バインディング拡張:
+
+```bash
+cd "$(jupyter --data-dir)/nbextensions"
+git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+jupyter nbextension enable vim_binding/vim_binding
+```
+
+### conda 仮想環境を Jupyter カーネルとして使う
+
+```bash
+conda create -n myenv python=3.11
+conda activate myenv
+conda install jupyter ipykernel
+```
+
+`~/.jupyter/jupyter_notebook_config.py` に追記:
+
+```python
+c.NotebookApp.kernel_spec_manager_class = 'environment_kernels.EnvironmentKernelSpecManager'
+c.EnvironmentKernelSpecManager.conda_env_dirs = ['~/anaconda3/envs']
+```
+
+---
+
+## sshrc
+
+`sshrc/` 配下の `sshrc.zip` を解凍してパスを通す (brew では入手不可):
+
+```bash
+cd sshrc
+unzip sshrc.zip -d bin/
+export PATH="$PATH:$PWD/bin"
+```
+
+---
+
+## pip パッケージ例
+
+```bash
+pip install boto3 tensorflow keras jupyterlab jupyterthemes
+```
+
 

@@ -1,12 +1,26 @@
 set editing-mode vi
 set completion-ignore-case on
+set colored-stats on
+set colored-completion-prefix on
+set show-all-if-ambiguous on
+set mark-symlinked-directories on
 
-"\C-p": history-search-backward
-"\C-n": history-search-forward
-"\C-j": vi-movement-mode
+# Vi insert mode
+$if mode=vi
+  set keymap vi-insert
+  TAB: menu-complete
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
+  "\C-l": clear-screen
+  "\C-j": vi-movement-mode
 
-$if mysql
-set editing-mode vi
+  # Normal mode
+  set keymap vi-command
+  "\C-p": history-search-backward
+  "\C-n": history-search-forward
+  "\C-l": clear-screen
 $endif
 
-# TAB: menu-complete
+$if mysql
+  set editing-mode vi
+$endif
