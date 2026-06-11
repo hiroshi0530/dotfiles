@@ -29,10 +29,20 @@ symlink() {
   local src="$1"
   local dst="$2"
   echo "symlink: $src -> $dst"
-  if ! "$DRY_RUN"; then
-    rm -rf "$dst"
-    ln -s "$src" "$dst"
+
+  if "$DRY_RUN"; then
+    return 0
   fi
+
+  if [[ -e "$dst" || -L "$dst" ]]; then
+    if [[ -d "$dst" && ! -L "$dst" ]]; then
+      mv "$dst" "${dst}.bak.$(date +%Y%m%d%H%M%S)"
+    else
+      rm -f "$dst"
+    fi
+  fi
+
+  ln -s "$src" "$dst"
 }
 
 echo "==> Starting dotfiles install (dry-run: $DRY_RUN)"
