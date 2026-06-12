@@ -6,7 +6,7 @@
   grep = auto
 
 [core]
-  editor = vim
+  editor = nvim
   pager = less -XRF
   quotepath = false
   autocrlf = input
@@ -54,10 +54,6 @@
 
 [ghq]
   root = ~/src
-
-[user]
-  name =
-  email =
 
 # gpg を無効化
 [commit]
