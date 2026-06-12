@@ -19,8 +19,5 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # autojump
 [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 
-# mise
-command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
-
 # kubectl completion
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
