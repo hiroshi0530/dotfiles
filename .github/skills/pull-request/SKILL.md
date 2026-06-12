@@ -27,6 +27,26 @@ git --no-pager log main..HEAD --oneline
 
 未コミットの変更がある場合はユーザーに確認してから続行。
 
+**デフォルトブランチにいる場合は新しいブランチを作成する。**
+
+現在のブランチがデフォルトブランチ（`main` / `master`）と一致する場合は、
+コミット内容から適切なブランチ名を生成して切り替えてから PR を作成する。
+
+```bash
+# デフォルトブランチの確認
+default_branch=$(gh repo view --json defaultBranchRef --jq '.defaultBranchRef.name')
+current_branch=$(git branch --show-current)
+
+# デフォルトブランチにいる場合は新ブランチを作成
+if [ "$current_branch" = "$default_branch" ]; then
+  # コミット内容から <type>/<short-description> 形式でブランチ名を決める
+  git checkout -b <type>/<short-description>
+fi
+```
+
+ブランチ名の命名規則: `<type>/<kebab-case-description>`
+例: `feat/add-mise-config`、`fix/bash-display-guard`、`docs/update-readme`
+
 ### 2. 差分の調査
 
 ```bash
