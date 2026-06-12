@@ -6,26 +6,24 @@ description: |
   などと言った時に使用する。
 ---
 
-# 📦 リリースノート充実化
+# リリースノート作成
 
-GitHub のリリースドラフトを読み取り、PR の詳細を調査して充実したリリースノートを作成・更新します。
+GitHub のリリースドラフトを読み取り、PR の詳細を調査して充実したリリースノートを作成・更新する。
 
 ## 使い方
 
-タグ名を指定 → そのリリースを充実化
-指定なし → 最新のドラフトリリースを充実化
+- タグ名を指定 → そのリリースを充実化
+- 指定なし → 最新のドラフトリリースを充実化
 
 ## 手順
 
 ### 1. ドラフトリリースの特定
 
-ユーザーがタグ名を指定している場合はそのリリースを使用。
-指定がない場合は gh release list で最新の Draft を探す。
-
 ```bash
 gh release list --limit 10
 ```
 
+ユーザー指定のタグがあればそれを使用。なければ最新の Draft を使用。
 ドラフトが見つからない場合はユーザーに報告して終了。
 
 ### 2. 現在のドラフト内容の取得
@@ -38,77 +36,67 @@ gh release view <tag> --json tagName,name,body,isDraft
 
 ### 3. 前回リリースの特定
 
-gh release list から、対象ドラフトの **一つ前** の Latest / Published リリースのタグを特定する。
+`gh release list` から、対象ドラフトの一つ前の Published リリースのタグを特定する。
 
-### 4. コミット一覧の取得
+### 4. 変更内容の収集
 
 ```bash
+# コミット一覧
 git log <prev-tag>...<target-tag> --oneline --no-merges
-```
 
-各コミットから関連する PR 番号を抽出する。
-
-### 5. PR 詳細の調査
-
-各 PR の詳細を `gh pr view <number> --json title,body` で取得する。
-
-### 6. 変更規模の確認
-
-```bash
+# 変更規模
 git diff --shortstat <prev-tag>...<target-tag>
 ```
 
-### 7. リリースノートの作成
+各コミットから PR 番号を抽出し、`gh pr view <number> --json title,body` で詳細を取得する。
 
-以下の構造でリリースノートを作成する:
+### 5. リリースノートの作成
 
 ```markdown
-## 📦 <tag>
+## <tag>
 
-<1〜2行のリリース概要サマリー>
+<1〜2行のリリース概要>
 
-## 🎉 What's New
+## What's New
 
-<主要な変更を 3〜5 個ピックアップ。絵文字 + 太字タイトル + 1行説明>
+- <主要な変更を 3〜5 個ピックアップ>
 
-## 🚀 Features
+## Features
 
-### <機能カテゴリ>: <タイトル> (<PR番号>) @<author>
-- <詳細項目（PR body から技術的な要点を抽出）>
+- <タイトル> (<PR番号>): <内容>
 
-## 🐛 Bug Fixes
+## Bug Fixes
 
-### <カテゴリ>: <タイトル> (<PR番号>) @<author>
-- <修正内容と影響範囲>
+- <タイトル> (<PR番号>): <修正内容>
 
-## 🔧 Refactoring
+## Refactoring
 
-### <カテゴリ>: <タイトル> (<PR番号>) @<author>
-- <リファクタリング内容>
+- <タイトル> (<PR番号>): <内容>
 
-## ⚠️ Breaking Changes（該当がある場合のみ）
+## Breaking Changes（該当がある場合のみ）
 
-- <破壊的変更の箇条書き>
+- <破壊的変更の内容>
 
 ---
 
-**<N> files changed, <N> insertions(+), <N> deletions(-)**
+<N> files changed, <N> insertions(+), <N> deletions(-)
 
-**Full Changelog:** <compare URL>
+Full Changelog: <compare URL>
 ```
 
-### 作成のポイント
+### 6. ユーザー確認
 
-- **🎉 What's New**: ユーザー向けに「何が嬉しいか」を伝える。技術的な詳細より効果を重視
-- **🚀 Features / 🐛 Bug Fixes / 🔧 Refactoring**: PR body から技術的な要点を抽出。コミットメッセージのコピペではなく、内容を理解して説明する
-- **⚠️ Breaking Changes**: API の変更、コマンドの削除/リネーム、設定形式の変更など
-- **Dependencies セクション**: Features/Fixes と重複する場合は省略
-- 自動生成ドラフトに漏れているコミット/PR がないか必ず確認する
+作成したリリースノートをプレビュー表示し、承認を得る。
 
-### 8. ユーザー確認
+### 7. ドラフト更新
 
-作成したリリースノートの内容をプレビュー表示し、ユーザーに確認する。
+```bash
+gh release edit <tag> --notes "<content>"
+```
 
-### 9. ドラフト更新
+## 作成のポイント
 
-承認後、`gh release edit <tag> --notes "<content>"` でドラフトを更新する。
+- What's New: 技術的な詳細より「何が嬉しいか」を伝える
+- Features/Bug Fixes/Refactoring: PR body から要点を抽出。コミットメッセージのコピペ不可
+- Breaking Changes: API 変更、コマンドの削除/リネーム、設定形式の変更など
+- 自動生成ドラフトに漏れているコミット/PR がないか確認する
