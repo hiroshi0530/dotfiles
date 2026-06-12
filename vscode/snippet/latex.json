@@ -1,0 +1,48 @@
+{
+    "report": {
+        "prefix": "report",
+        "body": [
+            "\\documentclass[${1:a4paper,11pt}]{${2:jsarticle}}",
+            "",
+            "",
+            "% 数式",
+            "\\usepackage{amsmath,amsfonts}",
+            "\\usepackage{bm}",
+            "% 画像",
+            "\\usepackage[dvipdfmx]{graphicx}",
+            "${3}",
+            "",
+            "\\begin{document}",
+            "",
+            "\\title{${4}}",
+            "\\author{${5}}",
+            "\\date{${6:\\today}}",
+            "\\maketitle",
+            "",
+            "",
+            "$0",
+            "",
+            "",
+            "\\end{document}"
+        ],
+        "description": "template"
+    },
+    "LQ": {
+        "prefix": "LQ",
+        "body": [
+            "\\mathbf{\\hat{L}_Q}"
+        ]
+    },
+    "APR": {
+        "prefix": "APR",
+        "body": [
+            "\\tilde{\\mathbf{A}}"
+        ]
+    },
+    "AGPPR": {
+        "prefix": "AGPPR",
+        "body": [
+            "\\mathbf{A}_{\\text{GPPR}}"
+        ]
+    }
+}

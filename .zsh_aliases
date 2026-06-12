@@ -1,0 +1,297 @@
+# aliasをvim :!コマンドから実行できるようにする
+setopt aliases
+
+# change directory
+alias u='cd ../'
+alias d='cd -'
+alias ..='cd ../../'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../../'
+alias ......='cd ../../../../../../'
+
+# program
+alias t='tmux'
+alias w='which'
+alias p='python'
+alias ipy='ipython'
+alias r='ruby'
+alias a='aws'
+alias g='gcloud'
+alias gor='go run'
+alias gob='go build'
+alias c='cargo'
+alias cr='cargo run'
+alias cc='cargo check'
+alias cb='cargo build'
+alias cadd='cargo add'
+alias cbr='cargo build --release'
+alias cwc='cargo watch -x check'
+alias cwr='cargo watch -x run'
+alias cwt='cargo watch -x test'
+
+alias tiga='tig --all'
+
+# vim
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias vd='nvim -d'
+alias vr='nvim -R'
+alias svi='set -o vi'
+alias view='nvim -R'
+
+alias vb='nvim ~/.bashrc'
+alias vz='nvim ~/.zshrc'
+alias vv='nvim ~/.vimrc'
+alias va='nvim ~/.zsh_aliases'
+alias vf='nvim ~/.zsh_functions'
+alias vp='nvim ~/.zsh_private'
+alias vpa='nvim ~/.zsh_private_aliases'
+alias vt='nvim ~/.tmux.conf'
+
+alias loadb='source ~/.bashrc'
+alias loadz='source ~/.zshrc'
+alias loadt='tmux source-file ~/.tmux.conf'
+
+alias cl='clear'
+alias e='exit'
+alias da='direnv allow'
+
+alias vssh='v ~/.ssh/config'
+alias vaws='v ~/.aws/credentials'
+alias vgit='nvim ~/.gitconfig'
+
+# list
+alias ll='ls -alGh --color'
+alias la='ll -Ah'
+alias l='ls -CFh'
+alias df='df -H -m'
+alias du='du -H -m'
+alias h='history'
+alias dmesg='dmesg -T'
+
+alias cp='cp -i -p'
+alias mv='mv -i'
+alias rm='rm -i'
+
+alias date='env LANG=C date'
+alias sort='env LC_ALL=C sort'
+
+# grep
+alias grep='env -u LC_CTYPE grep --color=always'
+alias zgrep='env -u LC_CTYPE zgrep --color=always'
+export GREP_COLORS='mt=01;41'
+
+# diffutils
+alias sdiff='sdiff -l'
+alias pdiff='diff -aurN'
+
+# tree
+alias tree='tree -NF'
+alias ftree='tree -afipugsDf'
+
+# global
+alias gtags='gtags -v'
+alias htags='htags -vsF'
+
+# wget
+alias wget='wget --trust-server-names --timeout=60'
+
+# mintty
+alias cls='echo -ne "\ec\e[3J"'
+
+# windows native application
+alias ipconfig='cocot ipconfig'
+alias nslookup='cocot nslookup'
+alias netsh='cocot netsh'
+alias net='cocot net'
+alias shutdown='cocot shutdown'
+alias systeminfo='cocot systeminfo'
+alias tasklist='cocot tasklist'
+alias taskkill='cocot taskkill'
+alias xcopy='cocot xcopy'
+alias attrib='cocot attrib'
+
+# git
+alias gall='ga && gcu && gpom'
+alias grh='git reset --hard'
+alias gm='git merge'
+alias gmt='git mergetool'
+alias get='git'
+alias gs='git status'
+alias gss='git status -s'
+alias gpl='git pull'
+alias gpr='git pull --rebase'
+alias gps='git push'
+alias gpso='git push origin'
+
+alias gm_no_commit='git merge --no-commit --no-ff'
+alias gma='git merge --abort'
+
+alias gdv='git diff -w "$@" | vim -R -'
+
+alias gc='git commit -v'
+alias gca='git commit -v -a'
+alias gci='git commit --interactive'
+
+alias gb='git branch -a'
+alias gba='git --no-pager branch -a'
+alias gcount='git shortlog -sn'
+
+alias gcp='git cherry-pick'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+
+alias gcoh='git checkout HEAD'
+alias gcoha='git checkout HEAD -- .'
+alias gcoh1='git checkout HEAD^'
+alias gcoh2='git checkout HEAD^^'
+alias gcoh3='git checkout HEAD^^^'
+alias gcoh4='git checkout HEAD^^^^'
+
+alias gexport='git archive --format zip --output'
+alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
+
+alias ggs="gg --stat"
+alias gsl="git shortlog -sn"
+alias gw="git whatchanged"
+alias gt="git tag"
+alias gta="git tag -a"
+
+alias gr='git remote -v'
+alias grmv='git remote rename'
+alias grrm='git remote remove'
+alias grset='git remote set-url'
+
+alias grup='git remote update'
+alias grbi='git rebase -i'
+alias grbc='git rebase --continue'
+alias grba='git rebase --abort'
+
+alias gbr='git branch --remote'
+
+alias gsts='git stash show --text'
+alias gstl='git --no-pager stash list'
+alias gsta='git stash'
+alias gstp='git stash pop'
+alias gstd='git stash drop'
+
+alias gclean='git reset --hard && git clean -dfx'
+alias gfp='git fetch --prune'
+
+alias gdt='git difftool -y' 
+alias gdtn='git difftool -y --name-only' 
+alias gdth='git difftool -y HEAD^' 
+alias gdth2='git difftool -y HEAD^^' 
+alias gdth3='git difftool -y HEAD^^^' 
+alias gdth4='git difftool -y HEAD^^^^' 
+
+alias gdth='git difftool -y HEAD' 
+alias gdth1='git difftool -y HEAD^' 
+alias gdth2='git difftool -y HEAD^^' 
+alias gdth3='git difftool -y HEAD^^^' 
+alias gdth4='git difftool -y HEAD^^^^' 
+
+alias gdtnh='git difftool -y --name-only HEAD' 
+alias gdtnh1='git difftool -y --name-only HEAD^' 
+alias gdtnh2='git difftool -y --name-only HEAD^^' 
+alias gdtnh3='git difftool -y --name-only HEAD^^^' 
+alias gdtnh4='git difftool -y --name-only HEAD^^^^' 
+
+gdt_fc() {
+  local base="${1:-origin/main}"
+  local head="${2:-HEAD}"
+  git difftool -y "$base...$head"
+}
+
+alias ga='git add'
+alias gaa='git add .'
+alias gaA='git add -A'
+alias gau='git add -u'
+
+alias gl='git log --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
+alias gla='git log --all --graph --date=short --decorate=short --pretty=format:'\''%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'\'''
+
+alias gbD='git branch -D'
+alias gbd='git branch -d'
+
+alias gpDo='git push --delete origin'
+
+alias gf='git fetch --all'
+alias gas='git am --show-current-patch'
+
+# tmux
+alias ta='tmux a -t'
+alias tls='tmux ls'
+alias tlsc='tmux lsc'
+alias tkill='tmux kill-server'
+alias tkills='tmux kill-session'
+alias tkillw='tmux kill-window'
+
+# docker
+alias di='docker images'
+alias dps='docker ps -a --format "table {{.Names}}\t{{.ID}}\t{{.Status}}"'
+alias dcl='docker container ls -a'
+alias drca='docker ps -aq | xargs docker rm'
+alias dria='docker rmi $(docker images -q)'
+
+# docker-compose
+alias dcbd='docker-compose build --no-cache'
+alias dcup='docker-compose up -d --build'
+alias dcps='docker-compose ps'
+alias dcpq='docker-compose ps -q'
+alias dcim='docker-compose images'
+alias dcsp='docker-compose stop'
+alias dcst='docker-compose start'
+alias dcrs='docker-compose restart'
+alias dcrm='docker-compose rm'
+alias dcdw='docker-compose down'
+alias dcdwv='docker-compose down -v'
+alias dcdwall='docker-compose down --rmi all'
+
+# rails
+alias rs='rails server'
+alias rr='rails routes'
+alias rdm='rails db:migrate'
+alias rgc='rails generate controller'
+alias rdc='rails destroy controller'
+alias rgm='rails generate model'
+alias rddm='rails destroy model'
+alias rc='rails console'
+
+# hugo
+alias hsd='hugo server --buildDrafts --buildFuture --cleanDestinationDir --enableGitInfo --forceSyncStatic --ignoreCache --watch'
+alias hs='hugo server --buildFuture --cleanDestinationDir --enableGitInfo --forceSyncStatic --ignoreCache --watch'
+
+# bundler
+alias bip='bundle install --path vendor/bundler'
+
+# jupyter
+alias jn='jupyter notebook'
+
+# poetry
+alias poa='poetry add'
+alias por='poetry run'
+alias pos='poetry shell'
+alias poi='poetry install'
+alias pob='poetry build'
+alias porp='poetry run python'
+alias popytest='poetry run pytest -vv -s --disable-warnings'
+
+# uv
+alias uva='uv add'
+alias uvr='uv run'
+alias uvb='uv build'
+alias uvupgrade='uv lock --upgrade'
+alias uvpytest='uv run pytest -vv -s'
+
+# network
+alias nst='netstat -autn'
+alias ss='ss -tulnp | grep '
+
+# ctags
+alias ctags='ctags -R --exclude=.git --exclude=log --exclude=node_modules *'
+
+# runn
+alias runrun='runn run --verbose'

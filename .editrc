@@ -1,0 +1,13 @@
+bind -v
+
+# Vi insert mode bindings
+bind -M viins '\t' complete
+bind -M viins '^P' ed-search-prev-history
+bind -M viins '^N' ed-search-next-history
+bind -M viins '^L' clear-screen
+bind -M viins '^J' vi-command
+
+# Vi command mode bindings
+bind -M vicmd '^P' ed-search-prev-history
+bind -M vicmd '^N' ed-search-next-history
+bind -M vicmd '^L' clear-screen
