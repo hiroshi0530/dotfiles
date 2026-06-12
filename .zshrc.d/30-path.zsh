@@ -28,6 +28,7 @@ path=(
 [[ -d "$HOME/.pulumi/bin" ]]                    && path+=("$HOME/.pulumi/bin")
 [[ -d "$HOME/.cargo/bin" ]]                     && path+=("$HOME/.cargo/bin")
 [[ -d "$HOME/.antigravity/antigravity/bin" ]]   && path+=("$HOME/.antigravity/antigravity/bin")
+[[ -d "$HOME/win32yank/win32yank-x64" ]]        && path+=("$HOME/win32yank/win32yank-x64")
 
 export PATH
 [[ -d /opt/local/man ]] && export MANPATH="/opt/local/man:${MANPATH:-}"
