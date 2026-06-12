@@ -1,0 +1,16 @@
+# mise global tool versions
+# https://mise.jdx.dev/
+#
+# Run `mise install` after symlinking this file to apply all tools.
+# Run `mise use --global <tool>@<version>` to update a version.
+
+[tools]
+python = "3.12"
+node   = "lts"
+go     = "latest"
+
+[settings]
+# Also read .tool-versions files (asdf compatibility)
+legacy_version_file = true
+# Auto-install missing tools when entering a directory
+auto_install = true

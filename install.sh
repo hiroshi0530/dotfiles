@@ -59,8 +59,17 @@ for f in .??*; do
   [[ "$f" == ".DS_Store" ]] && continue
   [[ "$f" == ".github" ]]   && continue
   [[ "$f" == ".codex" ]]    && continue
+  [[ "$f" == ".config" ]]   && continue  # managed per-file below
   symlink "$SCRIPT_DIR/$f" "$HOME/$f"
 done
+
+# ---------------------------------------------------------------------------
+# mise: global tool config
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking mise global config"
+run mkdir -p "$HOME/.config/mise"
+symlink "$SCRIPT_DIR/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
 
 # ---------------------------------------------------------------------------
 # Git config

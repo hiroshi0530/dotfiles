@@ -1,15 +1,11 @@
 # shellcheck shell=zsh
 # shellcheck disable=SC1090
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[[ -s "$NVM_DIR/nvm.sh" ]] && . "$NVM_DIR/nvm.sh"
-[[ -s "$NVM_DIR/bash_completion" ]] && . "$NVM_DIR/bash_completion"
 
 # deno
 [[ -f "$HOME/.deno/env" ]] && . "$HOME/.deno/env"
 
-# pyenv
-command -v pyenv >/dev/null 2>&1 && eval "$(pyenv init -)"
+# mise (manages python, node, go, etc.)
+command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 # fzf
 [[ -f "$HOME/.fzf.zsh" ]] && source "$HOME/.fzf.zsh"
