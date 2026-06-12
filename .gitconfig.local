@@ -1,0 +1,63 @@
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+
+[core]
+  editor = nvim
+  pager = less -XRF
+  quotepath = false
+  autocrlf = input
+  whitespace = cr-at-eol
+  ignorecase = false
+  excludesfile = ~/.gitignore
+
+[push]
+  default = simple
+
+[pull]
+  rebase = true
+  ff = only
+
+[fetch]
+  prune = true
+
+[branch]
+  autosetuprebase = always
+
+[merge]
+  tool = nvimdiff
+  ff = false
+
+[mergetool]
+  keepBackup = false
+
+[diff]
+  tool = nvimdiff
+  compactionHeuristic = true
+
+[difftool "nvimdiff"]
+  cmd = nvim -d "$LOCAL" "$REMOTE"
+
+[pager]
+  log = diff-highlight | less
+  show = diff-highlight | less
+  diff = diff-highlight | less
+
+[credential "https://github.com"]
+  helper = !/usr/bin/gh auth git-credential
+
+[credential "https://gist.github.com"]
+  helper = !/usr/bin/gh auth git-credential
+
+[ghq]
+  root = ~/src
+
+# gpg を無効化
+[commit]
+  gpgsign = false
+
+[tag]
+  gpgsign = false

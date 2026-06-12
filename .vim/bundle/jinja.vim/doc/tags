@@ -1,0 +1,8 @@
+jinja#AdjustFiletype	jinja.txt	/*jinja#AdjustFiletype*
+jinja#DetectJinja	jinja.txt	/*jinja#DetectJinja*
+jinja-configuration	jinja.txt	/*jinja-configuration*
+jinja-contents	jinja.txt	/*jinja-contents*
+jinja-functions	jinja.txt	/*jinja-functions*
+jinja-introduction	jinja.txt	/*jinja-introduction*
+jinja.txt	jinja.txt	/*jinja.txt*
+jinja.vim	jinja.txt	/*jinja.vim*

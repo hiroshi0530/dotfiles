@@ -1,0 +1,10 @@
+### default for all ##
+Host *
+  ForwardAgent no
+  ForwardX11 no
+  Port 22
+  ServerAliveInterval 60
+  ServerAliveCountMax 30
+  # NOTE: 'accept-new' requires OpenSSH 7.6+ (older clients may fail to parse this config)
+  StrictHostKeyChecking accept-new
+  LogLevel ERROR

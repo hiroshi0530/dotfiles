@@ -1,0 +1,51 @@
+# shellcheck shell=bash
+
+alias ta='tmux a -t'
+alias tls='tmux ls'
+alias tlsc='tmux lsc'
+alias tkill='tmux kill-server'
+alias tkills='tmux kill-session'
+alias tkillw='tmux kill-window'
+
+alias di='docker images'
+alias dps='docker ps -a'
+alias dcl='docker container ls -a'
+alias dlog='docker logs -f'
+alias dst='docker start'
+alias dsp='docker stop'
+alias drc='docker ps -aq | xargs docker rm'
+alias dri='docker rmi $(docker images -q)'
+
+alias dcbd='docker-compose build --no-cache'
+alias dcup='docker-compose up -d --build'
+alias dcps='docker-compose ps'
+alias dcpq='docker-compose ps -q'
+alias dcim='docker-compose images'
+alias dcsp='docker-compose stop'
+alias dcst='docker-compose start'
+alias dcrs='docker-compose restart'
+alias dcrm='docker-compose rm'
+alias dcdw='docker-compose down'
+alias dcdwv='docker-compose down -v'
+alias dcdwall='docker-compose down --rmi all'
+
+alias rs='rails server'
+alias rr='rails routes'
+alias rdm='rails destroy model'
+alias rgc='rails generate controller'
+alias rdc='rails destroy controller'
+alias rgm='rails generate model'
+alias rc='rails console'
+
+alias hsd='hugo server --buildDrafts --buildFuture --cleanDestinationDir --enableGitInfo  --forceSyncStatic --ignoreCache --watch'
+alias hs='hugo server --buildFuture --cleanDestinationDir --enableGitInfo  --forceSyncStatic --ignoreCache --watch'
+
+alias bip='bundle install --path vendor/bundler'
+alias jn='jupyter notebook'
+
+alias pr='poetry run'
+alias pi='poetry install'
+alias prp='poetry run python'
+alias ghb='gh browse'
+
+alias ruby='~/.rbenv/versions/3.0.1/bin/ruby'
