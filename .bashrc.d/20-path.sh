@@ -9,9 +9,7 @@
 [ -d '/opt/local/sbin' ]                                       && path_prepend '/opt/local/sbin'
 [ -d '/usr/local/texlive/2022/bin/universal-darwin' ]          && path_prepend '/usr/local/texlive/2022/bin/universal-darwin'
 [ -d "$HOME/.local/bin" ]                                      && path_prepend "$HOME/.local/bin"
-[ -d "$HOME/.nodebrew/current/bin" ]                           && path_prepend "$HOME/.nodebrew/current/bin"
 [ -d "$HOME/anaconda3/bin" ]                                   && path_prepend "$HOME/anaconda3/bin"
-[ -d "$HOME/.pyenv/bin" ]                                      && path_prepend "$HOME/.pyenv/bin"
 [ -d '/opt/poetry/bin' ]                                       && path_prepend '/opt/poetry/bin'
 [ -d '/usr/local/go/bin' ]                                     && path_append  '/usr/local/go/bin'
 
@@ -27,7 +25,6 @@
 export PATH
 export MANPATH="/opt/local/man:${MANPATH:-}"
 
-export PYENV_ROOT="$HOME/.pyenv"
 export GOPATH="$HOME/go:$HOME/go/ugo:$HOME/go/go_test"
 
 if command -v go >/dev/null 2>&1; then
