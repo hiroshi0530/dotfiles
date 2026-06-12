@@ -1,28 +1,28 @@
 # shellcheck shell=bash
 
 # Keep system administration directories available.
-path_prepend '/sbin'
-path_prepend '/usr/sbin'
+[ -d '/sbin' ]      && path_prepend '/sbin'
+[ -d '/usr/sbin' ]  && path_prepend '/usr/sbin'
 
 # Toolchains and package managers.
-path_prepend '/opt/local/bin'
-path_prepend '/opt/local/sbin'
-path_prepend '/usr/local/texlive/2022/bin/universal-darwin'
-path_prepend "$HOME/.local/bin"
-path_prepend "$HOME/.nodebrew/current/bin"
-path_prepend "$HOME/anaconda3/bin"
-path_prepend "$HOME/.pyenv/bin"
-path_prepend '/opt/poetry/bin'
-path_append '/usr/local/go/bin'
+[ -d '/opt/local/bin' ]                                        && path_prepend '/opt/local/bin'
+[ -d '/opt/local/sbin' ]                                       && path_prepend '/opt/local/sbin'
+[ -d '/usr/local/texlive/2022/bin/universal-darwin' ]          && path_prepend '/usr/local/texlive/2022/bin/universal-darwin'
+[ -d "$HOME/.local/bin" ]                                      && path_prepend "$HOME/.local/bin"
+[ -d "$HOME/.nodebrew/current/bin" ]                           && path_prepend "$HOME/.nodebrew/current/bin"
+[ -d "$HOME/anaconda3/bin" ]                                   && path_prepend "$HOME/anaconda3/bin"
+[ -d "$HOME/.pyenv/bin" ]                                      && path_prepend "$HOME/.pyenv/bin"
+[ -d '/opt/poetry/bin' ]                                       && path_prepend '/opt/poetry/bin'
+[ -d '/usr/local/go/bin' ]                                     && path_append  '/usr/local/go/bin'
 
 # Go workspace bins.
-path_prepend "$HOME/go/bin"
-path_prepend "$HOME/go/ugo/bin"
-path_prepend "$HOME/go/go_test/bin"
+[ -d "$HOME/go/bin" ]          && path_prepend "$HOME/go/bin"
+[ -d "$HOME/go/ugo/bin" ]      && path_prepend "$HOME/go/ugo/bin"
+[ -d "$HOME/go/go_test/bin" ]  && path_prepend "$HOME/go/go_test/bin"
 
 # User utilities.
-path_append "$HOME/.pulumi/bin"
-path_append '/opt/homebrew/share/git-core/contrib/diff-highlight'
+[ -d "$HOME/.pulumi/bin" ]                                              && path_append "$HOME/.pulumi/bin"
+[ -d '/opt/homebrew/share/git-core/contrib/diff-highlight' ]            && path_append '/opt/homebrew/share/git-core/contrib/diff-highlight'
 
 export PATH
 export MANPATH="/opt/local/man:${MANPATH:-}"
