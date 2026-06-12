@@ -5,7 +5,7 @@ export PAGER='less'
 umask 022
 
 export PYTHONDONTWRITEBYTECODE=1
-export SHELL='/bin/bash'
+export SHELL="${BASH:-/bin/bash}"
 
 # Locale settings.
 export LC_ALL='en_US.UTF-8'
