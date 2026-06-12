@@ -28,7 +28,11 @@ if command -v trash-put >/dev/null 2>&1; then
   alias rm='trash-put'
 fi
 
-# Set DISPLAY only on Linux (not macOS or WSL2 which manages it separately).
-if [[ "$(uname -s)" == "Linux" ]] && [[ -z "${WAYLAND_DISPLAY:-}" ]] && [[ -z "${DISPLAY:-}" ]]; then
+# Set DISPLAY only on Linux X11 (not macOS, Wayland, or WSL which manages it separately).
+if [[ "$(uname -s)" == "Linux" ]] \
+  && [[ -z "${WAYLAND_DISPLAY:-}" ]] \
+  && [[ -z "${DISPLAY:-}" ]] \
+  && [[ -z "${WSL_DISTRO_NAME:-}" ]] \
+  && [[ -z "${WSL_INTEROP:-}" ]]; then
   export DISPLAY=':0'
 fi
