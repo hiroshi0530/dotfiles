@@ -6,7 +6,7 @@ description: |
   などと言った時に使用する。
 ---
 
-# 🔀 Pull Request 作成
+# Pull Request 作成
 
 現在のブランチの変更を調査し、適切なタイトル・本文で PR を作成します。
 

@@ -6,7 +6,7 @@ description: |
   などと言った時に使用する。
 ---
 
-# 📜 CHANGELOG 更新
+# CHANGELOG 更新
 
 コミット履歴・PR 情報をもとに [Keep a Changelog](https://keepachangelog.com/ja/1.0.0/) 形式で CHANGELOG.md を更新します。
 
@@ -124,6 +124,6 @@ gh pr list --state merged --base main --limit 30 --json number,title,mergedAt,la
 ### 作成のポイント
 
 - **ユーザー視点**: 開発者向けの実装詳細ではなく、利用者が「何が変わったか」を理解できるよう書く
-- **Breaking Changes**: API 変更・後方非互換な変更は `Changed` や `Removed` に ⚠️ マークを付けて目立たせる
+- **Breaking Changes**: API 変更・後方非互換な変更は `Changed` や `Removed` にマークを付けて目立たせる
 - **日付**: リリース日（マージ日ではない）を記載する
 - **リンク**: ファイル末尾に比較 URL を記載すると便利：`[x.y.z]: https://github.com/owner/repo/compare/vA.B.C...vX.Y.Z`

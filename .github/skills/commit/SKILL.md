@@ -6,7 +6,7 @@ description: |
   などと言った時に使用する。
 ---
 
-# 📝 Semantic Commit 作成
+# Semantic Commit作成
 
 ステージされた（またはすべての）変更を解析し、Conventional Commits 規約に従ったコミットメッセージを生成してコミットします。
 
