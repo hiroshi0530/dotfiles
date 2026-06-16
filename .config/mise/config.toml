@@ -8,6 +8,15 @@
 python = "3.12"
 node   = "lts"
 go     = "latest"
+rust   = "latest"
+poetry = "latest"
+awscli  = "latest"
+hurl    = "latest"
+kubectl = "latest"
+
+[env]
+# GOPATH: go install したバイナリを ~/go/bin に置く
+GOPATH = "{{env.HOME}}/go"
 
 [settings]
 # Also read .tool-versions files (asdf compatibility)

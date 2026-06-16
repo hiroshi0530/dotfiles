@@ -20,7 +20,6 @@ if [ -x "$HOME/.local/bin/mise" ]; then
 fi
 
 [ -f "$HOME/.fzf.bash" ] && . "$HOME/.fzf.bash"
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 [ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
 [ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
 

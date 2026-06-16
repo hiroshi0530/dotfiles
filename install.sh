@@ -152,5 +152,16 @@ else
   echo "  (skipping: missing source or destination already exists)"
 fi
 
+# ---------------------------------------------------------------------------
+# mise: install all tools
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Running mise install"
+if command -v mise >/dev/null 2>&1; then
+  run mise install || echo "  [warn] mise install failed. You can retry with: mise install"
+else
+  echo "  [skip] mise not found. Install from https://mise.jdx.dev/getting-started.html"
+fi
+
 echo ""
 echo "==> Done."

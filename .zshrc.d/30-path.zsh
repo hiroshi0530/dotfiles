@@ -1,9 +1,6 @@
 # shellcheck shell=zsh
-export GOPATH="$HOME/go:$HOME/go/ugo:$HOME/go/go_test"
-if command -v go >/dev/null 2>&1; then
-  # shellcheck disable=SC2155
-  export GOROOT="$(go env GOROOT 2>/dev/null)"
-fi
+# GOPATH は Go のデフォルト ($HOME/go) に任せ、必要なら mise config.toml の [env] で上書きする
+# GOROOT は mise activate が自動設定するため手動設定不要
 
 # PATH (dedup via zsh typeset -U)
 typeset -U path PATH
@@ -16,14 +13,9 @@ path=(
 
 [[ -d /opt/local/bin ]]                         && path+=(/opt/local/bin)
 [[ -d /opt/local/sbin ]]                        && path+=(/opt/local/sbin)
-[[ -d "$HOME/anaconda3/bin" ]]                  && path+=("$HOME/anaconda3/bin")
-[[ -d "$HOME/go/bin" ]]                         && path+=("$HOME/go/bin")
-[[ -d "$HOME/go/ugo/bin" ]]                     && path+=("$HOME/go/ugo/bin")
-[[ -d "$HOME/go/go_test/bin" ]]                 && path+=("$HOME/go/go_test/bin")
+[[ -d "$HOME/go/bin" ]]                         && path+=("$HOME/go/bin")  # go install 先
 [[ -d "$HOME/.local/bin" ]]                     && path+=("$HOME/.local/bin")
-[[ -d /opt/poetry/bin ]]                        && path+=(/opt/poetry/bin)
 [[ -d "$HOME/.pulumi/bin" ]]                    && path+=("$HOME/.pulumi/bin")
-[[ -d "$HOME/.cargo/bin" ]]                     && path+=("$HOME/.cargo/bin")
 [[ -d "$HOME/.antigravity/antigravity/bin" ]]   && path+=("$HOME/.antigravity/antigravity/bin")
 [[ -d "$HOME/win32yank/win32yank-x64" ]]        && path+=("$HOME/win32yank/win32yank-x64")
 
