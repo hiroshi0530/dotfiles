@@ -129,17 +129,20 @@ echo "==> Creating ~/swap"
 run mkdir -p "$HOME/swap"
 
 # ---------------------------------------------------------------------------
-# GitHub config (.github directory)
+# ~/.github/ : copilot-instructions, prompts, pull_request_template
 # ---------------------------------------------------------------------------
 echo ""
-echo "==> Linking .github directory"
-symlink "$SCRIPT_DIR/.github" "$HOME/.github"
+echo "==> Linking ~/.github files"
+run mkdir -p "$HOME/.github"
+symlink "$SCRIPT_DIR/.github/copilot-instructions.md"  "$HOME/.github/copilot-instructions.md"
+symlink "$SCRIPT_DIR/.github/pull_request_template.md" "$HOME/.github/pull_request_template.md"
+symlink "$SCRIPT_DIR/.github/prompts"                  "$HOME/.github/prompts"
 
 # ---------------------------------------------------------------------------
-# Copilot CLI skills
+# ~/.copilot/skills/ : Copilot CLI skills
 # ---------------------------------------------------------------------------
 echo ""
-echo "==> Linking Copilot CLI skills"
+echo "==> Linking ~/.copilot/skills"
 run mkdir -p "$HOME/.copilot/skills"
 for skill_dir in "$SCRIPT_DIR/.github/skills/"*/; do
   skill_name="$(basename "$skill_dir")"
