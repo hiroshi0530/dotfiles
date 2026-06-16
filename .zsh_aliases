@@ -11,6 +11,7 @@ alias .....='cd ../../../../../'
 alias ......='cd ../../../../../../'
 
 # program
+alias c='copilot --yolo'
 alias t='tmux'
 alias w='which'
 alias p='python'
@@ -27,8 +28,6 @@ alias cwr='cargo watch -x run'
 alias cwt='cargo watch -x test'
 
 alias tiga='tig --all'
-
-alias c='copilot --yolo'
 
 # vim
 alias v='nvim'
@@ -218,6 +217,67 @@ alias gpDo='git push --delete origin'
 
 alias gf='git fetch --all'
 alias gas='git am --show-current-patch'
+
+# Worktree を作成する
+gwa() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: gwa <branch-name>"
+        return 1
+    fi
+
+    local branch="$1"
+    git worktree add "../${branch}" "${branch}"
+}
+
+# Worktree を削除する
+gwr() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: gwr <folder-name>"
+        return 1
+    fi
+
+    local folder="$1"
+    git worktree remove "../${folder}"
+}
+
+alias gwl='git worktree list --verbose'
+alias gwp='git worktree prune'
+
+
+refresh-default-branch() {
+  local default_branch
+
+  # デフォルトブランチ名を取得
+  default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+
+  if [ -z "$default_branch" ]; then
+    echo "デフォルトブランチを取得できませんでした"
+    return 1
+  fi
+
+  echo "Default branch: ${default_branch}"
+
+  # デフォルトブランチへ移動
+  git checkout "${default_branch}" || return 1
+
+  # pull 実行
+  if ! git pull origin "${default_branch}"; then
+    echo "git pull に失敗したため rebase を試行します"
+    git pull --rebase origin "${default_branch}" || return 1
+  fi
+
+  # merge-worktrees ブランチを削除
+  if git show-ref --verify --quiet refs/heads/merge-worktrees; then
+    echo "merge-worktrees を削除"
+    git branch -D merge-worktrees || return 1
+  fi
+
+  # merge-worktrees ブランチを作成
+  echo "merge-worktrees を作成"
+  git checkout -b merge-worktrees || return 1
+
+  echo "merge-worktrees ブランチの準備が完了しました"
+}
 
 # tmux
 alias ta='tmux a -t'
