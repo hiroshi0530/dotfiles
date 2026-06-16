@@ -1,7 +1,6 @@
 # shellcheck shell=zsh
-# GOPATH は mise config.toml の [env] で管理 (~/go)
+# GOPATH は Go のデフォルト ($HOME/go) に任せ、必要なら mise config.toml の [env] で上書きする
 # GOROOT は mise activate が自動設定するため手動設定不要
-export GOPATH="$HOME/go"
 
 # PATH (dedup via zsh typeset -U)
 typeset -U path PATH
