@@ -23,6 +23,8 @@
 export PATH
 export MANPATH="/opt/local/man:${MANPATH:-}"
 
-# GOPATH: mise の [env] で管理 (~/go)
-export GOPATH="$HOME/go"
-# GOROOT は mise activate が自動設定するため手動設定不要
+# GOPATH は mise の [env] で管理 (~/go)。未設定の場合のみフォールバック設定する
+if [ -z "${GOPATH:-}" ]; then
+  export GOPATH="$HOME/go"
+fi
+# GOROOT は (interactive 時) mise activate が自動設定するため、ここでは手動設定しない
