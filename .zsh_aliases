@@ -237,7 +237,7 @@ gwr() {
     fi
 
     local folder="$1"
-    git worktree remove "../${folder}"
+    git worktree remove "${folder}"
 }
 
 alias gwl='git worktree list --verbose'
