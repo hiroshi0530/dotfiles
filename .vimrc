@@ -166,74 +166,58 @@ Plug 'rust-lang/rust.vim'
 
 call plug#end()
 
-""""""""""""""""""""""""""""""""""""""""""""""
 " Telescopeの設定
 lua << EOF
-require('telescope').setup {}
+local ok, telescope = pcall(require, 'telescope')
+if ok then telescope.setup {} end
 EOF
 
 " Lualineの設定
 lua << EOF
-require('lualine').setup {
-  options = { theme = 'gruvbox' },
-}
+local ok, lualine = pcall(require, 'lualine')
+if ok then lualine.setup { options = { theme = 'gruvbox' } } end
 EOF
 
-" Nvim-treeの設定 
+" Nvim-treeの設定
 lua << EOF
-
-require('nvim-tree').setup({
-  view = {
-    -- width = 31,  -- 必要に応じてツリーの幅を調整
-    float = {
-          enable = true, -- フロートウィンドウモードを有効化
-          open_win_config = {
-            relative = "editor", -- エディタ全体に対する位置
-            border = "rounded",  -- ウィンドウの枠のスタイル ("rounded", "single", "double", "none")
-            width = 90,          -- フロートウィンドウの幅
-            height = 50,         -- フロートウィンドウの高さ
-            row = 3,             -- エディタ上部からの相対位置
-            col = 10,            -- エディタ左端からの相対位置
-          },
-      },
-  },
-  -- ファイルツリーが開かれた際にカスタムキーマッピングを設定
-  -- on_attach = function(bufnr)
-  --   local api = require('nvim-tree.api')
-
-  --   -- キーマッピング設定
-  --   local opts = { noremap = true, silent = true, nowait = true, buffer = bufnr }
-
-  --   -- "s"キーで垂直分割してファイルを開く
-  --   vim.keymap.set('n', 's', api.node.open.vertical, opts)
-
-  --   -- "i"キーで水平分割してファイルを開く
-  --   vim.keymap.set('n', 'i', api.node.open.horizontal, opts)
-  -- end,
-})
-
+local ok, nvim_tree = pcall(require, 'nvim-tree')
+if ok then
+  nvim_tree.setup({
+    view = {
+      float = {
+            enable = true,
+            open_win_config = {
+              relative = "editor",
+              border = "rounded",
+              width = 90,
+              height = 50,
+              row = 3,
+              col = 10,
+            },
+        },
+    },
+  })
+end
 EOF
 
 " Treesitterの設定
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "svelte", "html", "css", "javascript",
-"typescript" },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = { "python" },
-    disable = { 'lua' }
+local ok, configs = pcall(require, 'nvim-treesitter.configs')
+if ok then
+  configs.setup {
+    ensure_installed = { "svelte", "html", "css", "javascript", "typescript" },
+    highlight = {
+      enable = true,
+      additional_vim_regex_highlighting = { "python" },
+      disable = { 'lua' }
+    }
   }
-}
+end
 EOF
 
-
 lua << EOF
-require'nvim-web-devicons'.setup {
-  -- global default (default to false)
-  -- will get overridden by `get_icons` option
-  default = true;
-}
+local ok, devicons = pcall(require, 'nvim-web-devicons')
+if ok then devicons.setup { default = true } end
 EOF
 
 " colorscheme lucius
@@ -245,18 +229,17 @@ let g:onedark_config = {
 " comment の色を修正
 " これだけでは不十分で以下のshellなどの設定も別途追加
 lua << EOF
-require('onedark').setup {
-  colors = {
-    bright_orange = "#ff8800",
-  },
-  highlights = {
-    ["@comment"] = {fg = '#8F917F'},
-    -- ["@keyword"] = {fg = '$green'},
-    -- ["@string"] = {fg = '$bright_orange', bg = '#00ff00', fmt = 'bold'},
-    -- ["@function"] = {fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic'},
-    -- ["@function.builtin"] = {fg = '#0059ff'}
+local ok, onedark = pcall(require, 'onedark')
+if ok then
+  onedark.setup {
+    colors = {
+      bright_orange = "#ff8800",
+    },
+    highlights = {
+      ["@comment"] = {fg = '#8F917F'},
+    }
   }
-}
+end
 EOF
 
 let g:copilot_settings = #{selectedCompletionModel: 'gpt-4o-copilot'}
