@@ -15,12 +15,8 @@ alias t='tmux'
 alias w='which'
 alias p='python'
 alias ipy='ipython'
-alias r='ruby'
-alias a='aws'
-alias g='gcloud'
 alias gor='go run'
 alias gob='go build'
-alias c='cargo'
 alias cr='cargo run'
 alias cc='cargo check'
 alias cb='cargo build'
@@ -31,6 +27,8 @@ alias cwr='cargo watch -x run'
 alias cwt='cargo watch -x test'
 
 alias tiga='tig --all'
+
+alias c='copilot --yolo'
 
 # vim
 alias v='nvim'

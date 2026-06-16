@@ -129,6 +129,14 @@ echo "==> Creating ~/swap"
 run mkdir -p "$HOME/swap"
 
 # ---------------------------------------------------------------------------
+# GitHub Copilot global instructions
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking Copilot global instructions"
+run mkdir -p "$HOME/.github"
+symlink "$SCRIPT_DIR/.github/copilot-instructions.md" "$HOME/.github/copilot-instructions.md"
+
+# ---------------------------------------------------------------------------
 # Copilot CLI skills
 # ---------------------------------------------------------------------------
 echo ""
