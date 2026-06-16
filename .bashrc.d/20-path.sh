@@ -9,8 +9,6 @@
 [ -d '/opt/local/sbin' ]                                       && path_prepend '/opt/local/sbin'
 [ -d '/usr/local/texlive/2022/bin/universal-darwin' ]          && path_prepend '/usr/local/texlive/2022/bin/universal-darwin'
 [ -d "$HOME/.local/bin" ]                                      && path_prepend "$HOME/.local/bin"
-[ -d "$HOME/anaconda3/bin" ]                                   && path_prepend "$HOME/anaconda3/bin"
-[ -d '/opt/poetry/bin' ]                                       && path_prepend '/opt/poetry/bin'
 [ -d '/usr/local/go/bin' ]                                     && path_append  '/usr/local/go/bin'
 
 # Go workspace bins.
@@ -25,9 +23,6 @@
 export PATH
 export MANPATH="/opt/local/man:${MANPATH:-}"
 
-export GOPATH="$HOME/go:$HOME/go/ugo:$HOME/go/go_test"
-
-if command -v go >/dev/null 2>&1; then
-  export GOROOT
-  GOROOT="$(go env GOROOT)"
-fi
+# GOPATH: mise の [env] で管理 (~/go)
+export GOPATH="$HOME/go"
+# GOROOT は mise activate が自動設定するため手動設定不要

@@ -16,10 +16,16 @@ brew install mactex-no-gui --cask
 
 ---
 
-## Anaconda / conda
+## Python 環境
 
-インストール後、`.bash_profile` や `.zshrc` に自動追記される conda 初期化ブロックを削除し、
-`.bashrc.d/00-env.sh` や `.zshrc.d/30-path.zsh` の `anaconda3/bin` PATH 設定で管理する。
+mise でバージョンを管理する:
+
+```bash
+mise install  # python = "3.12" がインストールされる
+```
+
+conda/anaconda を使う場合は mise Python との競合に注意。
+`.bashrc.d/20-path.sh` および `.zshrc.d/30-path.zsh` では anaconda3/bin は PATH に含めていない。
 
 ---
 
