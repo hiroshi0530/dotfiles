@@ -49,7 +49,7 @@ symlink() {
 echo "==> Starting dotfiles install (dry-run: $DRY_RUN)"
 
 # ---------------------------------------------------------------------------
-# Dotfiles: symlink all hidden files/dirs (except .git, .DS_Store, .github, .codex)
+# Dotfiles: symlink all hidden files/dirs (except .git, .DS_Store, .github, .codex, .config)
 # ---------------------------------------------------------------------------
 echo ""
 echo "==> Linking dotfiles to $HOME"
@@ -127,6 +127,13 @@ fi
 echo ""
 echo "==> Creating ~/swap"
 run mkdir -p "$HOME/swap"
+
+# ---------------------------------------------------------------------------
+# GitHub config (.github directory)
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking .github directory"
+symlink "$SCRIPT_DIR/.github" "$HOME/.github"
 
 # ---------------------------------------------------------------------------
 # Copilot CLI skills
