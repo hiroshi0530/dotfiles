@@ -10,8 +10,9 @@ node   = "lts"
 go     = "latest"
 rust   = "latest"
 poetry = "latest"
-awscli = "latest"
-hurl   = "latest"
+awscli  = "latest"
+hurl    = "latest"
+kubectl = "latest"
 
 [env]
 # GOPATH: go install したバイナリを ~/go/bin に置く
