@@ -1,7 +1,7 @@
 ---
 name: branch
 description: |
-  命名規則に従ったブランチを作成して切り替える。
+  type/description 形式でブランチを命名して切り替える。
   ユーザーが「ブランチ切って」「ブランチ作って」「feature branch を作って」
   などと言った時に使用する。
 ---

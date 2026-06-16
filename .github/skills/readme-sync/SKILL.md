@@ -1,7 +1,7 @@
 ---
-name: readme-update
+name: readme-sync
 description: |
-  コードの変更内容に合わせてREADMEを更新する。
+  コードの変更に追随して README の該当セクションを書き直す。
   ユーザーが「READMEを更新して」「ドキュメントを直して」「READMEに反映して」
   などと言った時に使用する。
 ---

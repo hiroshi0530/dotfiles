@@ -1,7 +1,7 @@
 ---
 name: commit
 description: |
-  変更をステージングして semantic commit を作成する。
+  変更内容を解析して type・scope・subject を自動生成しコミットする。
   ユーザーが「コミットして」「変更をコミット」「commit して」
   などと言った時に使用する。
 ---

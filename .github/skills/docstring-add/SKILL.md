@@ -1,7 +1,7 @@
 ---
-name: doc-gen
+name: docstring-add
 description: |
-  関数・クラス・モジュールにJSDoc / TSDoc / docstring などのドキュメントコメントを自動生成する。
+  関数・クラスの引数・戻り値・例外をコメントとして出力する。
   ユーザーが「ドキュメント書いて」「JSDoc追加して」「docstring生成して」
   などと言った時に使用する。
 ---

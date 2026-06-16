@@ -1,7 +1,7 @@
 ---
 name: changelog
 description: |
-  CHANGELOG.md を更新する。
+  マージされた変更をもとに CHANGELOG を追記・整形する。
   ユーザーが「CHANGELOG 更新して」「変更履歴を書いて」「changelog を追加して」
   などと言った時に使用する。
 ---
