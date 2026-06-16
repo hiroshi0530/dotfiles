@@ -1,7 +1,7 @@
 ---
 name: issue
 description: |
-  GitHub Issue を作成する。
+  バグ報告・機能要望・タスクを適切な形式で起票する。
   ユーザーが「Issue 作って」「バグ報告して」「タスクを起票して」「feature request を出して」
   などと言った時に使用する。
 ---

@@ -1,7 +1,7 @@
 ---
-name: security-check
+name: owasp-audit
 description: |
-  コードのセキュリティリスクをOWASP Top 10の観点で洗い出す。
+  セキュリティ上の欠陥をOWASP基準で診断する。
   ユーザーが「セキュリティチェックして」「脆弱性を確認して」「OWASPチェックして」
   などと言った時に使用する。
 ---

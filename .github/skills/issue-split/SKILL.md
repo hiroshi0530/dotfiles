@@ -1,7 +1,7 @@
 ---
-name: task-breakdown
+name: issue-split
 description: |
-  大きなタスク・機能要件をサブタスクに分解してIssue化する。
+  要件を独立した作業単位に分割して Issue 形式で整理する。
   ユーザーが「タスクを分解して」「Issueに分割して」「実装計画を立てて」
   などと言った時に使用する。
 ---

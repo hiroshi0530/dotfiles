@@ -1,7 +1,7 @@
 ---
 name: pull-request
 description: |
-  Pull Request を作成・更新する。
+  差分を解析してタイトル・本文・チェックリストを含む PR を作成する。
   ユーザーが「PR を作って」「プルリクを出して」「pull request を作成して」
   などと言った時に使用する。
 ---
