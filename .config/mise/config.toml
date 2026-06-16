@@ -13,6 +13,7 @@ poetry = "latest"
 awscli  = "latest"
 hurl    = "latest"
 kubectl = "latest"
+neovim  = "latest"
 copilot = "latest"
 
 [env]
