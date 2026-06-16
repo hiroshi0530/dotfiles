@@ -13,6 +13,7 @@ poetry = "latest"
 awscli  = "latest"
 hurl    = "latest"
 kubectl = "latest"
+copilot = "latest"
 
 [env]
 # GOPATH: go install したバイナリを ~/go/bin に置く
