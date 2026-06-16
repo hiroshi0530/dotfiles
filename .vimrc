@@ -279,11 +279,12 @@ cmp.setup.cmdline(':', {
   }
 })
 
--- LSPサーバーの設定（例：nvim-lspconfigを使用）
+-- LSPサーバーの設定
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require('lspconfig')['pyright'].setup {
-  capabilities = capabilities
-}
+vim.lsp.config('pyright', {
+  capabilities = capabilities,
+})
+vim.lsp.enable('pyright')
 EOF
 
 
