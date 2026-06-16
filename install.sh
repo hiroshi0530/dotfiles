@@ -158,7 +158,7 @@ fi
 echo ""
 echo "==> Running mise install"
 if command -v mise >/dev/null 2>&1; then
-  run mise install
+  run mise install || echo "  [warn] mise install failed. You can retry with: mise install"
 else
   echo "  [skip] mise not found. Install from https://mise.jdx.dev/getting-started.html"
 fi
