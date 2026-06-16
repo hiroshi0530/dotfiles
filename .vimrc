@@ -11,9 +11,7 @@ set softtabstop=4
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=4
 set cursorline
-set hlsearch
 set scrolloff=5
 set encoding=utf-8
 
@@ -134,15 +132,9 @@ set foldlevel=4
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'junegunn/vim-easy-align'
 Plug 'mechatroner/rainbow_csv'
-
-Plug 'psf/black', { 'branch': 'stable' }
-
-Plug 'preservim/nerdtree'
-
-Plug 'ctrlpvim/ctrlp.vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -164,15 +156,7 @@ Plug 'nvim-tree/nvim-web-devicons'
 " シンタックスハイライト
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-" 自動補完
-Plug 'hrsh7th/nvim-cmp'         " nvim-cmp本体
-Plug 'hrsh7th/cmp-nvim-lsp'     " LSP補完
-Plug 'hrsh7th/cmp-buffer'       " バッファ補完
-Plug 'hrsh7th/cmp-path'         " パス補完
-Plug 'hrsh7th/cmp-cmdline'      " コマンドライン補完
-Plug 'L3MON4D3/LuaSnip'         " スニペットエンジン
-Plug 'saadparwaiz1/cmp_luasnip' " LuaSnipとの連携
-Plug 'neovim/nvim-lspconfig'
+" 自動補完 (coc.nvim が担当)
 
 " highlight
 Plug 'navarasu/onedark.nvim'
@@ -244,51 +228,6 @@ require'nvim-treesitter.configs'.setup {
 EOF
 
 
-" 自動補完の設定
-lua << EOF
-local cmp = require'cmp'
-
--- cmpの設定
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- LuaSnipをスニペットエンジンとして使用
-    end,
-  },
-  mapping = {
-    ['<C-n>'] = cmp.mapping.select_next_item(), -- 次の補完候補を選択
-    ['<C-p>'] = cmp.mapping.select_prev_item(), -- 前の補完候補を選択
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Enterで補完を確定
-    -- ['<C-Space>'] = cmp.mapping.complete(), -- 手動で補完を呼び出し
-  },
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' }, -- LSPからの補完
-    { name = 'luasnip' },  -- スニペットからの補完
-  }, {
-    { name = 'buffer' },   -- バッファからの補完
-    { name = 'path' },     -- パス補完
-  })
-})
-
--- コマンドラインの補完設定
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'path' },      -- パス補完
-    { name = 'cmdline' }    -- コマンドライン補完
-  }
-})
-
--- LSPサーバーの設定
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config('pyright', {
-  capabilities = capabilities,
-})
-vim.lsp.enable('pyright')
-EOF
-
-
-
 lua << EOF
 require'nvim-web-devicons'.setup {
   -- global default (default to false)
@@ -311,7 +250,7 @@ require('onedark').setup {
     bright_orange = "#ff8800",
   },
   highlights = {
-    ["@comment"] = {fg = '##8F917F'},
+    ["@comment"] = {fg = '#8F917F'},
     -- ["@keyword"] = {fg = '$green'},
     -- ["@string"] = {fg = '$bright_orange', bg = '#00ff00', fmt = 'bold'},
     -- ["@function"] = {fg = '#0000ff', sp = '$cyan', fmt = 'underline,italic'},
@@ -436,10 +375,6 @@ nnoremap <C-S-p> diw"0P
 
 nnoremap <Space>vs  :vsplit<CR>
 nnoremap <Space>hs  :split<CR>
-
-nnoremap <Space>tl  :vs<CR>:TweetVimHomeTimeline<CR>
-nnoremap <Space>tm  :vs<CR>:TweetVimMentions<CR>
-nnoremap <Space>ts  :TweetVimSay<CR>
 
 inoremap <C-f> <C-x><C-o>
 
@@ -578,10 +513,10 @@ nnoremap <Leader>k[ i\left[<Space>\right]<Esc>F<Space>
 nnoremap <Leader>kred i<font color="MediumVioletRed"> </font><Esc>F<Space>
 
 nnoremap <Leader>ka i\alpha<Esc>
-nnoremap <Leader>kb i\bata<Esc>
+nnoremap <Leader>kb i\beta<Esc>
 nnoremap <Leader>kc i\gamma<Esc>
 nnoremap <Leader>kd i\delta<Esc>
-nnoremap <Leader>kl i\mu<Esc>
+nnoremap <Leader>km i\mu<Esc>
 nnoremap <Leader>kl i\lambda<Esc>
 
 nnoremap <Leader>kC i\Gamma<Esc>
