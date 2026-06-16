@@ -49,7 +49,7 @@ symlink() {
 echo "==> Starting dotfiles install (dry-run: $DRY_RUN)"
 
 # ---------------------------------------------------------------------------
-# Dotfiles: symlink all hidden files/dirs (except .git, .DS_Store, .github, .codex)
+# Dotfiles: symlink all hidden files/dirs (except .git, .DS_Store, .github, .codex, .config)
 # ---------------------------------------------------------------------------
 echo ""
 echo "==> Linking dotfiles to $HOME"

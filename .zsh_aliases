@@ -29,6 +29,8 @@ alias cwt='cargo watch -x test'
 
 alias tiga='tig --all'
 
+alias c='copilot --yolo'
+
 # vim
 alias v='nvim'
 alias vi='nvim'
