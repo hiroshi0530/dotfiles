@@ -5,17 +5,6 @@
 
 ---
 
-## TeX / LaTeX
-
-```bash
-brew install mactex-no-gui --cask
-```
-
-- VS Code 拡張: LaTeX Workshop
-- `.latexmkrc` と `vscode/keybindings.json` はシンボリックリンクで自動反映
-
----
-
 ## Python 環境
 
 mise でバージョンを管理する:
@@ -24,22 +13,49 @@ mise でバージョンを管理する:
 mise install  # python = "3.12" がインストールされる
 ```
 
-conda/anaconda を使う場合は mise Python との競合に注意。
-`.bashrc.d/20-path.sh` および `.zshrc.d/30-path.zsh` では anaconda3/bin は PATH に含めていない。
+`.bashrc.d/20-path.sh` および `.zshrc.d/30-path.zsh` で PATH を管理しているため、他のバージョン管理ツールとの競合に注意。
+
+---
+
+## TeX / LaTeX
+
+### macOS
+
+```bash
+brew install mactex-no-gui --cask
+```
+
+### Linux (ArchLinux)
+
+```bash
+sudo pacman -S texlive-most texlive-lang
+```
+
+VS Code 拡張: LaTeX Workshop
 
 ---
 
 ## Git
 
-デフォルトの Git はバージョンが古いため、必ず brew でインストールする:
+### macOS
+
+デフォルトの Git はバージョンが古いため、brew でインストール:
 
 ```bash
 brew install git
 ```
 
+### Linux (ArchLinux)
+
+```bash
+sudo pacman -S git
+```
+
 ---
 
 ## Vim (clipboard 対応)
+
+### macOS
 
 デフォルトの Vim は `-clipboard`。brew 版を使う:
 
@@ -47,21 +63,30 @@ brew install git
 brew install vim
 ```
 
----
-
-## direnv
+### Linux (ArchLinux)
 
 ```bash
-brew install direnv
+sudo pacman -S vim gvim
 ```
 
 ---
 
-## tmux
+## autojump
+
+### macOS
+
+GitHub リポジトリの指示に従いインストール: https://github.com/wting/autojump
+
+### Linux (ArchLinux)
 
 ```bash
-brew install reattach-to-user-namespace
-brew install tmux
+sudo pacman -S autojump
+```
+
+シェル rc ファイルに以下を追加:
+
+```bash
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 ```
 
 ---
@@ -77,22 +102,10 @@ ln -s "$DIFF_HIGHLIGHT_SRC" /usr/local/bin/diff-highlight
 
 ---
 
-## autojump
-
-GitHub リポジトリの指示に従いインストール: https://github.com/wting/autojump
-
----
-
-## iTerm2
-
-カラースキーム: `iterm.json` をプロファイルとしてインポート。
-
----
-
 ## Jupyter Notebook
 
 ```bash
-pip install jupyterlab jupyterthemes jupytext jupyter_contrib_nbextensions environment_kernels
+pip install jupyterlab jupyterthemes jupytext
 ```
 
 設定ファイルを配置:
@@ -103,47 +116,17 @@ mkdir -p ~/.jupyter/custom
 cp jupyter/custom.js ~/.jupyter/custom/
 ```
 
-Vim バインディング拡張:
-
-```bash
-cd "$(jupyter --data-dir)/nbextensions"
-git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
-jupyter nbextension enable vim_binding/vim_binding
-```
-
-### conda 仮想環境を Jupyter カーネルとして使う
-
-```bash
-conda create -n myenv python=3.11
-conda activate myenv
-conda install jupyter ipykernel
-```
-
-`~/.jupyter/jupyter_notebook_config.py` に追記:
-
-```python
-c.NotebookApp.kernel_spec_manager_class = 'environment_kernels.EnvironmentKernelSpecManager'
-c.EnvironmentKernelSpecManager.conda_env_dirs = ['~/anaconda3/envs']
-```
+詳細な設定は [README.md](README.md#jupyter-%E8%A8%AD%E5%AE%9A) を参照。
 
 ---
 
 ## sshrc
 
-`sshrc/` 配下の `sshrc.zip` を解凍してパスを通す (brew では入手不可):
+`sshrc/` 配下の `sshrc.zip` を解凍してパスを通す:
 
 ```bash
 cd sshrc
 unzip sshrc.zip -d bin/
 export PATH="$PATH:$PWD/bin"
 ```
-
----
-
-## pip パッケージ例
-
-```bash
-pip install boto3 tensorflow keras jupyterlab jupyterthemes
-```
-
 

@@ -1,0 +1,103 @@
+name: Auto Merge
+
+on:
+  workflow_run:
+    workflows: ["ci"]
+    types:
+      - completed
+
+permissions:
+  pull-requests: write
+  contents: write
+
+jobs:
+  auto-merge:
+    runs-on: ubuntu-latest
+    if: |
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
+    steps:
+      - name: Get PR info from workflow
+        uses: actions/github-script@v7
+        id: get-pr
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const runId = context.payload.workflow_run.id;
+
+            // ワークフロー実行に関連する PR を取得
+            const artifacts = await github.rest.actions.listWorkflowRunArtifacts({
+              owner,
+              repo,
+              run_id: runId,
+            });
+
+            const runs = await github.rest.actions.listWorkflowRuns({
+              owner,
+              repo,
+              workflow_id: context.payload.workflow_run.workflow_id,
+              status: 'completed',
+              event: 'pull_request',
+            });
+
+            // PR 番号を取得（最新のマッチするものを使用）
+            for (const run of runs.data.workflow_runs) {
+              if (run.id === runId && run.pull_requests.length > 0) {
+                const prNumber = run.pull_requests[0].number;
+                console.log(`Found PR #${prNumber}`);
+                return prNumber;
+              }
+            }
+
+            // 別の方法: ブランチ名から PR を検索
+            const prs = await github.rest.pulls.list({
+              owner,
+              repo,
+              state: 'open',
+            });
+
+            for (const pr of prs.data) {
+              if (pr.head.sha === context.payload.workflow_run.head_commit.id) {
+                console.log(`Found PR #${pr.number}`);
+                return pr.number;
+              }
+            }
+
+            throw new Error('Could not find associated PR');
+
+      - name: Merge PR with squash
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const prNumber = ${{ steps.get-pr.outputs.result }};
+
+            try {
+              const pr = await github.rest.pulls.get({
+                owner,
+                repo,
+                pull_number: prNumber,
+              });
+
+              if (pr.data.merged) {
+                console.log(`PR #${prNumber} is already merged`);
+                return;
+              }
+
+              console.log(`Merging PR #${prNumber} with squash...`);
+
+              await github.rest.pulls.merge({
+                owner,
+                repo,
+                pull_number: prNumber,
+                merge_method: 'squash',
+              });
+
+              console.log(`✓ PR #${prNumber} merged successfully!`);
+            } catch (error) {
+              if (error.status === 404) {
+                console.log('PR not found or already deleted');
+              } else {
+                throw error;
+              }
+            }
