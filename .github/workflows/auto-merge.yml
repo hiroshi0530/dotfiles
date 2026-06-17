@@ -105,6 +105,6 @@ jobs:
               console.log(`PR #${prNumber} merged successfully!`);
               console.log(`Commit: ${result.data.sha}`);
             } catch (error) {
-              console.log(`✗ Error merging PR #${prNumber}: ${error.message}`);
+              console.log(`Error merging PR #${prNumber}: ${error.message}`);
               throw error;
             }
