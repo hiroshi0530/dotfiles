@@ -22,7 +22,7 @@ function short_pwd {
   last_part=${path_parts[-1]}
 
   # Use zsh-native array slicing (all but the last element).
-  for part in "${path_parts[1,-2]}"; do
+  for part in ${path_parts[1,-2]}; do
     if [[ -n "$part" ]]; then
       shortened_path+="/${part:0:3}"
     fi
