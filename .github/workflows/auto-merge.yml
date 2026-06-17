@@ -88,7 +88,7 @@ jobs:
 
             // Check if already merged
             if (prData.merged) {
-              console.log(`ℹ PR #${prNumber} is already merged. Skipping.`);
+              console.log(`PR #${prNumber} is already merged. Skipping.`);
               return;
             }
 
