@@ -93,7 +93,7 @@ jobs:
             }
 
             try {
-              console.log(`✓ Merging PR #${prNumber} with squash...`);
+              console.log(`Merging PR #${prNumber} with squash...`);
 
               const result = await github.rest.pulls.merge({
                 owner,
