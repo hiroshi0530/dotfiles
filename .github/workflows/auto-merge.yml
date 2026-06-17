@@ -82,7 +82,7 @@ jobs:
 
             // Only merge if author is the repo owner
             if (author !== owner) {
-              console.log(`⊘ PR author (${author}) is not the repository owner (${owner}). Skipping merge.`);
+              console.log(`PR author (${author}) is not the repository owner (${owner}). Skipping merge.`);
               return;
             }
 
