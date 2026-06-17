@@ -7,9 +7,9 @@ on:
       - completed
 
 permissions:
+  actions: read
   pull-requests: write
   contents: write
-
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
