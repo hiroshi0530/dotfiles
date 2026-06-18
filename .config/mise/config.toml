@@ -16,6 +16,17 @@ kubectl = "latest"
 neovim  = "latest"
 tmux    = "latest"
 copilot = "latest"
+# shell enhancements
+sheldon  = "latest"
+starship = "latest"
+atuin    = "latest"
+# modern cli tools
+bat      = "latest"
+eza      = "latest"
+fd       = "latest"
+delta    = "latest"
+lazygit  = "latest"
+zoxide   = "latest"
 
 [env]
 # GOPATH: go install したバイナリを ~/go/bin に置く

@@ -72,6 +72,29 @@ run mkdir -p "$HOME/.config/mise"
 symlink "$SCRIPT_DIR/.config/mise/config.toml" "$HOME/.config/mise/config.toml"
 
 # ---------------------------------------------------------------------------
+# sheldon: zsh plugin manager config
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking sheldon config"
+run mkdir -p "$HOME/.config/sheldon"
+symlink "$SCRIPT_DIR/.config/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
+
+# ---------------------------------------------------------------------------
+# starship: prompt config
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking starship config"
+symlink "$SCRIPT_DIR/.config/starship.toml" "$HOME/.config/starship.toml"
+
+# ---------------------------------------------------------------------------
+# atuin: shell history config
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking atuin config"
+run mkdir -p "$HOME/.config/atuin"
+symlink "$SCRIPT_DIR/.config/atuin/config.toml" "$HOME/.config/atuin/config.toml"
+
+# ---------------------------------------------------------------------------
 # Git config
 # ---------------------------------------------------------------------------
 echo ""
