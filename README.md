@@ -52,7 +52,9 @@
 │   └── snippet/             # VS Code スニペット
 ├── jupyter/                 # Jupyter Notebook 設定
 ├── msshrc/                  # 複数ホスト同時 SSH（tmux）
-└── sshrc/                   # リモート環境への設定持ち込み
+├── sshrc/                   # リモート環境への設定持ち込み（sshrc 本体）
+├── .sshrc                   # sshrc が参照する設定（install.sh が $HOME に symlink）
+└── .sshrc.d/                # sshrc で読み込まれる設定（install.sh が $HOME に symlink）
 ```
 
 ## セットアップ
