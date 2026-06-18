@@ -125,11 +125,28 @@ elif command -v apt-get >/dev/null 2>&1; then
   if [[ ! -f "$font_marker" ]]; then
     echo "  installing Hack Nerd Font from GitHub..."
     run mkdir -p "$font_dir"
-    run curl -fLo /tmp/Hack.zip \
+
+    if "$DRY_RUN"; then
+      tmp_zip="/tmp/HackNerdFont.dryrun.zip"
+    else
+      tmp_zip="$(mktemp -t HackNerdFont.XXXXXX.zip)"
+      trap 'rm -f "$tmp_zip"' EXIT
+    fi
+
+    run curl -fLo "$tmp_zip" \
       "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
-    run unzip -o /tmp/Hack.zip -d "$font_dir" '*.ttf'
-    run rm -f /tmp/Hack.zip
-    run fc-cache -f "$font_dir"
+    run unzip -o "$tmp_zip" -d "$font_dir" '*.ttf'
+
+    if command -v fc-cache >/dev/null 2>&1; then
+      run fc-cache -f "$font_dir"
+    else
+      echo "  [skip] fc-cache not found; font cache update skipped"
+    fi
+
+    if ! "$DRY_RUN"; then
+      rm -f "$tmp_zip"
+      trap - EXIT
+    fi
   else
     echo "  (already installed: Hack Nerd Font)"
   fi
