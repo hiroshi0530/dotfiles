@@ -80,13 +80,6 @@ run mkdir -p "$HOME/.config/sheldon"
 symlink "$SCRIPT_DIR/.config/sheldon/plugins.toml" "$HOME/.config/sheldon/plugins.toml"
 
 # ---------------------------------------------------------------------------
-# starship: prompt config
-# ---------------------------------------------------------------------------
-echo ""
-echo "==> Linking starship config"
-symlink "$SCRIPT_DIR/.config/starship.toml" "$HOME/.config/starship.toml"
-
-# ---------------------------------------------------------------------------
 # atuin: shell history config
 # ---------------------------------------------------------------------------
 echo ""

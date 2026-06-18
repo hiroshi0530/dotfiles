@@ -18,7 +18,6 @@ tmux    = "latest"
 copilot = "latest"
 # shell enhancements
 sheldon  = "latest"
-starship = "latest"
 atuin    = "latest"
 # modern cli tools
 bat      = "latest"
