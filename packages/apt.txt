@@ -1,0 +1,21 @@
+# Ubuntu/Debian (apt) パッケージリスト
+# mise が管理するツールはここに含めない
+#
+# インストール: grep -Ev '^[[:space:]]*(#|$)' packages/apt.txt | xargs -r sudo apt-get install -y
+
+# 基本開発ツール
+build-essential
+git
+curl
+wget
+unzip
+
+# GitHub CLI (apt リポジトリ追加が別途必要)
+gh
+
+# コンテナ
+docker.io
+
+# 開発補助ツール（mise 非管理）
+direnv
+fzf
