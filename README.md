@@ -85,8 +85,8 @@ cd ~/dotfiles
 | .github | `~/.github -> .github` を symlink（Copilot 指示書） |
 | Copilot CLI skills | `~/.copilot/skills/*` を symlink |
 | diff-highlight | 条件を満たす場合 `diff-highlight` を `/usr/local/bin` に symlink |
-| GitHub CLI 拡張 | `gh-dash`（PR/Issue ダッシュボード）/ `gh-markdown-preview` をインストール |
 | mise install | `config.toml` に記載されたツールを一括インストール |
+| GitHub CLI 拡張 | `gh-dash`（PR/Issue ダッシュボード）/ `gh-markdown-preview` をインストール |
 
 ### インストール時の注意点
 
