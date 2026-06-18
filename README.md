@@ -103,7 +103,7 @@ install.sh 実行後、初回のみ以下を実行:
 nvim +PlugInstall +qall
 ```
 
-`plugged/`（vim-plug）と `pack/`（copilot.vim 等）は `.gitignore` 対象のため自動生成される。
+`plugged/`（vim-plug）と `pack/`（Neovim 標準パッケージで導入したプラグイン）は `.gitignore` 対象のため自動生成される。
 
 **Nerd Font（WSL2 / Windows Terminal）**
 
