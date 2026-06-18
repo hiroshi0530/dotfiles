@@ -141,7 +141,8 @@ Windows Terminal の `settings.json` にフォントを設定:
 | カテゴリ | ツール |
 |---|---|
 | 言語 | python / node / go / rust |
-| CLI ツール | neovim / tmux / bat / fd / delta / ripgrep / zoxide |
+| Python ツール | poetry |
+| CLI ツール | neovim / tmux / bat / fd / delta / ripgrep / zoxide / copilot |
 | Git 関連 | lazygit / lazydocker |
 | シェル補助 | sheldon / atuin |
 | インフラ | kubectl / awscli / hurl |
