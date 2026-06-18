@@ -46,6 +46,17 @@
   show = diff-highlight | less
   diff = diff-highlight | less
 
+# delta (better diff pager): uncommment below to enable
+# delta is installed via mise. After `mise install`, uncomment:
+# [core]
+#   pager = delta
+# [interactive]
+#   diffFilter = delta --color-only
+# [delta]
+#   navigate = true
+#   light = false
+#   side-by-side = false
+
 [credential "https://github.com"]
   helper = !/usr/bin/gh auth git-credential
 

@@ -1,0 +1,87 @@
+# Starship prompt configuration
+# https://starship.rs/config/
+#
+# Preset: no-nerd-font (no special fonts required)
+# To use Nerd Font icons, comment out the format lines and use:
+#   starship preset nerd-font-symbols -o ~/.config/starship.toml
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$node\
+$golang\
+$rust\
+$character"""
+
+[directory]
+truncation_length = 4
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+format = "[$symbol$branch]($style) "
+symbol = "* "
+style = "bold green"
+
+[git_status]
+format = '([\[$all_status$ahead_behind\]]($style) )'
+style = "bold red"
+conflicted = "="
+ahead = ">"
+behind = "<"
+diverged = "<>"
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = "+"
+renamed = "r"
+deleted = "x"
+
+[cmd_duration]
+min_time = 2_000
+format = "[$duration]($style) "
+style = "bold yellow"
+
+[python]
+format = '[$symbol$version]($style) '
+symbol = "py "
+style = "bold blue"
+detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "Pipfile"]
+
+[nodejs]
+format = '[$symbol$version]($style) '
+symbol = "node "
+style = "bold green"
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+
+[golang]
+format = '[$symbol$version]($style) '
+symbol = "go "
+style = "bold cyan"
+detect_files = ["go.mod", "go.sum"]
+
+[rust]
+format = '[$symbol$version]($style) '
+symbol = "rs "
+style = "bold red"
+detect_files = ["Cargo.toml"]
+
+[character]
+success_symbol = "[>](bold green)"
+error_symbol = "[>](bold red)"
+vicmd_symbol = "[<](bold yellow)"
+
+[username]
+show_always = false
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style) "
+style = "bold dimmed green"

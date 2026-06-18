@@ -1,0 +1,22 @@
+# sheldon plugin configuration
+# https://sheldon.cli.rs/Configuration.html
+#
+# After install: sheldon lock
+# To update:    sheldon lock --update
+
+shell = "zsh"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+use = ["zsh-autosuggestions.zsh"]
+
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+use = ["zsh-syntax-highlighting.zsh"]
+
+[plugins.zsh-history-substring-search]
+github = "zsh-users/zsh-history-substring-search"
+use = ["zsh-history-substring-search.zsh"]
+
+[templates]
+defer = "{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}"

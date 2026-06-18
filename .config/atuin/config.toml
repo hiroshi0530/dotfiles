@@ -1,0 +1,33 @@
+# atuin configuration
+# https://docs.atuin.sh/configuration/config/
+
+# データベースの保存先
+db_path = "~/.local/share/atuin/history.db"
+
+# 同期を使わない場合は local のみ
+# sync_address = "https://api.atuin.sh"
+# auto_sync = true
+
+# 検索のデフォルトモード: prefix / fulltext / fuzzy / skim
+search_mode = "fuzzy"
+
+# フィルタリングのデフォルトモード: global / host / session / directory
+filter_mode = "global"
+
+# Ctrl-R を atuin に割り当てる
+# false にすると既存のキーバインドを変更しない
+# keymap_mode = "auto"
+
+# 表示する履歴の最大件数
+history_limit = 100000
+
+# 同一コマンドの重複を除去する
+unique = true
+
+# 終了コードが 0 以外のコマンドを保存する
+store_failed = true
+
+# 短いコマンドを保存しない (1文字以下)
+history_filter = [
+  "^\\s*$",
+]
