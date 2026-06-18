@@ -197,5 +197,28 @@ else
   echo "  [skip] mise not found. Install from https://mise.jdx.dev/getting-started.html"
 fi
 
+# ---------------------------------------------------------------------------
+# GitHub CLI extensions
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Installing GitHub CLI extensions"
+if command -v gh >/dev/null 2>&1; then
+  gh_extensions=(
+    "dlvhdr/gh-dash"             # PR/Issue dashboard
+    "yusukebe/gh-markdown-preview" # Markdown preview
+  )
+  for ext in "${gh_extensions[@]}"; do
+    ext_name="${ext##*/}"
+    if gh extension list 2>/dev/null | grep -q "$ext_name"; then
+      echo "  (already installed: $ext_name)"
+    else
+      echo "  installing: $ext"
+      run gh extension install "$ext"
+    fi
+  done
+else
+  echo "  [skip] gh not found. Install from https://cli.github.com/"
+fi
+
 echo ""
 echo "==> Done."
