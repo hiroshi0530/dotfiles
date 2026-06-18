@@ -27,11 +27,11 @@ set nostartofline " カーソル：括弧を閉じたとき対応する括弧に
 
 " OS 別設定を読み込む
 if has('macunix')
-  runtime os/mac.vim
+  silent! execute 'source ' . fnameescape(expand('~/.config/nvim/os/mac.vim'))
 elseif has('wsl')
-  runtime os/wsl.vim
+  silent! execute 'source ' . fnameescape(expand('~/.config/nvim/os/wsl.vim'))
 elseif has('unix')
-  runtime os/linux.vim
+  silent! execute 'source ' . fnameescape(expand('~/.config/nvim/os/linux.vim'))
 endif
 
 
