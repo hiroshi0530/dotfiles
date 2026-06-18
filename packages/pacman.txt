@@ -20,3 +20,6 @@ docker
 direnv
 ghq
 fzf
+
+# フォント
+ttf-hack-nerd
