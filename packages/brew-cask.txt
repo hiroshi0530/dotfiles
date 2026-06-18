@@ -1,0 +1,7 @@
+# macOS (Homebrew Cask) パッケージリスト
+# brew install --cask で導入するパッケージ（GUI アプリ・フォント等）
+#
+# インストール: brew install --cask $(grep -v '^#' packages/brew-cask.txt | grep -v '^$')
+
+# フォント
+font-hack-nerd-font

@@ -71,6 +71,19 @@ if [[ "$(uname -s)" == "Darwin" ]] && command -v brew >/dev/null 2>&1; then
       run brew install "$pkg"
     fi
   done < <(_pkg_list_install "$pkg_file")
+  # Cask パッケージ（フォント・GUI アプリ）
+  cask_file="$SCRIPT_DIR/packages/brew-cask.txt"
+  if [[ -f "$cask_file" ]]; then
+    run brew tap homebrew/cask-fonts 2>/dev/null || true
+    while IFS= read -r pkg; do
+      if brew list --cask "$pkg" >/dev/null 2>&1; then
+        echo "  (already installed cask: $pkg)"
+      else
+        echo "  installing cask: $pkg"
+        run brew install --cask "$pkg"
+      fi
+    done < <(_pkg_list_install "$cask_file")
+  fi
 
 elif command -v pacman >/dev/null 2>&1; then
   pkg_file="$SCRIPT_DIR/packages/pacman.txt"
@@ -105,6 +118,37 @@ elif command -v apt-get >/dev/null 2>&1; then
   if [[ ${#pkgs[@]} -gt 0 ]]; then
     echo "  installing: ${pkgs[*]}"
     run sudo apt-get install -y "${pkgs[@]}"
+  fi
+  # Nerd Fonts: apt 非対応のため GitHub Release から取得
+  font_dir="$HOME/.local/share/fonts"
+  font_marker="$font_dir/HackNerdFont-Regular.ttf"
+  if [[ ! -f "$font_marker" ]]; then
+    echo "  installing Hack Nerd Font from GitHub..."
+    run mkdir -p "$font_dir"
+
+    if "$DRY_RUN"; then
+      tmp_zip="/tmp/HackNerdFont.dryrun.zip"
+    else
+      tmp_zip="$(mktemp -t HackNerdFont.XXXXXX.zip)"
+      trap 'rm -f "$tmp_zip"' EXIT
+    fi
+
+    run curl -fLo "$tmp_zip" \
+      "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip"
+    run unzip -o "$tmp_zip" -d "$font_dir" '*.ttf'
+
+    if command -v fc-cache >/dev/null 2>&1; then
+      run fc-cache -f "$font_dir"
+    else
+      echo "  [skip] fc-cache not found; font cache update skipped"
+    fi
+
+    if ! "$DRY_RUN"; then
+      rm -f "$tmp_zip"
+      trap - EXIT
+    fi
+  else
+    echo "  (already installed: Hack Nerd Font)"
   fi
 
 else
