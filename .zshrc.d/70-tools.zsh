@@ -34,6 +34,40 @@ fi
 # kubectl completion
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
+# direnv
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
+  alias da='direnv allow'
+fi
+
+# envrc-new: .envrc テンプレートを現在のディレクトリにコピーする
+# 使い方: envrc-new python|node|go|rust
+envrc-new() {
+  local type="${1:-}"
+  local tpl_dir="$HOME/dotfiles/files"
+  local tpl="$tpl_dir/.envrc.${type}.tpl"
+
+  if [[ -z "$type" ]]; then
+    echo "usage: envrc-new <type>"
+    echo "available: $(ls "$tpl_dir"/.envrc.*.tpl 2>/dev/null | xargs -I{} basename {} .tpl | sed 's/\.envrc\.//' | tr '\n' ' ')"
+    return 1
+  fi
+
+  if [[ ! -f "$tpl" ]]; then
+    echo "error: template not found: $tpl" >&2
+    return 1
+  fi
+
+  if [[ -f ".envrc" ]]; then
+    echo "error: .envrc already exists" >&2
+    return 1
+  fi
+
+  cp "$tpl" .envrc
+  echo "created .envrc from $type template"
+  echo "run 'da' (direnv allow) to activate"
+}
+
 # tmux-sessionizer: Ctrl+F でプロジェクト選択 → tmux session に接続
 if command -v tmux-sessionizer >/dev/null 2>&1; then
   bindkey -s '^f' 'tmux-sessionizer\n'
