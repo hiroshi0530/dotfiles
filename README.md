@@ -71,7 +71,7 @@ cd ~/dotfiles
 | ステップ | 内容 |
 |---|---|
 | OS パッケージ | `packages/*.txt` を参照し pacman / apt / brew で一括インストール |
-| dotfiles symlink | `.??*` の隠しファイル/ディレクトリを `$HOME` に symlink（`.git` `.github` `.codex` `.config` 除外） |
+| dotfiles symlink | `.??*` の隠しファイル/ディレクトリを `$HOME` に symlink（`.git` `.DS_Store` `.github` `.codex` `.config` 除外） |
 | bin/ symlink | `bin/*` を `~/bin/` に symlink |
 | Neovim | `~/.config/nvim/init.vim -> .vimrc`、`~/.config/nvim/os -> .config/nvim/os` を symlink |
 | mise | `~/.config/mise/config.toml` を symlink |
@@ -79,7 +79,11 @@ cd ~/dotfiles
 | atuin | `~/.config/atuin/config.toml` を symlink |
 | VS Code | `settings.json` / `keybindings.json` / スニペット / Copilot プロンプトを symlink |
 | .gitconfig | `.gitconfig.local` を `~/.gitconfig` にコピー |
+| IPython | `~/.ipython/.../ipython_config.py` を作成し Vim 編集モードを有効化 |
+| swap | `~/swap` を作成（Vim swap 用） |
 | .github | `~/.github -> .github` を symlink（Copilot 指示書） |
+| Copilot CLI skills | `~/.copilot/skills/*` を symlink |
+| diff-highlight | 条件を満たす場合 `diff-highlight` を `/usr/local/bin` に symlink |
 | GitHub CLI 拡張 | `gh-dash`（PR/Issue ダッシュボード）/ `gh-markdown-preview` をインストール |
 | mise install | `config.toml` に記載されたツールを一括インストール |
 
