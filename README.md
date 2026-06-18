@@ -45,6 +45,7 @@
 ├── .github/
 │   ├── copilot-instructions.md  # GitHub Copilot 指示書（全リポジトリで自動適用）
 │   ├── prompts/                 # Copilot カスタムプロンプト
+│   ├── skills/                  # Copilot CLI Skills 定義
 │   └── workflows/               # GitHub Actions
 ├── vscode/
 │   ├── settings.json        # VS Code 設定
