@@ -27,6 +27,7 @@ fd       = "latest"
 delta    = "latest"
 lazygit  = "latest"
 zoxide   = "latest"
+ripgrep  = "latest"
 
 [env]
 # GOPATH: go install したバイナリを ~/go/bin に置く
