@@ -1,0 +1,5 @@
+# vim-plug のインストール先（PlugInstall で自動生成される）
+plugged/
+
+# Neovim パッケージマネージャ経由でインストールされるプラグイン
+pack/
