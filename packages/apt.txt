@@ -1,7 +1,7 @@
 # Ubuntu/Debian (apt) パッケージリスト
 # mise が管理するツールはここに含めない
 #
-# インストール: xargs apt-get install -y < packages/apt.txt
+# インストール: grep -Ev '^[[:space:]]*(#|$)' packages/apt.txt | xargs -r sudo apt-get install -y
 
 # 基本開発ツール
 build-essential
