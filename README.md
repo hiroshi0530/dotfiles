@@ -92,7 +92,7 @@ cd ~/dotfiles
 
 **WSL2 環境**
 
-- `packages/pacman.txt` の `docker` は Docker Desktop（Windows 側）を使う場合は不要
+- `packages/pacman.txt` / `packages/apt.txt` の `docker`（apt は `docker.io`）は Docker Desktop（Windows 側）を使う場合は不要
 - Nerd Font は Linux 内ではなく **Windows 側にインストール**する必要がある（Windows Terminal で使用する場合）
 - Neovim のクリップボード連携は `win32yank.exe` 経由（`.config/nvim/os/wsl.vim`）
 
