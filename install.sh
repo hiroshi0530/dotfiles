@@ -96,8 +96,10 @@ elif command -v apt-get >/dev/null 2>&1; then
   while IFS= read -r pkg; do
     if dpkg -s "$pkg" >/dev/null 2>&1; then
       echo "  (already installed: $pkg)"
-    else
+    elif apt-cache show "$pkg" >/dev/null 2>&1; then
       pkgs+=("$pkg")
+    else
+      echo "  [skip] package not available via apt: $pkg"
     fi
   done < <(_pkg_list_install "$pkg_file")
   if [[ ${#pkgs[@]} -gt 0 ]]; then
