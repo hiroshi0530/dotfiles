@@ -49,6 +49,69 @@ symlink() {
 echo "==> Starting dotfiles install (dry-run: $DRY_RUN)"
 
 # ---------------------------------------------------------------------------
+# OS パッケージのインストール
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Installing OS packages"
+
+_pkg_list_install() {
+  local pkg_file="$1"
+  # コメント行と空行を除いてパッケージ名のみ抽出
+  grep -Ev '^[[:space:]]*(#|$)' -- "$pkg_file"
+}
+
+if [[ "$(uname -s)" == "Darwin" ]] && command -v brew >/dev/null 2>&1; then
+  pkg_file="$SCRIPT_DIR/packages/brew.txt"
+  echo "  detected: macOS (Homebrew)"
+  while IFS= read -r pkg; do
+    if brew list "$pkg" >/dev/null 2>&1; then
+      echo "  (already installed: $pkg)"
+    else
+      echo "  installing: $pkg"
+      run brew install "$pkg"
+    fi
+  done < <(_pkg_list_install "$pkg_file")
+
+elif command -v pacman >/dev/null 2>&1; then
+  pkg_file="$SCRIPT_DIR/packages/pacman.txt"
+  echo "  detected: Arch Linux (pacman)"
+  pkgs=()
+  while IFS= read -r pkg; do
+    if pacman -Q "$pkg" >/dev/null 2>&1; then
+      echo "  (already installed: $pkg)"
+    else
+      pkgs+=("$pkg")
+    fi
+  done < <(_pkg_list_install "$pkg_file")
+  if [[ ${#pkgs[@]} -gt 0 ]]; then
+    echo "  installing: ${pkgs[*]}"
+    run sudo pacman -S --needed --noconfirm "${pkgs[@]}"
+  fi
+
+elif command -v apt-get >/dev/null 2>&1; then
+  pkg_file="$SCRIPT_DIR/packages/apt.txt"
+  echo "  detected: Debian/Ubuntu (apt)"
+  run sudo apt-get update -qq
+  pkgs=()
+  while IFS= read -r pkg; do
+    if dpkg -s "$pkg" >/dev/null 2>&1; then
+      echo "  (already installed: $pkg)"
+    elif apt-cache show "$pkg" >/dev/null 2>&1; then
+      pkgs+=("$pkg")
+    else
+      echo "  [skip] package not available via apt: $pkg"
+    fi
+  done < <(_pkg_list_install "$pkg_file")
+  if [[ ${#pkgs[@]} -gt 0 ]]; then
+    echo "  installing: ${pkgs[*]}"
+    run sudo apt-get install -y "${pkgs[@]}"
+  fi
+
+else
+  echo "  [skip] no supported package manager found (pacman/apt/brew)"
+fi
+
+# ---------------------------------------------------------------------------
 # Dotfiles: symlink all hidden files/dirs (except .git, .DS_Store, .github, .codex, .config)
 # ---------------------------------------------------------------------------
 echo ""

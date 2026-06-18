@@ -1,0 +1,22 @@
+# Arch Linux (pacman) パッケージリスト
+# mise が管理するツール (neovim, tmux, bat, ripgrep 等) はここに含めない
+#
+# インストール: grep -Ev '^[[:space:]]*(#|$)' packages/pacman.txt | sudo pacman -S --needed --noconfirm -
+
+# 基本開発ツール
+base-devel
+git
+curl
+wget
+unzip
+
+# GitHub CLI
+github-cli
+
+# コンテナ
+docker
+
+# 開発補助ツール（mise 非管理）
+direnv
+ghq
+fzf
