@@ -1,0 +1,21 @@
+# Ubuntu/Debian (apt) パッケージリスト
+# mise が管理するツールはここに含めない
+#
+# インストール: xargs apt-get install -y < packages/apt.txt
+
+# 基本開発ツール
+build-essential
+git
+curl
+wget
+unzip
+
+# GitHub CLI (apt リポジトリ追加が別途必要)
+gh
+
+# コンテナ
+docker.io
+
+# 開発補助ツール（mise 非管理）
+direnv
+fzf

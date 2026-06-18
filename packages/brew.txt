@@ -1,0 +1,17 @@
+# macOS (Homebrew) パッケージリスト
+# mise が管理するツールはここに含めない
+#
+# インストール: brew install $(grep -v '^#' packages/brew.txt | grep -v '^$')
+
+# 基本ツール
+git
+curl
+wget
+
+# GitHub CLI
+gh
+
+# 開発補助ツール（mise 非管理）
+direnv
+ghq
+fzf
