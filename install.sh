@@ -57,7 +57,7 @@ echo "==> Installing OS packages"
 _pkg_list_install() {
   local pkg_file="$1"
   # コメント行と空行を除いてパッケージ名のみ抽出
-  grep -v '^\s*#' "$pkg_file" | grep -v '^\s*$'
+  grep -Ev '^[[:space:]]*(#|$)' -- "$pkg_file"
 }
 
 if [[ "$(uname -s)" == "Darwin" ]] && command -v brew >/dev/null 2>&1; then
