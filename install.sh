@@ -74,6 +74,14 @@ for script in "$SCRIPT_DIR/bin/"*; do
 done
 
 # ---------------------------------------------------------------------------
+# Neovim: link init.vim to .vimrc
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Linking nvim config"
+run mkdir -p "$HOME/.config/nvim"
+symlink "$SCRIPT_DIR/.vimrc" "$HOME/.config/nvim/init.vim"
+
+# ---------------------------------------------------------------------------
 # mise: global tool config
 # ---------------------------------------------------------------------------
 echo ""
