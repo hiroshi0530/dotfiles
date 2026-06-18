@@ -33,3 +33,9 @@ fi
 
 # kubectl completion
 command -v kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
+
+# tmux-sessionizer: Ctrl+F でプロジェクト選択 → tmux session に接続
+if command -v tmux-sessionizer >/dev/null 2>&1; then
+  bindkey -s '^f' 'tmux-sessionizer\n'
+fi
+

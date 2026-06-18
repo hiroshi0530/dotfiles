@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# tmux-sessionizer: ghq list | fzf でプロジェクトを選択し tmux session に接続する
+#
+# 使い方:
+#   tmux-sessionizer          # fzf でプロジェクト選択
+#   tmux-sessionizer <path>   # パスを直接指定
+#
+# 依存: ghq, fzf, tmux
+
+set -euo pipefail
+
+# プロジェクトディレクトリの選択
+if [[ $# -eq 1 ]]; then
+  selected="$1"
+else
+  if ! command -v ghq >/dev/null 2>&1; then
+    echo "error: ghq not found. Install with: mise use --global ghq@latest" >&2
+    exit 1
+  fi
+  if ! command -v fzf >/dev/null 2>&1; then
+    echo "error: fzf not found. Install with: mise use --global fzf@latest" >&2
+    exit 1
+  fi
+  selected="$(ghq list --full-path | fzf --prompt="session> " --height=40% --reverse)"
+fi
+
+[[ -z "$selected" ]] && exit 0
+
+# セッション名: パスの末尾2要素 (owner/repo 形式) をドット区切りに変換
+session_name="$(basename "$(dirname "$selected")")/$(basename "$selected")"
+session_name="${session_name//[^a-zA-Z0-9_\-\/]/.}"
+
+if [[ -z "$TMUX" ]]; then
+  # tmux 外: セッションがなければ新規作成してアタッチ
+  tmux new-session -As "$session_name" -c "$selected"
+else
+  # tmux 内: セッションがなければ新規作成してスイッチ
+  if ! tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux new-session -ds "$session_name" -c "$selected"
+  fi
+  tmux switch-client -t "$session_name"
+fi
