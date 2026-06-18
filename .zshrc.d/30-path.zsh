@@ -14,6 +14,7 @@ path=(
 [[ -d /opt/local/bin ]]                         && path+=(/opt/local/bin)
 [[ -d /opt/local/sbin ]]                        && path+=(/opt/local/sbin)
 [[ -d "$HOME/go/bin" ]]                         && path+=("$HOME/go/bin")  # go install 先
+[[ -d "$HOME/bin" ]]                            && path+=("$HOME/bin")
 [[ -d "$HOME/.local/bin" ]]                     && path+=("$HOME/.local/bin")
 [[ -d "$HOME/.pulumi/bin" ]]                    && path+=("$HOME/.pulumi/bin")
 [[ -d "$HOME/.antigravity/antigravity/bin" ]]   && path+=("$HOME/.antigravity/antigravity/bin")
