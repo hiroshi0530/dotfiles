@@ -25,40 +25,13 @@ set matchtime=1
 set backspace=start,eol,indent
 set nostartofline " カーソル：括弧を閉じたとき対応する括弧に一時的に移動
 
-" Unix系 (Linux, macOS)
-if has('unix')
-endif
-
-" macOS
+" OS 別設定を読み込む
 if has('macunix')
-  set clipboard+=unnamed
-endif
-
-" Windows
-if has('win32') || has('win64')
-endif
-
-" WSL
-if has('wsl')
-
-    " 240515: wslでyankをクリップボードに入れる。win32yank.exeを使う場合。
-    if executable('win32yank.exe')
-      set clipboard=unnamed
-      let g:clipboard = {
-              \   'name': 'wsl_clipboard',
-              \   'copy': {
-              \      '+': 'win32yank.exe -i',
-              \      '*': 'win32yank.exe -i',
-              \    },
-              \   'paste': {
-              \      '+': 'win32yank.exe -o',
-              \      '*': 'win32yank.exe -o',
-              \   },
-              \   'cache_enabled': 1,
-              \ }
-  
-    endif
-
+  runtime os/mac.vim
+elseif has('wsl')
+  runtime os/wsl.vim
+elseif has('unix')
+  runtime os/linux.vim
 endif
 
 

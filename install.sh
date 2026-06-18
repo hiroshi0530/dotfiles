@@ -80,6 +80,7 @@ echo ""
 echo "==> Linking nvim config"
 run mkdir -p "$HOME/.config/nvim"
 symlink "$SCRIPT_DIR/.vimrc" "$HOME/.config/nvim/init.vim"
+symlink "$SCRIPT_DIR/.config/nvim/os" "$HOME/.config/nvim/os"
 
 # ---------------------------------------------------------------------------
 # mise: global tool config
