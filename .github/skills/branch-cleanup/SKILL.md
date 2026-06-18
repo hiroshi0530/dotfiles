@@ -107,7 +107,7 @@ gh pr list --state merged --limit 20 --json headRefName --jq '.[].headRefName'
 
 ### 注意事項
 
-- `master` / `main` / `develop` などの長期ブランチは削除しない
+- `master` / `main` / `develop` / `merge-worktrees` などの長期ブランチは削除しない
 - 現在チェックアウト中のブランチは削除できない（自動的にスキップされる）
 - `--merged` は指定ブランチへのマージ済みかどうかで判定するため、デフォルトブランチを正しく指定すること
 - リモートブランチ（`origin/<branch>`）の削除は**ユーザーに確認してから**実行する
