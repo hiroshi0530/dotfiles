@@ -119,6 +119,15 @@ elif command -v apt-get >/dev/null 2>&1; then
     echo "  installing: ${pkgs[*]}"
     run sudo apt-get install -y "${pkgs[@]}"
   fi
+  # WSL: wslu (wslview でブラウザ連携)
+  if grep -qi Microsoft /proc/version 2>/dev/null; then
+    if dpkg -s wslu >/dev/null 2>&1; then
+      echo "  (already installed: wslu)"
+    else
+      echo "  WSL detected: installing wslu..."
+      run sudo apt-get install -y wslu
+    fi
+  fi
   # Nerd Fonts: apt 非対応のため GitHub Release から取得
   font_dir="$HOME/.local/share/fonts"
   font_marker="$font_dir/HackNerdFont-Regular.ttf"
