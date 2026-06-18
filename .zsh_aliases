@@ -71,20 +71,11 @@ if command -v lazygit >/dev/null 2>&1; then
 fi
 
 # list
-# eza (modern ls) を優先し、未インストールの場合は ls にフォールバック
-if command -v eza >/dev/null 2>&1; then
-  alias ll='eza -alh --git --icons=never'
-  alias la='eza -alh --git --icons=never -a'
-  alias l='eza -F --icons=never'
-  alias tree='eza --tree --icons=never'
-  alias ftree='eza --tree --icons=never -a'
-else
-  alias ll='ls -alGh --color'
-  alias la='ll -Ah'
-  alias l='ls -CFh'
-  alias tree='tree -NF'
-  alias ftree='tree -afipugsDf'
-fi
+alias ll='ls -alGh --color'
+alias la='ll -Ah'
+alias l='ls -CFh'
+alias tree='tree -NF'
+alias ftree='tree -afipugsDf'
 alias df='df -H -m'
 alias du='du -H -m'
 alias h='history'

@@ -21,7 +21,6 @@ sheldon  = "latest"
 atuin    = "latest"
 # modern cli tools
 bat      = "latest"
-eza      = "latest"
 fd       = "latest"
 delta    = "latest"
 lazygit  = "latest"
