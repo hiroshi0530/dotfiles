@@ -554,7 +554,6 @@ nmap <C-y> :Rfw<CR>
 if &term =~ "xterm"
   let &t_ti .= "\e[?2004h"
   let &t_te .= "\e[?2004l"
-  let &pastetoggle = "\e[201~"
 
   function XTermPasteBegin(ret)
       set paste
