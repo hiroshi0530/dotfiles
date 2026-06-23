@@ -19,3 +19,4 @@ docker.io
 # 開発補助ツール（mise 非管理）
 direnv
 fzf
+xdg-utils

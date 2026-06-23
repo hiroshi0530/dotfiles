@@ -129,4 +129,3 @@ cd sshrc
 unzip sshrc.zip -d bin/
 export PATH="$PATH:$PWD/bin"
 ```
-

@@ -344,5 +344,23 @@ else
   echo "  [skip] gh not found. Install from https://cli.github.com/"
 fi
 
+# ---------------------------------------------------------------------------
+# GitHub CLI browser opener
+# ---------------------------------------------------------------------------
+echo ""
+echo "==> Configuring GitHub CLI browser opener"
+if command -v gh >/dev/null 2>&1; then
+  opener="$HOME/bin/xdg-open"
+  if [[ -f "$opener" ]]; then
+    echo "  setting gh browser to: $opener"
+    run gh config set browser "bash $opener"
+  else
+    echo "  setting gh browser to: xdg-open"
+    run gh config set browser xdg-open
+  fi
+else
+  echo "  [skip] gh not found. Install from https://cli.github.com/"
+fi
+
 echo ""
 echo "==> Done."
