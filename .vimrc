@@ -17,7 +17,7 @@ set encoding=utf-8
 
 set wrap
 
-set updatetime=0 
+set updatetime=0
 set nowrapscan "検索がファイル末尾まで進んだらそこで先頭に戻らず止まる
 "set wrapscan "行末まで検索したら行頭に戻る
 set showmatch
@@ -70,7 +70,7 @@ set foldlevel=4
 "   zc  -- 折りたたみ (Close one fold under the cursor)
 "   zo  -- 展開（一段階）(Open one fold under the cursor)
 "   zO  -- 展開（すべて）(Open all folds under the cursor recursively)
-" 
+"
 " 折りたたみと展開（ファイル全体の要素に対して）
 "   zm -- 折りたたみ（一段階） (Fold more)
 "   zM -- 折りたたみ（すべて） (Close all folds)
@@ -237,7 +237,7 @@ autocmd FileType rust let b:coc_rust_analyzer_settings = {
       \ 'rust-analyzer.inlayHints.parameterHints.enable': v:false
       \ }
 
-" black & isortの設定 
+" black & isortの設定
 noremap <Leader>b <ESC>:wa<CR>:!isort %<CR><CR>:!black %<CR><CR>
 noremap <Leader>r <ESC>:wa<CR>:!ruff %<CR><CR>
 
@@ -318,7 +318,7 @@ noremap <S-h>   ^
 noremap <S-j>   }
 noremap <S-k>   {
 noremap <S-l>   $
-noremap m  % 
+noremap m  %
 nnoremap <CR> A<CR><ESC>
 nnoremap == gg=G''
 
@@ -368,11 +368,11 @@ au BufNewFile,BufRead * match ZenkakuSpace /　/
 inoremap <silent> jj <ESC>
 
 ""検索語が画面の真ん中
-nmap n nzz 
-nmap N Nzz 
-nmap * *zz 
-nmap # #zz 
-nmap g* g*zz 
+nmap n nzz
+nmap N Nzz
+nmap * *zz
+nmap # #zz
+nmap g* g*zz
 nmap g# g#zz
 
 ""貼り付けた後、カーソルを末尾へ移動
@@ -536,14 +536,14 @@ nnoremap <Leader>Fno Fの<Esc>
 nnoremap <Leader>, i、<Esc>
 nnoremap <Leader>. i。<Esc>
 
-" vim script test 
+" vim script test
 " function! Testtemp()
 " 	execute ":'<,'>s/\\([a-z].*\\)/\"\\u\\1_\\1\"/g"
 " endfunction
 " :command! Testtemp call Testtemp()
 " nmap <C-y> :Testtemp<CR>
 
-" remove first white spaces 
+" remove first white spaces
 function! Rfw()
     execute ":%s/^[\\t 　]*\\n/\xD/g"
 endfunction
@@ -568,7 +568,7 @@ endif
 
 runtime! private/*.vim
 
-" binary 
+" binary
 augroup BinaryXXD
   autocmd!
   autocmd BufReadPost * if &binary | silent %!xxd -g 1
@@ -608,7 +608,7 @@ function! AddB()
 endfunction
 
 :command! AddB call AddB()
- 
+
 " nvim diff
 " 追加された行の強調表示（背景色を有効にする）
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22 guifg=NONE guibg=#000000
@@ -617,7 +617,7 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22 guifg=NONE guibg=#000000
 highlight DiffDelete cterm=bold ctermfg=9  ctermbg=52 guifg=NONE guibg=#000000
 
 " 変更された行の強調表示（背景色を有効にする）
-highlight DiffChange cterm=bold ctermfg=11 ctermbg=17 guifg=NONE guibg=#000000 
+highlight DiffChange cterm=bold ctermfg=11 ctermbg=17 guifg=NONE guibg=#000000
 
 " 差分テキストの強調表示（背景色を有効にする）
 highlight DiffText   cterm=bold ctermfg=14 ctermbg=21 guifg=NONE guibg=#000000

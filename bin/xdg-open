@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -eq 0 ]]; then
+  echo "usage: xdg-open <file-or-url>" >&2
+  exit 1
+fi
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+  exec open "$@"
+fi
+
+if grep -qi microsoft /proc/version 2>/dev/null && command -v wslview >/dev/null 2>&1; then
+  exec wslview "$@"
+fi
+
+if [[ -x /usr/bin/xdg-open ]]; then
+  exec /usr/bin/xdg-open "$@"
+fi
+
+echo "xdg-open: no opener found (need /usr/bin/xdg-open, open, or wslview)" >&2
+exit 127
