@@ -353,7 +353,7 @@ if command -v gh >/dev/null 2>&1; then
   opener="$HOME/bin/xdg-open"
   if [[ -f "$opener" ]]; then
     echo "  setting gh browser to: $opener"
-    run gh config set browser "bash $opener"
+    run gh config set browser "bash \"$opener\""
   else
     echo "  setting gh browser to: xdg-open"
     run gh config set browser xdg-open
