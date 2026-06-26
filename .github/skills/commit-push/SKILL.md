@@ -146,6 +146,22 @@ git push origin merge-worktrees
 
 ⚠️ `--force` / `--force-with-lease` はユーザーに明示的に確認を取った場合のみ使用する。
 
+### 8. PR 作成後はユーザーに委ねる
+
+`merge-worktrees` を push した後、PR の作成までは行ってよいが、**マージは絶対に自動で行わない**。
+
+- `gh pr merge` を勝手に実行しない
+- `--auto` フラグによる自動マージも使用しない
+- PR の URL をユーザーに伝えて終了する
+
+```
+merge-worktrees を push しました。
+PR を作成する場合は pull-request スキルを使用するか、以下を実行してください：
+  gh pr create --base master --head merge-worktrees
+
+マージはユーザー自身が確認後に行ってください。
+```
+
 ### 作成のポイント
 
 - **subject**: 「何をしたか」を一言で。動詞から始める（Add / Fix / Update / Remove など）
