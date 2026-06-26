@@ -3,6 +3,18 @@
 `.github/skills/` に配置された再利用可能なワークフロー集です。
 `/skill-name` で直接呼び出すか、自然言語で話しかけると自動的に読み込まれます。
 
+## ブランチ戦略
+
+```
+master          ←── PR ←── merge-worktrees
+                               ↑  ↑  ↑
+                        wt-A  wt-B wt-C  (git worktree)
+```
+
+- **feature ブランチ（worktree）**: 作業単位ごとに `git worktree add` で作成。`merge-worktrees` をベースにする
+- **`merge-worktrees`**: feature ブランチの統合ブランチ。完成した変更を `--squash` でマージして push
+- **`master`**: `merge-worktrees` からの PR 経由でのみ更新（直接コミット・push 禁止）
+
 ## ドキュメント
 
 | skill | 呼び出し例 | 概要 |
