@@ -33,7 +33,27 @@ git --no-pager branch --show-current
 git --no-pager branch -a | head -20
 ```
 
-通常は `main` または `master` をベースにする。別のブランチが指定されている場合はそちらを使用。
+ベースブランチは **`merge-worktrees`** を使用する。`merge-worktrees` が存在しない場合は `master` から作成する：
+
+```bash
+# merge-worktrees が存在しない場合
+git fetch origin
+git checkout -b merge-worktrees origin/master
+git push -u origin merge-worktrees
+```
+
+### 3. worktree の作成
+
+feature ブランチは `git worktree add` で作業ディレクトリごと作成する：
+
+```bash
+# merge-worktrees を最新にしてから worktree を作成
+git fetch origin
+git checkout merge-worktrees && git pull
+git worktree add ../<branch-name> -b <branch-name>
+```
+
+worktree のディレクトリ名は変更の目的を表す名前にする（例: `../worktree-add-zsh-alias`）。
 
 ### 3. ブランチ名の決定
 
@@ -78,16 +98,13 @@ hotfix/security-patch
 ### 5. ブランチ作成・切り替え
 
 ```bash
-# リモートの最新を取得してからブランチ作成
+# merge-worktrees を最新化
 git fetch origin
-git checkout -b <branch-name> origin/main
-```
+git checkout merge-worktrees && git pull
 
-または main が既にローカルに存在する場合：
-
-```bash
-git checkout main && git pull
-git checkout -b <branch-name>
+# worktree として新しい feature ブランチを作成
+git worktree add ../<branch-name> -b <branch-name>
+cd ../<branch-name>
 ```
 
 ### 6. 確認

@@ -111,22 +111,37 @@ Co-authored-by トレーラーが必要な場合：
 git commit -m "<subject>" -m "<body>" -m "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>"
 ```
 
-### 7. プッシュ実行
+### 7. merge-worktrees へマージして push
+
+feature ブランチの変更を `merge-worktrees` に取り込んでからリモートへ反映する：
 
 ```bash
-# 通常のプッシュ
-git push origin <branch-name>
+feature_branch=$(git branch --show-current)
 
-# 上流ブランチが未設定の場合（新規ブランチ）
-git push --set-upstream origin <branch-name>
+# メインリポジトリに戻って merge-worktrees を最新化
+cd <repo-root>
+git checkout merge-worktrees
+git pull origin merge-worktrees
+
+# feature ブランチをマージ（squash）
+git merge --squash "$feature_branch"
+git commit -m "<先ほどのコミットメッセージ>"
+
+# merge-worktrees をリモートへ push
+git push origin merge-worktrees
 ```
 
-#### プッシュ失敗時の対処
+```bash
+# worktree を後片付け
+git worktree remove ../<worktree-dir>
+git branch -d "$feature_branch"
+```
+
+#### push 失敗時の対処
 
 ```bash
-# リモートに新しいコミットがある場合（非破壊的な解決）
-git pull --rebase origin <branch-name>
-git push origin <branch-name>
+git pull --rebase origin merge-worktrees
+git push origin merge-worktrees
 ```
 
 ⚠️ `--force` / `--force-with-lease` はユーザーに明示的に確認を取った場合のみ使用する。
