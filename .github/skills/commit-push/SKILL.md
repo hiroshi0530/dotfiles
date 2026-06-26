@@ -146,6 +146,19 @@ git push origin merge-worktrees
 
 ⚠️ `--force` / `--force-with-lease` はユーザーに明示的に確認を取った場合のみ使用する。
 
+### 8. push 完了後の終了
+
+`merge-worktrees` を push したら作業完了。**PR の作成は行わない**。
+
+- `gh pr create` を勝手に実行しない
+- ユーザーから「PR を作って」と明示的に指示があった場合のみ `pull-request` スキルを使用する
+- push が完了したことをユーザーに伝えて終了する
+
+```
+merge-worktrees を push しました。
+PR を作成する場合は「PR を作って」と指示してください。
+```
+
 ### 作成のポイント
 
 - **subject**: 「何をしたか」を一言で。動詞から始める（Add / Fix / Update / Remove など）

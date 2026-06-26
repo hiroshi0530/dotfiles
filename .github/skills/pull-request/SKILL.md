@@ -3,12 +3,16 @@ name: pull-request
 description: |
   差分を解析してタイトル・本文・チェックリストを含む PR を作成する。
   ユーザーが「PR を作って」「プルリクを出して」「pull request を作成して」
-  などと言った時に使用する。
+  などと明示的に指示した時のみ使用する。
+  指示がない場合は自動で呼び出さない。
 ---
 
 # Pull Request 作成
 
 現在のブランチの変更を調査し、適切なタイトル・本文で PR を作成します。
+
+> **このスキルはユーザーから明示的に「PR を作って」と指示があった場合のみ実行する。**
+> commit・push の完了後に自動で呼び出さない。
 
 ## 使い方
 
@@ -21,13 +25,16 @@ description: |
 ### 1. 現在の状態確認
 
 ```bash
+# デフォルトブランチを取得
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+
 # merge-worktrees とデフォルトブランチの差分を確認
 git fetch origin
-git --no-pager log origin/master..origin/merge-worktrees --oneline
-git --no-pager diff origin/master...origin/merge-worktrees --stat
+git --no-pager log "origin/${default_branch}..origin/merge-worktrees" --oneline
+git --no-pager diff "origin/${default_branch}...origin/merge-worktrees" --stat
 ```
 
-PR は常に **`merge-worktrees` → `master`** で作成する。
+PR は常に **`merge-worktrees` → デフォルトブランチ** で作成する。
 feature ブランチから直接 PR を作成しない。
 
 ### 2. 差分の調査
@@ -87,20 +94,37 @@ Closes #<番号>
 ### 6. PR 作成
 
 ```bash
-# merge-worktrees -> master への PR
+# デフォルトブランチを取得
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+
+# merge-worktrees -> デフォルトブランチへの PR
 gh pr create \
-  --base master \
+  --base "$default_branch" \
   --head merge-worktrees \
   --title "<タイトル>" \
   --body "<本文>"
 
 # ドラフトPR
 gh pr create \
-  --base master \
+  --base "$default_branch" \
   --head merge-worktrees \
   --title "<タイトル>" \
   --body "<本文>" \
   --draft
+```
+
+### 7. マージはユーザーが行う
+
+PR を作成した後、**マージは絶対に自動で行わない**。
+
+- `gh pr merge` を勝手に実行しない
+- CI の完了を待って自動マージ（`--auto`）も使用しない
+- PR の URL をユーザーに伝え、マージはユーザー自身に委ねる
+
+```
+PR を作成しました: https://github.com/<owner>/<repo>/pull/<number>
+
+CI が通ったことを確認後、マージをお願いします。
 ```
 
 ### 作成のポイント
