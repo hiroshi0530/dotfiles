@@ -26,7 +26,12 @@ description: |
 
 ```bash
 # デフォルトブランチを取得
-default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+
+if [ -z "$default_branch" ]; then
+  echo "デフォルトブランチを取得できませんでした"
+  exit 1
+fi
 
 # merge-worktrees とデフォルトブランチの差分を確認
 git fetch origin
