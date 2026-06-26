@@ -1,9 +1,8 @@
 # shellcheck shell=zsh
-# Custom PS1: ~/AAA/BBB/CCC (git-branch) $
+# Custom PS1: ~/AAA/BBB/CCC $
 #
 # - ホームディレクトリは ~ に短縮
 # - 中間ディレクトリは先頭3文字に省略、末尾のみフルネーム
-# - git リポジトリ内では (branch名) を表示
 
 function _prompt_short_pwd {
   local full_path="$PWD"
@@ -37,13 +36,5 @@ function _prompt_short_pwd {
   echo "$shortened_path"
 }
 
-function _prompt_git_branch {
-  local branch
-  branch=$(git symbolic-ref --short HEAD 2>/dev/null) || \
-  branch=$(git rev-parse --short HEAD 2>/dev/null) || \
-  return
-  echo " ($branch)"
-}
-
 setopt PROMPT_SUBST
-export PS1='$(_prompt_short_pwd)$(_prompt_git_branch) $ '
+export PS1='$(_prompt_short_pwd) $ '
