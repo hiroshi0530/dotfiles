@@ -18,7 +18,35 @@ description: |
 
 ## 手順
 
-### 1. 現在の状態確認
+### 1. デフォルトブランチのチェック
+
+```bash
+# 現在のブランチを取得
+current_branch=$(git branch --show-current)
+
+# リポジトリのデフォルトブランチを取得（リモートがある場合）
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+# リモートがない場合は main / master を確認
+if [[ -z "$default_branch" ]]; then
+  git show-ref --verify --quiet refs/heads/main && default_branch=main || default_branch=master
+fi
+
+echo "current: $current_branch / default: $default_branch"
+```
+
+現在のブランチがデフォルトブランチ（`main` / `master`）と一致する場合は **コミットを中断** し、ユーザーに以下を伝える：
+
+```
+現在のブランチはデフォルトブランチ（<branch-name>）です。
+デフォルトブランチへの直接コミットは禁止されています。
+
+feature ブランチを作成してから作業してください：
+  git switch -c <type>/<description>
+```
+
+`branch` スキルを呼び出してブランチを作成するか確認してもよい。
+
+### 2. 現在の状態確認
 
 ```bash
 git status
