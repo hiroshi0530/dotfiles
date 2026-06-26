@@ -171,11 +171,12 @@ echo ""
 echo "==> Linking dotfiles to $HOME"
 cd "$SCRIPT_DIR"
 for f in .??*; do
-  [[ "$f" == ".git" ]]     && continue
-  [[ "$f" == ".DS_Store" ]] && continue
-  [[ "$f" == ".github" ]]   && continue
-  [[ "$f" == ".codex" ]]    && continue
-  [[ "$f" == ".config" ]]   && continue  # managed per-file below
+  [[ "$f" == ".git" ]]           && continue
+  [[ "$f" == ".DS_Store" ]]      && continue
+  [[ "$f" == ".github" ]]        && continue
+  [[ "$f" == ".codex" ]]         && continue
+  [[ "$f" == ".config" ]]        && continue  # managed per-file below
+  [[ "$f" == ".gitconfig.local" ]] && continue  # managed in Git config section below
   symlink "$SCRIPT_DIR/$f" "$HOME/$f"
 done
 
@@ -226,8 +227,35 @@ symlink "$SCRIPT_DIR/.config/atuin/config.toml" "$HOME/.config/atuin/config.toml
 # Git config
 # ---------------------------------------------------------------------------
 echo ""
-echo "==> Copying .gitconfig.local -> ~/.gitconfig"
-run cp "$SCRIPT_DIR/.gitconfig.local" "$HOME/.gitconfig"
+echo "==> Linking .gitconfig.local -> ~/.gitconfig.local"
+symlink "$SCRIPT_DIR/.gitconfig.local" "$HOME/.gitconfig.local"
+
+echo "==> Ensuring ~/.gitconfig includes ~/.gitconfig.local"
+if ! "$DRY_RUN"; then
+  if [[ ! -f "$HOME/.gitconfig" ]]; then
+    cat > "$HOME/.gitconfig" <<'EOF'
+# User-specific settings (not managed by dotfiles)
+# Set your name and email here:
+# [user]
+#   name  = Your Name
+#   email = you@example.com
+
+[include]
+  path = ~/.gitconfig.local
+EOF
+    echo "  created ~/.gitconfig with [include] path = ~/.gitconfig.local"
+    echo "  NOTE: edit ~/.gitconfig to add your [user] name and email"
+  else
+    if ! grep -q 'path\s*=\s*~/.gitconfig.local' "$HOME/.gitconfig"; then
+      printf '\n[include]\n  path = ~/.gitconfig.local\n' >> "$HOME/.gitconfig"
+      echo "  appended [include] path = ~/.gitconfig.local to existing ~/.gitconfig"
+    else
+      echo "  (already includes ~/.gitconfig.local, skipping)"
+    fi
+  fi
+else
+  echo "[dry-run] would ensure ~/.gitconfig includes ~/.gitconfig.local"
+fi
 
 # ---------------------------------------------------------------------------
 # VS Code settings
@@ -353,7 +381,7 @@ if command -v gh >/dev/null 2>&1; then
   opener="$HOME/bin/xdg-open"
   if [[ -f "$opener" ]]; then
     echo "  setting gh browser to: $opener"
-    run gh config set browser "bash $opener"
+    run gh config set browser "bash \"$opener\""
   else
     echo "  setting gh browser to: xdg-open"
     run gh config set browser xdg-open
