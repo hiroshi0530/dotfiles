@@ -26,7 +26,12 @@ description: |
 
 ```bash
 # デフォルトブランチを取得
-default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+
+if [ -z "$default_branch" ]; then
+  echo "デフォルトブランチを取得できませんでした"
+  exit 1
+fi
 
 # merge-worktrees とデフォルトブランチの差分を確認
 git fetch origin
@@ -35,6 +40,7 @@ git --no-pager diff "origin/${default_branch}...origin/merge-worktrees" --stat
 ```
 
 PR は常に **`merge-worktrees` → デフォルトブランチ** で作成する。
+`merge-worktrees` がデフォルトブランチから作成・更新されていることを確認する。
 feature ブランチから直接 PR を作成しない。
 
 ### 2. 差分の調査
@@ -95,7 +101,12 @@ Closes #<番号>
 
 ```bash
 # デフォルトブランチを取得
-default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+
+if [ -z "$default_branch" ]; then
+  echo "デフォルトブランチを取得できませんでした"
+  exit 1
+fi
 
 # merge-worktrees -> デフォルトブランチへの PR
 gh pr create \
