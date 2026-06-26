@@ -25,13 +25,16 @@ description: |
 ### 1. 現在の状態確認
 
 ```bash
+# デフォルトブランチを取得
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+
 # merge-worktrees とデフォルトブランチの差分を確認
 git fetch origin
-git --no-pager log origin/master..origin/merge-worktrees --oneline
-git --no-pager diff origin/master...origin/merge-worktrees --stat
+git --no-pager log "origin/${default_branch}..origin/merge-worktrees" --oneline
+git --no-pager diff "origin/${default_branch}...origin/merge-worktrees" --stat
 ```
 
-PR は常に **`merge-worktrees` → `master`** で作成する。
+PR は常に **`merge-worktrees` → デフォルトブランチ** で作成する。
 feature ブランチから直接 PR を作成しない。
 
 ### 2. 差分の調査
@@ -91,16 +94,19 @@ Closes #<番号>
 ### 6. PR 作成
 
 ```bash
-# merge-worktrees -> master への PR
+# デフォルトブランチを取得
+default_branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's|refs/remotes/origin/||')
+
+# merge-worktrees -> デフォルトブランチへの PR
 gh pr create \
-  --base master \
+  --base "$default_branch" \
   --head merge-worktrees \
   --title "<タイトル>" \
   --body "<本文>"
 
 # ドラフトPR
 gh pr create \
-  --base master \
+  --base "$default_branch" \
   --head merge-worktrees \
   --title "<タイトル>" \
   --body "<本文>" \
